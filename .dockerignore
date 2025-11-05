@@ -1,0 +1,73 @@
+# Node.js dependencies and debug files
+node_modules/
+npm-debug.log
+yarn-debug.log
+
+# Build outputs
+/dist/
+build/
+out/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Environment and secrets
+.env*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+
+# Project-specific patterns
+winston/
+docs/
+*.md
+README*
+Dockerfile*
+docker-compose*
+tmp/
+temp/
+*.tmp
+.local/
+local/
+
+# Test and debug artifacts
+test/
+tests/
+debug/
+*.log
+
+# Python (for completeness, if any)
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+
+# Go (for completeness, if any)
+/vendor/
+*.test
+.go-cache/
+
+# Java (for completeness, if any)
+target/
+*.class
+.gradle/
+
+# Miscellaneous
+*.DS_Store
+Thumbs.db
+
+# Exclude lock files (do NOT ignore these)
+# (package-lock.json is intentionally NOT ignored)
