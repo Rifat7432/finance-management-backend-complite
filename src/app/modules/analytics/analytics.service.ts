@@ -2,18 +2,16 @@ import { StatusCodes } from 'http-status-codes';
 import { User } from '../user/user.model';
 import AppError from '../../../errors/AppError';
 import { Income } from '../income/income.model';
-
 import { endOfMonth, startOfMonth } from 'date-fns';
 import mongoose from 'mongoose';
 import { SavingGoal } from '../savingGoal/savingGoal.model';
-import { Budget } from '../budget/budget.model';
 import { Expense } from '../expense/expense.model';
 import { Appointment } from '../appointment/appointment.model';
 import { DateNight } from '../dateNight/dateNight.model';
 
 // create user
 const getAnalyticsFromDB = async (userId: string) => {
-     const user = await User.isExistUserById(userId);
+     const user = await User.findById(userId).populate('partnerId', 'name email image');
      if (!user) {
           throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
      }

@@ -10,7 +10,6 @@ import { USER_ROLES } from '../../../enums/user';
 const createPartnerRequestToDB = async (inviterId: string, partnerData: { name: string; email: string; relation: string }) => {
      const inviter = await User.findById(inviterId);
      if (!inviter) throw new AppError(StatusCodes.NOT_FOUND, 'Inviter not found');
-     console.log(inviter.partnerId)
      if (inviter.partnerId) {
           throw new AppError(StatusCodes.CONFLICT, 'You are already partnered with someone');
      }
@@ -18,6 +17,15 @@ const createPartnerRequestToDB = async (inviterId: string, partnerData: { name: 
      const existingUser = await User.findOne({ email: partnerData.email });
 
      if (existingUser) {
+                    const isRequestExist = await PartnerRequest.findOne({
+               $or: [
+                    { fromUser: inviterId, toUser: existingUser._id },
+                    { fromUser: existingUser._id, toUser: inviterId },
+               ],
+          });
+          if (isRequestExist) {
+               throw new AppError(StatusCodes.CONFLICT, 'A partner request already exists between you and this user');
+          }
           // Check if already partners
           if (existingUser.partnerId?.toString() === inviterId) {
                throw new AppError(StatusCodes.CONFLICT, 'Already partners with this user');
