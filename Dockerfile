@@ -29,7 +29,7 @@ RUN --mount=type=cache,target=/root/.npm \
     npm ci --only=production --ignore-scripts
 
 # Production stage
-FROM node:${NODE_VERSION}-slim AS final
+FROM node:18.18.2-slim AS final
 WORKDIR /app
 
 # Create a non-root user and group
