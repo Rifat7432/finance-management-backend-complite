@@ -1,0 +1,46 @@
+Tue Nov 04 2025 2:2:17 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:2:18 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:2:18 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:3:9 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:3:10 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:3:10 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:3:16 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:3:16 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:3:17 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:3:18 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:3:19 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:3:28 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:3:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:3:29 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:3:52 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/resend-otp 200 - 970.898 ms
+Tue Nov 04 2025 2:4:10 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:4:10 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:4:11 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:4:41 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:4:41 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:4:42 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:4:47 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/resend-otp 200 - 885.839 ms
+Tue Nov 04 2025 2:5:35 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Tue Nov 04 2025 2:5:41 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:5:41 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:5:42 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:6:14 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/resend-otp 200 - 856.680 ms
+Tue Nov 04 2025 2:6:28 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:6:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:6:29 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:6:33 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/resend-otp 200 - 858.681 ms
+Tue Nov 04 2025 2:46:25 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Tue Nov 04 2025 2:46:30 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:46:31 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:46:32 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:46:36 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251103204637.09aafefad128ed75@mg.rehoapp.co.uk>[39m
+Tue Nov 04 2025 2:46:36 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/resend-otp 200 - 1177.379 ms
+Tue Nov 04 2025 2:47:46 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:47:47 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:47:47 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:47:59 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:48:0 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:48:0 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 2:48:2 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 2:48:3 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 2:48:4 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

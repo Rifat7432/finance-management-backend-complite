@@ -1,0 +1,3 @@
+Fri Oct 10 2025 2:32:46 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Fri Oct 10 2025 2:32:47 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Fri Oct 10 2025 2:32:48 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

@@ -1,0 +1,7 @@
+Mon Nov 03 2025 1:26:28 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/users 400 - 7.438 ms
+Mon Nov 03 2025 1:27:8 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/users 400 - 0.886 ms
+Mon Nov 03 2025 1:35:7 [SERVER-NAME] error: Email Data command failed: 421 Domain sandbox541dd81addcb4251b0c8213835eb2d39.mailgun.org is not allowed to send: Sandbox subdomains are for test purposes only. Please add your own domain or add the address to your authorized recipients.
+Mon Nov 03 2025 1:37:54 [SERVER-NAME] error: Email Data command failed: 421 Domain sandbox541dd81addcb4251b0c8213835eb2d39.mailgun.org is not allowed to send: Sandbox subdomains are for test purposes only. Please add your own domain or add the address to your authorized recipients.
+Mon Nov 03 2025 1:39:22 [SERVER-NAME] error: Email connect ECONNREFUSED ::1:587
+Mon Nov 03 2025 1:39:43 [SERVER-NAME] error: Email connect ECONNREFUSED ::1:587
+Mon Nov 03 2025 1:44:26 [SERVER-NAME] error: Email Data command failed: 421 Domain sandbox541dd81addcb4251b0c8213835eb2d39.mailgun.org is not allowed to send: Sandbox subdomains are for test purposes only. Please add your own domain or add the address to your authorized recipients.

@@ -1,0 +1,2 @@
+Tue Nov 04 2025 6:11:19 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/subscriptions/stats?year=2025 400 - 48.282 ms
+Tue Nov 04 2025 6:45:17 [SERVER-NAME] error: [31mDatabase connection error[39m Server selection timed out after 5000 ms

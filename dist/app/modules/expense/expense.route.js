@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpenseRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const expense_controller_1 = require("./expense.controller");
+const auth_1 = __importDefault(require("../../middleware/auth"));
+const user_1 = require("../../../enums/user");
+const validateRequest_1 = __importDefault(require("../../middleware/validateRequest"));
+const expense_validation_1 = require("./expense.validation");
+const router = express_1.default.Router();
+router.post('/', (0, auth_1.default)(user_1.USER_ROLES.USER), (0, validateRequest_1.default)(expense_validation_1.ExpenseValidation.createExpenseZodSchema), expense_controller_1.ExpenseController.createExpense);
+router.get('/', (0, auth_1.default)(user_1.USER_ROLES.USER), expense_controller_1.ExpenseController.getUserExpenses);
+router.get('/frequency', (0, auth_1.default)(user_1.USER_ROLES.USER), expense_controller_1.ExpenseController.getUserExpensesByFrequency);
+router.get('/analytics', (0, auth_1.default)(user_1.USER_ROLES.USER), expense_controller_1.ExpenseController.getYearlyExpenseAnalytics);
+router.get('/expense/:id', (0, auth_1.default)(user_1.USER_ROLES.USER), expense_controller_1.ExpenseController.getSingleExpense);
+router.patch('/:id', (0, auth_1.default)(user_1.USER_ROLES.USER), (0, validateRequest_1.default)(expense_validation_1.ExpenseValidation.updateExpenseZodSchema), expense_controller_1.ExpenseController.updateExpense);
+router.delete('/:id', (0, auth_1.default)(user_1.USER_ROLES.USER), expense_controller_1.ExpenseController.deleteExpense);
+exports.ExpenseRouter = router;

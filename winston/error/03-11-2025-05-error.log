@@ -1,0 +1,4 @@
+Mon Nov 03 2025 5:47:59 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/partner-requests/ 400 - 68.444 ms
+Mon Nov 03 2025 5:49:20 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/partner-requests/ 409 - 121.718 ms
+Mon Nov 03 2025 5:50:15 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/partner-requests/ 409 - 114.891 ms
+Mon Nov 03 2025 5:53:20 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/partner-requests/ 400 - 152.555 ms

@@ -1,0 +1,27 @@
+Tue Nov 04 2025 0:6:57 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:7:0 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:7:0 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 0:31:37 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 789.055 ms
+Tue Nov 04 2025 0:32:58 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:32:59 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:33:0 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 0:33:4 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:33:5 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:33:5 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 0:33:7 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 799.189 ms
+Tue Nov 04 2025 0:33:33 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:33:34 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:33:35 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:33:36 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:33:37 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 0:33:40 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:33:40 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:33:41 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 0:33:44 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 489.670 ms
+Tue Nov 04 2025 0:34:6 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:34:7 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:34:7 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 04 2025 0:34:13 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 432.512 ms
+Tue Nov 04 2025 0:34:50 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 04 2025 0:34:51 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 04 2025 0:34:52 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

@@ -1,0 +1,10 @@
+Mon Nov 03 2025 4:19:23 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/debts/single/688557edeb481bceca140cdd 404 - 111.530 ms
+Mon Nov 03 2025 4:20:33 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/debts/688557edeb481bceca140cdd 400 - 67.259 ms
+Mon Nov 03 2025 4:21:5 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/debts/ 400 - 50.257 ms
+Mon Nov 03 2025 4:21:29 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/debts/688557edeb481bceca140cdd 404 - 98.837 ms
+Mon Nov 03 2025 4:22:23 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/debts/single/6907d972e33681e0a4a8267d 404 - 99.785 ms
+Mon Nov 03 2025 4:27:47 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/expenses/688557edeb481bceca140cdd 404 - 0.599 ms
+Mon Nov 03 2025 4:28:2 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/expenses/expense/688557edeb481bceca140cdd 404 - 88.928 ms
+Mon Nov 03 2025 4:29:18 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/expenses/expense/69050be9aa4929e85b0c65a9 404 - 87.157 ms
+Mon Nov 03 2025 4:31:48 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/incomes/income/68e1b4d05f62e2a3535168c2 404 - 96.119 ms
+Mon Nov 03 2025 4:59:13 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/notifications-settings/ 401 - 9.752 ms

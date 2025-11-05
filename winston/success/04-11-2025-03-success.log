@@ -1,0 +1,16 @@
+Tue Nov 04 2025 3:37:26 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.665 ms
+Tue Nov 04 2025 3:37:27 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 200 - 108.777 ms
+Tue Nov 04 2025 3:37:45 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/login 204 - 0.068 ms
+Tue Nov 04 2025 3:37:46 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/login 200 - 304.862 ms
+Tue Nov 04 2025 3:41:55 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 1.008 ms
+Tue Nov 04 2025 3:41:56 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 200 - 109.933 ms
+Tue Nov 04 2025 3:43:33 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.072 ms
+Tue Nov 04 2025 3:43:33 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 101.908 ms
+Tue Nov 04 2025 3:46:59 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.426 ms
+Tue Nov 04 2025 3:47:0 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 359.069 ms
+Tue Nov 04 2025 3:52:3 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.086 ms
+Tue Nov 04 2025 3:52:4 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 109.857 ms
+Tue Nov 04 2025 3:52:56 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.150 ms
+Tue Nov 04 2025 3:52:56 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 108.238 ms
+Tue Nov 04 2025 3:53:54 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.066 ms
+Tue Nov 04 2025 3:53:54 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 102.774 ms

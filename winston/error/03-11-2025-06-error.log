@@ -1,0 +1,8 @@
+Mon Nov 03 2025 6:0:7 [SERVER-NAME] error: 127.0.0.1 - DELETE /api/v1/partner-requests/6907ef740ecc512d2feff816 400 - 180.599 ms
+Mon Nov 03 2025 6:2:9 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/partner-requests/6907ef740ecc512d2feff816 404 - 92.756 ms
+Mon Nov 03 2025 6:3:18 [SERVER-NAME] error: 127.0.0.1 - DELETE /api/v1/partner-requests/6907ef740ecc512d2feff816 400 - 182.988 ms
+Mon Nov 03 2025 6:6:50 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/saving-goals/688557edeb481bceca140cdd 404 - 96.551 ms
+Mon Nov 03 2025 6:27:33 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/subscriptions/cancel/69050defaa4929e85b0c65cf 404 - 99.134 ms
+Mon Nov 03 2025 6:36:40 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/users/68f7fe47728d9912cc830816 404 - 0.809 ms
+Mon Nov 03 2025 6:41:54 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/admin//users/finance-track 404 - 2.043 ms
+Mon Nov 03 2025 6:48:37 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/admin/notification-settings/68f7fe47728d9912cc830816 400 - 168.299 ms
