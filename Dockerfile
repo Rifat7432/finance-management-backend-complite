@@ -1,13 +1,7 @@
 # syntax=docker/dockerfile:1
 
-# Build arguments
-ARG NODE_VERSION=18.18.2
-ARG NODE_ENV=production
-ARG BUILD_MEMORY=2048
-ARG SEMI_SPACE_SIZE=256
-
 # Build stage
-FROM node:${NODE_VERSION}-slim AS builder
+FROM node:18.18.2-slim AS builder
 WORKDIR /app
 
 # Set build-time environment
@@ -23,9 +17,9 @@ RUN --mount=type=cache,target=/root/.npm \
 # Copy the rest of the application source code
 COPY --link . .
 
-# Build the TypeScript code with configurable memory limits
+# Build the TypeScript code with fixed memory limits for 1GB VPS
 RUN --mount=type=cache,target=/root/.npm \
-    NODE_OPTIONS="--max-old-space-size=${BUILD_MEMORY} --max-semi-space-size=${SEMI_SPACE_SIZE}" \
+    NODE_OPTIONS="--max-old-space-size=512 --max-semi-space-size=128" \
     npm run build
 
 # Switch to production and reinstall dependencies
