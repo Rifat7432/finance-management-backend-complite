@@ -18,7 +18,7 @@ COPY --link . .
 
 # Build the TypeScript code
 RUN --mount=type=cache,target=/root/.npm \
-    npm run build
+    NODE_OPTIONS="--max-old-space-size=2048" npm run build
 
 # Remove dev dependencies and reinstall only production dependencies
 RUN --mount=type=cache,target=/root/.npm \
