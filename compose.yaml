@@ -5,7 +5,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+        - BUILD_MEMORY=2048
+        - SEMI_SPACE_SIZE=256
     image: ts-app:latest
+    deploy:
+      resources:
+        limits:
+          memory: 1.5GB
+        reservations:
+          memory: 1GB
     container_name: ts-app
     restart: unless-stopped
     init: true

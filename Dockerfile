@@ -1,10 +1,17 @@
 # syntax=docker/dockerfile:1
 
-ARG NODE_VERSION=22.13.1
+# Build arguments
+ARG NODE_VERSION=18.18.2
+ARG NODE_ENV=production
+ARG BUILD_MEMORY=2048
+ARG SEMI_SPACE_SIZE=256
 
 # Build stage
 FROM node:${NODE_VERSION}-slim AS builder
 WORKDIR /app
+
+# Set build-time environment
+ENV NODE_ENV=development
 
 # Copy only package.json and package-lock.json for dependency installation
 COPY --link package.json package-lock.json ./
@@ -16,13 +23,16 @@ RUN --mount=type=cache,target=/root/.npm \
 # Copy the rest of the application source code
 COPY --link . .
 
-# Build the TypeScript code
+# Build the TypeScript code with configurable memory limits
 RUN --mount=type=cache,target=/root/.npm \
-    NODE_OPTIONS="--max-old-space-size=2048" npm run build
+    NODE_OPTIONS="--max-old-space-size=${BUILD_MEMORY} --max-semi-space-size=${SEMI_SPACE_SIZE}" \
+    npm run build
 
-# Remove dev dependencies and reinstall only production dependencies
+# Switch to production and reinstall dependencies
+ENV NODE_ENV=production
 RUN --mount=type=cache,target=/root/.npm \
-    rm -rf node_modules && npm ci --production
+    rm -rf node_modules && \
+    npm ci --only=production --ignore-scripts
 
 # Production stage
 FROM node:${NODE_VERSION}-slim AS final
