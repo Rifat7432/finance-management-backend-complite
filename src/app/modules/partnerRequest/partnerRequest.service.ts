@@ -17,7 +17,7 @@ const createPartnerRequestToDB = async (inviterId: string, partnerData: { name: 
      const existingUser = await User.findOne({ email: partnerData.email });
 
      if (existingUser) {
-                    const isRequestExist = await PartnerRequest.findOne({
+          const isRequestExist = await PartnerRequest.findOne({
                $or: [
                     { fromUser: inviterId, toUser: existingUser._id },
                     { fromUser: existingUser._id, toUser: inviterId },
@@ -137,7 +137,9 @@ const acceptPartnerRequestToDB = async (requestId: string, partnerId: string) =>
 const getPartnerRequestsFromDB = async (userId: string) => {
      const requests = await PartnerRequest.find({
           $or: [{ fromUser: userId }, { toUser: userId }],
-     }).populate('fromUser', 'name email image').populate('toUser', 'name email image');
+     })
+          .populate('fromUser', 'name email image')
+          .populate('toUser', 'name email image');
 
      return requests;
 };
@@ -161,9 +163,19 @@ const UnlinkWithPartnerRequestToDB = async (partnerId: string, userId: string) =
      }
      user.partnerId = undefined;
      partner.partnerId = undefined;
-     const updated = await user.save();
+     await user.save();
      await partner.save();
-     return updated;
+     const deleted = await PartnerRequest.deleteOne({
+          $or: [
+               { fromUser: userId, toUser: partnerId },
+               { fromUser: partnerId, toUser: userId },
+          ],
+          status: 'accepted',
+     });
+     if (!deleted) {
+          throw new AppError(StatusCodes.NOT_FOUND, 'Partner request not found');
+     }
+     return true;
 };
 
 const deletePartnerRequestFromDB = async (id: string): Promise<boolean> => {
