@@ -1,0 +1,8 @@
+Sun Nov 09 2025 2:58:13 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/login 204 - 2.935 ms
+Sun Nov 09 2025 2:58:13 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/login 200 - 469.677 ms
+Sun Nov 09 2025 2:58:14 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.163 ms
+Sun Nov 09 2025 2:58:14 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.132 ms
+Sun Nov 09 2025 2:58:14 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.157 ms
+Sun Nov 09 2025 2:58:14 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 200 - 101.249 ms
+Sun Nov 09 2025 2:58:14 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 89.403 ms
+Sun Nov 09 2025 2:58:15 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 728.192 ms
