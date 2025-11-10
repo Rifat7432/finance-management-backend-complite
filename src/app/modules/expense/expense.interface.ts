@@ -7,4 +7,5 @@ export interface IExpense extends Document {
      frequency: 'on-off' | 'weekly' | 'monthly' | 'yearly'; // Adjust as needed
      userId: Types.ObjectId;
      isDeleted: boolean;
+     createdAt: Date;
 }

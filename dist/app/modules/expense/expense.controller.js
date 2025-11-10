@@ -25,7 +25,7 @@ const createExpense = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expense added successfully',
+        message: 'Expense added',
         data: result,
     });
 }));
@@ -36,7 +36,7 @@ const getUserExpenses = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expenses retrieved successfully',
+        message: 'Expenses retrieved',
         data: result,
     });
 }));
@@ -47,7 +47,7 @@ const getUserExpensesByFrequency = (0, catchAsync_1.default)((req, res) => __awa
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expenses retrieved successfully',
+        message: 'Expenses retrieved',
         data: result,
     });
 }));
@@ -59,7 +59,7 @@ const getYearlyExpenseAnalytics = (0, catchAsync_1.default)((req, res) => __awai
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expenses retrieved successfully',
+        message: 'Expenses retrieved',
         data: result,
     });
 }));
@@ -70,7 +70,7 @@ const getSingleExpense = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expense retrieved successfully',
+        message: 'Expense retrieved',
         data: result,
     });
 }));
@@ -81,7 +81,7 @@ const updateExpense = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expense updated successfully',
+        message: 'Expense updated',
         data: result,
     });
 }));
@@ -92,7 +92,7 @@ const deleteExpense = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Expense deleted successfully',
+        message: 'Expense deleted',
         data: result,
     });
 }));

@@ -24,7 +24,7 @@ const createAppointment = (0, catchAsync_1.default)((req, res) => __awaiter(void
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Time slot booked successfully',
+        message: 'Time slot booked',
         data: result,
     });
 }));
@@ -35,7 +35,7 @@ const getUserAppointments = (0, catchAsync_1.default)((req, res) => __awaiter(vo
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Appointments retrieved successfully',
+        message: 'Appointments retrieved',
         data: result,
     });
 }));
@@ -44,7 +44,7 @@ const getAllAppointments = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Appointments retrieved successfully',
+        message: 'Appointments retrieved',
         data: result,
     });
 }));
@@ -54,7 +54,7 @@ const getSingleAppointment = (0, catchAsync_1.default)((req, res) => __awaiter(v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Appointment retrieved successfully',
+        message: 'Appointment retrieved',
         data: result,
     });
 }));
@@ -64,7 +64,7 @@ const updateAppointment = (0, catchAsync_1.default)((req, res) => __awaiter(void
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Appointment updated successfully',
+        message: 'Appointment updated',
         data: result,
     });
 }));
@@ -74,7 +74,7 @@ const deleteAppointment = (0, catchAsync_1.default)((req, res) => __awaiter(void
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Appointment deleted successfully',
+        message: 'Appointment deleted',
     });
 }));
 exports.AppointmentController = {
@@ -82,5 +82,6 @@ exports.AppointmentController = {
     getUserAppointments,
     getSingleAppointment,
     updateAppointment,
-    deleteAppointment, getAllAppointments
+    deleteAppointment,
+    getAllAppointments,
 };

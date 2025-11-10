@@ -24,7 +24,7 @@ const createDebt = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Debt created successfully',
+        message: 'Debt created',
         data: result,
     });
 }));
@@ -36,7 +36,7 @@ const getDebtInsights = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Debts retrieved successfully',
+        message: 'Debts retrieved',
         data: result,
     });
 }));
@@ -47,7 +47,7 @@ const getUserDebts = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Debts retrieved successfully',
+        message: 'Debts retrieved',
         data: result,
     });
 }));
@@ -57,7 +57,7 @@ const getSingleDebt = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Debt retrieved successfully',
+        message: 'Debt retrieved',
         data: result,
     });
 }));
@@ -67,7 +67,7 @@ const updateDebt = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Debt updated successfully',
+        message: 'Debt updated',
         data: result,
     });
 }));
@@ -77,7 +77,7 @@ const deleteDebt = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Debt deleted successfully',
+        message: 'Debt deleted',
     });
 }));
 exports.DebtController = {

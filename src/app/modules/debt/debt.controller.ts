@@ -9,7 +9,7 @@ const createDebt = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.CREATED,
-    message: 'Debt created successfully',
+  message: 'Debt created',
     data: result,
   });
 });
@@ -21,7 +21,7 @@ const getDebtInsights = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Debts retrieved successfully',
+  message: 'Debts retrieved',
     data: result,
   });
 });
@@ -31,7 +31,7 @@ const getUserDebts = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Debts retrieved successfully',
+  message: 'Debts retrieved',
     data: result,
   });
 });
@@ -42,7 +42,7 @@ const getSingleDebt = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Debt retrieved successfully',
+  message: 'Debt retrieved',
     data: result,
   });
 });
@@ -53,7 +53,7 @@ const updateDebt = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Debt updated successfully',
+  message: 'Debt updated',
     data: result,
   });
 });
@@ -64,7 +64,7 @@ const deleteDebt = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Debt deleted successfully',
+  message: 'Debt deleted',
   });
 });
 

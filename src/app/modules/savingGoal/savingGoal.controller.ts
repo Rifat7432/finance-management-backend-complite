@@ -9,7 +9,7 @@ const createSavingGoal = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.CREATED,
-    message: 'Saving goal created successfully',
+  message: 'Saving goal created',
     data: result,
   });
 });
@@ -20,7 +20,7 @@ const getUserSavingGoals = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Saving goals retrieved successfully',
+  message: 'Saving goals retrieved',
     data: result,
   });
 });
@@ -31,7 +31,7 @@ const getSingleSavingGoal = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Saving goal retrieved successfully',
+  message: 'Saving goal retrieved',
     data: result,
   });
 });
@@ -42,7 +42,7 @@ const updateSavingGoal = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Saving goal updated successfully',
+  message: 'Saving goal updated',
     data: result,
   });
 });
@@ -53,7 +53,7 @@ const deleteSavingGoal = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Saving goal deleted successfully',
+  message: 'Saving goal deleted',
   });
 });
 

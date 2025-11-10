@@ -24,7 +24,7 @@ const createPartnerRequest = (0, catchAsync_1.default)((req, res) => __awaiter(v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Partner request created successfully',
+        message: 'Partner request created',
         data: result,
     });
 }));
@@ -35,7 +35,7 @@ const getPartnerRequests = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Partner requests retrieved successfully',
+        message: 'Partner requests retrieved',
         data: result,
     });
 }));
@@ -46,7 +46,7 @@ const acceptPartnerRequest = (0, catchAsync_1.default)((req, res) => __awaiter(v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Partner requests retrieved successfully',
+        message: 'Partner request accepted',
         data: result,
     });
 }));
@@ -56,7 +56,7 @@ const getSinglePartnerRequest = (0, catchAsync_1.default)((req, res) => __awaite
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Partner request retrieved successfully',
+        message: 'Partner request retrieved',
         data: result,
     });
 }));
@@ -67,7 +67,7 @@ const UnlinkWithPartnerRequest = (0, catchAsync_1.default)((req, res) => __await
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Partner request unlink successfully',
+        message: 'Partner request unlinked',
         data: result,
     });
 }));
@@ -77,7 +77,7 @@ const deletePartnerRequest = (0, catchAsync_1.default)((req, res) => __awaiter(v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Partner request deleted successfully',
+        message: 'Partner request deleted',
     });
 }));
 exports.PartnerRequestController = {

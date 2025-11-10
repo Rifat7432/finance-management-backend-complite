@@ -11,7 +11,7 @@ const getSavingCalculator = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Calculator results retrieved successfully',
+          message: 'Calculator results retrieved',
           data: data,
      });
 });
@@ -23,7 +23,7 @@ const getLoanRepaymentCalculator = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Calculator results retrieved successfully',
+          message: 'Calculator results retrieved',
           data: data,
      });
 });
@@ -35,7 +35,7 @@ const getInflationCalculator = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Calculator results retrieved successfully',
+          message: 'Calculator results retrieved',
           data: data,
      });
 });
@@ -47,7 +47,7 @@ const getHistoricalInflationCalculator = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Calculator results retrieved successfully',
+          message: 'Calculator results retrieved',
           data: data,
      });
 });
@@ -56,5 +56,5 @@ export const CalculatorController = {
      getSavingCalculator,
      getLoanRepaymentCalculator,
      getInflationCalculator,
-     getHistoricalInflationCalculator
+     getHistoricalInflationCalculator,
 };

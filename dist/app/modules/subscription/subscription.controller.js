@@ -24,7 +24,7 @@ const createSubscription = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Subscription created successfully',
+        message: 'Subscription created',
         data: result,
     });
 }));
@@ -34,7 +34,7 @@ const handleWebhook = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Webhook processed successfully',
+        message: 'Webhook processed',
     });
 }));
 // 🟠 Manual verify (optional)
@@ -44,7 +44,7 @@ const verifySubscription = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Subscription verified successfully',
+        message: 'Subscription verified',
         data: result,
     });
 }));
@@ -53,7 +53,7 @@ const cancelSubscription = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Subscription canceled successfully',
+        message: 'Subscription canceled',
         data: result,
     });
 }));

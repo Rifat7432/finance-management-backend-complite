@@ -12,7 +12,7 @@ const createIncome = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Income added successfully',
+  message: 'Income added',
     data: result,
   });
 });
@@ -25,7 +25,7 @@ const getUserIncomes = catchAsync(async (req: Request, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Incomes retrieved successfully',
+  message: 'Incomes retrieved',
     data: result,
   });
 });
@@ -37,7 +37,7 @@ const getUserIncomesByFrequency = catchAsync(async (req: Request, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Incomes retrieved successfully',
+  message: 'Incomes retrieved',
     data: result,
   });
 });
@@ -50,7 +50,7 @@ const getSingleIncome = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Income retrieved successfully',
+  message: 'Income retrieved',
     data: result,
   });
 });
@@ -63,7 +63,7 @@ const updateIncome = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Income updated successfully',
+  message: 'Income updated',
     data: result,
   });
 });
@@ -76,7 +76,7 @@ const deleteIncome = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Income deleted successfully',
+  message: 'Income deleted',
     data: result,
   });
 });

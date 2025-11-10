@@ -12,7 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.scheduleMonthlyFinanceReminderJob = void 0;
 const node_cron_1 = __importDefault(require("node-cron"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const date_fns_1 = require("date-fns");
@@ -109,11 +108,11 @@ const scheduleMonthlyFinanceReminderJob = () => __awaiter(void 0, void 0, void 0
     }
     console.log('✅ Monthly Finance Reminder Job Completed.');
 });
-exports.scheduleMonthlyFinanceReminderJob = scheduleMonthlyFinanceReminderJob;
 // ========================================================
 // === Cron Scheduler =====================================
 // ========================================================
 node_cron_1.default.schedule('55 23 28-31 * *', () => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('🔄 Running Monthly Finance Reminder automation...');
     try {
         const now = new Date();
         const end = (0, date_fns_1.endOfMonth)(now);

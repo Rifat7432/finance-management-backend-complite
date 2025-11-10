@@ -170,7 +170,7 @@ const getAnalyticsFromDB = async (userId: string) => {
      return {
           user,
           analytics: result.length > 0 ? result[0] : {},
-          savingGoalCompletionRate: savingGoal[0].savingGoalCompletionRate,
+          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate ? savingGoal[0]?.savingGoalCompletionRate : 0,
      };
 };
 
@@ -183,7 +183,7 @@ const scheduleMonthlyAnalyticsJob = async () => {
      const end = endOfMonth(now);
 
      // Run only if this is actually the last day of the month
-     if (now.getDate() !== end.getDate()) return;
+     // if (now.getDate() !== end.getDate()) return;
 
      console.log('🕒 Running monthly analytics job...');
 
@@ -203,27 +203,58 @@ const scheduleMonthlyAnalyticsJob = async () => {
                     isCompleted: false,
                });
 
-               const totalTarget = savingGoals.reduce((acc, g) => acc + g.monthlyTarget, 0);
+               let remainingDisposal = disposal;
 
-               for (const goal of savingGoals) {
-                    const share = totalTarget > 0 ? (goal.monthlyTarget / totalTarget) * disposal : 0;
+               // Keep distributing until no money or no incomplete goals remain
+               while (remainingDisposal > 0 && savingGoals.length > 0) {
+                    const totalTarget = savingGoals.reduce((acc, g) => acc + g.monthlyTarget, 0);
 
-                    // Add this month's saved portion
-                    goal.savedMoney += share;
+                    // Remove goals that are already complete
+                    const incompleteGoals = savingGoals.filter(g => {
+                         const remainingAmount = g.totalAmount - g.savedMoney;
+                         return remainingAmount > 0;
+                    });
 
-                    // Calculate incremental completion % for this month
-                    const monthlyPercent = (share / goal.totalAmount) * 100;
+                    if (incompleteGoals.length === 0) break; // All goals are complete
 
-                    // Add this month's percent to existing completion
-                    goal.completionRation = Math.min(goal.completionRation + monthlyPercent, 100);
+                    for (const goal of incompleteGoals) {
+                         const remainingAmount = Math.max(0, goal.totalAmount - goal.savedMoney);
 
-                    // Mark goal complete if it reaches 100%
-                    if (goal.completionRation >= 100) {
-                         goal.isCompleted = true;
+                         // Distribute proportionally based on monthlyTarget
+                         const share = totalTarget > 0 ? (goal.monthlyTarget / totalTarget) * remainingDisposal : 0;
+
+                         // Cap at remaining amount needed
+                         const actualShare = Math.min(share, remainingAmount);
+
+                         // Update goal
+                         goal.savedMoney = Math.min(goal.savedMoney + actualShare, goal.totalAmount);
+
+                         // Calculate incremental completion %
+                         const monthlyPercent = (actualShare / goal.totalAmount) * 100;
+
+                         // Update completion ratio (capped at 100%)
+                         goal.completionRation = Math.min(goal.completionRation + monthlyPercent, 100);
+
+                         // Mark complete if 100%
+                         if (goal.completionRation >= 100) {
+                              goal.isCompleted = true;
+                         }
+
+                         await goal.save();
+
+                         // Subtract allocated amount from remaining disposal
+                         remainingDisposal -= actualShare;
                     }
 
-                    await goal.save();
+                    // If there's still money left and goals uncompleted, redistribute excess
+                    if (remainingDisposal > 0.01 && incompleteGoals.some(g => (g.totalAmount - g.savedMoney) > 0)) {
+                         continue; // Loop again to redistribute to remaining goals
+                    } else {
+                         break;
+                    }
                }
+
+               console.log(`✅ Distributed $${disposal.toFixed(2)} for user ${user._id}. Remaining: $${Math.max(0, remainingDisposal).toFixed(2)}`);
           }
      }
 

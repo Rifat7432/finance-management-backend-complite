@@ -9,7 +9,7 @@ const getNotificationSettings = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Notification settings retrieved successfully',
+          message: 'Notification settings retrieved',
           data: result,
      });
 });
@@ -20,7 +20,7 @@ const updateNotificationSettings = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Notification settings updated successfully',
+          message: 'Notification settings updated',
           data: result,
      });
 });

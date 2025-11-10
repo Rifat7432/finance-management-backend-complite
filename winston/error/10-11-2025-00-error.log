@@ -1,0 +1,10 @@
+Mon Nov 10 2025 0:20:41 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/analytics/ 400 - 169.117 ms
+Mon Nov 10 2025 0:21:42 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/analytics/ 400 - 195.394 ms
+Mon Nov 10 2025 0:22:52 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/analytics/ 400 - 208.951 ms
+Mon Nov 10 2025 0:24:57 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/analytics/ 400 - 185.263 ms
+Mon Nov 10 2025 0:29:35 [SERVER-NAME] error: 127.0.0.1 - GET /favicon.ico 404 - 1.288 ms
+Mon Nov 10 2025 0:31:51 [SERVER-NAME] error: 127.0.0.1 - GET /favicon.ico 404 - 0.744 ms
+Mon Nov 10 2025 0:32:10 [SERVER-NAME] error: 127.0.0.1 - GET /analytics/ 404 - 0.301 ms
+Mon Nov 10 2025 0:32:10 [SERVER-NAME] error: 127.0.0.1 - GET /analytics/user-last-update 404 - 0.248 ms
+Mon Nov 10 2025 0:33:11 [SERVER-NAME] error: 127.0.0.1 - POST /auth/login 404 - 196.029 ms
+Mon Nov 10 2025 0:39:12 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/date-nights/ 404 - 190.476 ms

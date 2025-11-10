@@ -22,7 +22,7 @@ const createAd = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Ad created successfully',
+        message: 'Ad created',
         data: result,
     });
 }));
@@ -31,7 +31,7 @@ const getAds = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0,
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Ads retrieved successfully',
+        message: 'Ads retrieved',
         data: result,
     });
 }));
@@ -40,7 +40,7 @@ const getSingleAd = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, vo
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Ad retrieved successfully',
+        message: 'Ad retrieved',
         data: result,
     });
 }));
@@ -50,7 +50,7 @@ const updateAd = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Ad updated successfully',
+        message: 'Ad updated',
         data: result,
     });
 }));
@@ -60,7 +60,7 @@ const deleteAd = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Ad deleted successfully',
+        message: 'Ad deleted',
     });
 }));
 exports.AdController = {

@@ -23,7 +23,7 @@ const createDateNight = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Date night created successfully',
+        message: 'Date night created',
         data: result,
     });
 }));
@@ -33,7 +33,7 @@ const getDateNights = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Date nights retrieved successfully',
+        message: 'Date nights retrieved',
         data: result,
     });
 }));
@@ -43,7 +43,7 @@ const getSingleDateNight = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Date night retrieved successfully',
+        message: 'Date night retrieved',
         data: result,
     });
 }));
@@ -53,7 +53,7 @@ const updateDateNight = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Date night updated successfully',
+        message: 'Date night updated',
         data: result,
     });
 }));
@@ -63,7 +63,7 @@ const deleteDateNight = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Date night deleted successfully',
+        message: 'Date night deleted',
     });
 }));
 exports.DateNightController = {

@@ -24,7 +24,7 @@ const getSavingCalculator = (0, catchAsync_1.default)((req, res) => __awaiter(vo
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Calculator results retrieved successfully',
+        message: 'Calculator results retrieved',
         data: data,
     });
 }));
@@ -35,7 +35,7 @@ const getLoanRepaymentCalculator = (0, catchAsync_1.default)((req, res) => __awa
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Calculator results retrieved successfully',
+        message: 'Calculator results retrieved',
         data: data,
     });
 }));
@@ -46,7 +46,7 @@ const getInflationCalculator = (0, catchAsync_1.default)((req, res) => __awaiter
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Calculator results retrieved successfully',
+        message: 'Calculator results retrieved',
         data: data,
     });
 }));
@@ -57,7 +57,7 @@ const getHistoricalInflationCalculator = (0, catchAsync_1.default)((req, res) =>
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Calculator results retrieved successfully',
+        message: 'Calculator results retrieved',
         data: data,
     });
 }));
@@ -65,5 +65,5 @@ exports.CalculatorController = {
     getSavingCalculator,
     getLoanRepaymentCalculator,
     getInflationCalculator,
-    getHistoricalInflationCalculator
+    getHistoricalInflationCalculator,
 };

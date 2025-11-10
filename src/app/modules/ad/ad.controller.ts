@@ -8,7 +8,7 @@ const createAd = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.CREATED,
-    message: 'Ad created successfully',
+  message: 'Ad created',
     data: result,
   });
 });
@@ -18,7 +18,7 @@ const getAds = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Ads retrieved successfully',
+  message: 'Ads retrieved',
     data: result,
   });
 });
@@ -28,7 +28,7 @@ const getSingleAd = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Ad retrieved successfully',
+  message: 'Ad retrieved',
     data: result,
   });
 });
@@ -39,7 +39,7 @@ const updateAd = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Ad updated successfully',
+  message: 'Ad updated',
     data: result,
   });
 });
@@ -50,7 +50,7 @@ const deleteAd = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Ad deleted successfully',
+  message: 'Ad deleted',
   });
 });
 

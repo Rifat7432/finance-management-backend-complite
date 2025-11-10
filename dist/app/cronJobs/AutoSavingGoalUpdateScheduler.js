@@ -24,6 +24,7 @@ const savingGoal_model_1 = require("../modules/savingGoal/savingGoal.model");
 // === Helper Function: getAnalyticsFromDB (per user) =====
 // ========================================================
 const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b;
     const user = yield user_model_1.User.isExistUserById(userId);
     if (!user)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
@@ -176,7 +177,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
     return {
         user,
         analytics: result.length > 0 ? result[0] : {},
-        savingGoalCompletionRate: savingGoal[0].savingGoalCompletionRate,
+        savingGoalCompletionRate: ((_a = savingGoal[0]) === null || _a === void 0 ? void 0 : _a.savingGoalCompletionRate) ? (_b = savingGoal[0]) === null || _b === void 0 ? void 0 : _b.savingGoalCompletionRate : 0,
     };
 });
 // ========================================================
@@ -186,8 +187,7 @@ const scheduleMonthlyAnalyticsJob = () => __awaiter(void 0, void 0, void 0, func
     const now = new Date();
     const end = (0, date_fns_1.endOfMonth)(now);
     // Run only if this is actually the last day of the month
-    if (now.getDate() !== end.getDate())
-        return;
+    // if (now.getDate() !== end.getDate()) return;
     console.log('🕒 Running monthly analytics job...');
     const users = yield user_model_1.User.find({ isDeleted: false, status: 'active' });
     const allResults = [];
@@ -201,21 +201,46 @@ const scheduleMonthlyAnalyticsJob = () => __awaiter(void 0, void 0, void 0, func
                 userId: user._id,
                 isCompleted: false,
             });
-            const totalTarget = savingGoals.reduce((acc, g) => acc + g.monthlyTarget, 0);
-            for (const goal of savingGoals) {
-                const share = totalTarget > 0 ? (goal.monthlyTarget / totalTarget) * disposal : 0;
-                // Add this month's saved portion
-                goal.savedMoney += share;
-                // Calculate incremental completion % for this month
-                const monthlyPercent = (share / goal.totalAmount) * 100;
-                // Add this month's percent to existing completion
-                goal.completionRation = Math.min(goal.completionRation + monthlyPercent, 100);
-                // Mark goal complete if it reaches 100%
-                if (goal.completionRation >= 100) {
-                    goal.isCompleted = true;
+            let remainingDisposal = disposal;
+            // Keep distributing until no money or no incomplete goals remain
+            while (remainingDisposal > 0 && savingGoals.length > 0) {
+                const totalTarget = savingGoals.reduce((acc, g) => acc + g.monthlyTarget, 0);
+                // Remove goals that are already complete
+                const incompleteGoals = savingGoals.filter(g => {
+                    const remainingAmount = g.totalAmount - g.savedMoney;
+                    return remainingAmount > 0;
+                });
+                if (incompleteGoals.length === 0)
+                    break; // All goals are complete
+                for (const goal of incompleteGoals) {
+                    const remainingAmount = Math.max(0, goal.totalAmount - goal.savedMoney);
+                    // Distribute proportionally based on monthlyTarget
+                    const share = totalTarget > 0 ? (goal.monthlyTarget / totalTarget) * remainingDisposal : 0;
+                    // Cap at remaining amount needed
+                    const actualShare = Math.min(share, remainingAmount);
+                    // Update goal
+                    goal.savedMoney = Math.min(goal.savedMoney + actualShare, goal.totalAmount);
+                    // Calculate incremental completion %
+                    const monthlyPercent = (actualShare / goal.totalAmount) * 100;
+                    // Update completion ratio (capped at 100%)
+                    goal.completionRation = Math.min(goal.completionRation + monthlyPercent, 100);
+                    // Mark complete if 100%
+                    if (goal.completionRation >= 100) {
+                        goal.isCompleted = true;
+                    }
+                    yield goal.save();
+                    // Subtract allocated amount from remaining disposal
+                    remainingDisposal -= actualShare;
                 }
-                yield goal.save();
+                // If there's still money left and goals uncompleted, redistribute excess
+                if (remainingDisposal > 0.01 && incompleteGoals.some(g => (g.totalAmount - g.savedMoney) > 0)) {
+                    continue; // Loop again to redistribute to remaining goals
+                }
+                else {
+                    break;
+                }
             }
+            console.log(`✅ Distributed $${disposal.toFixed(2)} for user ${user._id}. Remaining: $${Math.max(0, remainingDisposal).toFixed(2)}`);
         }
     }
     console.log('✅ Monthly Analytics Results:\n', JSON.stringify(allResults, null, 2));

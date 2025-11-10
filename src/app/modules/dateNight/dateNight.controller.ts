@@ -9,7 +9,7 @@ const createDateNight = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.CREATED,
-    message: 'Date night created successfully',
+  message: 'Date night created',
     data: result,
   });
 });
@@ -20,7 +20,7 @@ const getDateNights = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Date nights retrieved successfully',
+  message: 'Date nights retrieved',
     data: result,
   });
 });
@@ -31,7 +31,7 @@ const getSingleDateNight = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Date night retrieved successfully',
+  message: 'Date night retrieved',
     data: result,
   });
 });
@@ -42,7 +42,7 @@ const updateDateNight = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Date night updated successfully',
+  message: 'Date night updated',
     data: result,
   });
 });
@@ -53,7 +53,7 @@ const deleteDateNight = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Date night deleted successfully',
+  message: 'Date night deleted',
   });
 });
 

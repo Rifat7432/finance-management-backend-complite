@@ -24,7 +24,7 @@ const getUserNotifications = (0, catchAsync_1.default)((req, res) => __awaiter(v
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'User notifications retrieved successfully',
+        message: 'User notifications retrieved',
         data: result,
     });
 }));

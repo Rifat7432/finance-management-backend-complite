@@ -116,6 +116,7 @@ const scheduleMonthlyFinanceReminderJob = async () => {
 // ========================================================
 
 cron.schedule('55 23 28-31 * *', async () => {
+     console.log('🔄 Running Monthly Finance Reminder automation...');
      try {
           const now = new Date();
           const end = endOfMonth(now);
@@ -128,4 +129,4 @@ cron.schedule('55 23 28-31 * *', async () => {
      }
 });
 
-export { scheduleMonthlyFinanceReminderJob };
+

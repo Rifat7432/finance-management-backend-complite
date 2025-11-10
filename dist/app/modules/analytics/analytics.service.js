@@ -25,7 +25,8 @@ const appointment_model_1 = require("../appointment/appointment.model");
 const dateNight_model_1 = require("../dateNight/dateNight.model");
 // create user
 const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield user_model_1.User.isExistUserById(userId);
+    var _a, _b, _c, _d;
+    const user = yield user_model_1.User.findById(userId).populate('partnerId', 'name email image');
     if (!user) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
     }
@@ -192,17 +193,44 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
             },
         },
     ]);
-    const { totalSavedMoney, savingGoalCompletionRate } = savingGoal[0];
-    return { user, analytics: result.length > 0 ? result[0] : {}, savingGoalCompletionRate, totalSavedMoney };
+    return {
+        user,
+        analytics: result.length > 0 ? result[0] : {},
+        savingGoalCompletionRate: ((_a = savingGoal[0]) === null || _a === void 0 ? void 0 : _a.savingGoalCompletionRate) ? (_b = savingGoal[0]) === null || _b === void 0 ? void 0 : _b.savingGoalCompletionRat : 0,
+        totalSavedMoney: ((_c = savingGoal[0]) === null || _c === void 0 ? void 0 : _c.totalSavedMoney) ? (_d = savingGoal[0]) === null || _d === void 0 ? void 0 : _d.totalSavedMoney : 0,
+    };
 });
+// ...existing code...
 const getLatestUpdateFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.User.isExistUserById(userId);
     if (!user) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
     }
-    const appointments = yield appointment_model_1.Appointment.find({ userId, isDeleted: false }).sort({ createdAt: -1 });
-    const dateNights = yield dateNight_model_1.DateNight.find({ userId, isDeleted: false }).sort({ createdAt: -1 }).limit(2);
-    const expenses = yield expense_model_1.Expense.find({ userId, isDeleted: false }).sort({ createdAt: -1 }).limit(2);
+    const todayStart = (0, date_fns_1.startOfDay)(new Date());
+    // upcoming appointments (today or later), earliest first
+    const appointments = yield appointment_model_1.Appointment.find({
+        userId,
+        isDeleted: false,
+        date: { $gte: todayStart },
+    })
+        .sort({ date: 1 })
+        .limit(2);
+    // upcoming date nights (today or later), earliest first
+    const dateNights = yield dateNight_model_1.DateNight.find({
+        userId,
+        isDeleted: false,
+        date: { $gte: todayStart },
+    })
+        .sort({ date: 1 })
+        .limit(2);
+    // upcoming expenses (endDate today or later), earliest first
+    const expenses = yield expense_model_1.Expense.find({
+        userId,
+        isDeleted: false,
+        endDate: { $gte: todayStart },
+    })
+        .sort({ endDate: 1 })
+        .limit(2);
     console.log(appointments, dateNights, expenses);
     return {
         appointments,
@@ -210,6 +238,7 @@ const getLatestUpdateFromDB = (userId) => __awaiter(void 0, void 0, void 0, func
         expenses,
     };
 });
+// ...existing code...
 exports.AnalyticsService = {
     getAnalyticsFromDB,
     getLatestUpdateFromDB,

@@ -1,0 +1,7 @@
+Mon Nov 10 2025 4:13:30 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Nov 10 2025 4:13:30 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Nov 10 2025 4:13:31 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Nov 10 2025 4:15:32 [SERVER-NAME] info: [34mUser 68f7fe47728d9912cc830816 connected via socket[39m
+Mon Nov 10 2025 4:18:34 [SERVER-NAME] info: [31mUser 68f7fe47728d9912cc830816 disconnected[39m
+Mon Nov 10 2025 4:18:38 [SERVER-NAME] info: [34mUser 68f7fe47728d9912cc830816 connected via socket[39m
+Mon Nov 10 2025 4:18:46 [SERVER-NAME] info: [31mUser 68f7fe47728d9912cc830816 disconnected[39m

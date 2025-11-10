@@ -11,7 +11,7 @@ const createExpense = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expense added successfully',
+  message: 'Expense added',
     data: result,
   });
 });
@@ -23,7 +23,7 @@ const getUserExpenses = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expenses retrieved successfully',
+  message: 'Expenses retrieved',
     data: result,
   });
 });
@@ -35,7 +35,7 @@ const getUserExpensesByFrequency = catchAsync(async (req: Request, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expenses retrieved successfully',
+  message: 'Expenses retrieved',
     data: result,
   });
 });
@@ -48,7 +48,7 @@ const getYearlyExpenseAnalytics = catchAsync(async (req: Request, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expenses retrieved successfully',
+  message: 'Expenses retrieved',
     data: result,
   });
 });
@@ -59,7 +59,7 @@ const getSingleExpense = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expense retrieved successfully',
+  message: 'Expense retrieved',
     data: result,
   });
 });
@@ -71,7 +71,7 @@ const updateExpense = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expense updated successfully',
+  message: 'Expense updated',
     data: result,
   });
 });
@@ -83,7 +83,7 @@ const deleteExpense = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,
-    message: 'Expense deleted successfully',
+  message: 'Expense deleted',
     data: result,
   });
 });

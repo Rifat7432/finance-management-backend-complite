@@ -11,7 +11,7 @@ const createUser = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'User created successfully',
+          message: 'User created',
           data: result,
      });
 });
@@ -21,7 +21,7 @@ const createUserByApple = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: result.message ? result.message : 'User login successfully',
+          message: result.message ? result.message : 'User logged in',
           data: result,
      });
 });
@@ -31,7 +31,7 @@ const createUserByGoogle = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: result.message ? result.message : 'User login successfully',
+          message: result.message ? result.message : 'User logged in',
           data: result,
      });
 });
@@ -40,7 +40,7 @@ const getAllUsers = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'User with Subscriptions retrieved successfully',
+          message: 'User with subscriptions retrieved',
           data: result,
      });
 });
@@ -52,7 +52,7 @@ const getUserProfile = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Profile data retrieved successfully',
+          message: 'Profile data retrieved',
           data: result,
      });
 });
@@ -64,7 +64,7 @@ const getUser = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Profile data retrieved successfully',
+          message: 'Profile data retrieved',
           data: result,
      });
 });
@@ -85,7 +85,7 @@ const updateProfile = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Profile updated successfully',
+          message: 'Profile updated',
           data: result,
      });
 });
@@ -98,7 +98,7 @@ const deleteProfile = catchAsync(async (req, res) => {
           return sendResponse(res, {
                success: false,
                statusCode: StatusCodes.UNAUTHORIZED,
-               message: 'Incorrect password. Please try again.',
+               message: 'Incorrect password, please try again',
           });
      }
 
@@ -107,7 +107,7 @@ const deleteProfile = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Profile deleted successfully',
+          message: 'Profile deleted',
           data: result,
      });
 });
@@ -118,7 +118,7 @@ const blockUser = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'User blocked successfully',
+          message: 'User blocked',
           data: result,
      });
 });

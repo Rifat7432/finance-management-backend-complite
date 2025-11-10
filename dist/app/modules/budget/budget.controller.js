@@ -24,7 +24,7 @@ const createBudget = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Budget created successfully',
+        message: 'Budget created',
         data: result,
     });
 }));
@@ -35,7 +35,7 @@ const getUserBudgets = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Budgets retrieved successfully',
+        message: 'Budgets retrieved',
         data: result,
     });
 }));
@@ -45,7 +45,7 @@ exports.getUserBudgetsByType = (0, catchAsync_1.default)((req, res) => __awaiter
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Budgets retrieved successfully',
+        message: 'Budgets retrieved',
         data: result,
     });
 }));
@@ -57,7 +57,7 @@ exports.getYearlyBudgetAnalytics = (0, catchAsync_1.default)((req, res) => __awa
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Budget analytics retrieved successfully',
+        message: 'Budget analytics retrieved',
         data: result,
     });
 }));
@@ -67,7 +67,7 @@ const updateBudget = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Budget updated successfully',
+        message: 'Budget updated',
         data: result,
     });
 }));
@@ -77,7 +77,7 @@ const deleteBudget = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Budget deleted successfully',
+        message: 'Budget deleted',
     });
 }));
 exports.BudgetController = {

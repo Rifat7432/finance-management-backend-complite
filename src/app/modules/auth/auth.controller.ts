@@ -19,14 +19,14 @@ const loginUser = catchAsync(async (req, res) => {
      if (config.node_env === 'production') {
           cookieOptions.sameSite = 'none';
      }
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'User logged in successfully.', data: { accessToken: result.accessToken, refreshToken: result.refreshToken } });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'User logged in', data: { accessToken: result.accessToken, refreshToken: result.refreshToken } });
 });
 
 const forgetPassword = catchAsync(async (req, res) => {
      const email = req.body.email;
      const result = await AuthService.forgetPasswordToDB(email);
 
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Please check your email. We have sent you a one-time passcode (OTP).', data: result });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Please check your email for a one-time passcode (OTP)', data: result });
 });
 const forgetPasswordByUrl = catchAsync(async (req, res) => {
      const email = req.body.email;
@@ -34,23 +34,23 @@ const forgetPasswordByUrl = catchAsync(async (req, res) => {
      // Call the service function
      await AuthService.forgetPasswordByUrlToDB(email);
 
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Please check your email. We have sent you a password reset link.', data: {} });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Please check your email for a password reset link', data: {} });
 });
 
 const resetPasswordByUrl = catchAsync(async (req, res) => {
      let token = req?.headers?.authorization?.split(' ')[1];
      const { ...resetData } = req.body;
- console.log(resetData)
+     console.log(resetData);
      const result = await AuthService.resetPasswordByUrl(token!, resetData);
 
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Your password has been successfully reset.', data: result });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Your password has been reset', data: result });
 });
 const resetPassword = catchAsync(async (req, res) => {
      const token: any = req.headers.resettoken;
      const { ...resetData } = req.body;
      const result = await AuthService.resetPasswordToDB(token!, resetData);
 
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Your password has been successfully reset.', data: result });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Your password has been reset', data: result });
 });
 
 const changePassword = catchAsync(async (req, res) => {
@@ -58,14 +58,14 @@ const changePassword = catchAsync(async (req, res) => {
      const { ...passwordData } = req.body;
      const result = await AuthService.changePasswordToDB(user, passwordData);
 
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Your password has been successfully changed', data: result });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'Your password has been changed', data: result });
 });
 // resend Otp
 const resendOtp = catchAsync(async (req, res) => {
      const { email } = req.body;
      await AuthService.resendOtpFromDb(email);
 
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'OTP sent successfully again' });
+     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'OTP resent' });
 });
 
 // refresh token
@@ -73,6 +73,6 @@ const refreshToken = catchAsync(async (req, res) => {
      const refreshToken = req.headers?.refreshToken as string;
      const result = await AuthService.refreshToken(refreshToken);
 
-     sendResponse(res, { statusCode: StatusCodes.OK, success: true, message: 'Access token retrieved successfully', data: result });
+     sendResponse(res, { statusCode: StatusCodes.OK, success: true, message: 'Access token retrieved', data: result });
 });
 export const AuthController = { verifyEmail, loginUser, forgetPassword, resetPassword, changePassword, forgetPasswordByUrl, resetPasswordByUrl, resendOtp, refreshToken };

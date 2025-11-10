@@ -9,7 +9,7 @@ const getUserFinancialOverview = catchAsync(async (req: Request, res: Response) 
      sendResponse(res, {
           statusCode: StatusCodes.OK,
           success: true,
-          message: 'User Financial Retrieved Successfully',
+          message: 'User financial Data retrieved',
           data: result,
      });
 });
@@ -19,7 +19,7 @@ const getMonthlyExpenseAnalytics = catchAsync(async (req: Request, res: Response
      sendResponse(res, {
           statusCode: StatusCodes.OK,
           success: true,
-          message: 'User Monthly Expenses Details Retrieved Successfully',
+          message: 'User monthly expenses details retrieved',
           data: result,
      });
 });
@@ -29,7 +29,7 @@ const updateAppointmentStatus = catchAsync(async (req: Request, res: Response) =
      sendResponse(res, {
           statusCode: StatusCodes.OK,
           success: true,
-          message: 'Appointment Completed Successfully',
+          message: 'Appointment completed',
           data: result,
      });
 });
@@ -39,7 +39,7 @@ const getNotificationSettings = catchAsync(async (req: Request, res: Response) =
      sendResponse(res, {
           statusCode: StatusCodes.OK,
           success: true,
-          message: 'Notification Settings Retrieved Successfully',
+          message: 'Notification settings retrieved',
           data: result,
      });
 });
@@ -49,7 +49,7 @@ const updateNotificationSettings = catchAsync(async (req: Request, res: Response
      sendResponse(res, {
           statusCode: StatusCodes.OK,
           success: true,
-          message: 'Settings Updated Successfully',
+          message: 'Settings updated',
           data: result,
      });
 });
@@ -58,7 +58,7 @@ const getAdminRevenue = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Dashboard data get successfully',
+          message: 'Dashboard data retrieved',
           data: result,
      });
 });
@@ -67,5 +67,6 @@ export const AdminController = {
      getMonthlyExpenseAnalytics,
      updateAppointmentStatus,
      getNotificationSettings,
-     updateNotificationSettings,getAdminRevenue
+     updateNotificationSettings,
+     getAdminRevenue,
 };

@@ -41,18 +41,18 @@ const loginUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     if (config_1.default.node_env === 'production') {
         cookieOptions.sameSite = 'none';
     }
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'User logged in successfully.', data: { accessToken: result.accessToken, refreshToken: result.refreshToken } });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'User logged in', data: { accessToken: result.accessToken, refreshToken: result.refreshToken } });
 }));
 const forgetPassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.body.email;
     const result = yield auth_service_1.AuthService.forgetPasswordToDB(email);
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Please check your email. We have sent you a one-time passcode (OTP).', data: result });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Please check your email for a one-time passcode (OTP)', data: result });
 }));
 const forgetPasswordByUrl = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.body.email;
     // Call the service function
     yield auth_service_1.AuthService.forgetPasswordByUrlToDB(email);
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Please check your email. We have sent you a password reset link.', data: {} });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Please check your email for a password reset link', data: {} });
 }));
 const resetPasswordByUrl = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
@@ -60,31 +60,31 @@ const resetPasswordByUrl = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     const resetData = __rest(req.body, []);
     console.log(resetData);
     const result = yield auth_service_1.AuthService.resetPasswordByUrl(token, resetData);
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been successfully reset.', data: result });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been reset', data: result });
 }));
 const resetPassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const token = req.headers.resettoken;
     const resetData = __rest(req.body, []);
     const result = yield auth_service_1.AuthService.resetPasswordToDB(token, resetData);
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been successfully reset.', data: result });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been reset', data: result });
 }));
 const changePassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req.user;
     const passwordData = __rest(req.body, []);
     const result = yield auth_service_1.AuthService.changePasswordToDB(user, passwordData);
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been successfully changed', data: result });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been changed', data: result });
 }));
 // resend Otp
 const resendOtp = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.body;
     yield auth_service_1.AuthService.resendOtpFromDb(email);
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'OTP sent successfully again' });
+    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'OTP resent' });
 }));
 // refresh token
 const refreshToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const refreshToken = (_a = req.headers) === null || _a === void 0 ? void 0 : _a.refreshToken;
     const result = yield auth_service_1.AuthService.refreshToken(refreshToken);
-    (0, sendResponse_1.default)(res, { statusCode: http_status_codes_1.StatusCodes.OK, success: true, message: 'Access token retrieved successfully', data: result });
+    (0, sendResponse_1.default)(res, { statusCode: http_status_codes_1.StatusCodes.OK, success: true, message: 'Access token retrieved', data: result });
 }));
 exports.AuthController = { verifyEmail, loginUser, forgetPassword, resetPassword, changePassword, forgetPasswordByUrl, resetPasswordByUrl, resendOtp, refreshToken };

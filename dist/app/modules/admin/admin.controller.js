@@ -22,7 +22,7 @@ const getUserFinancialOverview = (0, catchAsync_1.default)((req, res) => __await
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'User Financial Retrieved Successfully',
+        message: 'User financial Data retrieved',
         data: result,
     });
 }));
@@ -31,7 +31,7 @@ const getMonthlyExpenseAnalytics = (0, catchAsync_1.default)((req, res) => __awa
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'User Monthly Expenses Details Retrieved Successfully',
+        message: 'User monthly expenses details retrieved',
         data: result,
     });
 }));
@@ -40,7 +40,7 @@ const updateAppointmentStatus = (0, catchAsync_1.default)((req, res) => __awaite
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'Appointment Completed Successfully',
+        message: 'Appointment completed',
         data: result,
     });
 }));
@@ -49,7 +49,7 @@ const getNotificationSettings = (0, catchAsync_1.default)((req, res) => __awaite
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'Notification Settings Retrieved Successfully',
+        message: 'Notification settings retrieved',
         data: result,
     });
 }));
@@ -58,7 +58,7 @@ const updateNotificationSettings = (0, catchAsync_1.default)((req, res) => __awa
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'Settings Updated Successfully',
+        message: 'Settings updated',
         data: result,
     });
 }));
@@ -67,7 +67,7 @@ const getAdminRevenue = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Dashboard data get successfully',
+        message: 'Dashboard data retrieved',
         data: result,
     });
 }));
@@ -76,5 +76,6 @@ exports.AdminController = {
     getMonthlyExpenseAnalytics,
     updateAppointmentStatus,
     getNotificationSettings,
-    updateNotificationSettings, getAdminRevenue
+    updateNotificationSettings,
+    getAdminRevenue,
 };

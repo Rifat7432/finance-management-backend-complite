@@ -25,7 +25,7 @@ const createIncome = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Income added successfully',
+        message: 'Income added',
         data: result,
     });
 }));
@@ -36,7 +36,7 @@ const getUserIncomes = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Incomes retrieved successfully',
+        message: 'Incomes retrieved',
         data: result,
     });
 }));
@@ -47,7 +47,7 @@ const getUserIncomesByFrequency = (0, catchAsync_1.default)((req, res) => __awai
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Incomes retrieved successfully',
+        message: 'Incomes retrieved',
         data: result,
     });
 }));
@@ -58,7 +58,7 @@ const getSingleIncome = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Income retrieved successfully',
+        message: 'Income retrieved',
         data: result,
     });
 }));
@@ -69,7 +69,7 @@ const updateIncome = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Income updated successfully',
+        message: 'Income updated',
         data: result,
     });
 }));
@@ -80,7 +80,7 @@ const deleteIncome = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Income deleted successfully',
+        message: 'Income deleted',
         data: result,
     });
 }));

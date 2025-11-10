@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { User } from '../user/user.model';
 import AppError from '../../../errors/AppError';
 import { Income } from '../income/income.model';
-import { endOfMonth, startOfMonth } from 'date-fns';
+import { endOfMonth, startOfDay, startOfMonth } from 'date-fns';
 import mongoose from 'mongoose';
 import { SavingGoal } from '../savingGoal/savingGoal.model';
 import { Expense } from '../expense/expense.model';
@@ -184,19 +184,49 @@ const getAnalyticsFromDB = async (userId: string) => {
                },
           },
      ]);
-
-     const { totalSavedMoney, savingGoalCompletionRate } = savingGoal[0];
-     return { user, analytics: result.length > 0 ? result[0] : {}, savingGoalCompletionRate, totalSavedMoney };
+     return {
+          user,
+          analytics: result.length > 0 ? result[0] : {},
+          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate ? savingGoal[0]?.savingGoalCompletionRat : 0,
+          totalSavedMoney: savingGoal[0]?.totalSavedMoney ? savingGoal[0]?.totalSavedMoney : 0,
+     };
 };
+
+// ...existing code...
 const getLatestUpdateFromDB = async (userId: string) => {
      const user = await User.isExistUserById(userId);
      if (!user) {
           throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
      }
 
-     const appointments = await Appointment.find({ userId, isDeleted: false }).sort({ createdAt: -1 });
-     const dateNights = await DateNight.find({ userId, isDeleted: false }).sort({ createdAt: -1 }).limit(2);
-     const expenses = await Expense.find({ userId, isDeleted: false }).sort({ createdAt: -1 }).limit(2);
+     const todayStart = startOfDay(new Date());
+
+     // upcoming appointments (today or later), earliest first
+     const appointments = await Appointment.find({
+          userId,
+          isDeleted: false,
+          date: { $gte: todayStart },
+     })
+          .sort({ date: 1 })
+          .limit(2);
+
+     // upcoming date nights (today or later), earliest first
+     const dateNights = await DateNight.find({
+          userId,
+          isDeleted: false,
+          date: { $gte: todayStart },
+     })
+          .sort({ date: 1 })
+          .limit(2);
+
+     // upcoming expenses (endDate today or later), earliest first
+     const expenses = await Expense.find({
+          userId,
+          isDeleted: false,
+          endDate: { $gte: todayStart },
+     })
+          .sort({ endDate: 1 })
+          .limit(2);
 
      console.log(appointments, dateNights, expenses);
 
@@ -206,6 +236,7 @@ const getLatestUpdateFromDB = async (userId: string) => {
           expenses,
      };
 };
+// ...existing code...
 
 export const AnalyticsService = {
      getAnalyticsFromDB,

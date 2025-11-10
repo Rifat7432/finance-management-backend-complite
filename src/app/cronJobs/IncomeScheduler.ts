@@ -2,7 +2,7 @@ import cron from 'node-cron';
 import { Types } from 'mongoose';
 import { Income } from '../modules/income/income.model';
 import { IIncome } from '../modules/income/income.interface';
-import { startOfDay, addMonths, addYears, addWeeks } from 'date-fns';
+import { startOfDay, addMonths, addYears, addWeeks, subWeeks, subMonths, subYears } from 'date-fns';
 // 🔁 Calculate next receive date
 const getNextIncomeDate = (date: Date, frequency: string): Date => {
      const d = new Date(date);
@@ -23,12 +23,20 @@ cron.schedule('5 0 * * *', async () => {
      console.log('🔄 Running income automation...');
 
      try {
+          const today = startOfDay(new Date());
+          const previousWeekStart = startOfDay(subWeeks(today, 1));
+          const previousMonthStart = startOfDay(subMonths(today, 1));
+          const previousYearStart = startOfDay(subYears(today, 1));
+
           // WHY CHANGED: Get ALL recurring incomes, filter by date (simpler query)
           const recurringIncomes = await Income.find({
-               frequency: { $in: ['monthly', 'yearly'] },
                isDeleted: false,
+               $or: [
+                    { frequency: 'monthly', createdAt: { $gte: previousMonthStart, $lt: today } },
+                    { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
+               ],
           }).lean();
-
+console.log(recurringIncomes)
           let created = 0,
                skipped = 0;
 

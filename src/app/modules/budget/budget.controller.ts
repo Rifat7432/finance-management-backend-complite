@@ -9,7 +9,7 @@ const createBudget = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.CREATED,
-          message: 'Budget created successfully',
+          message: 'Budget created',
           data: result,
      });
 });
@@ -20,7 +20,7 @@ const getUserBudgets = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Budgets retrieved successfully',
+          message: 'Budgets retrieved',
           data: result,
      });
 });
@@ -32,7 +32,7 @@ export const getUserBudgetsByType = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Budgets retrieved successfully',
+          message: 'Budgets retrieved',
           data: result,
      });
 });
@@ -47,7 +47,7 @@ export const getYearlyBudgetAnalytics = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Budget analytics retrieved successfully',
+          message: 'Budget analytics retrieved',
           data: result,
      });
 });
@@ -58,7 +58,7 @@ const updateBudget = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Budget updated successfully',
+          message: 'Budget updated',
           data: result,
      });
 });
@@ -69,7 +69,7 @@ const deleteBudget = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Budget deleted successfully',
+          message: 'Budget deleted',
      });
 });
 

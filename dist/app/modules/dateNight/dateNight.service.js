@@ -53,7 +53,7 @@ const createDateNightToDB = (userId, payload) => __awaiter(void 0, void 0, void 
             title: 'New Date Night Created',
             message: `You planned a date night for ${dateStr} at ${timeStr}`,
             receiver: userSetting.userId,
-            type: 'DATE_NIGHT',
+            type: 'ALERT',
             read: false,
         });
     }

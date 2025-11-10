@@ -23,7 +23,7 @@ const getNotificationSettings = (0, catchAsync_1.default)((req, res) => __awaite
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Notification settings retrieved successfully',
+        message: 'Notification settings retrieved',
         data: result,
     });
 }));
@@ -33,7 +33,7 @@ const updateNotificationSettings = (0, catchAsync_1.default)((req, res) => __awa
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Notification settings updated successfully',
+        message: 'Notification settings updated',
         data: result,
     });
 }));

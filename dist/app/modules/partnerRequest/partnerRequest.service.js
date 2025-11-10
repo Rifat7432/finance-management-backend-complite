@@ -25,13 +25,21 @@ const createPartnerRequestToDB = (inviterId, partnerData) => __awaiter(void 0, v
     const inviter = yield user_model_1.User.findById(inviterId);
     if (!inviter)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'Inviter not found');
-    console.log(inviter.partnerId);
     if (inviter.partnerId) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.CONFLICT, 'You are already partnered with someone');
     }
     // Check if partner user already exists
     const existingUser = yield user_model_1.User.findOne({ email: partnerData.email });
     if (existingUser) {
+        const isRequestExist = yield partnerRequest_model_1.PartnerRequest.findOne({
+            $or: [
+                { fromUser: inviterId, toUser: existingUser._id },
+                { fromUser: existingUser._id, toUser: inviterId },
+            ],
+        });
+        if (isRequestExist) {
+            throw new AppError_1.default(http_status_codes_1.StatusCodes.CONFLICT, 'A partner request already exists between you and this user');
+        }
         // Check if already partners
         if (((_a = existingUser.partnerId) === null || _a === void 0 ? void 0 : _a.toString()) === inviterId) {
             throw new AppError_1.default(http_status_codes_1.StatusCodes.CONFLICT, 'Already partners with this user');
@@ -130,7 +138,9 @@ const acceptPartnerRequestToDB = (requestId, partnerId) => __awaiter(void 0, voi
 const getPartnerRequestsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const requests = yield partnerRequest_model_1.PartnerRequest.find({
         $or: [{ fromUser: userId }, { toUser: userId }],
-    }).populate('fromUser', 'name email image').populate('toUser', 'name email image');
+    })
+        .populate('fromUser', 'name email image')
+        .populate('toUser', 'name email image');
     return requests;
 });
 const getSinglePartnerRequestFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
@@ -152,9 +162,19 @@ const UnlinkWithPartnerRequestToDB = (partnerId, userId) => __awaiter(void 0, vo
     }
     user.partnerId = undefined;
     partner.partnerId = undefined;
-    const updated = yield user.save();
+    yield user.save();
     yield partner.save();
-    return updated;
+    const deleted = yield partnerRequest_model_1.PartnerRequest.deleteOne({
+        $or: [
+            { fromUser: userId, toUser: partnerId },
+            { fromUser: partnerId, toUser: userId },
+        ],
+        status: 'accepted',
+    });
+    if (!deleted) {
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'Partner request not found');
+    }
+    return true;
 });
 const deletePartnerRequestFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;

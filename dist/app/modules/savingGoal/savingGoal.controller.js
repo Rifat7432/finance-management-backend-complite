@@ -24,7 +24,7 @@ const createSavingGoal = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Saving goal created successfully',
+        message: 'Saving goal created',
         data: result,
     });
 }));
@@ -35,7 +35,7 @@ const getUserSavingGoals = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Saving goals retrieved successfully',
+        message: 'Saving goals retrieved',
         data: result,
     });
 }));
@@ -45,7 +45,7 @@ const getSingleSavingGoal = (0, catchAsync_1.default)((req, res) => __awaiter(vo
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Saving goal retrieved successfully',
+        message: 'Saving goal retrieved',
         data: result,
     });
 }));
@@ -55,7 +55,7 @@ const updateSavingGoal = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Saving goal updated successfully',
+        message: 'Saving goal updated',
         data: result,
     });
 }));
@@ -65,7 +65,7 @@ const deleteSavingGoal = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Saving goal deleted successfully',
+        message: 'Saving goal deleted',
     });
 }));
 exports.SavingGoalController = {

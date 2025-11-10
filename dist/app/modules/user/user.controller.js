@@ -36,7 +36,7 @@ const createUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'User created successfully',
+        message: 'User created',
         data: result,
     });
 }));
@@ -46,7 +46,7 @@ const createUserByApple = (0, catchAsync_1.default)((req, res) => __awaiter(void
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: result.message ? result.message : 'User login successfully',
+        message: result.message ? result.message : 'User logged in',
         data: result,
     });
 }));
@@ -56,7 +56,7 @@ const createUserByGoogle = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: result.message ? result.message : 'User login successfully',
+        message: result.message ? result.message : 'User logged in',
         data: result,
     });
 }));
@@ -65,7 +65,7 @@ const getAllUsers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, vo
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'User with Subscriptions retrieved successfully',
+        message: 'User with subscriptions retrieved',
         data: result,
     });
 }));
@@ -75,7 +75,7 @@ const getUserProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Profile data retrieved successfully',
+        message: 'Profile data retrieved',
         data: result,
     });
 }));
@@ -85,7 +85,7 @@ const getUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Profile data retrieved successfully',
+        message: 'Profile data retrieved',
         data: result,
     });
 }));
@@ -103,7 +103,7 @@ const updateProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Profile updated successfully',
+        message: 'Profile updated',
         data: result,
     });
 }));
@@ -116,14 +116,14 @@ const deleteProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         return (0, sendResponse_1.default)(res, {
             success: false,
             statusCode: http_status_codes_1.StatusCodes.UNAUTHORIZED,
-            message: 'Incorrect password. Please try again.',
+            message: 'Incorrect password, please try again',
         });
     }
     const result = yield user_service_1.UserService.deleteUser(id);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Profile deleted successfully',
+        message: 'Profile deleted',
         data: result,
     });
 }));
@@ -134,7 +134,7 @@ const blockUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'User blocked successfully',
+        message: 'User blocked',
         data: result,
     });
 }));

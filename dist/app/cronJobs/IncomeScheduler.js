@@ -34,11 +34,19 @@ const isToday = (date) => {
 node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('🔄 Running income automation...');
     try {
+        const today = (0, date_fns_1.startOfDay)(new Date());
+        const previousWeekStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subWeeks)(today, 1));
+        const previousMonthStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subMonths)(today, 1));
+        const previousYearStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subYears)(today, 1));
         // WHY CHANGED: Get ALL recurring incomes, filter by date (simpler query)
         const recurringIncomes = yield income_model_1.Income.find({
-            frequency: { $in: ['monthly', 'yearly'] },
             isDeleted: false,
+            $or: [
+                { frequency: 'monthly', createdAt: { $gte: previousMonthStart, $lt: today } },
+                { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
+            ],
         }).lean();
+        console.log(recurringIncomes);
         let created = 0, skipped = 0;
         for (const income of recurringIncomes) {
             try {

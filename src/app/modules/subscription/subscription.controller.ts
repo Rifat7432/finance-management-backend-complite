@@ -10,7 +10,7 @@ const createSubscription = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.CREATED,
-          message: 'Subscription created successfully',
+          message: 'Subscription created',
           data: result,
      });
 });
@@ -21,7 +21,7 @@ const handleWebhook = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Webhook processed successfully',
+          message: 'Webhook processed',
      });
 });
 
@@ -32,7 +32,7 @@ const verifySubscription = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Subscription verified successfully',
+          message: 'Subscription verified',
           data: result,
      });
 });
@@ -41,7 +41,7 @@ const cancelSubscription = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Subscription canceled successfully',
+          message: 'Subscription canceled',
           data: result,
      });
 });

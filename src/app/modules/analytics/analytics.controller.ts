@@ -8,7 +8,7 @@ const getAnalytics = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Analytics retrieved successfully',
+          message: 'Analytics retrieved',
           data: data,
      });
 });
@@ -18,7 +18,7 @@ const getLatestUpdate = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Last updates retrieved successfully',
+          message: 'Last updates retrieved',
           data: data,
      });
 });

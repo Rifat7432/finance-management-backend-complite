@@ -22,7 +22,7 @@ const createContent = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.CREATED,
-        message: 'Content created successfully',
+        message: 'Content created',
         data: result,
     });
 }));
@@ -31,7 +31,7 @@ const getContents = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, vo
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Contents retrieved successfully',
+        message: 'Contents retrieved',
         data: result,
     });
 }));
@@ -41,7 +41,7 @@ const getSingleContent = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Content retrieved successfully',
+        message: 'Content retrieved',
         data: result,
     });
 }));
@@ -51,7 +51,7 @@ const updateContent = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Content updated successfully',
+        message: 'Content updated',
         data: result,
     });
 }));
@@ -61,7 +61,7 @@ const deleteContent = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Content deleted successfully',
+        message: 'Content deleted',
     });
 }));
 exports.ContentController = {

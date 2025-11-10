@@ -9,7 +9,7 @@ const createPartnerRequest = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.CREATED,
-          message: 'Partner request created successfully',
+          message: 'Partner request created',
           data: result,
      });
 });
@@ -20,7 +20,7 @@ const getPartnerRequests = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Partner requests retrieved successfully',
+          message: 'Partner requests retrieved',
           data: result,
      });
 });
@@ -30,7 +30,7 @@ const acceptPartnerRequest = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Partner requests retrieved successfully',
+          message: 'Partner request accepted',
           data: result,
      });
 });
@@ -41,7 +41,7 @@ const getSinglePartnerRequest = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Partner request retrieved successfully',
+          message: 'Partner request retrieved',
           data: result,
      });
 });
@@ -53,7 +53,7 @@ const UnlinkWithPartnerRequest = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Partner request unlink successfully',
+          message: 'Partner request unlinked',
           data: result,
      });
 });
@@ -64,7 +64,7 @@ const deletePartnerRequest = catchAsync(async (req, res) => {
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'Partner request deleted successfully',
+          message: 'Partner request deleted',
      });
 });
 

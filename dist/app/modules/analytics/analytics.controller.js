@@ -24,7 +24,7 @@ const getAnalytics = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Analytics retrieved successfully',
+        message: 'Analytics retrieved',
         data: data,
     });
 }));
@@ -35,7 +35,7 @@ const getLatestUpdate = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'Last updates retrieved successfully',
+        message: 'Last updates retrieved',
         data: data,
     });
 }));
