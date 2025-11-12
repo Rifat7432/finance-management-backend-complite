@@ -3,7 +3,6 @@ import { JwtPayload, Secret } from 'jsonwebtoken';
 import { USER_ROLES } from '../../../enums/user';
 import { emailHelper } from '../../../helpers/emailHelper';
 import { emailTemplate } from '../../../shared/emailTemplate';
-import unlinkFile from '../../../shared/unlinkFile';
 import { IUser, UserSubscriptionDTO } from './user.interface';
 import { User } from './user.model';
 import AppError from '../../../errors/AppError';
@@ -11,8 +10,6 @@ import generateOTP from '../../../utils/generateOTP';
 import config from '../../../config';
 import { jwtHelper } from '../../../helpers/jwtHelper';
 import { deleteFileFromSpaces } from '../../middleware/uploadFileToSpaces';
-import { Subscription } from '../subscription/subscription.model';
-import QueryBuilder from '../../builder/QueryBuilder';
 import { NotificationSettings } from '../notificationSettings/notificationSettings.model';
 // create user
 const createUserToDB = async (payload: IUser): Promise<IUser> => {

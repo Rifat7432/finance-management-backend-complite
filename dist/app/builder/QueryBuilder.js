@@ -22,7 +22,6 @@ class QueryBuilder {
     search(searchableFields) {
         var _a;
         const searchTerm = (_a = this.query) === null || _a === void 0 ? void 0 : _a.searchTerm;
-        console.log(searchTerm);
         if (searchTerm && searchTerm !== "" && searchableFields.length > 0) {
             this.modelQuery = this.modelQuery.find({
                 $or: searchableFields.map((field) => ({

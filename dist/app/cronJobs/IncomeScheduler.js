@@ -46,7 +46,6 @@ node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0
                 { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
             ],
         }).lean();
-        console.log(recurringIncomes);
         let created = 0, skipped = 0;
         for (const income of recurringIncomes) {
             try {

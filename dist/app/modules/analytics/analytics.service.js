@@ -231,7 +231,6 @@ const getLatestUpdateFromDB = (userId) => __awaiter(void 0, void 0, void 0, func
     })
         .sort({ endDate: 1 })
         .limit(2);
-    console.log(appointments, dateNights, expenses);
     return {
         appointments,
         dateNights,

@@ -62,7 +62,6 @@ cron.schedule('10 0 * * *', async () => {
                     { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: startOfToday } },
                ],
           }).lean();
-console.log(recurringExpenses)
           let createdCount = 0;
           let skippedCount = 0;
 

@@ -7,7 +7,6 @@ import { User } from '../user/user.model';
 import { emailTemplate } from '../../../shared/emailTemplate';
 import { emailHelper } from '../../../helpers/emailHelper';
 
-
 // 🔍 Verify subscription with RevenueCat API (optional)
 const verifyWithRevenueCat = async (appUserId: string) => {
      const res = await fetch(`https://api.revenuecat.com/v1/subscribers/${appUserId}`, {
@@ -33,7 +32,9 @@ const createSubscriptionToDB = async (userId: string, payload: Partial<ISubscrip
           status: payload.status || 'active',
           lastVerified: new Date(),
      });
-     await User.findByIdAndUpdate(userId, { subscriptionId: payload.subscriptionId });
+     await User.findByIdAndUpdate(userId, {
+          $set: { subscriptionId: payload.subscriptionId },
+     });
      if (!subscription) throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create subscription');
      return subscription;
 };
@@ -65,7 +66,11 @@ export const handleWebhookEventToDB = async (webhookData: any) => {
 
           // Update or insert subscription
           const subscription = await Subscription.findOneAndUpdate({ subscriptionId: app_user_id }, { $set: updateData }, { new: true, upsert: true });
-
+          if (subscription && ['failed', 'canceled'].includes(mappedStatus)) {
+               await User.findByIdAndUpdate(subscription.userId, {
+                    $set: { subscriptionId: '' },
+               });
+          }
           console.log(`✅ RevenueCat webhook processed: ${event_type} for ${app_user_id}`);
 
           // 🔔 Notify user by email
@@ -91,7 +96,6 @@ export const handleWebhookEventToDB = async (webhookData: any) => {
 const verifySubscriptionToDB = async (userId: string): Promise<ISubscription> => {
      const subscription = await Subscription.findOne({ userId });
      if (!subscription) throw new AppError(StatusCodes.NOT_FOUND, 'Subscription not found');
-
      const adaptyData = await verifyWithRevenueCat(subscription.subscriptionId);
      const updated = await Subscription.findByIdAndUpdate(
           subscription._id,
@@ -102,7 +106,7 @@ const verifySubscriptionToDB = async (userId: string): Promise<ISubscription> =>
           },
           { new: true },
      );
-
+     await User.findByIdAndUpdate(userId, { subscriptionId: subscription.subscriptionId });
      if (!updated) throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to verify subscription');
      return updated;
 };
@@ -156,11 +160,9 @@ const cancelSubscriptionIntoDB = async (appUserId: string) => {
      };
 };
 
-
-
 export const SubscriptionService = {
      createSubscriptionToDB,
      handleWebhookEventToDB,
      verifySubscriptionToDB,
-     cancelSubscriptionIntoDB
+     cancelSubscriptionIntoDB,
 };

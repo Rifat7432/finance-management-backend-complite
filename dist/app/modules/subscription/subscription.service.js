@@ -39,7 +39,9 @@ const createSubscriptionToDB = (userId, payload) => __awaiter(void 0, void 0, vo
     if (isUserSubscribed)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'User already has a subscription');
     const subscription = yield subscription_model_1.Subscription.create(Object.assign(Object.assign({}, payload), { userId, status: payload.status || 'active', lastVerified: new Date() }));
-    yield user_model_1.User.findByIdAndUpdate(userId, { subscriptionId: payload.subscriptionId });
+    yield user_model_1.User.findByIdAndUpdate(userId, {
+        $set: { subscriptionId: payload.subscriptionId },
+    });
     if (!subscription)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'Failed to create subscription');
     return subscription;
@@ -67,6 +69,11 @@ const handleWebhookEventToDB = (webhookData) => __awaiter(void 0, void 0, void 0
         };
         // Update or insert subscription
         const subscription = yield subscription_model_1.Subscription.findOneAndUpdate({ subscriptionId: app_user_id }, { $set: updateData }, { new: true, upsert: true });
+        if (subscription && ['failed', 'canceled'].includes(mappedStatus)) {
+            yield user_model_1.User.findByIdAndUpdate(subscription.userId, {
+                $set: { subscriptionId: '' },
+            });
+        }
         console.log(`✅ RevenueCat webhook processed: ${event_type} for ${app_user_id}`);
         // 🔔 Notify user by email
         const user = yield user_model_1.User.findById(subscription.userId);
@@ -98,6 +105,7 @@ const verifySubscriptionToDB = (userId) => __awaiter(void 0, void 0, void 0, fun
         expiryDate: new Date(adaptyData.subscriber.expiration_date),
         lastVerified: new Date(),
     }, { new: true });
+    yield user_model_1.User.findByIdAndUpdate(userId, { subscriptionId: subscription.subscriptionId });
     if (!updated)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'Failed to verify subscription');
     return updated;
@@ -149,5 +157,5 @@ exports.SubscriptionService = {
     createSubscriptionToDB,
     handleWebhookEventToDB: exports.handleWebhookEventToDB,
     verifySubscriptionToDB,
-    cancelSubscriptionIntoDB
+    cancelSubscriptionIntoDB,
 };

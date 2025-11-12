@@ -69,7 +69,6 @@ node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 
                 { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: startOfToday } },
             ],
         }).lean();
-        console.log(recurringExpenses);
         let createdCount = 0;
         let skippedCount = 0;
         const today = (0, date_fns_1.startOfDay)(new Date());

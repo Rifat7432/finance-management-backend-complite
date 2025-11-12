@@ -58,7 +58,6 @@ const resetPasswordByUrl = (0, catchAsync_1.default)((req, res) => __awaiter(voi
     var _a, _b;
     let token = (_b = (_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization) === null || _b === void 0 ? void 0 : _b.split(' ')[1];
     const resetData = __rest(req.body, []);
-    console.log(resetData);
     const result = yield auth_service_1.AuthService.resetPasswordByUrl(token, resetData);
     (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'Your password has been reset', data: result });
 }));

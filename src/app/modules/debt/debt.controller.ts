@@ -16,7 +16,6 @@ const createDebt = catchAsync(async (req, res) => {
 
 const getDebtInsights = catchAsync(async (req, res) => {
   const userId = req.user?.id
-  console.log(userId)
   const result = await DebtService.getDebtInsightsFromDB(userId);
   sendResponse(res, {
     success: true,

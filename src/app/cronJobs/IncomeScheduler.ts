@@ -36,7 +36,6 @@ cron.schedule('5 0 * * *', async () => {
                     { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
                ],
           }).lean();
-console.log(recurringIncomes)
           let created = 0,
                skipped = 0;
 

@@ -104,3 +104,6 @@ Tue Nov 11 2025 4:21:11 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/saving-goals
 Tue Nov 11 2025 4:21:52 [SERVER-NAME] info: [32mConfig validation successful.[39m
 Tue Nov 11 2025 4:21:52 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
 Tue Nov 11 2025 4:21:53 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Tue Nov 11 2025 4:26:21 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Tue Nov 11 2025 4:26:22 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Tue Nov 11 2025 4:26:22 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

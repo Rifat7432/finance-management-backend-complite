@@ -228,7 +228,6 @@ const getLatestUpdateFromDB = async (userId: string) => {
           .sort({ endDate: 1 })
           .limit(2);
 
-     console.log(appointments, dateNights, expenses);
 
      return {
           appointments,

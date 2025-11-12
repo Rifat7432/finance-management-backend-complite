@@ -13,7 +13,7 @@ const socket = (io: Server) => {
 
   // Middleware to verify token before connection
   io.use((socket, next) => {
-    const token = socket.handshake.headers.auth as string;
+   const token = socket.handshake.query.token as string;
     if (!token) {
       logger.warn('Socket connection rejected: No token provided');
       return next(new Error('Authentication error'));
