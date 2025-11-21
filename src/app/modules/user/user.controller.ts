@@ -92,15 +92,6 @@ const updateProfile = catchAsync(async (req, res) => {
 //delete profile
 const deleteProfile = catchAsync(async (req, res) => {
      const { id }: any = req.user;
-     const { password } = req.body;
-     const isUserVerified = await UserService.verifyUserPassword(id, password);
-     if (!isUserVerified) {
-          return sendResponse(res, {
-               success: false,
-               statusCode: StatusCodes.UNAUTHORIZED,
-               message: 'Incorrect password, please try again',
-          });
-     }
 
      const result = await UserService.deleteUser(id);
 
