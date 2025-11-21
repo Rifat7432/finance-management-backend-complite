@@ -1,0 +1,64 @@
+Mon Nov 10 2025 1:14:45 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/login 200 - 305.469 ms
+Mon Nov 10 2025 1:14:45 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 200 - 180.332 ms
+Mon Nov 10 2025 1:14:45 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 200 - 211.985 ms
+Mon Nov 10 2025 1:14:51 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/incomes/ 200 - 86.806 ms
+Mon Nov 10 2025 1:15:7 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/incomes/6904f3f0aa4929e85b0c644d 200 - 159.325 ms
+Mon Nov 10 2025 1:15:32 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/incomes/ 200 - 87.740 ms
+Mon Nov 10 2025 1:15:34 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/incomes/ 200 - 85.137 ms
+Mon Nov 10 2025 1:15:40 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 200 - 179.674 ms
+Mon Nov 10 2025 1:15:40 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 220.588 ms
+Mon Nov 10 2025 1:15:41 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/ 200 - 88.502 ms
+Mon Nov 10 2025 1:15:47 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/expenses/69050defaa4929e85b0c65cf 200 - 133.080 ms
+Mon Nov 10 2025 1:16:10 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 90.679 ms
+Mon Nov 10 2025 1:16:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/ 200 - 86.165 ms
+Mon Nov 10 2025 1:17:52 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/ 304 - 91.363 ms
+Mon Nov 10 2025 1:20:33 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/ 304 - 87.624 ms
+Mon Nov 10 2025 1:20:40 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/ 304 - 85.787 ms
+Mon Nov 10 2025 1:20:41 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 176.142 ms
+Mon Nov 10 2025 1:20:41 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 200 - 209.779 ms
+Mon Nov 10 2025 1:20:43 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 200 - 84.734 ms
+Mon Nov 10 2025 1:20:53 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 304 - 84.528 ms
+Mon Nov 10 2025 1:20:58 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/budgets/69079c8e3818cdd1cf565f14 200 - 147.692 ms
+Mon Nov 10 2025 1:21:4 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 200 - 83.877 ms
+Mon Nov 10 2025 1:21:16 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/budgets/ 201 - 106.352 ms
+Mon Nov 10 2025 1:21:16 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 200 - 84.182 ms
+Mon Nov 10 2025 1:21:30 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 304 - 85.318 ms
+Mon Nov 10 2025 1:21:32 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 304 - 85.376 ms
+Mon Nov 10 2025 1:25:9 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 304 - 86.221 ms
+Mon Nov 10 2025 1:25:50 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/budgets/type 304 - 83.267 ms
+Mon Nov 10 2025 1:25:52 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 206.932 ms
+Mon Nov 10 2025 1:25:54 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 200 - 168.342 ms
+Mon Nov 10 2025 1:25:56 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/saving-goals/ 200 - 85.124 ms
+Mon Nov 10 2025 1:26:17 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/saving-goals/6908db54d14156cc96e13d06 200 - 188.282 ms
+Mon Nov 10 2025 1:26:34 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/saving-goals/ 201 - 90.351 ms
+Mon Nov 10 2025 1:26:36 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/saving-goals/ 200 - 83.346 ms
+Mon Nov 10 2025 1:27:0 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/saving-calculator 200 - 43.369 ms
+Mon Nov 10 2025 1:27:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/saving-goals/ 304 - 84.341 ms
+Mon Nov 10 2025 1:27:14 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 221.804 ms
+Mon Nov 10 2025 1:27:16 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 200 - 269.720 ms
+Mon Nov 10 2025 1:27:18 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 170.761 ms
+Mon Nov 10 2025 1:27:18 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 214.359 ms
+Mon Nov 10 2025 1:28:0 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/inflation-calculator 200 - 44.935 ms
+Mon Nov 10 2025 1:28:25 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 670.192 ms
+Mon Nov 10 2025 1:28:36 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 231.521 ms
+Mon Nov 10 2025 1:28:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 184.465 ms
+Mon Nov 10 2025 1:31:17 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/loan-repayment-calculator 200 - 51.161 ms
+Mon Nov 10 2025 1:31:24 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/date-nights/ 200 - 184.868 ms
+Mon Nov 10 2025 1:31:36 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/date-nights/6902ad1f5227a9930634ebfa 200 - 156.776 ms
+Mon Nov 10 2025 1:33:36 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/date-nights/ 200 - 171.708 ms
+Mon Nov 10 2025 1:34:27 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/date-nights/6910ec37ebfc47d77c3bfea9 200 - 136.730 ms
+Mon Nov 10 2025 1:35:4 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251109193505.c6459e43367497a5@mg.rehoapp.co.uk>[39m
+Mon Nov 10 2025 1:35:4 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/partner-requests/ 201 - 1225.095 ms
+Mon Nov 10 2025 1:35:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 139.586 ms
+Mon Nov 10 2025 1:41:55 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Nov 10 2025 1:41:55 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Nov 10 2025 1:41:56 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Nov 10 2025 1:43:9 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Mon Nov 10 2025 1:43:9 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 243.167 ms
+Mon Nov 10 2025 1:43:59 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications-settings/ 200 - 91.093 ms
+Mon Nov 10 2025 1:44:5 [SERVER-NAME] info: 127.0.0.1 - PATCH /api/v1/notifications-settings/ 200 - 106.845 ms
+Mon Nov 10 2025 1:44:11 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications-settings/ 200 - 92.093 ms
+Mon Nov 10 2025 1:44:19 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications-settings/ 304 - 89.300 ms
+Mon Nov 10 2025 1:44:25 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Nov 10 2025 1:44:26 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Nov 10 2025 1:44:27 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

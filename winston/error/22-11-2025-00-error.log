@@ -1,0 +1,6 @@
+Sat Nov 22 2025 0:0:21 [SERVER-NAME] error: 127.0.0.1 - GET /favicon.ico 404 - 0.903 ms
+Sat Nov 22 2025 0:0:23 [SERVER-NAME] error: 10.10.10.32 - GET /favicon.ico 404 - 0.325 ms
+Sat Nov 22 2025 0:0:48 [SERVER-NAME] error: 10.10.10.124 - GET /favicon.ico 404 - 0.547 ms
+Sat Nov 22 2025 0:5:8 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/ad/random-ads 404 - 87.408 ms
+Sat Nov 22 2025 0:7:35 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/notifications/ 401 - 4.448 ms
+Sat Nov 22 2025 0:7:35 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/expenses/ 401 - 1.083 ms

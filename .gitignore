@@ -1,0 +1,6 @@
+node_modules
+dist
+coverage
+useless
+.env
+rehowealth-firebase-adminsdk-fbsvc-9f1e9ba4b1.json

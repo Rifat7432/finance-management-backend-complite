@@ -1,0 +1,2 @@
+Thu Nov 20 2025 6:24:1 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/auth/login 409 - 2283.708 ms
+Thu Nov 20 2025 6:25:21 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/auth/login 400 - 274.745 ms

@@ -1,0 +1,14 @@
+Thu Nov 13 2025 5:4:47 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 13 2025 5:6:41 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Thu Nov 13 2025 5:13:33 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 13 2025 5:13:39 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Thu Nov 13 2025 5:17:29 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 13 2025 5:17:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 13 2025 5:17:30 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 13 2025 5:17:44 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 13 2025 5:17:49 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Thu Nov 13 2025 5:18:18 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 13 2025 5:18:20 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Thu Nov 13 2025 5:30:8 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 13 2025 5:30:9 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 13 2025 5:30:10 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

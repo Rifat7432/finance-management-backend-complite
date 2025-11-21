@@ -1,0 +1,49 @@
+Wed Nov 05 2025 5:39:27 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 5.090 ms
+Wed Nov 05 2025 5:39:27 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.382 ms
+Wed Nov 05 2025 5:39:28 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 122.415 ms
+Wed Nov 05 2025 5:39:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 1139.017 ms
+Wed Nov 05 2025 5:39:29 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.056 ms
+Wed Nov 05 2025 5:39:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 99.582 ms
+Wed Nov 05 2025 5:40:25 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.073 ms
+Wed Nov 05 2025 5:40:25 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 2.558 ms
+Wed Nov 05 2025 5:40:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 96.825 ms
+Wed Nov 05 2025 5:40:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 566.372 ms
+Wed Nov 05 2025 5:40:26 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.093 ms
+Wed Nov 05 2025 5:40:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 98.739 ms
+Wed Nov 05 2025 5:40:37 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.052 ms
+Wed Nov 05 2025 5:40:37 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.053 ms
+Wed Nov 05 2025 5:40:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 96.785 ms
+Wed Nov 05 2025 5:40:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 639.541 ms
+Wed Nov 05 2025 5:40:38 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.074 ms
+Wed Nov 05 2025 5:40:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 105.339 ms
+Wed Nov 05 2025 5:40:44 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.149 ms
+Wed Nov 05 2025 5:40:44 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.256 ms
+Wed Nov 05 2025 5:40:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 102.356 ms
+Wed Nov 05 2025 5:40:45 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 571.857 ms
+Wed Nov 05 2025 5:40:45 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.065 ms
+Wed Nov 05 2025 5:40:45 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 96.573 ms
+Wed Nov 05 2025 5:41:25 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.090 ms
+Wed Nov 05 2025 5:41:25 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.036 ms
+Wed Nov 05 2025 5:41:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 97.249 ms
+Wed Nov 05 2025 5:41:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 553.870 ms
+Wed Nov 05 2025 5:41:26 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.093 ms
+Wed Nov 05 2025 5:41:27 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 97.430 ms
+Wed Nov 05 2025 5:41:48 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.079 ms
+Wed Nov 05 2025 5:41:48 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.067 ms
+Wed Nov 05 2025 5:41:49 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 97.047 ms
+Wed Nov 05 2025 5:41:49 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 646.340 ms
+Wed Nov 05 2025 5:41:49 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.106 ms
+Wed Nov 05 2025 5:41:49 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 98.216 ms
+Wed Nov 05 2025 5:42:28 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.097 ms
+Wed Nov 05 2025 5:42:28 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.110 ms
+Wed Nov 05 2025 5:42:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 96.997 ms
+Wed Nov 05 2025 5:42:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 565.366 ms
+Wed Nov 05 2025 5:42:29 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.050 ms
+Wed Nov 05 2025 5:42:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 100.394 ms
+Wed Nov 05 2025 5:46:27 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Nov 05 2025 5:46:28 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Nov 05 2025 5:46:29 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Wed Nov 05 2025 5:46:46 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Nov 05 2025 5:46:46 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Nov 05 2025 5:46:59 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Wed Nov 05 2025 5:47:39 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m

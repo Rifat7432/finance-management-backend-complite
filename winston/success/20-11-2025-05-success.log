@@ -1,0 +1,27 @@
+Thu Nov 20 2025 5:0:47 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 20 2025 5:0:49 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 20 2025 5:0:49 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 20 2025 5:0:51 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 20 2025 5:1:8 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 20 2025 5:1:9 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 20 2025 5:1:9 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 20 2025 5:1:9 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 20 2025 5:1:15 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/partner-requests/unlink/691e27143bd149d7d5188a9a 200 - 323.090 ms
+Thu Nov 20 2025 5:1:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 225.016 ms
+Thu Nov 20 2025 5:2:9 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 261.238 ms
+Thu Nov 20 2025 5:3:23 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 252.538 ms
+Thu Nov 20 2025 5:3:37 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 257.387 ms
+Thu Nov 20 2025 5:6:5 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 200 - 213.636 ms
+Thu Nov 20 2025 5:6:5 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 253.871 ms
+Thu Nov 20 2025 5:6:11 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/budgets/type 304 - 104.319 ms
+Thu Nov 20 2025 5:7:12 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 192.769 ms
+Thu Nov 20 2025 5:7:12 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 242.785 ms
+Thu Nov 20 2025 5:7:28 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 200.225 ms
+Thu Nov 20 2025 5:7:28 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 241.311 ms
+Thu Nov 20 2025 5:7:56 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 199.984 ms
+Thu Nov 20 2025 5:7:56 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 241.621 ms
+Thu Nov 20 2025 5:13:41 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 202.703 ms
+Thu Nov 20 2025 5:13:41 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 249.848 ms
+Thu Nov 20 2025 5:14:39 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 304 - 103.214 ms
+Thu Nov 20 2025 5:15:19 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 239.606 ms
+Thu Nov 20 2025 5:15:44 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 223.251 ms

@@ -1,0 +1,45 @@
+Wed Nov 12 2025 4:0:17 [SERVER-NAME] info: 127.0.0.1 - GET / 200 - 0.565 ms
+Wed Nov 12 2025 4:1:32 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 134.294 ms
+Wed Nov 12 2025 4:3:13 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 227.863 ms
+Wed Nov 12 2025 4:3:32 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 227.947 ms
+Wed Nov 12 2025 4:11:31 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 303.375 ms
+Wed Nov 12 2025 4:11:31 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 374.712 ms
+Wed Nov 12 2025 4:11:33 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 227.331 ms
+Wed Nov 12 2025 4:12:18 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 186.349 ms
+Wed Nov 12 2025 4:12:18 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 228.206 ms
+Wed Nov 12 2025 4:12:20 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 137.827 ms
+Wed Nov 12 2025 4:14:58 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 182.989 ms
+Wed Nov 12 2025 4:14:58 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 228.975 ms
+Wed Nov 12 2025 4:15:0 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 137.833 ms
+Wed Nov 12 2025 4:16:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 182.633 ms
+Wed Nov 12 2025 4:16:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 226.234 ms
+Wed Nov 12 2025 4:16:14 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 144.225 ms
+Wed Nov 12 2025 4:16:25 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 129.360 ms
+Wed Nov 12 2025 4:16:25 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 186.566 ms
+Wed Nov 12 2025 4:16:25 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 228.453 ms
+Wed Nov 12 2025 4:16:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 185.341 ms
+Wed Nov 12 2025 4:16:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 229.016 ms
+Wed Nov 12 2025 4:16:46 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 139.988 ms
+Wed Nov 12 2025 4:19:21 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Wed Nov 12 2025 4:19:25 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Wed Nov 12 2025 4:19:32 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Wed Nov 12 2025 4:19:36 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Wed Nov 12 2025 4:19:56 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 224.908 ms
+Wed Nov 12 2025 4:19:57 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 300.715 ms
+Wed Nov 12 2025 4:19:57 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 374.321 ms
+Wed Nov 12 2025 4:20:2 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/ 304 - 149.682 ms
+Wed Nov 12 2025 4:20:3 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 296.728 ms
+Wed Nov 12 2025 4:20:3 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 368.048 ms
+Wed Nov 12 2025 4:20:53 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Wed Nov 12 2025 4:25:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 223.319 ms
+Wed Nov 12 2025 4:25:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 370.429 ms
+Wed Nov 12 2025 4:25:46 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 299.462 ms
+Wed Nov 12 2025 4:26:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 295.307 ms
+Wed Nov 12 2025 4:26:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 367.513 ms
+Wed Nov 12 2025 4:26:14 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 221.784 ms
+Wed Nov 12 2025 4:26:27 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/ 304 - 300.248 ms
+Wed Nov 12 2025 4:26:27 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/analytics/user-last-update 304 - 369.447 ms
+Wed Nov 12 2025 4:26:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/notifications/ 304 - 225.406 ms
+Wed Nov 12 2025 4:29:50 [SERVER-NAME] info: 127.0.0.1 - GET / 200 - 0.470 ms
+Wed Nov 12 2025 4:33:31 [SERVER-NAME] info: 10.10.10.32 - GET / 200 - 0.355 ms
+Wed Nov 12 2025 4:59:37 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/contents/ 304 - 233.217 ms

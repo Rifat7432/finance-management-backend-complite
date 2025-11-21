@@ -1,0 +1,21 @@
+Sat Nov 22 2025 0:0:16 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sat Nov 22 2025 0:0:18 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sat Nov 22 2025 0:0:20 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Sat Nov 22 2025 0:0:21 [SERVER-NAME] info: 127.0.0.1 - GET / 200 - 1.832 ms
+Sat Nov 22 2025 0:0:23 [SERVER-NAME] info: 10.10.10.32 - GET / 200 - 0.700 ms
+Sat Nov 22 2025 0:0:48 [SERVER-NAME] info: 10.10.10.124 - GET / 200 - 0.429 ms
+Sat Nov 22 2025 0:3:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 255.623 ms
+Sat Nov 22 2025 0:3:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 200 - 347.995 ms
+Sat Nov 22 2025 0:3:46 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Sat Nov 22 2025 0:3:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 200 - 429.904 ms
+Sat Nov 22 2025 0:4:12 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/expenses/ 304 - 159.605 ms
+Sat Nov 22 2025 0:4:13 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/expenses/analytics 304 - 168.140 ms
+Sat Nov 22 2025 0:4:16 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/expenses/ 304 - 174.939 ms
+Sat Nov 22 2025 0:4:28 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/expenses/ 304 - 157.880 ms
+Sat Nov 22 2025 0:5:43 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 336.589 ms
+Sat Nov 22 2025 0:6:25 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/ad/random-ads 200 - 167.912 ms
+Sat Nov 22 2025 0:6:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/ad/random-ads 200 - 466.828 ms
+Sat Nov 22 2025 0:9:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/expenses/ 304 - 158.163 ms
+Sat Nov 22 2025 0:9:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 245.400 ms
+Sat Nov 22 2025 0:9:13 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 323.996 ms
+Sat Nov 22 2025 0:9:13 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 384.690 ms

@@ -1,0 +1,3 @@
+Tue Nov 04 2025 4:0:23 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.131 ms
+Tue Nov 04 2025 4:0:23 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 100.019 ms
+Tue Nov 04 2025 4:14:4 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses/analytics 200 - 93.986 ms

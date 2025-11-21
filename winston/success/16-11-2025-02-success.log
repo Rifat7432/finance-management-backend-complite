@@ -1,0 +1,11 @@
+Sun Nov 16 2025 2:18:59 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 288.780 ms
+Sun Nov 16 2025 2:19:0 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 200 - 170.455 ms
+Sun Nov 16 2025 2:19:0 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 200 - 218.494 ms
+Sun Nov 16 2025 2:19:0 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 231.960 ms
+Sun Nov 16 2025 2:19:0 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Sun Nov 16 2025 2:19:10 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/ 200 - 141.193 ms
+Sun Nov 16 2025 2:19:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 187.287 ms
+Sun Nov 16 2025 2:19:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 191.908 ms
+Sun Nov 16 2025 2:19:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/budgets/type 200 - 81.629 ms
+Sun Nov 16 2025 2:20:8 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Sun Nov 16 2025 2:59:2 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m

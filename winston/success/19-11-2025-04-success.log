@@ -1,0 +1,4 @@
+Wed Nov 19 2025 4:45:47 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 263.149 ms
+Wed Nov 19 2025 4:45:48 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 194.966 ms
+Wed Nov 19 2025 4:45:48 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 217.313 ms
+Wed Nov 19 2025 4:45:48 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 231.687 ms

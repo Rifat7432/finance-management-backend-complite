@@ -1,0 +1,150 @@
+Fri Nov 14 2025 0:30:32 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 379.186 ms
+Fri Nov 14 2025 0:30:32 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 409.540 ms
+Fri Nov 14 2025 0:30:33 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 1900.630 ms
+Fri Nov 14 2025 0:31:31 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Fri Nov 14 2025 0:31:32 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 243.844 ms
+Fri Nov 14 2025 0:33:12 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Fri Nov 14 2025 0:33:19 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Fri Nov 14 2025 0:33:19 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 235.904 ms
+Fri Nov 14 2025 0:33:19 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 321.105 ms
+Fri Nov 14 2025 0:33:19 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 413.242 ms
+Fri Nov 14 2025 0:33:39 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/users/profile 204 - 0.558 ms
+Fri Nov 14 2025 0:33:39 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/admin/stats?year=2025 204 - 0.150 ms
+Fri Nov 14 2025 0:33:39 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.106 ms
+Fri Nov 14 2025 0:33:39 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/users?page=1&limit=10 304 - 157.960 ms
+Fri Nov 14 2025 0:33:39 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/users/profile 304 - 166.748 ms
+Fri Nov 14 2025 0:33:41 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/admin/stats?year=2025 304 - 2564.093 ms
+Fri Nov 14 2025 0:33:42 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.065 ms
+Fri Nov 14 2025 0:33:42 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 304 - 234.780 ms
+Fri Nov 14 2025 0:33:59 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/ 200 - 227.839 ms
+Fri Nov 14 2025 0:35:1 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/6914ed8e3aa88361e9e86a1b 204 - 0.085 ms
+Fri Nov 14 2025 0:35:2 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/6914ed8e3aa88361e9e86a1b 200 - 264.915 ms
+Fri Nov 14 2025 0:35:2 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.048 ms
+Fri Nov 14 2025 0:35:2 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 226.503 ms
+Fri Nov 14 2025 0:35:7 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/6914ed9a3aa88361e9e86a33 204 - 0.068 ms
+Fri Nov 14 2025 0:35:7 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/6914ed9a3aa88361e9e86a33 200 - 229.637 ms
+Fri Nov 14 2025 0:35:7 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.056 ms
+Fri Nov 14 2025 0:35:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 226.723 ms
+Fri Nov 14 2025 0:35:32 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/ 204 - 0.064 ms
+Fri Nov 14 2025 0:35:34 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:35:34 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:35:34 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:35:34 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:35:34 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:35:36 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:35:36 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:35:36 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 3907.227 ms
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 3692.825 ms
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.093 ms
+Fri Nov 14 2025 0:35:37 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 244.847 ms
+Fri Nov 14 2025 0:36:47 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Fri Nov 14 2025 0:36:48 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Fri Nov 14 2025 0:36:49 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 233.461 ms
+Fri Nov 14 2025 0:36:49 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 328.706 ms
+Fri Nov 14 2025 0:36:49 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 396.016 ms
+Fri Nov 14 2025 0:37:14 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/ 204 - 0.099 ms
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 4633.620 ms
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.056 ms
+Fri Nov 14 2025 0:37:19 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 244.874 ms
+Fri Nov 14 2025 0:38:12 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 544.991 ms
+Fri Nov 14 2025 0:38:32 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Fri Nov 14 2025 0:38:39 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/6916255f5d6589aee2e21ff5 204 - 0.076 ms
+Fri Nov 14 2025 0:38:39 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/6916255f5d6589aee2e21ff5 200 - 257.481 ms
+Fri Nov 14 2025 0:38:39 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.083 ms
+Fri Nov 14 2025 0:38:39 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 242.995 ms
+Fri Nov 14 2025 0:38:40 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691624f95d6589aee2e21fc6 204 - 0.053 ms
+Fri Nov 14 2025 0:38:40 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691624f95d6589aee2e21fc6 200 - 244.276 ms
+Fri Nov 14 2025 0:38:40 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 245.001 ms
+Fri Nov 14 2025 0:38:41 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691624f65d6589aee2e21fb5 204 - 0.056 ms
+Fri Nov 14 2025 0:38:41 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691624f65d6589aee2e21fb5 200 - 246.958 ms
+Fri Nov 14 2025 0:38:41 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 233.399 ms
+Fri Nov 14 2025 0:38:41 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 304 - 233.663 ms
+Fri Nov 14 2025 0:38:42 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691114a8e9f7e873d0d97123 204 - 0.050 ms
+Fri Nov 14 2025 0:38:42 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691114a8e9f7e873d0d97123 200 - 235.481 ms
+Fri Nov 14 2025 0:38:42 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 236.489 ms
+Fri Nov 14 2025 0:38:43 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/6911143ae9f7e873d0d970fe 204 - 0.164 ms
+Fri Nov 14 2025 0:38:43 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/6911143ae9f7e873d0d970fe 200 - 236.230 ms
+Fri Nov 14 2025 0:38:43 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 242.441 ms
+Fri Nov 14 2025 0:38:43 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691113dae9f7e873d0d970e1 204 - 0.049 ms
+Fri Nov 14 2025 0:38:44 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691113dae9f7e873d0d970e1 200 - 236.744 ms
+Fri Nov 14 2025 0:38:44 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 244.403 ms
+Fri Nov 14 2025 0:38:44 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.045 ms
+Fri Nov 14 2025 0:38:44 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 304 - 234.877 ms
+Fri Nov 14 2025 0:38:47 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691112d2e9f7e873d0d97069 204 - 0.055 ms
+Fri Nov 14 2025 0:38:47 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691112d2e9f7e873d0d97069 200 - 238.192 ms
+Fri Nov 14 2025 0:38:47 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 235.179 ms
+Fri Nov 14 2025 0:39:0 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/ 204 - 0.049 ms
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:39:3 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 2658.474 ms
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 2704.666 ms
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.055 ms
+Fri Nov 14 2025 0:39:4 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 243.296 ms
+Fri Nov 14 2025 0:39:56 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 234.784 ms
+Fri Nov 14 2025 0:39:56 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 322.102 ms
+Fri Nov 14 2025 0:39:56 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 393.749 ms
+Fri Nov 14 2025 0:40:53 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Fri Nov 14 2025 0:40:57 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Fri Nov 14 2025 0:41:5 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691625c75d6589aee2e22065 204 - 0.050 ms
+Fri Nov 14 2025 0:41:6 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691625c75d6589aee2e22065 200 - 248.196 ms
+Fri Nov 14 2025 0:41:6 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.076 ms
+Fri Nov 14 2025 0:41:6 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 234.028 ms
+Fri Nov 14 2025 0:41:6 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/691625c75d6589aee2e22054 204 - 0.119 ms
+Fri Nov 14 2025 0:41:6 [SERVER-NAME] info: 10.10.10.124 - DELETE /api/v1/contents/691625c75d6589aee2e22054 200 - 236.029 ms
+Fri Nov 14 2025 0:41:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 233.902 ms
+Fri Nov 14 2025 0:41:24 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/ 204 - 0.083 ms
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 2726.296 ms
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.102 ms
+Fri Nov 14 2025 0:41:27 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 240.013 ms
+Fri Nov 14 2025 0:42:31 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
+Fri Nov 14 2025 0:42:32 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Fri Nov 14 2025 0:42:33 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 239.323 ms
+Fri Nov 14 2025 0:42:33 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 316.449 ms
+Fri Nov 14 2025 0:42:33 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 391.711 ms
+Fri Nov 14 2025 0:43:45 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 239.828 ms
+Fri Nov 14 2025 0:43:45 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 317.539 ms
+Fri Nov 14 2025 0:43:45 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 394.438 ms
+Fri Nov 14 2025 0:44:2 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/ 204 - 0.113 ms
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 6910db1ee9f7e873d0d96986[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 6910d19be9f7e873d0d968e7[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 6910cdfbe9f7e873d0d96882[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 6910c523f0a42bead90b39cd[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 68e426480ed8acf0bcd55911[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 68e160cd5784828eceb596a6[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: [32mSending notification to user 6907b26887b6688d54acc46d[39m
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/contents/ 201 - 4323.989 ms
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: 10.10.10.124 - OPTIONS /api/v1/contents/?page=1 204 - 0.053 ms
+Fri Nov 14 2025 0:44:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/contents/?page=1 200 - 236.044 ms

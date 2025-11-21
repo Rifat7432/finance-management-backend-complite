@@ -1,0 +1,5 @@
+Tue Nov 04 2025 2:3:43 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/auth/verify-email 400 - 61.468 ms
+Tue Nov 04 2025 2:3:52 [SERVER-NAME] error: [31m[Rehu App] Email Error:[39m Forbidden
+Tue Nov 04 2025 2:4:47 [SERVER-NAME] error: [31m[Rehu App] Email Error:[39m Forbidden
+Tue Nov 04 2025 2:6:14 [SERVER-NAME] error: [31m[Rehu App] Email Error:[39m Forbidden
+Tue Nov 04 2025 2:6:33 [SERVER-NAME] error: [31m[Rehu App] Email Error:[39m Forbidden

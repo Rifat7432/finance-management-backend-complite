@@ -1,0 +1,97 @@
+Thu Nov 20 2025 2:2:9 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 149.086 ms
+Thu Nov 20 2025 2:2:33 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 457.768 ms
+Thu Nov 20 2025 2:2:33 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 477.309 ms
+Thu Nov 20 2025 2:2:52 [SERVER-NAME] info: 127.0.0.1 - PATCH /api/v1/users/profile 200 - 147.776 ms
+Thu Nov 20 2025 2:5:1 [SERVER-NAME] info: 10.10.10.22 - PATCH /api/v1/users/profile 200 - 6086.830 ms
+Thu Nov 20 2025 2:5:3 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 200 - 172.324 ms
+Thu Nov 20 2025 2:5:3 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 214.520 ms
+Thu Nov 20 2025 2:5:57 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 172.295 ms
+Thu Nov 20 2025 2:5:57 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 214.116 ms
+Thu Nov 20 2025 2:5:59 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 304 - 86.730 ms
+Thu Nov 20 2025 2:6:1 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/analytics 304 - 85.265 ms
+Thu Nov 20 2025 2:6:3 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 304 - 83.672 ms
+Thu Nov 20 2025 2:6:11 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/ad/random-ads 200 - 88.117 ms
+Thu Nov 20 2025 2:7:16 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 133.200 ms
+Thu Nov 20 2025 2:11:51 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119201154.c7b0e77d4121731c@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:11:51 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/forget-password 200 - 2194.907 ms
+Thu Nov 20 2025 2:12:10 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/verify-email 200 - 156.599 ms
+Thu Nov 20 2025 2:12:40 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/reset-password 200 - 412.536 ms
+Thu Nov 20 2025 2:13:33 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/login 200 - 255.358 ms
+Thu Nov 20 2025 2:13:33 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/notifications/ 200 - 129.871 ms
+Thu Nov 20 2025 2:13:33 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 200 - 175.260 ms
+Thu Nov 20 2025 2:13:33 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 200 - 207.914 ms
+Thu Nov 20 2025 2:13:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 125.295 ms
+Thu Nov 20 2025 2:13:54 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 171.960 ms
+Thu Nov 20 2025 2:13:54 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 209.250 ms
+Thu Nov 20 2025 2:14:10 [SERVER-NAME] info: 10.10.10.22 - PATCH /api/v1/users/profile 200 - 20546.810 ms
+Thu Nov 20 2025 2:14:10 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 200 - 170.122 ms
+Thu Nov 20 2025 2:14:10 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 210.233 ms
+Thu Nov 20 2025 2:14:22 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 172.838 ms
+Thu Nov 20 2025 2:14:22 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 209.642 ms
+Thu Nov 20 2025 2:15:19 [SERVER-NAME] info: 10.10.10.22 - PATCH /api/v1/users/profile 200 - 2529.102 ms
+Thu Nov 20 2025 2:15:20 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 200 - 175.385 ms
+Thu Nov 20 2025 2:15:20 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 468.575 ms
+Thu Nov 20 2025 2:15:26 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 213.389 ms
+Thu Nov 20 2025 2:15:27 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 458.915 ms
+Thu Nov 20 2025 2:15:29 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 173.389 ms
+Thu Nov 20 2025 2:15:29 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 212.593 ms
+Thu Nov 20 2025 2:15:45 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 133.744 ms
+Thu Nov 20 2025 2:16:34 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 20 2025 2:16:38 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 20 2025 2:16:39 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 20 2025 2:16:41 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 20 2025 2:17:56 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 20 2025 2:17:58 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 20 2025 2:18:1 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 20 2025 2:18:3 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 20 2025 2:19:44 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 20 2025 2:19:44 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 20 2025 2:19:45 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 20 2025 2:19:46 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
+Thu Nov 20 2025 2:19:56 [SERVER-NAME] info: 127.0.0.1 - PATCH /api/v1/users/profile 200 - 147.316 ms
+Thu Nov 20 2025 2:20:14 [SERVER-NAME] info: 127.0.0.1 - PATCH /api/v1/users/profile 200 - 1650.028 ms
+Thu Nov 20 2025 2:22:2 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 276.932 ms
+Thu Nov 20 2025 2:22:6 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119202209.45c43875c08baa8d@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:22:6 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/partner-requests/ 201 - 2210.505 ms
+Thu Nov 20 2025 2:22:45 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119202248.cc0ce83efd23dc63@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:22:45 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/partner-requests/ 201 - 1152.299 ms
+Thu Nov 20 2025 2:22:49 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 148.049 ms
+Thu Nov 20 2025 2:23:30 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/login 200 - 265.420 ms
+Thu Nov 20 2025 2:23:30 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/notifications/ 304 - 129.056 ms
+Thu Nov 20 2025 2:23:30 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 200 - 191.003 ms
+Thu Nov 20 2025 2:23:31 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 200 - 232.104 ms
+Thu Nov 20 2025 2:23:47 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 142.076 ms
+Thu Nov 20 2025 2:27:30 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 192.283 ms
+Thu Nov 20 2025 2:27:30 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 253.480 ms
+Thu Nov 20 2025 2:27:40 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 183.189 ms
+Thu Nov 20 2025 2:27:40 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 226.767 ms
+Thu Nov 20 2025 2:29:4 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 184.755 ms
+Thu Nov 20 2025 2:29:4 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 226.128 ms
+Thu Nov 20 2025 2:29:5 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 200 - 91.780 ms
+Thu Nov 20 2025 2:29:6 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/analytics 200 - 98.030 ms
+Thu Nov 20 2025 2:29:28 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/analytics 304 - 93.499 ms
+Thu Nov 20 2025 2:29:30 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 304 - 92.651 ms
+Thu Nov 20 2025 2:29:32 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/budgets/type 200 - 90.345 ms
+Thu Nov 20 2025 2:29:33 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/budgets/analytics 200 - 91.055 ms
+Thu Nov 20 2025 2:29:52 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/budgets/analytics 304 - 89.772 ms
+Thu Nov 20 2025 2:29:54 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 304 - 91.559 ms
+Thu Nov 20 2025 2:29:57 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 183.141 ms
+Thu Nov 20 2025 2:29:57 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 225.647 ms
+Thu Nov 20 2025 2:30:0 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/debts/insights 200 - 93.235 ms
+Thu Nov 20 2025 2:30:18 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/debts/insights 304 - 90.905 ms
+Thu Nov 20 2025 2:30:25 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 190.559 ms
+Thu Nov 20 2025 2:30:25 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 232.334 ms
+Thu Nov 20 2025 2:30:47 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 143.593 ms
+Thu Nov 20 2025 2:32:57 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 138.087 ms
+Thu Nov 20 2025 2:33:24 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 147.096 ms
+Thu Nov 20 2025 2:40:20 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 148.866 ms
+Thu Nov 20 2025 2:41:29 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 158.741 ms
+Thu Nov 20 2025 2:42:19 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 160.685 ms
+Thu Nov 20 2025 2:51:40 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 191.728 ms
+Thu Nov 20 2025 2:53:49 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119205352.656912b691adee87@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:53:49 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/partner-requests/ 201 - 2343.069 ms
+Thu Nov 20 2025 2:53:53 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 137.694 ms
+Thu Nov 20 2025 2:58:14 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 143.295 ms
+Thu Nov 20 2025 2:58:23 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 139.122 ms
+Thu Nov 20 2025 2:58:57 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 145.995 ms
+Thu Nov 20 2025 2:59:3 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 141.500 ms

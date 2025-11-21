@@ -1,0 +1,16 @@
+Sat Nov 08 2025 23:42:14 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sat Nov 08 2025 23:42:16 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sat Nov 08 2025 23:42:17 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Sat Nov 08 2025 23:42:22 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/users/finance-track 200 - 476.354 ms
+Sat Nov 08 2025 23:46:58 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/stats?year=2025 204 - 1.670 ms
+Sat Nov 08 2025 23:46:58 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?page=1&limit=10 204 - 0.067 ms
+Sat Nov 08 2025 23:46:58 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?page=1&limit=10 304 - 101.023 ms
+Sat Nov 08 2025 23:46:59 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/stats?year=2025 304 - 697.413 ms
+Sat Nov 08 2025 23:46:59 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.239 ms
+Sat Nov 08 2025 23:46:59 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 100.843 ms
+Sat Nov 08 2025 23:47:4 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?searchTerm=&status=all&page=1&limit=10 204 - 0.105 ms
+Sat Nov 08 2025 23:47:4 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?searchTerm=&status=all&page=1&limit=10 304 - 102.114 ms
+Sat Nov 08 2025 23:47:7 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/users/finance-track?searchTerm= 204 - 0.186 ms
+Sat Nov 08 2025 23:47:8 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/users/finance-track?searchTerm= 304 - 641.166 ms
+Sat Nov 08 2025 23:47:12 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/admin/user/expenses-details/68e160cd5784828eceb596a6 204 - 0.229 ms
+Sat Nov 08 2025 23:47:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/admin/user/expenses-details/68e160cd5784828eceb596a6 200 - 143.201 ms

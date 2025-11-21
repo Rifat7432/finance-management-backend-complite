@@ -1,0 +1,9 @@
+Sun Nov 09 2025 23:46:26 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sun Nov 09 2025 23:46:27 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sun Nov 09 2025 23:46:28 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Sun Nov 09 2025 23:50:36 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Sun Nov 09 2025 23:52:20 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sun Nov 09 2025 23:52:21 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sun Nov 09 2025 23:52:21 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Sun Nov 09 2025 23:52:47 [SERVER-NAME] info: 127.0.0.1 - GET / 200 - 1.840 ms
+Sun Nov 09 2025 23:57:52 [SERVER-NAME] info: 127.0.0.1 - GET / 200 - 0.494 ms

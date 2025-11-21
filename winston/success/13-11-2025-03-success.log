@@ -1,0 +1,18 @@
+Thu Nov 13 2025 3:0:25 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 155.865 ms
+Thu Nov 13 2025 3:0:25 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 197.705 ms
+Thu Nov 13 2025 3:0:25 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 220.891 ms
+Thu Nov 13 2025 3:9:52 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Thu Nov 13 2025 3:9:53 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Thu Nov 13 2025 3:9:54 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Thu Nov 13 2025 3:27:45 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 137.607 ms
+Thu Nov 13 2025 3:27:45 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 182.521 ms
+Thu Nov 13 2025 3:27:45 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 219.640 ms
+Thu Nov 13 2025 3:36:6 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 140.633 ms
+Thu Nov 13 2025 3:36:6 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 181.255 ms
+Thu Nov 13 2025 3:36:6 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 221.978 ms
+Thu Nov 13 2025 3:37:54 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 143.641 ms
+Thu Nov 13 2025 3:37:54 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 184.784 ms
+Thu Nov 13 2025 3:37:54 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 225.644 ms
+Thu Nov 13 2025 3:51:34 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 304 - 136.431 ms
+Thu Nov 13 2025 3:51:35 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 171.727 ms
+Thu Nov 13 2025 3:51:35 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 210.406 ms

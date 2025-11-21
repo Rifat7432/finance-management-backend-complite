@@ -1,0 +1,15 @@
+Wed Nov 19 2025 5:20:55 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251118232056.076054d49402f849@mg.rehoapp.co.uk>[39m
+Wed Nov 19 2025 5:20:55 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/forget-password 200 - 2338.168 ms
+Wed Nov 19 2025 5:21:14 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/verify-email 200 - 191.917 ms
+Wed Nov 19 2025 5:21:40 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/reset-password 200 - 404.395 ms
+Wed Nov 19 2025 5:21:55 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 251.273 ms
+Wed Nov 19 2025 5:21:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 141.051 ms
+Wed Nov 19 2025 5:21:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 200 - 196.699 ms
+Wed Nov 19 2025 5:21:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 200 - 235.062 ms
+Wed Nov 19 2025 5:23:46 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 259.037 ms
+Wed Nov 19 2025 5:23:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 200 - 180.373 ms
+Wed Nov 19 2025 5:23:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 200 - 228.839 ms
+Wed Nov 19 2025 5:23:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 235.107 ms
+Wed Nov 19 2025 5:24:4 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 304 - 190.042 ms
+Wed Nov 19 2025 5:24:4 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 243.428 ms
+Wed Nov 19 2025 5:56:13 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m

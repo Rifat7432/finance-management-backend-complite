@@ -1,0 +1,17 @@
+Thu Nov 20 2025 2:0:34 [SERVER-NAME] error: 10.10.10.124 - PATCH /api/v1/users/profile 400 - 169.346 ms
+Thu Nov 20 2025 2:2:25 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/users/profile 400 - 135.959 ms
+Thu Nov 20 2025 2:4:8 [SERVER-NAME] error: 10.10.10.124 - PATCH /api/v1/users/profile 400 - 47.112 ms
+Thu Nov 20 2025 2:10:24 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/auth/login 400 - 51.100 ms
+Thu Nov 20 2025 2:13:21 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/auth/login 400 - 45.490 ms
+Thu Nov 20 2025 2:13:29 [SERVER-NAME] error: 127.0.0.1 - GET /api/v1/partner-requests/6907ef740ecc512d2feff816 404 - 86.864 ms
+Thu Nov 20 2025 2:15:7 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/users/profile 400 - 42.488 ms
+Thu Nov 20 2025 2:16:41 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/users/profile 404 - 189.542 ms
+Thu Nov 20 2025 2:16:57 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 404 - 363.398 ms
+Thu Nov 20 2025 2:18:4 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 404 - 210.431 ms
+Thu Nov 20 2025 2:18:7 [SERVER-NAME] error: 127.0.0.1 - PATCH /api/v1/users/profile 404 - 200.799 ms
+Thu Nov 20 2025 2:18:21 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 404 - 201.799 ms
+Thu Nov 20 2025 2:19:33 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 404 - 202.010 ms
+Thu Nov 20 2025 2:52:39 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 409 - 227.714 ms
+Thu Nov 20 2025 2:52:45 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 409 - 188.351 ms
+Thu Nov 20 2025 2:52:50 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/ 409 - 189.731 ms
+Thu Nov 20 2025 2:59:7 [SERVER-NAME] error: 10.10.10.22 - POST /api/v1/partner-requests/accept-request/6903d4e3aa4929e85b0c63bb 404 - 112.033 ms
