@@ -243,14 +243,14 @@ Wed Nov 05 2025 3:29:58 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users?se
 Wed Nov 05 2025 3:29:58 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users?searchTerm=&status=inactive&page=1&limit=10 200 - 91.632 ms
 Wed Nov 05 2025 3:31:59 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/users/profile 204 - 0.060 ms
 Wed Nov 05 2025 3:32:0 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/users/profile 304 - 89.919 ms
-Wed Nov 05 2025 3:33:17 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251104213318.3b7b0d23b1e887f8@mg.rehoapp.co.uk>[39m
+Wed Nov 05 2025 3:33:17 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251104213318.3b7b0d23b1e887f8@mg.rehoapp.co.uk>[39m
 Wed Nov 05 2025 3:33:17 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/dashboard/forget-password 200 - 1147.822 ms
 Wed Nov 05 2025 3:35:2 [SERVER-NAME] info: [31mUser 68e426480ed8acf0bcd55911 disconnected[39m
 Wed Nov 05 2025 3:40:14 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/dashboard/forget-password 204 - 0.183 ms
-Wed Nov 05 2025 3:40:16 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251104214017.056e726b26d8e9d5@mg.rehoapp.co.uk>[39m
+Wed Nov 05 2025 3:40:16 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251104214017.056e726b26d8e9d5@mg.rehoapp.co.uk>[39m
 Wed Nov 05 2025 3:40:16 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/dashboard/forget-password 200 - 941.318 ms
 Wed Nov 05 2025 3:42:5 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/dashboard/forget-password 204 - 0.072 ms
-Wed Nov 05 2025 3:42:8 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251104214209.23f0d2742778bc4f@mg.rehoapp.co.uk>[39m
+Wed Nov 05 2025 3:42:8 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251104214209.23f0d2742778bc4f@mg.rehoapp.co.uk>[39m
 Wed Nov 05 2025 3:42:8 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/dashboard/forget-password 200 - 1921.481 ms
 Wed Nov 05 2025 3:44:13 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/dashboard/reset-password 204 - 0.068 ms
 Wed Nov 05 2025 3:44:18 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/dashboard/reset-password 200 - 384.008 ms

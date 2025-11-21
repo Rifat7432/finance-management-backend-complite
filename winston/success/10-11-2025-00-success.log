@@ -92,7 +92,7 @@ Mon Nov 10 2025 0:39:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/date-nights/
 Mon Nov 10 2025 0:39:59 [SERVER-NAME] info: 127.0.0.1 - GET / 200 - 0.531 ms
 Mon Nov 10 2025 0:40:26 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 95.825 ms
 Mon Nov 10 2025 0:40:42 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 304 - 91.823 ms
-Mon Nov 10 2025 0:41:36 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251109184137.fedaa9c370714677@mg.rehoapp.co.uk>[39m
+Mon Nov 10 2025 0:41:36 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251109184137.fedaa9c370714677@mg.rehoapp.co.uk>[39m
 Mon Nov 10 2025 0:41:36 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/partner-requests/ 201 - 1302.445 ms
 Mon Nov 10 2025 0:41:42 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 143.278 ms
 Mon Nov 10 2025 0:42:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 304 - 141.049 ms

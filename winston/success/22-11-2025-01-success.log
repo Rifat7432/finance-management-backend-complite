@@ -8,7 +8,7 @@ Sat Nov 22 2025 1:2:37 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-re
 Sat Nov 22 2025 1:5:30 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 177.302 ms
 Sat Nov 22 2025 1:6:11 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 178.784 ms
 Sat Nov 22 2025 1:6:14 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/unlink/6920b210bdb3e03187913b2d 200 - 604.291 ms
-Sat Nov 22 2025 1:6:53 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251121190653.37c122f4daf676ac@mg.rehoapp.co.uk>[39m
+Sat Nov 22 2025 1:6:53 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251121190653.37c122f4daf676ac@mg.rehoapp.co.uk>[39m
 Sat Nov 22 2025 1:6:53 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/ 201 - 2183.143 ms
 Sat Nov 22 2025 1:6:57 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 134.898 ms
 Sat Nov 22 2025 1:7:36 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 287.547 ms
@@ -20,7 +20,7 @@ Sat Nov 22 2025 1:7:47 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-r
 Sat Nov 22 2025 1:7:48 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 179.833 ms
 Sat Nov 22 2025 1:9:25 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 177.928 ms
 Sat Nov 22 2025 1:9:28 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/unlink/6920b84bbdb3e03187913c66 200 - 333.121 ms
-Sat Nov 22 2025 1:9:59 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251121190959.27aa9531907a214e@mg.rehoapp.co.uk>[39m
+Sat Nov 22 2025 1:9:59 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251121190959.27aa9531907a214e@mg.rehoapp.co.uk>[39m
 Sat Nov 22 2025 1:9:59 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/ 201 - 2180.806 ms
 Sat Nov 22 2025 1:10:6 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 136.709 ms
 Sat Nov 22 2025 1:10:56 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 139.916 ms
@@ -32,7 +32,7 @@ Sat Nov 22 2025 1:23:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/
 Sat Nov 22 2025 1:23:12 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 130.459 ms
 Sat Nov 22 2025 1:23:34 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 133.983 ms
 Sat Nov 22 2025 1:25:37 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 134.598 ms
-Sat Nov 22 2025 1:26:43 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251121192643.0bb900149525a8f8@mg.rehoapp.co.uk>[39m
+Sat Nov 22 2025 1:26:43 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251121192643.0bb900149525a8f8@mg.rehoapp.co.uk>[39m
 Sat Nov 22 2025 1:26:43 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/ 201 - 2324.780 ms
 Sat Nov 22 2025 1:26:49 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 132.273 ms
 Sat Nov 22 2025 1:29:25 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 392.402 ms
@@ -44,7 +44,7 @@ Sat Nov 22 2025 1:32:2 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/
 Sat Nov 22 2025 1:32:2 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 200 - 258.784 ms
 Sat Nov 22 2025 1:32:21 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 179.482 ms
 Sat Nov 22 2025 1:32:24 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/unlink/6920b905bdb3e03187913caa 200 - 333.559 ms
-Sat Nov 22 2025 1:33:1 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251121193302.67246ae6fe209dbe@mg.rehoapp.co.uk>[39m
+Sat Nov 22 2025 1:33:1 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251121193302.67246ae6fe209dbe@mg.rehoapp.co.uk>[39m
 Sat Nov 22 2025 1:33:1 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/ 201 - 2297.814 ms
 Sat Nov 22 2025 1:33:25 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 255.054 ms
 Sat Nov 22 2025 1:33:26 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notifications/ 200 - 130.552 ms

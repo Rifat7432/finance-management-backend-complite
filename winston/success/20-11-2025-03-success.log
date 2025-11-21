@@ -27,7 +27,7 @@ Thu Nov 20 2025 3:13:32 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/
 Thu Nov 20 2025 3:13:40 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/ 304 - 317.417 ms
 Thu Nov 20 2025 3:13:40 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/analytics/user-last-update 304 - 403.759 ms
 Thu Nov 20 2025 3:14:1 [SERVER-NAME] info: 10.10.10.32 - OPTIONS /api/v1/auth/login 204 - 0.118 ms
-Thu Nov 20 2025 3:14:3 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119211406.54b3ac1c78bf8f69@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 3:14:3 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251119211406.54b3ac1c78bf8f69@mg.rehoapp.co.uk>[39m
 Thu Nov 20 2025 3:14:7 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 395.807 ms
 Thu Nov 20 2025 3:22:4 [SERVER-NAME] info: 10.10.10.32 - OPTIONS /api/v1/auth/login 204 - 0.366 ms
 Thu Nov 20 2025 3:22:4 [SERVER-NAME] info: 10.10.10.32 - POST /api/v1/auth/login 200 - 315.305 ms

@@ -26,9 +26,9 @@ export const sendEmail = async (values: ISendEmail) => {
                html: values.html,
           });
 
-          logger.info(colors.green(`✅ [Rehu App] Email sent successfully: ${data.id}`));
+          logger.info(colors.green(`✅ [Reho App] Email sent successfully: ${data.id}`));
      } catch (error) {
-          errorLogger.error(colors.red('[Rehu App] Email Error:'), error);
+          errorLogger.error(colors.red('[Reho App] Email Error:'), error);
      }
 };
 
@@ -42,9 +42,9 @@ export const sendEmailForAdmin = async (values: ISendEmail) => {
                html: values.html,
           });
 
-          logger.info(colors.green(`✅ [Rehu App] Admin email sent: ${data.id}`));
+          logger.info(colors.green(`✅ [Reho App] Admin email sent: ${data.id}`));
      } catch (error) {
-          errorLogger.error(colors.red('[Rehu App] Admin Email Error:'), error);
+          errorLogger.error(colors.red('[Reho App] Admin Email Error:'), error);
      }
 };
 

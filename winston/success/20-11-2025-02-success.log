@@ -12,7 +12,7 @@ Thu Nov 20 2025 2:6:1 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ana
 Thu Nov 20 2025 2:6:3 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/expenses/ 304 - 83.672 ms
 Thu Nov 20 2025 2:6:11 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/ad/random-ads 200 - 88.117 ms
 Thu Nov 20 2025 2:7:16 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 133.200 ms
-Thu Nov 20 2025 2:11:51 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119201154.c7b0e77d4121731c@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:11:51 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251119201154.c7b0e77d4121731c@mg.rehoapp.co.uk>[39m
 Thu Nov 20 2025 2:11:51 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/forget-password 200 - 2194.907 ms
 Thu Nov 20 2025 2:12:10 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/verify-email 200 - 156.599 ms
 Thu Nov 20 2025 2:12:40 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/reset-password 200 - 412.536 ms
@@ -51,9 +51,9 @@ Thu Nov 20 2025 2:19:46 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 c
 Thu Nov 20 2025 2:19:56 [SERVER-NAME] info: 127.0.0.1 - PATCH /api/v1/users/profile 200 - 147.316 ms
 Thu Nov 20 2025 2:20:14 [SERVER-NAME] info: 127.0.0.1 - PATCH /api/v1/users/profile 200 - 1650.028 ms
 Thu Nov 20 2025 2:22:2 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/auth/login 200 - 276.932 ms
-Thu Nov 20 2025 2:22:6 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119202209.45c43875c08baa8d@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:22:6 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251119202209.45c43875c08baa8d@mg.rehoapp.co.uk>[39m
 Thu Nov 20 2025 2:22:6 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/partner-requests/ 201 - 2210.505 ms
-Thu Nov 20 2025 2:22:45 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119202248.cc0ce83efd23dc63@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:22:45 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251119202248.cc0ce83efd23dc63@mg.rehoapp.co.uk>[39m
 Thu Nov 20 2025 2:22:45 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/partner-requests/ 201 - 1152.299 ms
 Thu Nov 20 2025 2:22:49 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 148.049 ms
 Thu Nov 20 2025 2:23:30 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/auth/login 200 - 265.420 ms
@@ -88,7 +88,7 @@ Thu Nov 20 2025 2:40:20 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-re
 Thu Nov 20 2025 2:41:29 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 158.741 ms
 Thu Nov 20 2025 2:42:19 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 160.685 ms
 Thu Nov 20 2025 2:51:40 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 191.728 ms
-Thu Nov 20 2025 2:53:49 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251119205352.656912b691adee87@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 2:53:49 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251119205352.656912b691adee87@mg.rehoapp.co.uk>[39m
 Thu Nov 20 2025 2:53:49 [SERVER-NAME] info: 10.10.10.22 - POST /api/v1/partner-requests/ 201 - 2343.069 ms
 Thu Nov 20 2025 2:53:53 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 200 - 137.694 ms
 Thu Nov 20 2025 2:58:14 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 143.295 ms

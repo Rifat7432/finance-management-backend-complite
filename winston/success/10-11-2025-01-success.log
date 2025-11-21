@@ -47,7 +47,7 @@ Mon Nov 10 2025 1:31:24 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/date-nights/
 Mon Nov 10 2025 1:31:36 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/date-nights/6902ad1f5227a9930634ebfa 200 - 156.776 ms
 Mon Nov 10 2025 1:33:36 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/date-nights/ 200 - 171.708 ms
 Mon Nov 10 2025 1:34:27 [SERVER-NAME] info: 127.0.0.1 - DELETE /api/v1/date-nights/6910ec37ebfc47d77c3bfea9 200 - 136.730 ms
-Mon Nov 10 2025 1:35:4 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251109193505.c6459e43367497a5@mg.rehoapp.co.uk>[39m
+Mon Nov 10 2025 1:35:4 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251109193505.c6459e43367497a5@mg.rehoapp.co.uk>[39m
 Mon Nov 10 2025 1:35:4 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/partner-requests/ 201 - 1225.095 ms
 Mon Nov 10 2025 1:35:38 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 139.586 ms
 Mon Nov 10 2025 1:41:55 [SERVER-NAME] info: [32mConfig validation successful.[39m

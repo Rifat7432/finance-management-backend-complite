@@ -22,7 +22,7 @@ export default {
      },
 
      email: {
-          emailHeader: process.env.EMAIL_HEADER_NAME || 'Rehu App Mailer',
+          emailHeader: process.env.EMAIL_HEADER_NAME || 'Reho App Mailer',
           from: process.env.EMAIL_FROM || '',
           user: process.env.EMAIL_USER || '',
 

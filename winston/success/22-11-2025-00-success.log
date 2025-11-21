@@ -90,7 +90,7 @@ Sat Nov 22 2025 0:39:37 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics
 Sat Nov 22 2025 0:39:37 [SERVER-NAME] info: [34mUser 68e160cd5784828eceb596a6 connected via socket[39m
 Sat Nov 22 2025 0:39:37 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 304 - 226.599 ms
 Sat Nov 22 2025 0:39:42 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 130.162 ms
-Sat Nov 22 2025 0:40:18 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251121184018.44a133b4a352ddd0@mg.rehoapp.co.uk>[39m
+Sat Nov 22 2025 0:40:18 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251121184018.44a133b4a352ddd0@mg.rehoapp.co.uk>[39m
 Sat Nov 22 2025 0:40:18 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/ 201 - 2223.649 ms
 Sat Nov 22 2025 0:40:22 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 136.196 ms
 Sat Nov 22 2025 0:41:50 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 143.299 ms
@@ -101,7 +101,7 @@ Sat Nov 22 2025 0:43:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/notificat
 Sat Nov 22 2025 0:43:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/ 200 - 179.389 ms
 Sat Nov 22 2025 0:43:55 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/analytics/user-last-update 200 - 216.692 ms
 Sat Nov 22 2025 0:44:3 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 130.105 ms
-Sat Nov 22 2025 0:44:42 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251121184442.31d572e463c9068f@mg.rehoapp.co.uk>[39m
+Sat Nov 22 2025 0:44:42 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251121184442.31d572e463c9068f@mg.rehoapp.co.uk>[39m
 Sat Nov 22 2025 0:44:42 [SERVER-NAME] info: 10.10.10.124 - POST /api/v1/partner-requests/ 201 - 1115.241 ms
 Sat Nov 22 2025 0:44:46 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 200 - 134.688 ms
 Sat Nov 22 2025 0:47:42 [SERVER-NAME] info: 10.10.10.124 - GET /api/v1/partner-requests/ 304 - 134.203 ms

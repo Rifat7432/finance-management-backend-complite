@@ -1,6 +1,6 @@
 Thu Nov 20 2025 6:17:11 [SERVER-NAME] info: 10.10.10.22 - GET /api/v1/partner-requests/ 304 - 297.189 ms
 Thu Nov 20 2025 6:21:1 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 234.366 ms
-Thu Nov 20 2025 6:24:1 [SERVER-NAME] info: [32m✅ [Rehu App] Email sent successfully: <20251120002404.c614a548e4790375@mg.rehoapp.co.uk>[39m
+Thu Nov 20 2025 6:24:1 [SERVER-NAME] info: [32m✅ [Reho App] Email sent successfully: <20251120002404.c614a548e4790375@mg.rehoapp.co.uk>[39m
 Thu Nov 20 2025 6:33:8 [SERVER-NAME] info: [31mUser 68e160cd5784828eceb596a6 disconnected[39m
 Thu Nov 20 2025 6:33:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 223.770 ms
 Thu Nov 20 2025 6:41:28 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/partner-requests/ 200 - 215.360 ms
