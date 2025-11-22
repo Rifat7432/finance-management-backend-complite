@@ -91,7 +91,7 @@ export const createDateNightToDB = async (userId: string, payload: Partial<IDate
                title: 'New Date Night Created',
                message: `You planned a date night for ${dateStr} at ${timeStr}`,
                receiver: partnerSetting.userId,
-               type: 'DATE_NIGHT',
+               type: 'ALERT',
                read: false,
           });
      }
