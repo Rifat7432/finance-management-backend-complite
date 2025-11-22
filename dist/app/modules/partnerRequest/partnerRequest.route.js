@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PartnerRequestRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const partnerRequest_controller_1 = require("./partnerRequest.controller");
+const validateRequest_1 = __importDefault(require("../../middleware/validateRequest"));
+const partnerRequest_validation_1 = require("./partnerRequest.validation");
+const auth_1 = __importDefault(require("../../middleware/auth"));
+const user_1 = require("../../../enums/user");
+const router = express_1.default.Router();
+router.post('/', (0, auth_1.default)(user_1.USER_ROLES.USER), (0, validateRequest_1.default)(partnerRequest_validation_1.PartnerRequestValidation.createPartnerRequestZodSchema), partnerRequest_controller_1.PartnerRequestController.createPartnerRequest);
+router.post('/accept-request/:id', (0, auth_1.default)(user_1.USER_ROLES.USER), partnerRequest_controller_1.PartnerRequestController.acceptPartnerRequest);
+router.get('/', (0, auth_1.default)(user_1.USER_ROLES.USER), partnerRequest_controller_1.PartnerRequestController.getPartnerRequests);
+router.get('/:id', (0, auth_1.default)(user_1.USER_ROLES.USER), partnerRequest_controller_1.PartnerRequestController.getSinglePartnerRequest);
+router.post('/unlink/:partnerId', (0, auth_1.default)(user_1.USER_ROLES.USER), partnerRequest_controller_1.PartnerRequestController.UnlinkWithPartnerRequest);
+router.delete('/:id', (0, auth_1.default)(user_1.USER_ROLES.USER), partnerRequest_controller_1.PartnerRequestController.deletePartnerRequest);
+exports.PartnerRequestRouter = router;
