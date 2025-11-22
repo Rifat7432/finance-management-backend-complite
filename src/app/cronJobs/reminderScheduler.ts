@@ -122,7 +122,7 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
  * Start the reminder scheduler
  */
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('*/10 * * * *', async () => {
      try {
           await processReminders('DateNight', DateNight, 'dateNightId');
           await processReminders('Appointment', Appointment, 'appointmentId');
