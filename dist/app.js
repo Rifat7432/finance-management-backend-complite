@@ -13,6 +13,7 @@ const notFound_1 = require("./globalErrorHandler/notFound");
 const welcome_1 = require("./utils/welcome");
 // 👉 Import the cron job here
 require("./app/cronJobs/reminderScheduler"); // ✅ This runs the job on app start
+require("./app/cronJobs/dateNightScheduler"); // ✅ This runs the job on app start
 require("./app/cronJobs/debtReminderScheduler"); // ✅ This runs the job on app start
 require("./app/cronJobs/IncomeScheduler"); // ✅ This runs the job on app start
 require("./app/cronJobs/ExpensesScheduler"); // ✅ starts Expense scheduler on app start
@@ -33,7 +34,7 @@ app.use(morgen_1.Morgan.errorHandler);
 // 🌐 CORS Middleware
 // ----------------------------
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app'], // ✅ no trailing slash
+    origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app', "https://dashboard.rehoapp.co.u"], // ✅ no trailing slash
     credentials: true,
 }));
 // ----------------------------

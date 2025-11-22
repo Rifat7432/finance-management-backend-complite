@@ -1,7 +1,5 @@
 import cron from 'node-cron';
-import { Types } from 'mongoose';
 import { Income } from '../modules/income/income.model';
-import { IIncome } from '../modules/income/income.interface';
 import { startOfDay, addMonths, addYears, addWeeks, subWeeks, subMonths, subYears } from 'date-fns';
 // 🔁 Calculate next receive date
 const getNextIncomeDate = (date: Date, frequency: string): Date => {

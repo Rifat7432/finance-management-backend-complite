@@ -45,7 +45,7 @@ export async function startServer() {
           socketHelper.socket(socketServer);
 
           // Start HTTP server (and socket.io on same port)
-          httpServer.listen(httpPort, ipAddress, () => {
+          httpServer.listen(5002, ipAddress, () => {
                logger.info(colors.yellow(`♻️  Application & Socket listening on http://${ipAddress}:${httpPort} or http://localhost:${httpPort} in ${config.node_env} mode`));
           });
      } catch (error) {

@@ -21,9 +21,11 @@ const dateNightSchema = new mongoose_1.Schema({
     },
     date: {
         type: Date,
+        required: true,
     },
     time: {
         type: String, // could also be Date if storing full datetime
+        required: true,
     },
     location: {
         type: String,

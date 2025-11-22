@@ -56,7 +56,7 @@ function startServer() {
             // socketServer.listen(socketPort);
             socketHelper_1.socketHelper.socket(socketServer);
             // Start HTTP server (and socket.io on same port)
-            httpServer.listen(httpPort, ipAddress, () => {
+            httpServer.listen(5002, ipAddress, () => {
                 logger_1.logger.info(colors_1.default.yellow(`♻️  Application & Socket listening on http://${ipAddress}:${httpPort} or http://localhost:${httpPort} in ${config_1.default.node_env} mode`));
             });
         }

@@ -10,6 +10,7 @@ import config from './config';
 
 // 👉 Import the cron job here
 import './app/cronJobs/reminderScheduler'; // ✅ This runs the job on app start
+import './app/cronJobs/dateNightScheduler'; // ✅ This runs the job on app start
 import './app/cronJobs/debtReminderScheduler'; // ✅ This runs the job on app start
 import './app/cronJobs/IncomeScheduler'; // ✅ This runs the job on app start
 import './app/cronJobs/ExpensesScheduler'; // ✅ starts Expense scheduler on app start
@@ -36,7 +37,7 @@ app.use(Morgan.errorHandler);
 
 app.use(
      cors({
-          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app'], // ✅ no trailing slash
+          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app',"https://dashboard.rehoapp.co.u"], // ✅ no trailing slash
           credentials: true,
      }),
 );
