@@ -1,3 +1,0 @@
-Sat Nov 22 2025 3:20:58 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/analytics/ 401 - 19.362 ms
-Sat Nov 22 2025 3:20:58 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/notifications/ 401 - 1.017 ms
-Sat Nov 22 2025 3:20:58 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/analytics/user-last-update 401 - 2.359 ms

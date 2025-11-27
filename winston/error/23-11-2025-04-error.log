@@ -1,8 +1,0 @@
-Sun Nov 23 2025 4:10:53 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/date-nights/ 400 - 276.855 ms
-Sun Nov 23 2025 4:13:8 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/notifications-settings/ 404 - 102.323 ms
-Sun Nov 23 2025 4:17:44 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/date-nights/ 400 - 276.290 ms
-Sun Nov 23 2025 4:37:0 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/partner-requests/ 409 - 86.980 ms
-Sun Nov 23 2025 4:37:4 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/partner-requests/ 409 - 85.059 ms
-Sun Nov 23 2025 4:40:51 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/notifications-settings/ 404 - 82.432 ms
-Sun Nov 23 2025 4:40:53 [SERVER-NAME] error: 10.10.10.124 - PATCH /api/v1/notifications-settings/ 400 - 93.944 ms
-Sun Nov 23 2025 4:40:56 [SERVER-NAME] error: 10.10.10.124 - PATCH /api/v1/notifications-settings/ 400 - 85.609 ms

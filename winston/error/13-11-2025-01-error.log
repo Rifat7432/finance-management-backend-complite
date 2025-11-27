@@ -1,5 +1,0 @@
-Thu Nov 13 2025 1:22:17 [SERVER-NAME] error: 10.10.10.32 - GET /favicon.ico 404 - 1.063 ms
-Thu Nov 13 2025 1:39:1 [SERVER-NAME] error: 10.10.10.124 - GET /favicon.ico 404 - 1.574 ms
-Thu Nov 13 2025 1:50:27 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/notifications/ 401 - 1.137 ms
-Thu Nov 13 2025 1:50:27 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/analytics/ 401 - 0.509 ms
-Thu Nov 13 2025 1:50:27 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/analytics/user-last-update 401 - 0.260 ms

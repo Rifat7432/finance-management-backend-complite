@@ -1,7 +1,0 @@
-Sat Nov 22 2025 1:2:53 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/partner-requests/unlink/68e160cd5784828eceb596a6 404 - 179.508 ms
-Sat Nov 22 2025 1:2:58 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/partner-requests/unlink/68e160cd5784828eceb596a6 404 - 175.643 ms
-Sat Nov 22 2025 1:9:19 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/partner-requests/ 409 - 92.876 ms
-Sat Nov 22 2025 1:12:6 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/auth/login 400 - 56.778 ms
-Sat Nov 22 2025 1:12:18 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/auth/login 400 - 47.705 ms
-Sat Nov 22 2025 1:22:51 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/auth/login 400 - 260.329 ms
-Sat Nov 22 2025 1:26:21 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/partner-requests/ 409 - 177.744 ms

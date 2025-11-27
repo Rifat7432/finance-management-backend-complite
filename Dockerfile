@@ -7,6 +7,8 @@ COPY . .
 
 RUN npm install
 
+# VOLUME [ "/app/winston" ,"/app/uploads"]
+
 EXPOSE 5000
 
 CMD [ "npm" ,"start"]

@@ -1,3 +1,0 @@
-Wed Nov 19 2025 23:30:17 [SERVER-NAME] error: 10.10.10.22 - GET /api/v1/analytics/ 401 - 18.933 ms
-Wed Nov 19 2025 23:30:17 [SERVER-NAME] error: 10.10.10.22 - GET /api/v1/notifications/ 401 - 0.565 ms
-Wed Nov 19 2025 23:30:17 [SERVER-NAME] error: 10.10.10.22 - GET /api/v1/analytics/user-last-update 401 - 1.867 ms

@@ -1,3 +1,0 @@
-Sun Nov 09 2025 3:6:34 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/login 204 - 0.083 ms
-Sun Nov 09 2025 3:27:55 [SERVER-NAME] info: 127.0.0.1 - OPTIONS /api/v1/auth/login 204 - 0.069 ms
-Sun Nov 09 2025 3:27:56 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/auth/login 200 - 267.517 ms

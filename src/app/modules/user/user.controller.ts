@@ -6,13 +6,13 @@ import config from '../../../config';
 import bcrypt from 'bcrypt';
 const createUser = catchAsync(async (req, res) => {
      const { ...userData } = req.body;
-     const result = await UserService.createUserToDB(userData);
+     await UserService.createUserToDB(userData);
 
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,
-          message: 'User created',
-          data: result,
+          message: 'Account created. Please verify your email',
+          data: null,
      });
 });
 const createUserByApple = catchAsync(async (req, res) => {
@@ -92,9 +92,7 @@ const updateProfile = catchAsync(async (req, res) => {
 //delete profile
 const deleteProfile = catchAsync(async (req, res) => {
      const { id }: any = req.user;
-
      const result = await UserService.deleteUser(id);
-
      sendResponse(res, {
           success: true,
           statusCode: StatusCodes.OK,

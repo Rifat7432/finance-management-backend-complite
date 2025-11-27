@@ -1,3 +1,0 @@
-Sun Nov 23 2025 0:12:37 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/date-nights/ 404 - 172.436 ms
-Sun Nov 23 2025 0:27:27 [SERVER-NAME] error: 10.10.10.124 - POST /api/v1/users 409 - 67.257 ms
-Sun Nov 23 2025 0:37:1 [SERVER-NAME] error: 10.10.10.124 - GET /api/v1/debts/ 404 - 87.490 ms

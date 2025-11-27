@@ -37,7 +37,7 @@ app.use(Morgan.errorHandler);
 
 app.use(
      cors({
-          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app',"https://dashboard.rehoapp.co.u"], // ✅ no trailing slash
+          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app',"https://dashboard.rehoapp.co.uk"], // ✅ no trailing slash
           credentials: true,
      }),
 );

@@ -32,12 +32,12 @@ const config_1 = __importDefault(require("../../../config"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const createUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userData = __rest(req.body, []);
-    const result = yield user_service_1.UserService.createUserToDB(userData);
+    yield user_service_1.UserService.createUserToDB(userData);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
-        message: 'User created',
-        data: result,
+        message: 'Account created. Please verify your email',
+        data: null,
     });
 }));
 const createUserByApple = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
