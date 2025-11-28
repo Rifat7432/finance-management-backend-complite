@@ -24,7 +24,7 @@ const getAds = catchAsync(async (req, res) => {
 });
 
 const getSingleAd = catchAsync(async (req, res) => {
-  const result = await AdService.getSingleAdFromDB();
+  const result = await AdService.getSingleAdFromDB(req.query);
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,

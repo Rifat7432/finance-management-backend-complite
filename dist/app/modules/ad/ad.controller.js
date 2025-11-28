@@ -36,7 +36,7 @@ const getAds = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0,
     });
 }));
 const getSingleAd = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield ad_service_1.AdService.getSingleAdFromDB();
+    const result = yield ad_service_1.AdService.getSingleAdFromDB(req.query);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,

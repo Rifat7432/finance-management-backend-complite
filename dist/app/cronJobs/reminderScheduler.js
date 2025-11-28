@@ -13,24 +13,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_cron_1 = __importDefault(require("node-cron"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const firebaseHelper_1 = require("../../helpers/firebaseHelper");
 const notificationSettings_model_1 = require("../modules/notificationSettings/notificationSettings.model");
 const notification_model_1 = require("../modules/notification/notification.model");
 const dateNight_model_1 = require("../modules/dateNight/dateNight.model");
 const appointment_model_1 = require("../modules/appointment/appointment.model");
 const user_model_1 = require("../modules/user/user.model");
+// Prevent multiple simultaneous executions
+let isProcessing = false;
 /**
  * Convert a date + time + timezone to UTC Date
- * Defaults to UK timezone if none provided
+ * Uses Intl API for proper timezone conversion
  */
-function getAppointmentUTC(date, time, timeZone) {
-    const tz = timeZone || 'Europe/London'; // default to UK time
+function getAppointmentUTC(date, time, timeZone = 'Europe/London') {
     const [hour, minute] = time.split(':').map(Number);
-    const appointmentLocal = new Date(date);
-    appointmentLocal.setHours(hour, minute, 0, 0);
-    // Convert local time to UTC based on timezone
-    const localString = appointmentLocal.toLocaleString('en-GB', { timeZone: tz });
-    return new Date(localString);
+    // Create date string in the format: YYYY-MM-DD HH:mm
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const dateTimeStr = `${year}-${month}-${day}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00`;
+    // Parse as local time in the specified timezone, then convert to UTC
+    const localDate = new Date(dateTimeStr);
+    const utcDate = new Date(localDate.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const tzDate = new Date(localDate.toLocaleString('en-US', { timeZone }));
+    // Calculate offset and apply
+    const offset = tzDate.getTime() - utcDate.getTime();
+    return new Date(localDate.getTime() - offset);
 }
 /**
  * Helper: Sends both Firebase + DB notification safely
@@ -38,17 +47,23 @@ function getAppointmentUTC(date, time, timeZone) {
 function sendNotificationAndSave(_a) {
     return __awaiter(this, arguments, void 0, function* ({ userSetting, userId, title, message, meta, type, }) {
         var _b;
-        if (((_b = userSetting.deviceTokenList) === null || _b === void 0 ? void 0 : _b.length) > 0) {
-            yield firebaseHelper_1.firebaseHelper.sendNotification([{ id: String(userId), deviceToken: userSetting.deviceTokenList[0] }], { title, body: message }, userSetting.deviceTokenList, 'multiple', meta);
+        try {
+            if (((_b = userSetting.deviceTokenList) === null || _b === void 0 ? void 0 : _b.length) > 0) {
+                yield firebaseHelper_1.firebaseHelper.sendNotification([{ id: String(userId), deviceToken: userSetting.deviceTokenList[0] }], { title, body: message }, userSetting.deviceTokenList, 'multiple', meta);
+            }
+            yield notification_model_1.Notification.create({
+                title,
+                message,
+                receiver: userId,
+                type: type === 'Appointment' ? 'APPOINTMENT' : 'ALERT',
+                read: false,
+                meta,
+            });
         }
-        yield notification_model_1.Notification.create({
-            title,
-            message,
-            receiver: userId,
-            type: type === 'Appointment' ? 'APPOINTMENT' : 'ALERT',
-            read: false,
-            meta,
-        });
+        catch (error) {
+            console.error('Error sending notification:', error);
+            throw error;
+        }
     });
 }
 /**
@@ -57,67 +72,118 @@ function sendNotificationAndSave(_a) {
 function processReminders(collectionName, Model, identifierKey) {
     return __awaiter(this, void 0, void 0, function* () {
         const now = new Date();
+        const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+        // Add query timeout and limit results
         const events = yield Model.find({
             isDeleted: false,
-            date: { $gte: new Date(now.getTime() - 60 * 60 * 1000) }, // only recent/future
-        }).lean();
+            date: { $gte: oneHourAgo },
+        })
+            .limit(100) // Process max 100 events per run
+            .maxTimeMS(5000) // 5 second timeout
+            .lean();
+        console.log(`Processing ${events.length} ${collectionName} events`);
         for (const event of events) {
-            const userSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: event.userId }).lean();
-            if (!userSetting)
-                continue;
-            if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification))
-                continue;
-            // Use user's timezone or default to UK time
-            const timeZone = userSetting.timeZone || 'Europe/London';
-            const appointmentUTC = getAppointmentUTC(new Date(event.date), event.time, timeZone);
-            const diffMs = appointmentUTC.getTime() - now.getTime();
-            const diffMin = diffMs / (60 * 1000);
-            if (diffMin >= 59 && diffMin <= 61) {
-                const exists = yield notification_model_1.Notification.findOne({
-                    [`meta.${identifierKey}`]: event._id,
-                    receiver: event.userId,
-                });
-                if (exists)
+            try {
+                const userSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
+                if (!userSetting)
                     continue;
-                const title = collectionName === 'DateNight' ? 'Date Night Reminder' : 'Appointment Reminder';
-                const message = collectionName === 'DateNight'
-                    ? `Your plan "${event.plan}" at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`
-                    : `Your appointment scheduled at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`;
-                yield sendNotificationAndSave({
-                    userSetting,
-                    userId: event.userId,
-                    title,
-                    message,
-                    meta: { [identifierKey]: event._id },
-                });
-                if (collectionName === 'DateNight') {
-                    const user = yield user_model_1.User.findById(event.userId);
-                    const partnerId = user === null || user === void 0 ? void 0 : user.partnerId;
-                    const partnerSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: partnerId }).lean();
-                    if (!partnerSetting && !partnerSetting.dateNightNotification)
+                // Check if notifications are enabled
+                if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification)) {
+                    continue;
+                }
+                // Use user's timezone or default to UK time
+                const timeZone = userSetting.timeZone || 'Europe/London';
+                const appointmentUTC = getAppointmentUTC(new Date(event.date), event.time, timeZone);
+                const diffMs = appointmentUTC.getTime() - now.getTime();
+                const diffMin = diffMs / (60 * 1000);
+                // Check if it's within 1 hour window (59-61 minutes)
+                if (diffMin >= 59 && diffMin <= 61) {
+                    // Check if notification already sent
+                    const exists = yield notification_model_1.Notification.findOne({
+                        [`meta.${identifierKey}`]: event._id,
+                        receiver: event.userId,
+                    }).maxTimeMS(3000);
+                    if (exists)
                         continue;
+                    const title = collectionName === 'DateNight' ? 'Date Night Reminder' : 'Appointment Reminder';
+                    const message = collectionName === 'DateNight'
+                        ? `Your plan "${event.plan}" at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`
+                        : `Your appointment scheduled at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`;
                     yield sendNotificationAndSave({
-                        userSetting: partnerSetting,
-                        userId: partnerId,
+                        userSetting,
+                        userId: event.userId,
                         title,
                         message,
                         meta: { [identifierKey]: event._id },
+                        type: collectionName,
                     });
+                    // Send to partner for DateNight
+                    if (collectionName === 'DateNight') {
+                        const user = yield user_model_1.User.findById(event.userId).maxTimeMS(3000);
+                        const partnerId = user === null || user === void 0 ? void 0 : user.partnerId;
+                        if (partnerId) {
+                            const partnerSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: partnerId }).maxTimeMS(3000).lean();
+                            // Fixed: Changed && to || in the condition
+                            if (partnerSetting && partnerSetting.dateNightNotification) {
+                                // Check if partner already got notification
+                                const partnerExists = yield notification_model_1.Notification.findOne({
+                                    [`meta.${identifierKey}`]: event._id,
+                                    receiver: partnerId,
+                                }).maxTimeMS(3000);
+                                if (!partnerExists) {
+                                    yield sendNotificationAndSave({
+                                        userSetting: partnerSetting,
+                                        userId: partnerId,
+                                        title,
+                                        message,
+                                        meta: { [identifierKey]: event._id },
+                                        type: collectionName,
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    console.log(`✅ Notification sent for ${collectionName}: ${event._id}`);
                 }
-                console.log(`✅ Notification sent for ${collectionName}: ${event._id}`);
+            }
+            catch (error) {
+                console.error(`Error processing ${collectionName} event ${event._id}:`, error);
+                // Continue with next event instead of crashing
             }
         }
     });
 }
 /**
- * Start the reminder scheduler
+ * Main scheduler function with connection check and concurrency control
  */
+function runReminderScheduler() {
+    return __awaiter(this, void 0, void 0, function* () {
+        // Prevent concurrent executions
+        if (isProcessing) {
+            console.log('⏭️  Previous job still running, skipping...');
+            return;
+        }
+        // Check database connection
+        if (mongoose_1.default.connection.readyState !== 1) {
+            console.error('❌ MongoDB not connected. ReadyState:', mongoose_1.default.connection.readyState);
+            return;
+        }
+        isProcessing = true;
+        const startTime = Date.now();
+        try {
+            console.log('🔔 Starting reminder scheduler...');
+            yield processReminders('DateNight', dateNight_model_1.DateNight, 'dateNightId');
+            yield processReminders('Appointment', appointment_model_1.Appointment, 'appointmentId');
+            console.log(`✅ Reminder scheduler completed in ${Date.now() - startTime}ms`);
+        }
+        catch (err) {
+            console.error('❌ Reminder Scheduler error:', err);
+        }
+        finally {
+            isProcessing = false;
+        }
+    });
+}
 node_cron_1.default.schedule('*/10 * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        yield processReminders('DateNight', dateNight_model_1.DateNight, 'dateNightId');
-        yield processReminders('Appointment', appointment_model_1.Appointment, 'appointmentId');
-    }
-    catch (err) {
-        console.error('❌ Reminder Scheduler error:', err);
-    }
+    yield runReminderScheduler();
 }));

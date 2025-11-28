@@ -17,10 +17,10 @@ const http_status_codes_1 = require("http-status-codes");
 const savingGoal_model_1 = require("./savingGoal.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
 const createSavingGoalToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, totalAmount, monthlyTarget, date } = payload;
+    const { name, totalAmount, monthlyTarget, date, savedMoney } = payload;
     const startDate = new Date(date);
     // Calculate months needed to complete the goal
-    const monthsNeeded = Math.ceil(totalAmount / monthlyTarget);
+    const monthsNeeded = Math.ceil((totalAmount - savedMoney) / monthlyTarget);
     // Calculate complete date
     const completeDate = new Date(startDate);
     completeDate.setMonth(completeDate.getMonth() + monthsNeeded);

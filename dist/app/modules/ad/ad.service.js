@@ -31,19 +31,16 @@ const getAdsFromDB = (query) => __awaiter(void 0, void 0, void 0, function* () {
     const meta = yield ads.countTotal();
     return { meta, result };
 });
-const getSingleAdFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+const getSingleAdFromDB = (...args_1) => __awaiter(void 0, [...args_1], void 0, function* (query = {}) {
     const now = new Date();
-    const [ad] = yield ad_model_1.Ad.aggregate([
+    const pipeline = [
         {
-            $match: {
-                isDeleted: false,
-                startDate: { $lte: now.toISOString() },
-                endDate: { $gte: now.toISOString() },
-            },
+            $match: Object.assign(Object.assign({}, query), { isDeleted: false, startDate: { $lte: now }, endDate: { $gte: now } }),
         },
-        { $sample: { size: 1 } }, // pick only 1 random ad
-    ]);
-    return ad;
+        { $sample: { size: 1 } },
+    ];
+    const result = yield ad_model_1.Ad.aggregate(pipeline);
+    return result.length > 0 ? result[0] : null;
 });
 const updateAdToDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const ad = yield ad_model_1.Ad.findById(id);

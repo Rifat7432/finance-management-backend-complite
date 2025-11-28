@@ -117,7 +117,7 @@ const handleAppleAuthentication = async (payload: {
                const forgetPassword = emailTemplate.resetPassword(value);
                await emailHelper.sendEmail(forgetPassword);
                //save to DB
-               const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+               const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
                await User.findOneAndUpdate({ email }, { $set: { authentication } });
 
                throw new AppError(StatusCodes.CONFLICT, 'Please verify your account, then try to login again');
@@ -207,7 +207,7 @@ const handleGoogleAuthentication = async (payload: { email: string; googleId: st
                await emailHelper.sendEmail(forgetPassword);
 
                //save to DB
-               const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+               const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
                await User.findOneAndUpdate({ email }, { $set: { authentication } });
 
                throw new AppError(StatusCodes.CONFLICT, 'Please verify your account, then try to login again');

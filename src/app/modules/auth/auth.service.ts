@@ -34,7 +34,7 @@ const loginUserFromDB = async (payload: ILoginData) => {
           await emailHelper.sendEmail(forgetPassword);
 
           //save to DB
-          const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+          const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
           await User.findOneAndUpdate({ email }, { $set: { authentication } });
 
           throw new AppError(StatusCodes.CONFLICT, 'Please verify your account, then try to login again');
@@ -87,7 +87,7 @@ const forgetPasswordToDB = async (email: string) => {
      await emailHelper.sendEmail(forgetPassword);
 
      //save to DB
-     const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+     const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
      await User.findOneAndUpdate({ email }, { $set: { authentication } });
 };
 // resend otp
@@ -105,7 +105,7 @@ const resendOtpFromDb = async (email: string) => {
      await emailHelper.sendEmail(createAccountTemplate);
 
      //save to DB
-     const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+     const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
      await User.findOneAndUpdate({ _id: isExistUser._id }, { $set: { authentication } });
 };
 //forget password by email url

@@ -14,7 +14,7 @@ const createAccount = (values) => {
       <div style="background-color: #636AE8; width: 120px; padding: 10px; text-align: center; border-radius: 8px; color: #fff; font-size: 25px; letter-spacing: 2px; margin: 20px auto;">
         ${values.otp}
       </div>
-      <p style="color: #555; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">This code is valid for 3 minutes.</p>
+      <p style="color: #555; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">This code is valid for 15 minutes.</p>
     </div>
   </div>
 </body>
@@ -32,7 +32,7 @@ const resetPassword = (values) => {
         <div style="text-align: center;">
             <p style="color: #555; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">Your single use code is:</p>
             <div style="background-color: #636AE8; width: 120px; padding: 10px; text-align: center; border-radius: 8px; color: #fff; font-size: 25px; letter-spacing: 2px; margin: 20px auto;">${values.otp}</div>
-            <p style="color: #555; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">This code is valid for 3 minutes.</p>
+            <p style="color: #555; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">This code is valid for 15 minutes.</p>
                 <p style="color: #b9b4b4; font-size: 16px; line-height: 1.5; margin-bottom: 20px;text-align:left">If you didn't request this code, you can safely ignore this email. Someone else might have typed your email address by mistake.</p>
         </div>
     </div>
@@ -52,7 +52,7 @@ const resetPasswordByUrl = (values) => {
           <p style="color: #555; font-size: 16px; line-height: 1.5;">We received a request to reset your password. Click the button below to reset it:</p>
           <a href="${values.resetUrl}" target="_blank" style="display: inline-block; background-color: #636AE8; color: white; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-size: 18px; margin: 20px auto;">Reset Password</a>
           <p style="color: #555; font-size: 16px; line-height: 1.5; margin-top: 20px;">If you didn’t request this, you can ignore this email.</p>
-          <p style="color: #b9b4b4; font-size: 14px;">This link will expire in 10 minutes.</p>
+          <p style="color: #b9b4b4; font-size: 14px;">This link will expire in 15 minutes.</p>
         </div>
       </div>
     </body>`,

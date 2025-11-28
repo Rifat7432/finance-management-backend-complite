@@ -21,19 +21,24 @@ const getAdsFromDB = async (query: any) => {
      return { meta, result };
 };
 
-const getSingleAdFromDB = async (): Promise<IAd | null> => {
-     const now = new Date();
-     const [ad] = await Ad.aggregate([
-          {
-               $match: {
-                    isDeleted: false,
-                    startDate: { $lte: now.toISOString() },
-                    endDate: { $gte: now.toISOString() },
-               },
-          },
-          { $sample: { size: 1 } }, // pick only 1 random ad
-     ]);
-     return ad;
+const getSingleAdFromDB = async (query: any = {}): Promise<IAd | null> => {
+    const now = new Date();
+
+    const pipeline = [
+        {
+            $match: {
+                ...query,            // merge dynamic query
+                isDeleted: false,
+                startDate: { $lte: now },
+                endDate: { $gte: now },
+            },
+        },
+        { $sample: { size: 1 } },
+    ];
+
+    const result = await Ad.aggregate(pipeline);
+
+    return result.length > 0 ? result[0] : null;
 };
 
 const updateAdToDB = async (id: string, payload: Partial<IAd>): Promise<IAd | null> => {

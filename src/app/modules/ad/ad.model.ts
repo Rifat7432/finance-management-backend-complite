@@ -6,6 +6,11 @@ const adSchema = new Schema<IAd>(
           name: { type: String, required: true },
           startDate: { type: String, required: true },
           endDate: { type: String, required: true },
+             category: {
+               type: String,
+               required: true,
+               trim: true,
+          },
           url: {
                type: String,
                required: true,

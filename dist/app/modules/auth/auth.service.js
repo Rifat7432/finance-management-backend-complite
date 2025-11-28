@@ -45,7 +45,7 @@ const loginUserFromDB = (payload) => __awaiter(void 0, void 0, void 0, function*
         const forgetPassword = emailTemplate_1.emailTemplate.resetPassword(value);
         yield emailHelper_1.emailHelper.sendEmail(forgetPassword);
         //save to DB
-        const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+        const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
         yield user_model_1.User.findOneAndUpdate({ email }, { $set: { authentication } });
         throw new AppError_1.default(http_status_codes_1.StatusCodes.CONFLICT, 'Please verify your account, then try to login again');
     }
@@ -93,7 +93,7 @@ const forgetPasswordToDB = (email) => __awaiter(void 0, void 0, void 0, function
     const forgetPassword = emailTemplate_1.emailTemplate.resetPassword(value);
     yield emailHelper_1.emailHelper.sendEmail(forgetPassword);
     //save to DB
-    const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+    const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
     yield user_model_1.User.findOneAndUpdate({ email }, { $set: { authentication } });
 });
 // resend otp
@@ -109,7 +109,7 @@ const resendOtpFromDb = (email) => __awaiter(void 0, void 0, void 0, function* (
     const createAccountTemplate = emailTemplate_1.emailTemplate.createAccount(values);
     yield emailHelper_1.emailHelper.sendEmail(createAccountTemplate);
     //save to DB
-    const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 5 * 60000) };
+    const authentication = { oneTimeCode: otp, expireAt: new Date(Date.now() + 15 * 60000) };
     yield user_model_1.User.findOneAndUpdate({ _id: isExistUser._id }, { $set: { authentication } });
 });
 //forget password by email url

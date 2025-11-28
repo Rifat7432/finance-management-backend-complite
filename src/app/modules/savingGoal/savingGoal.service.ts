@@ -4,10 +4,10 @@ import AppError from '../../../errors/AppError';
 import { ISavingGoal } from './savingGole.interface';
 
 const createSavingGoalToDB = async (payload: Partial<ISavingGoal>, userId: string): Promise<ISavingGoal> => {
-     const { name, totalAmount, monthlyTarget, date } = payload;
+     const { name, totalAmount, monthlyTarget, date, savedMoney } = payload;
      const startDate = new Date(date!);
      // Calculate months needed to complete the goal
-     const monthsNeeded = Math.ceil(totalAmount! / monthlyTarget!);
+     const monthsNeeded = Math.ceil((totalAmount! - savedMoney!) / monthlyTarget!);
      // Calculate complete date
      const completeDate = new Date(startDate);
      completeDate.setMonth(completeDate.getMonth() + monthsNeeded);
