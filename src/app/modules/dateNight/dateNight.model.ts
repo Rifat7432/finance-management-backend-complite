@@ -65,6 +65,7 @@ const dateNightSchema = new Schema<IDateNight>(
                type: Boolean,
                default: false,
           },
+          isRemainderSent: { type: Boolean, default: false },
      },
      { timestamps: true },
 );

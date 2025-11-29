@@ -17,7 +17,8 @@ const isToday = (date: Date): boolean => {
 };
 
 // WHY CHANGED: Run at 00:05 instead of 00:00 to avoid conflicts
-cron.schedule('5 0 * * *', async () => {
+// cron.schedule('5 0 * * *', async () => {
+cron.schedule('*/10 * * * * *', async () => {
      console.log('🔄 Running income automation...');
 
      try {

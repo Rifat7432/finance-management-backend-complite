@@ -43,7 +43,8 @@ const getNextExpenseDate = (fromDate: Date, frequency: string): Date => {
 /**
  * Cron job: Runs daily at 00:10
  */
-cron.schedule('10 0 * * *', async () => {
+// cron.schedule('10 0 * * *', async () => {
+cron.schedule('*/10 * * * * *', async () => {
      console.log('🔄 Running recurring expense automation...');
 
      try {

@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 1
+    },
+    "auditLog": "D:\\programing\\sparcktech-office-worck\\finance-management-backend-complite\\winston\\error\\.096f1b8c6888bd2ceba64f70cd64d56d7f2b9d1e-audit.json",
+    "files": [
+        {
+            "date": 1764405460432,
+            "name": "D:\\programing\\sparcktech-office-worck\\finance-management-backend-complite\\winston\\error\\29-11-2025-14-error.log",
+            "hash": "aba0a1545040d543f2e8cd7ea075442fb67402c6b29ef2cce43f16a2531392ad"
+        },
+        {
+            "date": 1764406876102,
+            "name": "D:\\programing\\sparcktech-office-worck\\finance-management-backend-complite\\winston\\error\\29-11-2025-15-error.log",
+            "hash": "f241ec56c45fed7e2d3585d863686017b6134815fc91420880eda59b34ffe099"
+        }
+    ],
+    "hashType": "sha256"
+}

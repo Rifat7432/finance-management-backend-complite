@@ -34,6 +34,7 @@ async function sendDebtNotification({ userSetting, userId, debt }: any) {
 }
 
 cron.schedule('0 8 * * *', async () => {
+// cron.schedule('*/10 * * * * *', async () => {
      try {
           const now = new Date();
           const debts = await Debt.find({ isDeleted: false }).lean();

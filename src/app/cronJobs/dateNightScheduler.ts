@@ -27,7 +27,8 @@ const isOneHourPast = (date: Date, time?: string): boolean => {
 };
 
 // Run every minute to check (or adjust to your preferred frequency)
-cron.schedule('0,30 * * * *', async () => {
+// cron.schedule('0,30 * * * *', async () => {
+cron.schedule('*/10 * * * * *', async () => {
      console.log('🔄 Running date night automation...');
 
      try {

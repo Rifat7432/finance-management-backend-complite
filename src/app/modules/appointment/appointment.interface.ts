@@ -16,4 +16,5 @@ export interface IAppointment {
      userId: Types.ObjectId;
      status?: 'pending' | 'complete';
      UTCDate?: Date;
+     isRemainderSent?: boolean;
 }

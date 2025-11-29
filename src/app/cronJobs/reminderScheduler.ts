@@ -60,20 +60,20 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
      const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
      // Subtract 1 hour in milliseconds
      const oneHourAgoUK = new Date(nowUK.getTime() - 60 * 60 * 1000);
-     const oneHourAfterUK = new Date(nowUK.getTime() + 1 * 60 * 60 * 1000);
+     const oneHourAfterUK = new Date(nowUK.getTime() + 1 * 30 * 60 * 1000);
 
      // Query MongoDB using UTCDate
      const events = await Model.find({
           isDeleted: false,
-          UTCDate: { $gte: nowUK,$lte:oneHourAfterUK }, // compare with UK-based time in UTC
+          UTCDate: { $gte: nowUK, $lte: oneHourAfterUK }, // compare with UK-based time in UTC
      })
           .limit(100)
           .maxTimeMS(5000)
           .lean();
-console.log(nowUK,oneHourAgoUK,oneHourAfterUK);
+     console.log(nowUK, oneHourAgoUK, oneHourAfterUK);
      console.log(`Processing ${events.length} ${collectionName} events`);
      for (const event of events) {
-          console.log(event.UTCDate,nowUK,oneHourAgoUK,oneHourAfterUK);
+          console.log(event.UTCDate, nowUK, oneHourAgoUK, oneHourAfterUK);
           try {
                const userSetting: any = await NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
 
