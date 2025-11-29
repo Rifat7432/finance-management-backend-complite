@@ -12,29 +12,6 @@ import { User } from '../modules/user/user.model';
 let isProcessing = false;
 
 /**
- * Convert a date + time + timezone to UTC Date
- * Uses Intl API for proper timezone conversion
- */
-function getAppointmentUTC(date: Date, time: string, timeZone: string = 'Europe/London'): Date {
-     const [hour, minute] = time.split(':').map(Number);
-
-     // Create date string in the format: YYYY-MM-DD HH:mm
-     const year = date.getFullYear();
-     const month = String(date.getMonth() + 1).padStart(2, '0');
-     const day = String(date.getDate()).padStart(2, '0');
-     const dateTimeStr = `${year}-${month}-${day}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00`;
-
-     // Parse as local time in the specified timezone, then convert to UTC
-     const localDate = new Date(dateTimeStr);
-     const utcDate = new Date(localDate.toLocaleString('en-US', { timeZone: 'UTC' }));
-     const tzDate = new Date(localDate.toLocaleString('en-US', { timeZone }));
-
-     // Calculate offset and apply
-     const offset = tzDate.getTime() - utcDate.getTime();
-     return new Date(localDate.getTime() - offset);
-}
-
-/**
  * Helper: Sends both Firebase + DB notification safely
  */
 async function sendNotificationAndSave({
@@ -75,48 +52,55 @@ async function sendNotificationAndSave({
  * Generic function for sending reminders
  */
 async function processReminders(collectionName: 'Appointment' | 'DateNight', Model: any, identifierKey: string) {
+     // Get current time in milliseconds
      const now = new Date();
-     const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+     // Get the UTC offset of Europe/London at this moment
+     const ukOffsetMinutes = now.getTimezoneOffset() - new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' })).getTimezoneOffset();
+     // Calculate current UK time as a Date object
+     const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
+     // Subtract 1 hour in milliseconds
+     const oneHourAgoUK = new Date(nowUK.getTime() - 60 * 60 * 1000);
+     const oneHourAfterUK = new Date(nowUK.getTime() + 1 * 60 * 60 * 1000);
 
-     // Add query timeout and limit results
+     // Query MongoDB using UTCDate
      const events = await Model.find({
           isDeleted: false,
-          date: { $gte: oneHourAgo },
+          UTCDate: { $gte: nowUK,$lte:oneHourAfterUK }, // compare with UK-based time in UTC
      })
-          .limit(100) // Process max 100 events per run
-          .maxTimeMS(5000) // 5 second timeout
+          .limit(100)
+          .maxTimeMS(5000)
           .lean();
-
+console.log(nowUK,oneHourAgoUK,oneHourAfterUK);
      console.log(`Processing ${events.length} ${collectionName} events`);
-
      for (const event of events) {
+          console.log(event.UTCDate,nowUK,oneHourAgoUK,oneHourAfterUK);
           try {
                const userSetting: any = await NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
 
                if (!userSetting) continue;
-
+               console.log('pass 1');
                // Check if notifications are enabled
                if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification)) {
                     continue;
                }
-
+               console.log('pass 2');
                // Use user's timezone or default to UK time
-               const timeZone = userSetting.timeZone || 'Europe/London';
-               const appointmentUTC = getAppointmentUTC(new Date(event.date), event.time, timeZone);
 
-               const diffMs = appointmentUTC.getTime() - now.getTime();
+               const appointmentUTC = event.UTCDate;
+               const diffMs = appointmentUTC.getTime() - nowUK.getTime();
                const diffMin = diffMs / (60 * 1000);
-
+               console.log(diffMin);
                // Check if it's within 1 hour window (59-61 minutes)
-               if (diffMin >= 59 && diffMin <= 61) {
+               if (diffMin >= 55 && diffMin <= 65) {
+                    console.log('pass 3');
                     // Check if notification already sent
                     const exists = await Notification.findOne({
                          [`meta.${identifierKey}`]: event._id,
                          receiver: event.userId,
                     }).maxTimeMS(3000);
-
+                    console.log(exists);
                     if (exists) continue;
-
+                    console.log('pass 4');
                     const title = collectionName === 'DateNight' ? 'Date Night Reminder' : 'Appointment Reminder';
                     const message =
                          collectionName === 'DateNight'
@@ -202,6 +186,7 @@ async function runReminderScheduler() {
      }
 }
 
-cron.schedule('*/10 * * * *', async () => {
+// cron.schedule('*/1 * * * *', async () => {
+cron.schedule('*/10 * * * * *', async () => {
      await runReminderScheduler();
 });

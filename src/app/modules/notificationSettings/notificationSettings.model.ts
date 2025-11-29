@@ -10,6 +10,7 @@ const notificationSettingsSchema = new Schema<INotificationSetting>(
           debtNotification: { type: Boolean, default: true },
           dateNightNotification: { type: Boolean, default: true },
           deviceTokenList: { type: [String], default: [] },
+          timeZone: { type: String, default: 'Europe/London' },
      },
      { timestamps: true },
 );

@@ -1,5 +1,0 @@
-Fri Nov 28 2025 5:55:59 [SERVER-NAME] info: [32mConfig validation successful.[39m
-Fri Nov 28 2025 5:56:0 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
-Fri Nov 28 2025 5:56:1 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
-Fri Nov 28 2025 5:56:17 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/incomes/ 200 - 317.298 ms
-Fri Nov 28 2025 5:56:44 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/incomes/ 200 - 106.633 ms

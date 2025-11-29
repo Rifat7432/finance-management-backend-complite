@@ -6,19 +6,39 @@
     "auditLog": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\.d32e4a942eddbb9d0e214ae606d07499bc31f9dd-audit.json",
     "files": [
         {
-            "date": 1764275233445,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\28-11-2025-02-success.log",
-            "hash": "496526078ad05e308453784d479e20d4c2ad63f1bb4d600f921be20b4904c318"
+            "date": 1764355322803,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-00-success.log",
+            "hash": "cf6086c59814a63b5db47b5d83571e4f6012f49fe33bcff03a0d0349f5a2731a"
         },
         {
-            "date": 1764287736854,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\28-11-2025-05-success.log",
-            "hash": "9afb38ae912830cf698d6bb7672f57ab16aefd780d28896eda5cd31d2f846179"
+            "date": 1764356551833,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-01-success.log",
+            "hash": "5a1b148e506effc489f591a407496813f92d98291afe21119f93d96262486a12"
         },
         {
-            "date": 1764288126160,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\28-11-2025-06-success.log",
-            "hash": "0786451ebeefc5a237a374274d558a3462d56b638d08a6e96b64555b43686368"
+            "date": 1764360367661,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-02-success.log",
+            "hash": "acf4e3219a0419209ac9f26256d7517d251ec8cc67871c570e38007d72a5556a"
+        },
+        {
+            "date": 1764369372162,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-04-success.log",
+            "hash": "268cd5eb7855c9b240295c812043cbe1a1324d83388f91099a3441e83f274221"
+        },
+        {
+            "date": 1764373022595,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-05-success.log",
+            "hash": "dc9f180ebead2ef1da9b2526f4693342d20a5bd3b7c3f4312942eb26d8978308"
+        },
+        {
+            "date": 1764374409973,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-06-success.log",
+            "hash": "129c8ee712c5376b115c37edd941a378598f7d07af59d0069a69516d7222c8e7"
+        },
+        {
+            "date": 1764378017277,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\29-11-2025-07-success.log",
+            "hash": "ba4aec250d2aafb546d1c9b747f3888bcb616aa1a7639813244abce1f022cf2f"
         }
     ],
     "hashType": "sha256"

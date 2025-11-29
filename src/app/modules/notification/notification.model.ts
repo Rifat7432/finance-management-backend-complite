@@ -53,8 +53,8 @@ notificationSchema.post('save', async function (doc) {
                logger.warn(colors.yellow('Socket.IO is not initialized'));
                return;
           }
-
           const notification = doc.toObject();
+          console.log(notification)
           const receiverId = notification.receiver.toString();
           logger.info(colors.green(`Sending notification to user ${receiverId}`));
           socketIo.to(receiverId).emit('notification', notification);

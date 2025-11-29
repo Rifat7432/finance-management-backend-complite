@@ -8,4 +8,5 @@ export interface INotificationSetting {
      debtNotification: boolean;
      dateNightNotification: boolean;
      deviceTokenList: string[];
+     timeZone: string;
 }

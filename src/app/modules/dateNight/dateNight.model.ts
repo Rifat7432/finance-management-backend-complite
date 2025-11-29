@@ -1,5 +1,31 @@
 import { Schema, model } from 'mongoose';
 import { IDateNight } from './dateNight.interface';
+function getAppointmentUTC(dateStr: Date, timeStr: string, timeZone: string): Date {
+     // Normalize timeStr
+     timeStr = timeStr.replace(/\u202F/g, ' ').trim();
+     const [time, modifier] = timeStr.split(' ');
+     if (!time || !modifier) throw new Error('Invalid time string');
+
+     let [hours, minutes] = time.split(':').map(Number);
+     if (modifier === 'PM' && hours !== 12) hours += 12;
+     if (modifier === 'AM' && hours === 12) hours = 0;
+
+     // Parse date
+     const date = new Date(dateStr);
+
+     if (isNaN(date.getTime())) {
+          throw new Error('Invalid date string');
+     }
+
+     // Get the UTC timestamp for this date in the target timezone
+     const parts = date.toLocaleString('en-US', { timeZone }).split(',')[0].split('/');
+     const [month, day, year] = parts.map(Number);
+
+     // Build the Date object in UTC
+     const utcDate = new Date(Date.UTC(year, month - 1, day, hours, minutes, 0));
+
+     return utcDate;
+}
 
 const dateNightSchema = new Schema<IDateNight>(
      {
@@ -31,6 +57,10 @@ const dateNightSchema = new Schema<IDateNight>(
                type: String,
                trim: true,
           },
+          UTCDate: {
+               type: Date,
+               default: new Date(),
+          },
           isDeleted: {
                type: Boolean,
                default: false,
@@ -38,5 +68,13 @@ const dateNightSchema = new Schema<IDateNight>(
      },
      { timestamps: true },
 );
+dateNightSchema.pre('save', function (next) {
+     if (!this.isModified('date') && !this.isModified('time')) {
+          return next();
+     }
+     console.log('this', getAppointmentUTC(this.date as Date, this.time as string, 'Europe/London'), this.time, this.date);
+     this.UTCDate = getAppointmentUTC(this.date as Date, this.time as string, 'Europe/London');
 
+     next();
+});
 export const DateNight = model<IDateNight>('DateNight', dateNightSchema);
