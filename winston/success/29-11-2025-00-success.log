@@ -1,5 +1,0 @@
-Sat Nov 29 2025 0:42:24 [SERVER-NAME] info: [32mConfig validation successful.[39m
-Sat Nov 29 2025 0:42:26 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
-Sat Nov 29 2025 0:42:27 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
-Sat Nov 29 2025 0:54:26 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 362.899 ms
-Sat Nov 29 2025 0:54:39 [SERVER-NAME] info: [34mUser 6903d4e3aa4929e85b0c63bb connected via socket[39m

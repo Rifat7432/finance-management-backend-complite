@@ -127,6 +127,6 @@ cron.schedule('55 23 28-31 * *', async () => {
      } catch (err) {
           console.error('❌ Monthly Finance Reminder Scheduler error:', err);
      }
-});
+},  { timezone: 'Europe/London' });
 
 

@@ -59,21 +59,20 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
      // Calculate current UK time as a Date object
      const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
      // Subtract 1 hour in milliseconds
-     const oneHourAgoUK = new Date(nowUK.getTime() - 60 * 60 * 1000);
-     const oneHourAfterUK = new Date(nowUK.getTime() + 1 * 30 * 60 * 1000);
+     const oneHourAfterUK = new Date(nowUK.getTime() + 59 * 60 * 1000);
+     const oneHourOneMinuteAfterUK = new Date(nowUK.getTime() + 60 * 60 * 1000);
 
      // Query MongoDB using UTCDate
      const events = await Model.find({
           isDeleted: false,
-          UTCDate: { $gte: nowUK, $lte: oneHourAfterUK }, // compare with UK-based time in UTC
+          isRemainderSent: false,
+          UTCDate: { $gte: oneHourAfterUK, $lte: oneHourOneMinuteAfterUK }, // compare with UK-based time in UTC
      })
           .limit(100)
           .maxTimeMS(5000)
           .lean();
-     console.log(nowUK, oneHourAgoUK, oneHourAfterUK);
      console.log(`Processing ${events.length} ${collectionName} events`);
      for (const event of events) {
-          console.log(event.UTCDate, nowUK, oneHourAgoUK, oneHourAfterUK);
           try {
                const userSetting: any = await NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
 
@@ -83,29 +82,18 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
                if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification)) {
                     continue;
                }
-               console.log('pass 2');
                // Use user's timezone or default to UK time
 
                const appointmentUTC = event.UTCDate;
                const diffMs = appointmentUTC.getTime() - nowUK.getTime();
                const diffMin = diffMs / (60 * 1000);
-               console.log(diffMin);
                // Check if it's within 1 hour window (59-61 minutes)
-               if (diffMin >= 55 && diffMin <= 65) {
-                    console.log('pass 3');
-                    // Check if notification already sent
-                    const exists = await Notification.findOne({
-                         [`meta.${identifierKey}`]: event._id,
-                         receiver: event.userId,
-                    }).maxTimeMS(3000);
-                    console.log(exists);
-                    if (exists) continue;
-                    console.log('pass 4');
+               if (diffMin > 59 && diffMin < 61) {
                     const title = collectionName === 'DateNight' ? 'Date Night Reminder' : 'Appointment Reminder';
                     const message =
                          collectionName === 'DateNight'
                               ? `Your plan "${event.plan}" at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`
-                              : `Your appointment scheduled at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`;
+                              : `Your appointment scheduled at ${event.timeSlot} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`;
 
                     await sendNotificationAndSave({
                          userSetting,
@@ -127,25 +115,21 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
                               // Fixed: Changed && to || in the condition
                               if (partnerSetting && partnerSetting.dateNightNotification) {
                                    // Check if partner already got notification
-                                   const partnerExists = await Notification.findOne({
-                                        [`meta.${identifierKey}`]: event._id,
-                                        receiver: partnerId,
-                                   }).maxTimeMS(3000);
 
-                                   if (!partnerExists) {
-                                        await sendNotificationAndSave({
-                                             userSetting: partnerSetting,
-                                             userId: partnerId,
-                                             title,
-                                             message,
-                                             meta: { [identifierKey]: event._id },
-                                             type: collectionName,
-                                        });
-                                   }
+                                   await sendNotificationAndSave({
+                                        userSetting: partnerSetting,
+                                        userId: partnerId,
+                                        title,
+                                        message,
+                                        meta: { [identifierKey]: event._id },
+                                        type: collectionName,
+                                   });
                               }
                          }
                     }
-
+                    await Model.updateOne({ _id: event._id }, { $set: { isRemainderSent: true } })
+                         .maxTimeMS(3000)
+                         .exec();
                     console.log(`✅ Notification sent for ${collectionName}: ${event._id}`);
                }
           } catch (error) {
@@ -186,7 +170,10 @@ async function runReminderScheduler() {
      }
 }
 
-// cron.schedule('*/1 * * * *', async () => {
-cron.schedule('*/10 * * * * *', async () => {
-     await runReminderScheduler();
-});
+cron.schedule(
+     '*/1 * * * *',
+     async () => {
+          await runReminderScheduler();
+     },
+     { timezone: 'Europe/London' },
+);

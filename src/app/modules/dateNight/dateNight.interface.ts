@@ -10,5 +10,5 @@ export interface IDateNight extends Document {
      location?: string;
      UTCDate: Date;
      isDeleted: boolean;
-     isRemainderSent?: boolean;
+     isRemainderSent: boolean;
 }

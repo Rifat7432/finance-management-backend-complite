@@ -7,6 +7,11 @@ import AppError from '../../errors/AppError';
 import { User } from '../modules/user/user.model';
 import { SavingGoal } from '../modules/savingGoal/savingGoal.model';
 
+// Helper to get current UK time
+const nowUK = (): Date => {
+     return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+};
+
 // ========================================================
 // === Helper Function: getAnalyticsFromDB (per user) =====
 // ========================================================
@@ -15,7 +20,7 @@ const getAnalyticsFromDB = async (userId: string) => {
      const user = await User.isExistUserById(userId);
      if (!user) throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
 
-     const now = new Date();
+     const now = nowUK();
      const start = startOfMonth(now);
      const end = endOfMonth(now);
 
@@ -179,7 +184,7 @@ const getAnalyticsFromDB = async (userId: string) => {
 // ========================================================
 
 const scheduleMonthlyAnalyticsJob = async () => {
-     const now = new Date();
+     const now = nowUK();
      const end = endOfMonth(now);
 
      // Run only if this is actually the last day of the month
@@ -210,7 +215,7 @@ const scheduleMonthlyAnalyticsJob = async () => {
                     const totalTarget = savingGoals.reduce((acc, g) => acc + g.monthlyTarget, 0);
 
                     // Remove goals that are already complete
-                    const incompleteGoals = savingGoals.filter(g => {
+                    const incompleteGoals = savingGoals.filter((g) => {
                          const remainingAmount = g.totalAmount - g.savedMoney;
                          return remainingAmount > 0;
                     });
@@ -247,7 +252,7 @@ const scheduleMonthlyAnalyticsJob = async () => {
                     }
 
                     // If there's still money left and goals uncompleted, redistribute excess
-                    if (remainingDisposal > 0.01 && incompleteGoals.some(g => (g.totalAmount - g.savedMoney) > 0)) {
+                    if (remainingDisposal > 0.01 && incompleteGoals.some((g) => g.totalAmount - g.savedMoney > 0)) {
                          continue; // Loop again to redistribute to remaining goals
                     } else {
                          break;
@@ -263,10 +268,14 @@ const scheduleMonthlyAnalyticsJob = async () => {
 
 // Run at 23:55 on 28–31 (the last day check prevents multiple runs)
 
-cron.schedule('55 23 28-31 * *', async () => {
-     try {
-          await scheduleMonthlyAnalyticsJob();
-     } catch (err) {
-          console.error('❌ Monthly Analytics Scheduler error:', err);
-     }
-});
+cron.schedule(
+     '55 23 28-31 * *',
+     async () => {
+          try {
+               await scheduleMonthlyAnalyticsJob();
+          } catch (err) {
+               console.error('❌ Monthly Analytics Scheduler error:', err);
+          }
+     },
+     { timezone: 'Europe/London' },
+);

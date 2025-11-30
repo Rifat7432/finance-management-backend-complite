@@ -1,0 +1,107 @@
+Mon Dec 01 2025 3:0:15 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:15 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 38.936 ms
+Mon Dec 01 2025 3:0:19 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:19 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 10.350 ms
+Mon Dec 01 2025 3:0:22 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:22 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 23.960 ms
+Mon Dec 01 2025 3:0:26 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:26 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 9.313 ms
+Mon Dec 01 2025 3:0:29 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:29 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 11.114 ms
+Mon Dec 01 2025 3:0:32 [SERVER-NAME] info: [34mUser 6929f3b0f0b806e79002dd95 connected via socket[39m
+Mon Dec 01 2025 3:0:42 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:42 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 9.949 ms
+Mon Dec 01 2025 3:0:50 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:50 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 10.052 ms
+Mon Dec 01 2025 3:0:53 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:53 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 7.141 ms
+Mon Dec 01 2025 3:0:57 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:0:57 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 7.094 ms
+Mon Dec 01 2025 3:1:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:1:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:1:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:1:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:1:2 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:1:2 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 16.173 ms
+Mon Dec 01 2025 3:2:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:2:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:3:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:3:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:4:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:4:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:4:56 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:4:56 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:4:56 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:4:57 [SERVER-NAME] info: [34mUser 6929f3b0f0b806e79002dd95 connected via socket[39m
+Mon Dec 01 2025 3:5:4 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:5:4 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 31.368 ms
+Mon Dec 01 2025 3:5:7 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:5:7 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/date-nights/ 201 - 13.975 ms
+Mon Dec 01 2025 3:5:13 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:5:13 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 12.215 ms
+Mon Dec 01 2025 3:5:16 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:5:16 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/appointments/ 200 - 9.086 ms
+Mon Dec 01 2025 3:6:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:6:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:7:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:7:0 [SERVER-NAME] info: [32mSending notification to user 6929f3b0f0b806e79002dd95[39m
+Mon Dec 01 2025 3:32:22 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:32:22 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:32:22 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:32:38 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:32:38 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:32:38 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:35:51 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:35:51 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:35:51 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:36:14 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:36:14 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:36:14 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:36:29 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:36:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:36:29 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:36:32 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:36:32 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:36:32 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:36:34 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:36:34 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:36:34 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:37:47 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:37:47 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:37:47 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:37:50 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:37:50 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:37:50 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:37:54 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:37:54 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:37:55 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:37:56 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:37:56 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:37:56 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:37:59 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:37:59 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:37:59 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:38:1 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:38:1 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:38:1 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:38:6 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:38:6 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:38:6 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:38:45 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:38:45 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:38:45 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:38:51 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:38:51 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:38:51 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:39:5 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:39:5 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:39:5 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:39:29 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:39:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:39:29 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:39:31 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:39:31 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:39:31 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Dec 01 2025 3:39:34 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Dec 01 2025 3:39:34 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Dec 01 2025 3:39:34 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

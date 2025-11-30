@@ -53,6 +53,7 @@ const appointmentSchema = new Schema<IAppointment>(
                type: Date,
                default: new Date(),
           },
+          isDeleted: { type: Boolean, default: false },
           isRemainderSent: { type: Boolean, default: false },
      },
      { timestamps: true },
@@ -61,7 +62,9 @@ appointmentSchema.pre('save', function (next) {
      if (!this.isModified('date') && !this.isModified('time')) {
           return next();
      }
-     this.UTCDate = getAppointmentUTC(this.date, this.timeSlot, 'Europe/London');
+     const timeSlot = this.timeSlot;
+     const startTime = timeSlot.split(' - ')[0];
+     this.UTCDate = getAppointmentUTC(this.date, startTime, 'Europe/London');
      next();
 });
 

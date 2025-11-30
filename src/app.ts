@@ -6,18 +6,17 @@ import { Morgan } from './shared/morgen';
 import globalErrorHandler from './globalErrorHandler/globalErrorHandler';
 import { notFound } from './globalErrorHandler/notFound';
 import { welcome } from './utils/welcome';
-import config from './config';
+
+const app: Application = express();
 
 // 👉 Import the cron job here
 import './app/cronJobs/reminderScheduler'; // ✅ This runs the job on app start
-// import './app/cronJobs/dateNightScheduler'; // ✅ This runs the job on app start
-// import './app/cronJobs/debtReminderScheduler'; // ✅ This runs the job on app start
-// import './app/cronJobs/IncomeScheduler'; // ✅ This runs the job on app start
-// import './app/cronJobs/ExpensesScheduler'; // ✅ starts Expense scheduler on app start
-// import './app/cronJobs/AutoSavingGoalUpdateScheduler'; // ✅ starts Auto Saving Goal Update scheduler on app start
-// import './app/cronJobs/MonthlyFinanceRemainder'; // ✅ starts Auto Saving Goal Update scheduler on app start
-
-const app: Application = express();
+import './app/cronJobs/dateNightScheduler'; // ✅ This runs the job on app start
+import './app/cronJobs/debtReminderScheduler'; // ✅ This runs the job on app start
+import './app/cronJobs/IncomeScheduler'; // ✅ This runs the job on app start
+import './app/cronJobs/ExpensesScheduler'; // ✅ starts Expense scheduler on app start
+import './app/cronJobs/AutoSavingGoalUpdateScheduler'; // ✅ starts Auto Saving Goal Update scheduler on app start
+import './app/cronJobs/MonthlyFinanceRemainder'; // ✅ starts Auto Saving Goal Update scheduler on app start
 
 // ----------------------------
 // 🖼️ View Engine Setup (EJS)
@@ -37,7 +36,7 @@ app.use(Morgan.errorHandler);
 
 app.use(
      cors({
-          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app',"https://dashboard.rehoapp.co.uk"], // ✅ no trailing slash
+          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app', 'https://dashboard.rehoapp.co.uk'], // ✅ no trailing slash
           credentials: true,
      }),
 );

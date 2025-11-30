@@ -61,11 +61,14 @@ const dateNightSchema = new Schema<IDateNight>(
                type: Date,
                default: new Date(),
           },
+          isRemainderSent: {
+               type: Boolean,
+               default: false,
+          },
           isDeleted: {
                type: Boolean,
                default: false,
           },
-          isRemainderSent: { type: Boolean, default: false },
      },
      { timestamps: true },
 );

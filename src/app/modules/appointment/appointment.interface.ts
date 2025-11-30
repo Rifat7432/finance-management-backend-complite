@@ -17,4 +17,5 @@ export interface IAppointment {
      status?: 'pending' | 'complete';
      UTCDate?: Date;
      isRemainderSent?: boolean;
+       isDeleted?: boolean;
 }
