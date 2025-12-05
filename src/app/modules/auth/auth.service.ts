@@ -14,6 +14,18 @@ import cryptoToken from '../../../utils/cryptoToken';
 import { verifyToken } from '../../../utils/verifyToken';
 import { createToken } from '../../../utils/createToken';
 import { NotificationSettings } from '../notificationSettings/notificationSettings.model';
+export const getLoginVideo = (loginCount: number): string | null => {
+     switch (loginCount) {
+          case 1:
+               return 'VIDEO_A_URL';
+          case 2:
+               return 'VIDEO_B_URL';
+          case 3:
+               return 'VIDEO_C_URL';
+          default:
+               return null;
+     }
+};
 
 //login
 const loginUserFromDB = async (payload: ILoginData) => {
@@ -69,8 +81,12 @@ const loginUserFromDB = async (payload: ILoginData) => {
      //create token
      const accessToken = jwtHelper.createToken(jwtData, config.jwt.jwt_secret as Secret, config.jwt.jwt_expire_in as string);
      const refreshToken = jwtHelper.createToken(jwtData, config.jwt.jwt_refresh_secret as string, config.jwt.jwt_refresh_expire_in as string);
+     await User.findByIdAndUpdate(isExistUser._id, { $inc: { loginCount: 1 } }, { new: true });
 
-     return { accessToken, refreshToken };
+     // Determine which video to show
+     const videoToShow = getLoginVideo(isExistUser.loginCount);
+     console.log(videoToShow);
+     return { accessToken, refreshToken, videoToShow };
 };
 
 //forget password
@@ -298,4 +314,33 @@ const refreshToken = async (token: string) => {
 
      return { accessToken };
 };
-export const AuthService = { verifyEmailToDB, loginUserFromDB, forgetPasswordToDB, resetPasswordToDB, changePasswordToDB, forgetPasswordByUrlToDB, resetPasswordByUrl, resendOtpFromDb, refreshToken };
+const logoutUserDevice = async (userId: string, deviceToken: string) => {
+     const user = await User.findById(userId);
+     if (!user) {
+          throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
+     }
+     if (!deviceToken) {
+          return null;
+     }
+     await NotificationSettings.findOneAndUpdate(
+          { userId },
+          {
+               $pull: { deviceTokenList: deviceToken },
+          },
+          { new: true },
+     );
+
+     return null;
+};
+export const AuthService = {
+     verifyEmailToDB,
+     loginUserFromDB,
+     forgetPasswordToDB,
+     resetPasswordToDB,
+     changePasswordToDB,
+     forgetPasswordByUrlToDB,
+     resetPasswordByUrl,
+     resendOtpFromDb,
+     refreshToken,
+     logoutUserDevice,
+};

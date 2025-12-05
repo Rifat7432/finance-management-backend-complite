@@ -28,7 +28,7 @@ export const createDateNightToDB = async (userId: string, payload: Partial<IDate
      const timeStr = newDateNight.time || 'N/A';
 
      // 4️⃣ Send push notification (if allowed and device tokens exist)
-     if (userSetting?.appointmentNotification) {
+     if (userSetting?.dateNightNotification) {
           const tokens = userSetting.deviceTokenList ?? [];
 
           if (tokens.length > 0) {

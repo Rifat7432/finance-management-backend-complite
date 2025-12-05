@@ -12,7 +12,7 @@ export type IUser = {
      status: 'active' | 'blocked';
      verified: boolean;
      socialId?: string;
-     authProvider?: 'google' | 'apple' | "local";
+     authProvider?: 'google' | 'apple' | 'local';
      partnerId?: mongoose.Types.ObjectId;
      authentication?: {
           isResetPassword: boolean;
@@ -20,18 +20,17 @@ export type IUser = {
           expireAt: Date;
      };
      notifications?: {};
+     loginCount: number;
 };
 export interface UserSubscriptionDTO {
-  image: string;
-  Name: string;
-  Email: string;
-  Subscriptions: string;
-  StartDate: string | null;
-  EndDate: string | null;
-  PhoneNumber: string;
+     image: string;
+     Name: string;
+     Email: string;
+     Subscriptions: string;
+     StartDate: string | null;
+     EndDate: string | null;
+     PhoneNumber: string;
 }
-
-
 
 export type UserModel = {
      isExistUserById(id: string): any;

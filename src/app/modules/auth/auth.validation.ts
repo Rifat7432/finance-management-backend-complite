@@ -14,6 +14,11 @@ const createLoginZodSchema = z.object({
           password: z.string({ required_error: 'Password is required' }),
      }),
 });
+const createLogoutZodSchema = z.object({
+     body: z.object({
+          deviceToken: z.string().optional(),
+     }),
+});
 
 const createForgetPasswordZodSchema = z.object({
      body: z.object({
@@ -48,4 +53,5 @@ export const AuthValidation = {
      createLoginZodSchema,
      createResetPasswordZodSchema,
      createChangePasswordZodSchema,
+     createLogoutZodSchema,
 };

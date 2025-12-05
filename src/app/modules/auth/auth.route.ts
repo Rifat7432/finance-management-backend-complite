@@ -8,6 +8,7 @@ import auth from '../../middleware/auth';
 const router = express.Router();
 
 router.post('/login', validateRequest(AuthValidation.createLoginZodSchema), AuthController.loginUser);
+router.post('/logout',auth(), validateRequest(AuthValidation.createLogoutZodSchema), AuthController.loginOut);
 router.post('/refresh-token', AuthController.refreshToken);
 
 router.post('/verify-email', validateRequest(AuthValidation.createVerifyEmailZodSchema), AuthController.verifyEmail);

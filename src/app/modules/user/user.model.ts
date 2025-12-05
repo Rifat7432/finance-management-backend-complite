@@ -85,6 +85,7 @@ const userSchema = new Schema<IUser, UserModel>(
                },
                select: false,
           },
+          loginCount: { type: Number, default: 0 },
      },
      { timestamps: true },
 );
@@ -128,7 +129,6 @@ userSchema.pre('findOne', function (next) {
      this.find({ isDeleted: { $ne: true } });
      next();
 });
-
 
 userSchema.pre('aggregate', function (next) {
      this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });

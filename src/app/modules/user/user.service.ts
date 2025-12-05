@@ -11,6 +11,7 @@ import config from '../../../config';
 import { jwtHelper } from '../../../helpers/jwtHelper';
 import { deleteFileFromSpaces } from '../../middleware/uploadFileToSpaces';
 import { NotificationSettings } from '../notificationSettings/notificationSettings.model';
+import { getLoginVideo } from '../auth/auth.service';
 // create user
 const createUserToDB = async (payload: IUser): Promise<IUser> => {
      //set role
@@ -130,8 +131,11 @@ const handleAppleAuthentication = async (payload: {
           // create token
           const accessToken = jwtHelper.createToken(jwtData, config.jwt.jwt_secret as Secret, config.jwt.jwt_expire_in as string);
           const refreshToken = jwtHelper.createToken(jwtData, config.jwt.jwt_refresh_secret as Secret, config.jwt.jwt_refresh_expire_in as string);
+          await User.findByIdAndUpdate(existingUser._id, { $inc: { loginCount: 1 } }, { new: true });
 
-          return { accessToken, refreshToken };
+          // Determine which video to show
+          const videoToShow = getLoginVideo(existingUser.loginCount);
+          return { accessToken, refreshToken, videoToShow };
      }
 
      throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, 'An unknown error occurred');
@@ -222,7 +226,11 @@ const handleGoogleAuthentication = async (payload: { email: string; googleId: st
           // create token
           const accessToken = jwtHelper.createToken(jwtData, config.jwt.jwt_secret as Secret, config.jwt.jwt_expire_in as string);
           const refreshToken = jwtHelper.createToken(jwtData, config.jwt.jwt_refresh_secret as Secret, config.jwt.jwt_refresh_expire_in as string);
+          await User.findByIdAndUpdate(existingUser._id, { $inc: { loginCount: 1 } }, { new: true });
 
+          // Determine which video to show
+          const videoToShow = getLoginVideo(existingUser.loginCount);
+          return { accessToken, refreshToken, videoToShow };
           return { accessToken, refreshToken };
      }
 

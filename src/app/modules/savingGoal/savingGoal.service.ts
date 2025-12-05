@@ -19,6 +19,7 @@ const createSavingGoalToDB = async (payload: Partial<ISavingGoal>, userId: strin
           date: startDate.toISOString(),
           completeDate: completeDate.toISOString(),
           userId,
+          savedMoney,
      });
      return savingGoal;
 };

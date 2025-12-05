@@ -19,7 +19,22 @@ const loginUser = catchAsync(async (req, res) => {
      if (config.node_env === 'production') {
           cookieOptions.sameSite = 'none';
      }
-     sendResponse(res, { success: true, statusCode: StatusCodes.OK, message: 'User logged in', data: { accessToken: result.accessToken, refreshToken: result.refreshToken } });
+     sendResponse(res, {
+          success: true,
+          statusCode: StatusCodes.OK,
+          message: 'User logged in',
+          data: { accessToken: result.accessToken, refreshToken: result.refreshToken, videoToShow: result.videoToShow },
+     });
+});
+const loginOut = catchAsync(async (req, res) => {
+     const user = req.user;
+     const result = await AuthService.logoutUserDevice(user.id, req.body.deviceToken);
+     sendResponse(res, {
+          success: true,
+          statusCode: StatusCodes.OK,
+          message: 'User logged out',
+          data: result,
+     });
 });
 
 const forgetPassword = catchAsync(async (req, res) => {
@@ -74,4 +89,4 @@ const refreshToken = catchAsync(async (req, res) => {
 
      sendResponse(res, { statusCode: StatusCodes.OK, success: true, message: 'Access token retrieved', data: result });
 });
-export const AuthController = { verifyEmail, loginUser, forgetPassword, resetPassword, changePassword, forgetPasswordByUrl, resetPasswordByUrl, resendOtp, refreshToken };
+export const AuthController = { verifyEmail, loginUser, forgetPassword, resetPassword, changePassword, forgetPasswordByUrl, resetPasswordByUrl, resendOtp, refreshToken, loginOut};
