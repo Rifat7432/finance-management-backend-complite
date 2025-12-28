@@ -1,0 +1,6 @@
+Wed Dec 17 2025 4:5:41 [SERVER-NAME] info: GET / 200 - 1.540 ms
+Wed Dec 17 2025 4:12:13 [SERVER-NAME] info: GET / 200 - 0.932 ms
+Wed Dec 17 2025 4:12:21 [SERVER-NAME] info: GET /?dns=9tABAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE 200 - 0.335 ms
+Wed Dec 17 2025 4:12:22 [SERVER-NAME] info: GET /?name=example.com&type=A 200 - 0.295 ms
+Wed Dec 17 2025 4:12:22 [SERVER-NAME] info: GET /?dns=_vEBAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE 200 - 0.295 ms
+Wed Dec 17 2025 4:12:22 [SERVER-NAME] info: GET /?name=example.com&type=A 200 - 0.575 ms

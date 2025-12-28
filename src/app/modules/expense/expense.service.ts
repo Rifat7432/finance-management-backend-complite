@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Expense } from './expense.model';
 import AppError from '../../../errors/AppError';
 import { IExpense } from './expense.interface';
-import { startOfMonth, endOfMonth, startOfYear, endOfYear } from 'date-fns';
+import { startOfMonth, endOfMonth, startOfYear, endOfYear, startOfWeek, endOfWeek } from 'date-fns';
 // Create new expense
 const createExpenseToDB = async (payload: Partial<IExpense>, userId: string): Promise<IExpense> => {
      const newExpense = await Expense.create({ ...payload, userId });
@@ -13,8 +13,44 @@ const createExpenseToDB = async (payload: Partial<IExpense>, userId: string): Pr
 };
 
 // Get all expenses for a user
-const getUserExpensesFromDB = async (userId: string): Promise<IExpense[]> => {
-     const expenses = await Expense.find({ userId, isDeleted: false });
+const getUserExpensesFromDB = async (userId: string, query: Partial<IExpense>): Promise<IExpense[]> => {
+     const weekStart = startOfWeek(new Date());
+     const weekEnd = endOfWeek(new Date());
+     const monthStart = startOfMonth(new Date());
+     const monthEnd = endOfMonth(new Date());
+     const yearStart = startOfYear(new Date());
+     const yearEnd = endOfYear(new Date());
+     const expenses = await Expense.find({
+          isDeleted: false,
+          userId,
+          ...(query.frequency
+               ? query.frequency === 'weekly'
+                    ? {
+                           endDate: {
+                                // CHANGED FROM createdAt
+                                $gte: weekStart,
+                                $lte: weekEnd,
+                           },
+                      }
+                    : query.frequency === 'monthly'
+                      ? {
+                             endDate: {
+                                  // CHANGED FROM createdAt
+                                  $gte: monthStart,
+                                  $lte: monthEnd,
+                             },
+                        }
+                      : query.frequency === 'yearly'
+                        ? {
+                               endDate: {
+                                    // CHANGED FROM createdAt
+                                    $gte: yearStart,
+                                    $lte: yearEnd,
+                               },
+                          }
+                        : { frequency: query.frequency }
+               : {}),
+     });
      return expenses;
 };
 // Get all expenses for a user by frequency

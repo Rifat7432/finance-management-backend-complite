@@ -32,7 +32,7 @@ const createExpense = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
 // Get all user expenses
 const getUserExpenses = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req.user;
-    const result = yield expense_service_1.ExpenseService.getUserExpensesFromDB(user.id);
+    const result = yield expense_service_1.ExpenseService.getUserExpensesFromDB(user.id, req.query);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,

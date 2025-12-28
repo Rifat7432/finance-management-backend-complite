@@ -6,6 +6,11 @@ import { NotificationSettings } from '../notificationSettings/notificationSettin
 import { Notification } from '../notification/notification.model';
 import { firebaseHelper } from '../../../helpers/firebaseHelper';
 import QueryBuilder from '../../builder/QueryBuilder';
+import { emailTemplate } from '../../../shared/emailTemplate';
+import { emailHelper } from '../../../helpers/emailHelper';
+import config from '../../../config';
+
+
 
 const createAppointmentToDB = async (data: Partial<IAppointment>, userId: string): Promise<IAppointment | null> => {
      const { date, timeSlot, ...rest } = data;
@@ -83,6 +88,26 @@ const createAppointmentToDB = async (data: Partial<IAppointment>, userId: string
                read: false,
           });
      }
+const appointmentValues = {
+  adminEmail: config.email.user,
+  userName: appointment.name,
+  userEmail: appointment.email,
+  title: appointment.title,
+  number: appointment.number,
+  bestContact: appointment.bestContact,
+  attendant: appointment.attendant,
+  isChild: appointment.isChild,
+  approxIncome: appointment.approxIncome,
+  investment: appointment.investment,
+  discuss: appointment.discuss,
+  reachingFor: appointment.reachingFor,
+  ask: appointment.ask,
+  date: appointment.date,
+  timeSlot: appointment.timeSlot,
+};
+
+const template = emailTemplate.adminAppointmentAlert(appointmentValues);
+await emailHelper.sendEmailForAdmin(template);
 
      return appointment;
 };

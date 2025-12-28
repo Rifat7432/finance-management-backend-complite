@@ -26,8 +26,40 @@ const createExpenseToDB = (payload, userId) => __awaiter(void 0, void 0, void 0,
     return newExpense;
 });
 // Get all expenses for a user
-const getUserExpensesFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const expenses = yield expense_model_1.Expense.find({ userId, isDeleted: false });
+const getUserExpensesFromDB = (userId, query) => __awaiter(void 0, void 0, void 0, function* () {
+    const weekStart = (0, date_fns_1.startOfWeek)(new Date());
+    const weekEnd = (0, date_fns_1.endOfWeek)(new Date());
+    const monthStart = (0, date_fns_1.startOfMonth)(new Date());
+    const monthEnd = (0, date_fns_1.endOfMonth)(new Date());
+    const yearStart = (0, date_fns_1.startOfYear)(new Date());
+    const yearEnd = (0, date_fns_1.endOfYear)(new Date());
+    const expenses = yield expense_model_1.Expense.find(Object.assign({ isDeleted: false, userId }, (query.frequency
+        ? query.frequency === 'weekly'
+            ? {
+                endDate: {
+                    // CHANGED FROM createdAt
+                    $gte: weekStart,
+                    $lte: weekEnd,
+                },
+            }
+            : query.frequency === 'monthly'
+                ? {
+                    endDate: {
+                        // CHANGED FROM createdAt
+                        $gte: monthStart,
+                        $lte: monthEnd,
+                    },
+                }
+                : query.frequency === 'yearly'
+                    ? {
+                        endDate: {
+                            // CHANGED FROM createdAt
+                            $gte: yearStart,
+                            $lte: yearEnd,
+                        },
+                    }
+                    : { frequency: query.frequency }
+        : {})));
     return expenses;
 });
 // Get all expenses for a user by frequency

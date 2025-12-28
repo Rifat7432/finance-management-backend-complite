@@ -15,6 +15,11 @@ const createLoginZodSchema = zod_1.z.object({
         password: zod_1.z.string({ required_error: 'Password is required' }),
     }),
 });
+const createLogoutZodSchema = zod_1.z.object({
+    body: zod_1.z.object({
+        deviceToken: zod_1.z.string().optional(),
+    }),
+});
 const createForgetPasswordZodSchema = zod_1.z.object({
     body: zod_1.z.object({
         email: zod_1.z.string({ required_error: 'Email is required' }),
@@ -45,4 +50,5 @@ exports.AuthValidation = {
     createLoginZodSchema,
     createResetPasswordZodSchema,
     createChangePasswordZodSchema,
+    createLogoutZodSchema,
 };

@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_cron_1 = __importDefault(require("node-cron"));
 const expense_model_1 = require("../modules/expense/expense.model");
 const date_fns_1 = require("date-fns");
-/**
- * Determines whether today matches the creation day
- * based on frequency.
- */
+/** 🌍 Helper to get current UK time */
+const nowUK = () => {
+    return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+};
+/** Determines whether today matches the creation day based on frequency */
 const shouldCreateToday = (createdAtDate, frequency) => {
-    const today = new Date();
+    const today = nowUK();
     const createdAt = new Date(createdAtDate);
     switch (frequency) {
         case 'weekly':
@@ -33,9 +34,7 @@ const shouldCreateToday = (createdAtDate, frequency) => {
             return false;
     }
 };
-/**
- * Returns the next expense date based on frequency.
- */
+/** Returns the next expense date based on frequency */
 const getNextExpenseDate = (fromDate, frequency) => {
     const baseDate = new Date(fromDate);
     switch (frequency) {
@@ -49,29 +48,27 @@ const getNextExpenseDate = (fromDate, frequency) => {
             return baseDate;
     }
 };
-/**
- * Cron job: Runs daily at 00:10
- */
+/** Cron job: runs every 10 seconds (for testing) in UK time */
 node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('🔄 Running recurring expense automation...');
+    console.log('🔄 Running recurring expense automation (UK time)...');
     try {
-        const startOfToday = (0, date_fns_1.startOfDay)(new Date());
-        const endOfToday = new Date(startOfToday);
+        const today = (0, date_fns_1.startOfDay)(nowUK());
+        const startOfToday = today;
+        const endOfToday = new Date(today);
         endOfToday.setHours(23, 59, 59, 999);
-        const previousWeekStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subWeeks)(startOfToday, 1));
-        const previousMonthStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subMonths)(startOfToday, 1));
-        const previousYearStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subYears)(startOfToday, 1));
+        const previousWeekStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subWeeks)(today, 1));
+        const previousMonthStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subMonths)(today, 1));
+        const previousYearStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subYears)(today, 1));
         const recurringExpenses = yield expense_model_1.Expense.find({
             isDeleted: false,
             $or: [
-                { frequency: 'weekly', createdAt: { $gte: previousWeekStart, $lt: startOfToday } },
-                { frequency: 'monthly', createdAt: { $gte: previousMonthStart, $lt: startOfToday } },
-                { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: startOfToday } },
+                { frequency: 'weekly', createdAt: { $gte: previousWeekStart, $lt: today } },
+                { frequency: 'monthly', createdAt: { $gte: previousMonthStart, $lt: today } },
+                { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
             ],
         }).lean();
         let createdCount = 0;
         let skippedCount = 0;
-        const today = (0, date_fns_1.startOfDay)(new Date());
         for (const expense of recurringExpenses) {
             const { createdAt, frequency, endDate } = expense;
             if (!shouldCreateToday(createdAt, frequency)) {
@@ -80,17 +77,17 @@ node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 
             }
             // Calculate next recurrence
             const nextExpenseDate = (0, date_fns_1.startOfDay)(getNextExpenseDate(createdAt, frequency));
-            // Skip if the schedule's endDate has passed
+            // Skip if endDate has passed
             if (new Date(endDate) < today || new Date(endDate) < new Date(nextExpenseDate)) {
                 skippedCount++;
                 continue;
             }
-            // ✅ Create only if nextExpenseDate is TODAY
+            // Only create if nextExpenseDate is today
             if (!(0, date_fns_1.isSameDay)(nextExpenseDate, today)) {
                 skippedCount++;
                 continue;
             }
-            // Check if an expense already exists for that user on the same recurrence date
+            // Avoid duplicates
             const exists = yield expense_model_1.Expense.exists({
                 userId: expense.userId,
                 name: expense.name,
@@ -103,7 +100,7 @@ node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 
                 skippedCount++;
                 continue;
             }
-            // ✅ Create a new expense
+            // ✅ Create expense
             yield expense_model_1.Expense.create({
                 name: expense.name,
                 amount: expense.amount,
@@ -118,4 +115,6 @@ node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 
     catch (error) {
         console.error('❌ Error during expense automation:', error);
     }
-}));
+}), {
+    timezone: 'Europe/London', // 🇬🇧 UK time
+});

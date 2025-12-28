@@ -1,0 +1,12 @@
+Wed Dec 17 2025 17:1:12 [SERVER-NAME] info: GET / 200 - 0.818 ms
+Wed Dec 17 2025 17:3:21 [SERVER-NAME] info: GET / 200 - 0.442 ms
+Wed Dec 17 2025 17:37:33 [SERVER-NAME] info: GET / 200 - 0.323 ms
+Wed Dec 17 2025 17:37:34 [SERVER-NAME] info: GET / 200 - 0.627 ms
+Wed Dec 17 2025 17:56:44 [SERVER-NAME] info: GET /api/v1/expenses/ 304 - 308.560 ms
+Wed Dec 17 2025 17:56:53 [SERVER-NAME] info: GET /api/v1/analytics/ 304 - 612.660 ms
+Wed Dec 17 2025 17:56:53 [SERVER-NAME] info: GET /api/v1/analytics/user-last-update 304 - 750.333 ms
+Wed Dec 17 2025 17:56:54 [SERVER-NAME] info: GET /api/v1/incomes/ 304 - 300.573 ms
+Wed Dec 17 2025 17:58:15 [SERVER-NAME] info: GET /api/v1/incomes/?frequency 200 - 306.168 ms
+Wed Dec 17 2025 17:58:15 [SERVER-NAME] info: GET /api/v1/notifications/ 304 - 452.074 ms
+Wed Dec 17 2025 17:59:3 [SERVER-NAME] info: GET /api/v1/incomes/?frequency=function%20(a0)%20%7B%20%5Bbytecode%5D%20%7D 200 - 299.970 ms
+Wed Dec 17 2025 17:59:3 [SERVER-NAME] info: GET /api/v1/notifications/ 304 - 458.431 ms

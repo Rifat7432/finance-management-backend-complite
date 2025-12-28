@@ -21,7 +21,10 @@ const notificationSettings_model_1 = require("../notificationSettings/notificati
 const firebaseHelper_1 = require("../../../helpers/firebaseHelper");
 const notification_model_1 = require("../notification/notification.model");
 // import { IUserWithId } from '../../../types/auth';
-const createDateNightToDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+const emailTemplate_1 = require("../../../shared/emailTemplate");
+const emailHelper_1 = require("../../../helpers/emailHelper");
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+const createDateNightToDB = (userId, payload, sendEmilNotification) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     // 1️⃣ Create the new Date Night document
     const newDateNight = yield dateNight_model_1.DateNight.create(Object.assign(Object.assign({}, payload), { userId }));
@@ -35,7 +38,7 @@ const createDateNightToDB = (userId, payload) => __awaiter(void 0, void 0, void 
     const dateStr = newDateNight.date ? new Date(newDateNight.date).toLocaleDateString() : 'N/A';
     const timeStr = newDateNight.time || 'N/A';
     // 4️⃣ Send push notification (if allowed and device tokens exist)
-    if (userSetting === null || userSetting === void 0 ? void 0 : userSetting.appointmentNotification) {
+    if (userSetting === null || userSetting === void 0 ? void 0 : userSetting.dateNightNotification) {
         const tokens = (_a = userSetting.deviceTokenList) !== null && _a !== void 0 ? _a : [];
         if (tokens.length > 0) {
             yield firebaseHelper_1.firebaseHelper.sendNotification([
@@ -61,9 +64,13 @@ const createDateNightToDB = (userId, payload) => __awaiter(void 0, void 0, void 
     if (!partnerId) {
         return newDateNight;
     }
+    const partnerInfo = yield user_model_1.User.findById(partnerId);
+    if (!partnerInfo) {
+        return newDateNight;
+    }
     const partnerSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: partnerId });
     // 4️⃣ Send push notification (if allowed and device tokens exist)
-    if (partnerSetting === null || partnerSetting === void 0 ? void 0 : partnerSetting.appointmentNotification) {
+    if (partnerSetting === null || partnerSetting === void 0 ? void 0 : partnerSetting.dateNightNotification) {
         const tokens = (_b = partnerSetting.deviceTokenList) !== null && _b !== void 0 ? _b : [];
         if (tokens.length > 0) {
             yield firebaseHelper_1.firebaseHelper.sendNotification([
@@ -84,6 +91,18 @@ const createDateNightToDB = (userId, payload) => __awaiter(void 0, void 0, void 
             type: 'ALERT',
             read: false,
         });
+    }
+    if (sendEmilNotification) {
+        const values = {
+            email: partnerInfo.email,
+            name: capitalize(user.name),
+            partnerName: capitalize(partnerInfo.name),
+            title: 'New Date Night Created 💖',
+            message: `Your date night is scheduled for ${dateStr} at ${timeStr}.`,
+            location: newDateNight === null || newDateNight === void 0 ? void 0 : newDateNight.location,
+        };
+        const createAccountTemplate = emailTemplate_1.emailTemplate.partnerDateNightAlert(values);
+        yield emailHelper_1.emailHelper.sendEmail(createAccountTemplate);
     }
     return newDateNight;
 });

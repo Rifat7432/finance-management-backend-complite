@@ -20,6 +20,10 @@ const income_model_1 = require("../modules/income/income.model");
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const user_model_1 = require("../modules/user/user.model");
 const savingGoal_model_1 = require("../modules/savingGoal/savingGoal.model");
+// Helper to get current UK time
+const nowUK = () => {
+    return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+};
 // ========================================================
 // === Helper Function: getAnalyticsFromDB (per user) =====
 // ========================================================
@@ -28,7 +32,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
     const user = yield user_model_1.User.isExistUserById(userId);
     if (!user)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
-    const now = new Date();
+    const now = nowUK();
     const start = (0, date_fns_1.startOfMonth)(now);
     const end = (0, date_fns_1.endOfMonth)(now);
     const result = yield income_model_1.Income.aggregate([
@@ -184,7 +188,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
 // === Cron Job: Runs end of every month ==================
 // ========================================================
 const scheduleMonthlyAnalyticsJob = () => __awaiter(void 0, void 0, void 0, function* () {
-    const now = new Date();
+    const now = nowUK();
     const end = (0, date_fns_1.endOfMonth)(now);
     // Run only if this is actually the last day of the month
     // if (now.getDate() !== end.getDate()) return;
@@ -206,7 +210,7 @@ const scheduleMonthlyAnalyticsJob = () => __awaiter(void 0, void 0, void 0, func
             while (remainingDisposal > 0 && savingGoals.length > 0) {
                 const totalTarget = savingGoals.reduce((acc, g) => acc + g.monthlyTarget, 0);
                 // Remove goals that are already complete
-                const incompleteGoals = savingGoals.filter(g => {
+                const incompleteGoals = savingGoals.filter((g) => {
                     const remainingAmount = g.totalAmount - g.savedMoney;
                     return remainingAmount > 0;
                 });
@@ -233,7 +237,7 @@ const scheduleMonthlyAnalyticsJob = () => __awaiter(void 0, void 0, void 0, func
                     remainingDisposal -= actualShare;
                 }
                 // If there's still money left and goals uncompleted, redistribute excess
-                if (remainingDisposal > 0.01 && incompleteGoals.some(g => (g.totalAmount - g.savedMoney) > 0)) {
+                if (remainingDisposal > 0.01 && incompleteGoals.some((g) => g.totalAmount - g.savedMoney > 0)) {
                     continue; // Loop again to redistribute to remaining goals
                 }
                 else {
@@ -253,4 +257,4 @@ node_cron_1.default.schedule('55 23 28-31 * *', () => __awaiter(void 0, void 0, 
     catch (err) {
         console.error('❌ Monthly Analytics Scheduler error:', err);
     }
-}));
+}), { timezone: 'Europe/London' });

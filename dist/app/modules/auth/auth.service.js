@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthService = void 0;
+exports.AuthService = exports.getLoginVideo = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const http_status_codes_1 = require("http-status-codes");
 const config_1 = __importDefault(require("../../../config"));
@@ -27,6 +27,19 @@ const cryptoToken_1 = __importDefault(require("../../../utils/cryptoToken"));
 const verifyToken_1 = require("../../../utils/verifyToken");
 const createToken_1 = require("../../../utils/createToken");
 const notificationSettings_model_1 = require("../notificationSettings/notificationSettings.model");
+const getLoginVideo = (loginCount) => {
+    switch (loginCount) {
+        case 1:
+            return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/How_to_create_a_budget_v3_1_1_.mp4';
+        case 2:
+            return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/How_to_create_a_new_expenses_list_01_1_1_.mp4';
+        case 3:
+            return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/Using_the_Debt_Management_tool_1_1_.mp4';
+        default:
+            return null;
+    }
+};
+exports.getLoginVideo = getLoginVideo;
 //login
 const loginUserFromDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = payload;
@@ -75,11 +88,15 @@ const loginUserFromDB = (payload) => __awaiter(void 0, void 0, void 0, function*
             yield notificationSettings_model_1.NotificationSettings.create({ userId: isExistUser._id, deviceTokens: [payload.deviceToken] });
         }
     }
-    const jwtData = { id: isExistUser._id, role: isExistUser.role, email: isExistUser.email };
+    const jwtData = Object.assign({ id: isExistUser._id, role: isExistUser.role, email: isExistUser.email }, (isExistUser.partnerId ? { partnerId: isExistUser.partnerId } : {}));
     //create token
     const accessToken = jwtHelper_1.jwtHelper.createToken(jwtData, config_1.default.jwt.jwt_secret, config_1.default.jwt.jwt_expire_in);
     const refreshToken = jwtHelper_1.jwtHelper.createToken(jwtData, config_1.default.jwt.jwt_refresh_secret, config_1.default.jwt.jwt_refresh_expire_in);
-    return { accessToken, refreshToken };
+    yield user_model_1.User.findByIdAndUpdate(isExistUser._id, { $inc: { loginCount: 1 } }, { new: true });
+    // Determine which video to show
+    const videoToShow = (0, exports.getLoginVideo)(isExistUser.loginCount);
+    console.log(videoToShow);
+    return { accessToken, refreshToken, videoToShow };
 });
 //forget password
 const forgetPasswordToDB = (email) => __awaiter(void 0, void 0, void 0, function* () {
@@ -275,4 +292,28 @@ const refreshToken = (token) => __awaiter(void 0, void 0, void 0, function* () {
     const accessToken = jwtHelper_1.jwtHelper.createToken(jwtPayload, config_1.default.jwt.jwt_secret, config_1.default.jwt.jwt_expire_in);
     return { accessToken };
 });
-exports.AuthService = { verifyEmailToDB, loginUserFromDB, forgetPasswordToDB, resetPasswordToDB, changePasswordToDB, forgetPasswordByUrlToDB, resetPasswordByUrl, resendOtpFromDb, refreshToken };
+const logoutUserDevice = (userId, deviceToken) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield user_model_1.User.findById(userId);
+    if (!user) {
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
+    }
+    if (!deviceToken) {
+        return null;
+    }
+    yield notificationSettings_model_1.NotificationSettings.findOneAndUpdate({ userId }, {
+        $pull: { deviceTokenList: deviceToken },
+    }, { new: true });
+    return null;
+});
+exports.AuthService = {
+    verifyEmailToDB,
+    loginUserFromDB,
+    forgetPasswordToDB,
+    resetPasswordToDB,
+    changePasswordToDB,
+    forgetPasswordByUrlToDB,
+    resetPasswordByUrl,
+    resendOtpFromDb,
+    refreshToken,
+    logoutUserDevice,
+};

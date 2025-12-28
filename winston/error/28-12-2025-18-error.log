@@ -1,0 +1,7 @@
+Sun Dec 28 2025 18:14:15 [SERVER-NAME] error: GET /config.json 404 - 0.493 ms
+Sun Dec 28 2025 18:15:40 [SERVER-NAME] error: GET /.git/config 404 - 0.269 ms
+Sun Dec 28 2025 18:31:23 [SERVER-NAME] error: GET /+CSCOL+/Java.jar 404 - 0.332 ms
+Sun Dec 28 2025 18:31:24 [SERVER-NAME] error: GET /+CSCOE+/logon_forms.js 404 - 0.277 ms
+Sun Dec 28 2025 18:31:25 [SERVER-NAME] error: GET /+CSCOL+/a1.jar 404 - 0.270 ms
+Sun Dec 28 2025 18:31:26 [SERVER-NAME] error: GET /+CSCOE+/transfer.js 404 - 0.577 ms
+Sun Dec 28 2025 18:31:42 [SERVER-NAME] error: GET /.git/objects/pack/ 404 - 0.551 ms

@@ -1,0 +1,4 @@
+Thu Dec 25 2025 19:37:51 [SERVER-NAME] info: GET / 200 - 0.350 ms
+Thu Dec 25 2025 19:42:41 [SERVER-NAME] info: GET / 200 - 0.316 ms
+Thu Dec 25 2025 19:59:32 [SERVER-NAME] info: GET /api/v1/budgets/analytics 304 - 304.652 ms
+Thu Dec 25 2025 19:59:49 [SERVER-NAME] info: GET /api/v1/debts/insights 304 - 305.504 ms

@@ -1,0 +1,6 @@
+Thu Dec 18 2025 10:18:14 [SERVER-NAME] info: OPTIONS /api/v1/users?page=1&limit=10 204 - 0.240 ms
+Thu Dec 18 2025 10:18:14 [SERVER-NAME] info: OPTIONS /api/v1/admin/stats?year=2025 204 - 0.093 ms
+Thu Dec 18 2025 10:18:15 [SERVER-NAME] info: GET /api/v1/users?page=1&limit=10 304 - 307.994 ms
+Thu Dec 18 2025 10:18:15 [SERVER-NAME] info: GET /api/v1/admin/stats?year=2025 304 - 911.320 ms
+Thu Dec 18 2025 10:23:48 [SERVER-NAME] info: GET / 200 - 0.319 ms
+Thu Dec 18 2025 10:31:3 [SERVER-NAME] info: GET / 200 - 0.492 ms

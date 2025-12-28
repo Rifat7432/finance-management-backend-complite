@@ -16,6 +16,7 @@ exports.SavingGoalService = void 0;
 const http_status_codes_1 = require("http-status-codes");
 const savingGoal_model_1 = require("./savingGoal.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const createSavingGoalToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, totalAmount, monthlyTarget, date, savedMoney } = payload;
     const startDate = new Date(date);
@@ -32,16 +33,56 @@ const createSavingGoalToDB = (payload, userId) => __awaiter(void 0, void 0, void
         date: startDate.toISOString(),
         completeDate: completeDate.toISOString(),
         userId,
+        savedMoney,
     });
     return savingGoal;
 });
 const getUserSavingGoalsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d;
     // Get all goals for this user
     const goals = yield savingGoal_model_1.SavingGoal.find({ userId, isDeleted: false });
-    const totalCompletion = goals.reduce((sum, goal) => sum + goal.completionRation, 0);
-    const avgCompletion = totalCompletion / goals.length;
+    const savingGoal = yield savingGoal_model_1.SavingGoal.aggregate([
+        // 1️⃣ Filter user and remove deleted goals
+        {
+            $match: {
+                userId: new mongoose_1.default.Types.ObjectId(userId),
+                isDeleted: false,
+            },
+        },
+        // 2️⃣ Group totals
+        {
+            $group: {
+                _id: null,
+                totalSavedMoney: { $sum: '$savedMoney' },
+                totalGoalAmount: { $sum: '$totalAmount' },
+                // Weighted sum of completion ratios
+                weightedCompletionSum: {
+                    $sum: {
+                        $multiply: ['$completionRation', '$totalAmount'],
+                    },
+                },
+            },
+        },
+        // 3️⃣ Calculate overall completion rate (weighted average)
+        {
+            $project: {
+                _id: 0,
+                totalSavedMoney: 1,
+                savingGoalCompletionRate: {
+                    $cond: [
+                        { $eq: ['$totalGoalAmount', 0] },
+                        0,
+                        {
+                            $divide: ['$weightedCompletionSum', '$totalGoalAmount'],
+                        },
+                    ],
+                },
+            },
+        },
+    ]);
     return {
-        avgCompletion,
+        savingGoalCompletionRate: ((_a = savingGoal[0]) === null || _a === void 0 ? void 0 : _a.savingGoalCompletionRate) ? (_b = savingGoal[0]) === null || _b === void 0 ? void 0 : _b.savingGoalCompletionRate : 0,
+        totalSavedMoney: ((_c = savingGoal[0]) === null || _c === void 0 ? void 0 : _c.totalSavedMoney) ? (_d = savingGoal[0]) === null || _d === void 0 ? void 0 : _d.totalSavedMoney : 0,
         goals,
     };
 });

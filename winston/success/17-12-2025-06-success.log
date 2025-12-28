@@ -1,0 +1,7 @@
+Wed Dec 17 2025 6:4:54 [SERVER-NAME] info: GET /?XDEBUG_SESSION_START=phpstorm 200 - 1.206 ms
+Wed Dec 17 2025 6:23:4 [SERVER-NAME] info: GET / 200 - 0.335 ms
+Wed Dec 17 2025 6:24:24 [SERVER-NAME] info: GET / 200 - 0.331 ms
+Wed Dec 17 2025 6:32:8 [SERVER-NAME] info: GET / 200 - 0.311 ms
+Wed Dec 17 2025 6:34:15 [SERVER-NAME] info: GET / 200 - 0.297 ms
+Wed Dec 17 2025 6:49:7 [SERVER-NAME] info: GET / 200 - 0.410 ms
+Wed Dec 17 2025 6:58:53 [SERVER-NAME] info: GET / 200 - 0.314 ms

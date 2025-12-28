@@ -30,7 +30,16 @@ const storage = multer.diskStorage({
 
 // 🔹 File filter
 const filterFilter = (req: Request, file: any, cb: FileFilterCallback) => {
-  const imageTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/svg', 'image/webp', 'image/svg+xml'];
+ const imageTypes = [
+  'image/png',
+  'image/jpg',
+  'image/jpeg',
+  'image/svg',
+  'image/webp',
+  'image/svg+xml',
+  'image/gif'
+];
+
   const videoTypes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/x-msvideo', 'video/x-matroska', 'video/mpeg'];
 
   if (file.fieldname === 'image') {

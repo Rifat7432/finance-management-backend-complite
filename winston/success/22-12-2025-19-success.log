@@ -1,0 +1,8 @@
+Mon Dec 22 2025 19:0:43 [SERVER-NAME] info: GET /api/v1/budgets/ 200 - 300.983 ms
+Mon Dec 22 2025 19:8:18 [SERVER-NAME] info: GET / 200 - 0.771 ms
+Mon Dec 22 2025 19:13:49 [SERVER-NAME] info: GET / 200 - 0.579 ms
+Mon Dec 22 2025 19:25:23 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 304.294 ms
+Mon Dec 22 2025 19:25:47 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 301.214 ms
+Mon Dec 22 2025 19:25:49 [SERVER-NAME] info: GET /api/v1/analytics/ 304 - 607.668 ms
+Mon Dec 22 2025 19:25:49 [SERVER-NAME] info: GET /api/v1/analytics/user-last-update 304 - 751.213 ms
+Mon Dec 22 2025 19:37:51 [SERVER-NAME] info: GET / 200 - 0.431 ms

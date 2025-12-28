@@ -38,3 +38,30 @@ export type IPartnerRequest = {
      relation: string;
      requestId: string;
 };
+export type IPartnerDateNightAlert = {
+     email: string;
+     name: string; // receiver name
+     partnerName: string; // partner who created the date night
+     title: string;
+     message: string;
+     location: string;
+};
+
+
+export type IAdminAppointmentAlert = {
+  adminEmail: string;
+  userName: string;
+  userEmail: string;
+  title: string;
+  number: string;
+  bestContact: string;
+  attendant: string;
+  isChild: boolean;
+  approxIncome: number;
+  investment: number;
+  discuss?: string;
+  reachingFor: string;
+  ask: string;
+  date: string;
+  timeSlot: string;
+}

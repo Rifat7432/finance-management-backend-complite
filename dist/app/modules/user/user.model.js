@@ -97,6 +97,7 @@ const userSchema = new mongoose_1.Schema({
         },
         select: false,
     },
+    loginCount: { type: Number, default: 0 },
 }, { timestamps: true });
 // Exist User Check
 userSchema.statics.isExistUserById = (id) => __awaiter(void 0, void 0, void 0, function* () {

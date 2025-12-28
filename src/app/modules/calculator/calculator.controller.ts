@@ -6,7 +6,8 @@ import { CalculatorService } from './calculator.service';
 // Get Calculator results
 const getSavingCalculator = catchAsync(async (req, res) => {
      const payload = req.body; // Assumes Zod validation runs before this
-     const data = await CalculatorService.getSavingCalculatorFromDB(payload);
+          const userId = req.user?.id;
+     const data = await CalculatorService.getSavingCalculatorFromDB(payload,userId);
 
      sendResponse(res, {
           success: true,
@@ -18,7 +19,8 @@ const getSavingCalculator = catchAsync(async (req, res) => {
 // Get Calculator results
 const getLoanRepaymentCalculator = catchAsync(async (req, res) => {
      const payload = req.body; // Assumes Zod validation runs before this
-     const data = await CalculatorService.loanRepaymentCalculatorFromDB(payload);
+     const userId = req.user?.id;
+     const data = await CalculatorService.loanRepaymentCalculatorFromDB(payload,userId);
 
      sendResponse(res, {
           success: true,
@@ -30,7 +32,8 @@ const getLoanRepaymentCalculator = catchAsync(async (req, res) => {
 // Get Calculator results
 const getInflationCalculator = catchAsync(async (req, res) => {
      const payload = req.body; // Assumes Zod validation runs before this
-     const data = await CalculatorService.inflationCalculatorFromDB(payload);
+      const userId = req.user?.id;
+     const data = await CalculatorService.inflationCalculatorFromDB(payload,userId);
 
      sendResponse(res, {
           success: true,
@@ -42,7 +45,8 @@ const getInflationCalculator = catchAsync(async (req, res) => {
 // Get Calculator results
 const getHistoricalInflationCalculator = catchAsync(async (req, res) => {
      const payload = req.body; // Assumes Zod validation runs before this
-     const data = await CalculatorService.inflationCalculatorFromAPI(payload);
+       const userId = req.user?.id;
+     const data = await CalculatorService.inflationCalculatorFromAPI(payload,userId);
 
      sendResponse(res, {
           success: true,

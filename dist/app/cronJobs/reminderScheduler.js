@@ -23,25 +23,6 @@ const user_model_1 = require("../modules/user/user.model");
 // Prevent multiple simultaneous executions
 let isProcessing = false;
 /**
- * Convert a date + time + timezone to UTC Date
- * Uses Intl API for proper timezone conversion
- */
-function getAppointmentUTC(date, time, timeZone = 'Europe/London') {
-    const [hour, minute] = time.split(':').map(Number);
-    // Create date string in the format: YYYY-MM-DD HH:mm
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const dateTimeStr = `${year}-${month}-${day}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00`;
-    // Parse as local time in the specified timezone, then convert to UTC
-    const localDate = new Date(dateTimeStr);
-    const utcDate = new Date(localDate.toLocaleString('en-US', { timeZone: 'UTC' }));
-    const tzDate = new Date(localDate.toLocaleString('en-US', { timeZone }));
-    // Calculate offset and apply
-    const offset = tzDate.getTime() - utcDate.getTime();
-    return new Date(localDate.getTime() - offset);
-}
-/**
  * Helper: Sends both Firebase + DB notification safely
  */
 function sendNotificationAndSave(_a) {
@@ -71,15 +52,23 @@ function sendNotificationAndSave(_a) {
  */
 function processReminders(collectionName, Model, identifierKey) {
     return __awaiter(this, void 0, void 0, function* () {
+        // Get current time in milliseconds
         const now = new Date();
-        const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
-        // Add query timeout and limit results
+        // Get the UTC offset of Europe/London at this moment
+        const ukOffsetMinutes = now.getTimezoneOffset() - new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' })).getTimezoneOffset();
+        // Calculate current UK time as a Date object
+        const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
+        // Subtract 1 hour in milliseconds
+        const oneHourAfterUK = new Date(nowUK.getTime() + 59 * 60 * 1000);
+        const oneHourOneMinuteAfterUK = new Date(nowUK.getTime() + 60 * 60 * 1000);
+        // Query MongoDB using UTCDate
         const events = yield Model.find({
             isDeleted: false,
-            date: { $gte: oneHourAgo },
+            isRemainderSent: false,
+            UTCDate: { $gte: oneHourAfterUK, $lte: oneHourOneMinuteAfterUK }, // compare with UK-based time in UTC
         })
-            .limit(100) // Process max 100 events per run
-            .maxTimeMS(5000) // 5 second timeout
+            .limit(100)
+            .maxTimeMS(5000)
             .lean();
         console.log(`Processing ${events.length} ${collectionName} events`);
         for (const event of events) {
@@ -87,28 +76,21 @@ function processReminders(collectionName, Model, identifierKey) {
                 const userSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
                 if (!userSetting)
                     continue;
+                console.log('pass 1');
                 // Check if notifications are enabled
                 if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification)) {
                     continue;
                 }
                 // Use user's timezone or default to UK time
-                const timeZone = userSetting.timeZone || 'Europe/London';
-                const appointmentUTC = getAppointmentUTC(new Date(event.date), event.time, timeZone);
-                const diffMs = appointmentUTC.getTime() - now.getTime();
+                const appointmentUTC = event.UTCDate;
+                const diffMs = appointmentUTC.getTime() - nowUK.getTime();
                 const diffMin = diffMs / (60 * 1000);
                 // Check if it's within 1 hour window (59-61 minutes)
-                if (diffMin >= 59 && diffMin <= 61) {
-                    // Check if notification already sent
-                    const exists = yield notification_model_1.Notification.findOne({
-                        [`meta.${identifierKey}`]: event._id,
-                        receiver: event.userId,
-                    }).maxTimeMS(3000);
-                    if (exists)
-                        continue;
+                if (diffMin > 59 && diffMin < 61) {
                     const title = collectionName === 'DateNight' ? 'Date Night Reminder' : 'Appointment Reminder';
                     const message = collectionName === 'DateNight'
                         ? `Your plan "${event.plan}" at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`
-                        : `Your appointment scheduled at ${event.time} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`;
+                        : `Your appointment scheduled at ${event.timeSlot} on ${new Date(event.date).toDateString()} is coming up in 1 hour!`;
                     yield sendNotificationAndSave({
                         userSetting,
                         userId: event.userId,
@@ -126,23 +108,20 @@ function processReminders(collectionName, Model, identifierKey) {
                             // Fixed: Changed && to || in the condition
                             if (partnerSetting && partnerSetting.dateNightNotification) {
                                 // Check if partner already got notification
-                                const partnerExists = yield notification_model_1.Notification.findOne({
-                                    [`meta.${identifierKey}`]: event._id,
-                                    receiver: partnerId,
-                                }).maxTimeMS(3000);
-                                if (!partnerExists) {
-                                    yield sendNotificationAndSave({
-                                        userSetting: partnerSetting,
-                                        userId: partnerId,
-                                        title,
-                                        message,
-                                        meta: { [identifierKey]: event._id },
-                                        type: collectionName,
-                                    });
-                                }
+                                yield sendNotificationAndSave({
+                                    userSetting: partnerSetting,
+                                    userId: partnerId,
+                                    title,
+                                    message,
+                                    meta: { [identifierKey]: event._id },
+                                    type: collectionName,
+                                });
                             }
                         }
                     }
+                    yield Model.updateOne({ _id: event._id }, { $set: { isRemainderSent: true } })
+                        .maxTimeMS(3000)
+                        .exec();
                     console.log(`✅ Notification sent for ${collectionName}: ${event._id}`);
                 }
             }
@@ -184,6 +163,6 @@ function runReminderScheduler() {
         }
     });
 }
-node_cron_1.default.schedule('*/10 * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
+node_cron_1.default.schedule('*/1 * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
     yield runReminderScheduler();
-}));
+}), { timezone: 'Europe/London' });

@@ -3,6 +3,9 @@ import { Types } from 'mongoose';
 export interface IAppointment {
      _id?: Types.ObjectId;
      name: string;
+     title: string;
+     number: string;
+     bestContact: string;
      email: string;
      attendant: string;
      isChild: boolean;

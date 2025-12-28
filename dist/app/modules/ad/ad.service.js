@@ -35,9 +35,15 @@ const getSingleAdFromDB = (...args_1) => __awaiter(void 0, [...args_1], void 0, 
     const now = new Date();
     const pipeline = [
         {
-            $match: Object.assign(Object.assign({}, query), { isDeleted: false, startDate: { $lte: now }, endDate: { $gte: now } }),
+            $addFields: {
+                startDateObj: { $toDate: '$startDate' },
+                endDateObj: { $toDate: '$endDate' },
+            },
         },
-        { $sample: { size: 1 } },
+        {
+            $match: Object.assign(Object.assign({}, (query.category ? { category: query.category } : {})), { isDeleted: false, startDateObj: { $lte: now }, endDateObj: { $gte: now } }),
+        },
+        { $sample: { size: 1 } }, // pick one random ad
     ];
     const result = yield ad_model_1.Ad.aggregate(pipeline);
     return result.length > 0 ? result[0] : null;

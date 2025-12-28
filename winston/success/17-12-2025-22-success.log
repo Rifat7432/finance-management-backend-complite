@@ -1,0 +1,12 @@
+Wed Dec 17 2025 22:9:13 [SERVER-NAME] info: GET / 200 - 0.576 ms
+Wed Dec 17 2025 22:32:50 [SERVER-NAME] info: GET /api/v1/expenses/ 304 - 302.629 ms
+Wed Dec 17 2025 22:32:52 [SERVER-NAME] info: GET /api/v1/expenses/?frequency=monthly 304 - 299.580 ms
+Wed Dec 17 2025 22:32:54 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 300.636 ms
+Wed Dec 17 2025 22:34:10 [SERVER-NAME] info: GET /api/v1/budgets/type 200 - 302.880 ms
+Wed Dec 17 2025 22:34:23 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 299.786 ms
+Wed Dec 17 2025 22:34:25 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 308.745 ms
+Wed Dec 17 2025 22:34:33 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 299.167 ms
+Wed Dec 17 2025 22:34:47 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 300.350 ms
+Wed Dec 17 2025 22:34:54 [SERVER-NAME] info: GET /api/v1/budgets/type 304 - 300.054 ms
+Wed Dec 17 2025 22:43:14 [SERVER-NAME] info: GET / 200 - 0.378 ms
+Wed Dec 17 2025 22:44:34 [SERVER-NAME] info: GET / 200 - 0.340 ms

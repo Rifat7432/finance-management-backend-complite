@@ -10,7 +10,9 @@ import { welcome } from './utils/welcome';
 const app: Application = express();
 
 // 👉 Import the cron job here
+
 import './app/cronJobs/reminderScheduler'; // ✅ This runs the job on app start
+import './app/cronJobs/BudgetScheduler'; // ✅ This runs the job on app start
 import './app/cronJobs/dateNightScheduler'; // ✅ This runs the job on app start
 import './app/cronJobs/debtReminderScheduler'; // ✅ This runs the job on app start
 import './app/cronJobs/IncomeScheduler'; // ✅ This runs the job on app start
@@ -34,20 +36,21 @@ app.use(Morgan.errorHandler);
 // 🌐 CORS Middleware
 // ----------------------------
 
+
 app.use(
-     cors({
-          origin: ['http://localhost:3000', 'https://financial-management-dashboard-vert.vercel.app', 'https://dashboard.rehoapp.co.uk'], // ✅ no trailing slash
-          credentials: true,
-     }),
+  cors({
+    origin: "https://dashboard.rehoapp.co.uk",
+    credentials: true
+  })
 );
 
 // ----------------------------
 // 📦 Body Parsers
 // ----------------------------
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' })); // ✅ Increase limit
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// ----------------------------
+// ---------------------------
 // 📁 Static File Serving
 // ----------------------------
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));

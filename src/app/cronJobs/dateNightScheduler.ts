@@ -13,6 +13,7 @@ const getNextDateNightDate = (date: Date, repeatEvery: string): Date => {
      if (repeatEvery === 'Daily') return addDays(d, 1);
      if (repeatEvery === 'Weekly') return addWeeks(d, 1);
      if (repeatEvery === 'Monthly') return addMonths(d, 1);
+     if (repeatEvery === 'Quarterly') return addMonths(d, 3);
      if (repeatEvery === 'Yearly') return addYears(d, 1);
      return d;
 };
@@ -43,7 +44,7 @@ cron.schedule(
                const recurringDateNights = await DateNight.find({
                     isDeleted: false,
                     date: { $exists: true },
-                    repeatEvery: { $in: ['Daily', 'Weekly', 'Monthly', 'Yearly'] },
+                     repeatEvery: { $in: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'] },
                }).lean();
 
                let updated = 0,
@@ -58,7 +59,7 @@ cron.schedule(
 
                          const nextDate = getNextDateNightDate(dateNight.date!, dateNight.repeatEvery);
 
-                         await DateNight.updateOne({ _id: dateNight._id }, { $set: { date: nextDate } });
+                        await DateNight.updateOne({ _id: dateNight._id }, { $set: { date: nextDate, isRemainderSent: false } });
 
                          console.log(
                               `✅ Date Night Updated: ${dateNight.plan} → ${nextDate.toDateString()} at ${

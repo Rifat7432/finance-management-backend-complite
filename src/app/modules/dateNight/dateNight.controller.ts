@@ -5,7 +5,8 @@ import { DateNightService } from './dateNight.service';
 
 const createDateNight = catchAsync(async (req, res) => {
   const user = req.user
-  const result = await DateNightService.createDateNightToDB(user.id,req.body);
+      const {sendEmilNotification,...rest} = req.body
+     const result = await DateNightService.createDateNightToDB(user.id,rest,sendEmilNotification);
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.CREATED,

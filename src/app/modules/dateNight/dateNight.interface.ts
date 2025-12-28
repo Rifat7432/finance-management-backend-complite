@@ -4,7 +4,7 @@ export interface IDateNight extends Document {
      userId: Types.ObjectId;
      plan: string;
      budget: number;
-     repeatEvery: 'Daily' | 'Weekly' | 'Monthly' | 'Yearly';
+     repeatEvery: 'One-Off' | 'Daily' | 'Weekly' | 'Monthly' | 'Quarterly' | 'Yearly';
      date?: Date;
      time?: string;
      location?: string;

@@ -1,0 +1,14 @@
+Sat Dec 27 2025 20:8:57 [SERVER-NAME] error: GET /api/v1/analytics/ 401 - 1.642 ms
+Sat Dec 27 2025 20:8:57 [SERVER-NAME] error: GET /api/v1/analytics/user-last-update 401 - 1.296 ms
+Sat Dec 27 2025 20:8:57 [SERVER-NAME] error: GET /api/v1/notifications/ 401 - 1.150 ms
+Sat Dec 27 2025 20:9:1 [SERVER-NAME] error: GET /api/v1/contents/ 401 - 2.668 ms
+Sat Dec 27 2025 20:22:44 [SERVER-NAME] error: GET /.env 404 - 0.418 ms
+Sat Dec 27 2025 20:22:44 [SERVER-NAME] error: POST / 404 - 4.353 ms
+Sat Dec 27 2025 20:34:23 [SERVER-NAME] error: GET /api/v1/analytics/user-last-update 401 - 21.345 ms
+Sat Dec 27 2025 20:34:23 [SERVER-NAME] error: GET /api/v1/notifications/ 401 - 2.782 ms
+Sat Dec 27 2025 20:34:23 [SERVER-NAME] error: GET /api/v1/analytics/ 401 - 1.420 ms
+Sat Dec 27 2025 20:34:31 [SERVER-NAME] error: POST /api/v1/auth/logout 401 - 11.528 ms
+Sat Dec 27 2025 20:39:3 [SERVER-NAME] error: POST /api/v1/auth/logout 401 - 14123.721 ms
+Sat Dec 27 2025 20:41:37 [SERVER-NAME] error: POST /api/v1/auth/logout 401 - 3.348 ms
+Sat Dec 27 2025 20:46:35 [SERVER-NAME] error: GET /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application 404 - 0.275 ms
+Sat Dec 27 2025 20:49:44 [SERVER-NAME] error: GET /api/v1/date-nights/ 404 - 605.598 ms

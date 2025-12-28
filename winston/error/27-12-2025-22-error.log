@@ -1,0 +1,5 @@
+Sat Dec 27 2025 22:24:27 [SERVER-NAME] error: POST / 404 - 1.374 ms
+Sat Dec 27 2025 22:25:15 [SERVER-NAME] error: POST /api/v1/auth/forget-password 400 - 152.282 ms
+Sat Dec 27 2025 22:33:57 [SERVER-NAME] error: POST /api/v1/auth/logout 401 - 0.967 ms
+Sat Dec 27 2025 22:35:50 [SERVER-NAME] error: POST / 404 - 0.416 ms
+Sat Dec 27 2025 22:45:8 [SERVER-NAME] error: GET /SDK/webLanguage 404 - 0.377 ms

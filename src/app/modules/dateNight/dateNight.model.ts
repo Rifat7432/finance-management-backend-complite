@@ -42,7 +42,7 @@ const dateNightSchema = new Schema<IDateNight>(
           },
           repeatEvery: {
                type: String,
-               enum: ['Daily', 'Weekly', 'Monthly', 'Yearly'],
+               enum: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly','One-Off'],
                default: 'Monthly',
           },
           date: {

@@ -1,0 +1,4 @@
+Sun Dec 07 2025 15:6:23 [SERVER-NAME] info: GET / 200 - 0.458 ms
+Sun Dec 07 2025 15:46:16 [SERVER-NAME] info: GET / 200 - 0.536 ms
+Sun Dec 07 2025 15:47:48 [SERVER-NAME] info: GET /?phpinfo=-1 200 - 0.328 ms
+Sun Dec 07 2025 15:59:24 [SERVER-NAME] info: GET / 200 - 0.474 ms

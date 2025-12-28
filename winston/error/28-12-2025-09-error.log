@@ -1,0 +1,11 @@
+Sun Dec 28 2025 9:17:4 [SERVER-NAME] error: GET /webui/ 404 - 0.580 ms
+Sun Dec 28 2025 9:20:5 [SERVER-NAME] error: GET /favicon.ico 404 - 0.372 ms
+Sun Dec 28 2025 9:28:54 [SERVER-NAME] error: GET /.aws/config 404 - 0.328 ms
+Sun Dec 28 2025 9:29:4 [SERVER-NAME] error: GET /SDK/webLanguage 404 - 0.318 ms
+Sun Dec 28 2025 9:29:12 [SERVER-NAME] error: GET /geoserver/web/ 404 - 0.317 ms
+Sun Dec 28 2025 9:32:23 [SERVER-NAME] error: GET /.git/config 404 - 0.311 ms
+Sun Dec 28 2025 9:41:5 [SERVER-NAME] error: GET /tr/ 404 - 0.361 ms
+Sun Dec 28 2025 9:43:56 [SERVER-NAME] error: GET /.env 404 - 0.290 ms
+Sun Dec 28 2025 9:43:56 [SERVER-NAME] error: POST / 404 - 0.969 ms
+Sun Dec 28 2025 9:43:58 [SERVER-NAME] error: POST /api/v1/auth/login 400 - 491.489 ms
+Sun Dec 28 2025 9:44:59 [SERVER-NAME] error: POST /api/v1/auth/verify-email 400 - 152.370 ms

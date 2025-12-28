@@ -1,0 +1,15 @@
+Thu Dec 25 2025 17:3:14 [SERVER-NAME] info: GET /api/v1/analytics/user-last-update 304 - 822.820 ms
+Thu Dec 25 2025 17:3:14 [SERVER-NAME] info: GET /api/v1/analytics/ 304 - 873.469 ms
+Thu Dec 25 2025 17:3:29 [SERVER-NAME] info: GET /api/v1/budgets/analytics 304 - 312.197 ms
+Thu Dec 25 2025 17:3:37 [SERVER-NAME] info: GET /api/v1/date-nights/ 304 - 625.953 ms
+Thu Dec 25 2025 17:3:42 [SERVER-NAME] info: GET /api/v1/date-nights/ 304 - 622.214 ms
+Thu Dec 25 2025 17:3:44 [SERVER-NAME] info: GET /api/v1/analytics/user-last-update 304 - 772.574 ms
+Thu Dec 25 2025 17:3:44 [SERVER-NAME] info: GET /api/v1/analytics/ 304 - 782.039 ms
+Thu Dec 25 2025 17:3:46 [SERVER-NAME] info: GET /api/v1/debts/insights 304 - 316.817 ms
+Thu Dec 25 2025 17:4:19 [SERVER-NAME] info: GET /api/v1/budgets/analytics 304 - 313.018 ms
+Thu Dec 25 2025 17:5:38 [SERVER-NAME] info: GET /api/v1/contents/ 304 - 472.146 ms
+Thu Dec 25 2025 17:33:44 [SERVER-NAME] info: GET /api/v1/budgets/analytics 304 - 309.658 ms
+Thu Dec 25 2025 17:33:46 [SERVER-NAME] info: GET /api/v1/contents/ 304 - 473.963 ms
+Thu Dec 25 2025 17:33:52 [SERVER-NAME] info: GET /api/v1/budgets/analytics 304 - 305.208 ms
+Thu Dec 25 2025 17:33:55 [SERVER-NAME] info: GET /api/v1/debts/insights 304 - 307.189 ms
+Thu Dec 25 2025 17:35:15 [SERVER-NAME] info: GET / 200 - 0.320 ms

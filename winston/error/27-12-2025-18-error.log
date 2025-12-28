@@ -1,0 +1,17 @@
+Sat Dec 27 2025 18:25:16 [SERVER-NAME] error: GET /api/v1/analytics/ 401 - 2.848 ms
+Sat Dec 27 2025 18:25:16 [SERVER-NAME] error: GET /api/v1/analytics/user-last-update 401 - 1.895 ms
+Sat Dec 27 2025 18:25:16 [SERVER-NAME] error: GET /api/v1/notifications/ 401 - 1.354 ms
+Sat Dec 27 2025 18:27:10 [SERVER-NAME] error: POST / 404 - 0.434 ms
+Sat Dec 27 2025 18:27:13 [SERVER-NAME] error: GET /api/v1/incomes/ 401 - 1.682 ms
+Sat Dec 27 2025 18:27:18 [SERVER-NAME] error: GET /api/v1/analytics/user-last-update 401 - 2.639 ms
+Sat Dec 27 2025 18:27:18 [SERVER-NAME] error: GET /api/v1/analytics/ 401 - 2.391 ms
+Sat Dec 27 2025 18:27:19 [SERVER-NAME] error: GET /api/v1/expenses/ 401 - 3.976 ms
+Sat Dec 27 2025 18:27:26 [SERVER-NAME] error: GET /api/v1/expenses/ 401 - 1.748 ms
+Sat Dec 27 2025 18:27:27 [SERVER-NAME] error: GET /api/v1/analytics/ 401 - 1.428 ms
+Sat Dec 27 2025 18:27:27 [SERVER-NAME] error: GET /api/v1/analytics/user-last-update 401 - 1.501 ms
+Sat Dec 27 2025 18:27:29 [SERVER-NAME] error: GET /api/v1/saving-goals/ 401 - 1.791 ms
+Sat Dec 27 2025 18:27:32 [SERVER-NAME] error: GET /api/v1/analytics/ 401 - 1.552 ms
+Sat Dec 27 2025 18:27:32 [SERVER-NAME] error: GET /api/v1/analytics/user-last-update 401 - 1.412 ms
+Sat Dec 27 2025 18:27:36 [SERVER-NAME] error: GET /api/v1/budgets/type 401 - 2.023 ms
+Sat Dec 27 2025 18:28:2 [SERVER-NAME] error: POST /api/v1/calculator/loan-repayment-calculator 401 - 3.432 ms
+Sat Dec 27 2025 18:28:4 [SERVER-NAME] error: POST /api/v1/calculator/loan-repayment-calculator 401 - 3.026 ms

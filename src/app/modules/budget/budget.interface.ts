@@ -7,6 +7,7 @@ export interface IBudget extends Document {
      category: string;
      userId: Types.ObjectId;
      isDeleted: boolean;
+     createdAt: Date;
 }
 export type BudgetWithCreatedAt = {
      amount: number;

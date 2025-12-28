@@ -19,7 +19,7 @@ const createExpense = catchAsync(async (req, res) => {
 // Get all user expenses
 const getUserExpenses = catchAsync(async (req, res) => {
   const user: any = req.user;
-  const result = await ExpenseService.getUserExpensesFromDB(user.id);
+  const result = await ExpenseService.getUserExpensesFromDB(user.id,req.query);
   sendResponse(res, {
     success: true,
     statusCode: StatusCodes.OK,

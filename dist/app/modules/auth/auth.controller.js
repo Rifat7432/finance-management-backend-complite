@@ -41,7 +41,22 @@ const loginUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     if (config_1.default.node_env === 'production') {
         cookieOptions.sameSite = 'none';
     }
-    (0, sendResponse_1.default)(res, { success: true, statusCode: http_status_codes_1.StatusCodes.OK, message: 'User logged in', data: { accessToken: result.accessToken, refreshToken: result.refreshToken } });
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_codes_1.StatusCodes.OK,
+        message: 'User logged in',
+        data: { accessToken: result.accessToken, refreshToken: result.refreshToken, videoToShow: result.videoToShow },
+    });
+}));
+const loginOut = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = req.user;
+    const result = yield auth_service_1.AuthService.logoutUserDevice(user.id, req.body.deviceToken);
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_codes_1.StatusCodes.OK,
+        message: 'User logged out',
+        data: result,
+    });
 }));
 const forgetPassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.body.email;
@@ -86,4 +101,4 @@ const refreshToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
     const result = yield auth_service_1.AuthService.refreshToken(refreshToken);
     (0, sendResponse_1.default)(res, { statusCode: http_status_codes_1.StatusCodes.OK, success: true, message: 'Access token retrieved', data: result });
 }));
-exports.AuthController = { verifyEmail, loginUser, forgetPassword, resetPassword, changePassword, forgetPasswordByUrl, resetPasswordByUrl, resendOtp, refreshToken };
+exports.AuthController = { verifyEmail, loginUser, forgetPassword, resetPassword, changePassword, forgetPasswordByUrl, resetPasswordByUrl, resendOtp, refreshToken, loginOut };

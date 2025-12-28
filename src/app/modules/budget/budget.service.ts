@@ -3,6 +3,7 @@ import { Budget } from './budget.model';
 import AppError from '../../../errors/AppError';
 import { BudgetWithCreatedAt, IBudget } from './budget.interface';
 import { endOfMonth, endOfYear, startOfMonth, startOfYear } from 'date-fns';
+import { User } from '../user/user.model';
 
 const createBudgetToDB = async (payload: Partial<IBudget>, userId: string): Promise<IBudget> => {
      const newBudget = await Budget.create({ ...payload, userId });
@@ -21,11 +22,15 @@ const getUserBudgetsFromDB = async (userId: string): Promise<IBudget[]> => {
 };
 
 // Get all budgets for a user by type (personal/household) in current month
-export const getUserBudgetsByTypeFromDB = async (partnerId: string, userId: string, query: Partial<IBudget>): Promise<IBudget[]> => {
+export const getUserBudgetsByTypeFromDB = async (partnerId: string, userId: string, query: Partial<IBudget>) => {
+     const userInfo = await User.findById(userId);
+     if (!userInfo) {
+          throw new AppError(404, 'User not found');
+     }
      const today = new Date();
      const monthStart = startOfMonth(today);
      const monthEnd = endOfMonth(today);
-
+     const allBudgets: any[] = [];
      const budgets = await Budget.find({
           userId,
           isDeleted: false,
@@ -35,9 +40,14 @@ export const getUserBudgetsByTypeFromDB = async (partnerId: string, userId: stri
                $lte: monthEnd,
           },
      });
-     if (query.type === 'household' && partnerId) {
+     const addTaggedUserBudgets = budgets.map((budget) => ({
+          ...budget.toObject(),
+          taggedPartner: false,
+     }));
+     allBudgets.push(...addTaggedUserBudgets);
+     if (query.type === 'household' && userInfo.partnerId) {
           const partnerBudgets = await Budget.find({
-               userId: partnerId,
+               userId:  userInfo.partnerId,
                isDeleted: false,
                type: 'household',
                createdAt: {
@@ -45,18 +55,22 @@ export const getUserBudgetsByTypeFromDB = async (partnerId: string, userId: stri
                     $lte: monthEnd,
                },
           });
-          budgets.push(...partnerBudgets);
+          const addTaggedPartnerBudgets = partnerBudgets.map((budget) => ({
+               ...budget.toObject(),
+               taggedPartner: true,
+          }));
+          allBudgets.push(...addTaggedPartnerBudgets);
      }
-     return budgets;
+  const partnerInfo = await User.findById(userInfo.partnerId).select('name email image isDeleted status');
+     return { budgetData: allBudgets, partnerInfo };
 };
 
 // Yearly budget analytics for a given user
-export const getYearlyBudgetAnalyticsFromDB = async (userId: string, year?: number) => {
+const getYearlyBudgetAnalyticsFromDB = async (userId: string, year?: number) => {
      const targetYear = year || new Date().getFullYear();
      const yearStart = startOfYear(new Date(targetYear, 0, 1));
      const yearEnd = endOfYear(new Date(targetYear, 0, 1));
 
-     // Fetch all budgets created within the target year
      const budgets = await Budget.find({
           userId,
           isDeleted: false,
@@ -65,25 +79,52 @@ export const getYearlyBudgetAnalyticsFromDB = async (userId: string, year?: numb
                $lte: yearEnd,
           },
      })
-          .select('amount createdAt')
-          .lean<BudgetWithCreatedAt[]>();
+          .select('amount category createdAt')
+          .lean<
+               {
+                    amount: number;
+                    category: string;
+                    createdAt: Date;
+               }[]
+          >();
 
-     // Month names
      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-     // Initialize totals
-     const monthlyTotals = Array(12).fill(0);
+     // Initialize monthly structure
+     const monthlyData = Array.from({ length: 12 }, () => ({
+          totalBudget: 0,
+          essential: 0,
+          discretionary: 0,
+          savings: 0,
+     }));
 
-     // Sum amounts
      budgets.forEach((budget) => {
           const monthIndex = new Date(budget.createdAt).getMonth();
-          monthlyTotals[monthIndex] += budget.amount;
+          const amount = budget.amount;
+
+          monthlyData[monthIndex].totalBudget += amount;
+
+          switch (budget.category) {
+               case 'Essential(Needs)':
+                    monthlyData[monthIndex].essential += amount;
+                    break;
+
+               case 'Discretionary(Wants)':
+                    monthlyData[monthIndex].discretionary += amount;
+                    break;
+
+               case 'Savings':
+                    monthlyData[monthIndex].savings += amount;
+                    break;
+          }
      });
 
-     // Format output
      return monthNames.map((month, index) => ({
           month,
-          totalBudget: monthlyTotals[index],
+          totalBudget: monthlyData[index].totalBudget,
+          essential: monthlyData[index].essential,
+          discresonary: monthlyData[index].discretionary, // keeping your spelling
+          savings: monthlyData[index].savings,
      }));
 };
 

@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { IIncome } from './income.interface';
 import { Income } from './income.model';
 import AppError from '../../../errors/AppError';
-import { startOfMonth, endOfMonth } from 'date-fns';
+import { startOfMonth, endOfMonth, endOfYear, startOfYear } from 'date-fns';
 // Create new income
 const createIncomeToDB = async (payload: Partial<IIncome>, userId: string): Promise<IIncome> => {
      const newIncome = await Income.create({ ...payload, userId });
@@ -13,8 +13,34 @@ const createIncomeToDB = async (payload: Partial<IIncome>, userId: string): Prom
 };
 
 // Get incomes by user
-const getUserIncomesFromDB = async (userId: string): Promise<IIncome[]> => {
-     const incomes = await Income.find({ userId, isDeleted: false });
+const getUserIncomesFromDB = async (userId: string, query: Partial<IIncome>): Promise<IIncome[]> => {
+     const monthStart = startOfMonth(new Date());
+     const yearStart = startOfYear(new Date());
+     const monthEnd = endOfMonth(new Date());
+     const yearEnd = endOfYear(new Date());
+     const incomes = await Income.find({
+          isDeleted: false,
+          userId,
+          ...(query.frequency
+               ? query.frequency === 'monthly'
+                    ? {
+                           receiveDate: {
+                                // CHANGED FROM createdAt
+                                $gte: monthStart,
+                                $lte: monthEnd,
+                           },
+                      }
+                    : query.frequency === 'yearly'
+                      ? {
+                             receiveDate: {
+                                  // CHANGED FROM createdAt
+                                  $gte: yearStart,
+                                  $lte: yearEnd,
+                             },
+                        }
+                      : { frequency: query.frequency }
+               : {}),
+     });
      return incomes;
 };
 // Get incomes by user  by frequency

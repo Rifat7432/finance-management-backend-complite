@@ -3,6 +3,9 @@ import { z } from 'zod';
 const createAppointmentZodSchema = z.object({
   body: z.object({
     name: z.string({ required_error: 'Name is required' }).min(2),
+    title: z.string({ required_error: 'Title is required' }),
+    number: z.string({ required_error: 'Phone Number is required' }),
+    bestContact: z.string({ required_error: 'Best contact methord is required' }),
     email: z.string({ required_error: 'Email is required' }).email(),
     attendant: z.string({ required_error: 'Attendent is required' }),
     isChild: z.boolean({ required_error: 'isChild is required' }),
@@ -19,6 +22,9 @@ const createAppointmentZodSchema = z.object({
 const updateAppointmentZodSchema = z.object({
   body: z.object({
     name: z.string().optional(),
+    title: z.string().optional(),
+    number: z.string().optional(),
+    bestContact: z.string().optional(),
     email: z.string().email().optional(),
     attendant: z.string().optional(),
     isChild: z.boolean().optional(),

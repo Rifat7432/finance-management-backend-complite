@@ -32,7 +32,7 @@ const createIncome = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
 // Get all incomes for logged-in user
 const getUserIncomes = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = req.user;
-    const result = yield income_service_1.IncomeService.getUserIncomesFromDB(user.id);
+    const result = yield income_service_1.IncomeService.getUserIncomesFromDB(user.id, req.query);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,

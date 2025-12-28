@@ -26,8 +26,30 @@ const createIncomeToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, 
     return newIncome;
 });
 // Get incomes by user
-const getUserIncomesFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const incomes = yield income_model_1.Income.find({ userId, isDeleted: false });
+const getUserIncomesFromDB = (userId, query) => __awaiter(void 0, void 0, void 0, function* () {
+    const monthStart = (0, date_fns_1.startOfMonth)(new Date());
+    const yearStart = (0, date_fns_1.startOfYear)(new Date());
+    const monthEnd = (0, date_fns_1.endOfMonth)(new Date());
+    const yearEnd = (0, date_fns_1.endOfYear)(new Date());
+    const incomes = yield income_model_1.Income.find(Object.assign({ isDeleted: false, userId }, (query.frequency
+        ? query.frequency === 'monthly'
+            ? {
+                receiveDate: {
+                    // CHANGED FROM createdAt
+                    $gte: monthStart,
+                    $lte: monthEnd,
+                },
+            }
+            : query.frequency === 'yearly'
+                ? {
+                    receiveDate: {
+                        // CHANGED FROM createdAt
+                        $gte: yearStart,
+                        $lte: yearEnd,
+                    },
+                }
+                : { frequency: query.frequency }
+        : {})));
     return incomes;
 });
 // Get incomes by user  by frequency

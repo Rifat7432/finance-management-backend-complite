@@ -1,0 +1,7 @@
+Mon Dec 08 2025 20:14:10 [SERVER-NAME] info: OPTIONS /api/v1/users/profile 204 - 0.121 ms
+Mon Dec 08 2025 20:14:10 [SERVER-NAME] info: OPTIONS /api/v1/users?page=1&limit=10 204 - 0.081 ms
+Mon Dec 08 2025 20:14:10 [SERVER-NAME] info: OPTIONS /api/v1/admin/stats?year=2025 204 - 0.073 ms
+Mon Dec 08 2025 20:53:17 [SERVER-NAME] info: GET /api/v1/incomes/ 304 - 308.594 ms
+Mon Dec 08 2025 20:53:20 [SERVER-NAME] info: GET /api/v1/analytics/ 304 - 615.527 ms
+Mon Dec 08 2025 20:53:20 [SERVER-NAME] info: GET /api/v1/analytics/user-last-update 304 - 762.007 ms
+Mon Dec 08 2025 20:58:4 [SERVER-NAME] info: GET / 200 - 1.531 ms

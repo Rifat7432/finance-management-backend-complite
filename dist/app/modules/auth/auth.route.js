@@ -12,6 +12,7 @@ const validateRequest_1 = __importDefault(require("../../middleware/validateRequ
 const auth_1 = __importDefault(require("../../middleware/auth"));
 const router = express_1.default.Router();
 router.post('/login', (0, validateRequest_1.default)(auth_validation_1.AuthValidation.createLoginZodSchema), auth_controller_1.AuthController.loginUser);
+router.post('/logout', (0, auth_1.default)(), (0, validateRequest_1.default)(auth_validation_1.AuthValidation.createLogoutZodSchema), auth_controller_1.AuthController.loginOut);
 router.post('/refresh-token', auth_controller_1.AuthController.refreshToken);
 router.post('/verify-email', (0, validateRequest_1.default)(auth_validation_1.AuthValidation.createVerifyEmailZodSchema), auth_controller_1.AuthController.verifyEmail);
 router.post('/reset-password', (0, validateRequest_1.default)(auth_validation_1.AuthValidation.createResetPasswordZodSchema), auth_controller_1.AuthController.resetPassword);

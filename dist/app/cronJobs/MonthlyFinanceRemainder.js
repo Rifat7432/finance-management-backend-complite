@@ -124,4 +124,4 @@ node_cron_1.default.schedule('55 23 28-31 * *', () => __awaiter(void 0, void 0, 
     catch (err) {
         console.error('❌ Monthly Finance Reminder Scheduler error:', err);
     }
-}));
+}), { timezone: 'Europe/London' });

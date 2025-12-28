@@ -25,7 +25,7 @@ const appointment_model_1 = require("../appointment/appointment.model");
 const dateNight_model_1 = require("../dateNight/dateNight.model");
 // create user
 const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     const user = yield user_model_1.User.findById(userId).populate('partnerId', 'name email image');
     if (!user) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
@@ -37,7 +37,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
         {
             $match: {
                 userId: new mongoose_1.default.Types.ObjectId(userId),
-                createdAt: { $gte: start, $lte: end },
+                receiveDate: { $gte: start, $lte: end },
                 isDeleted: false,
             },
         },
@@ -55,7 +55,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
                     {
                         $match: {
                             $expr: {
-                                $and: [{ $eq: ['$userId', '$$userId'] }, { $gte: ['$createdAt', start] }, { $lte: ['$createdAt', end] }],
+                                $and: [{ $eq: ['$userId', '$$userId'] }, { $gte: ['$endDate', start] }, { $lte: ['$endDate', end] }],
                             },
                             isDeleted: false,
                         },
@@ -103,11 +103,10 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
                             $expr: {
                                 $and: [
                                     { $eq: ['$userId', '$$userId'] },
-                                    { $gte: ['$createdAt', start] },
-                                    { $lte: ['$createdAt', end] },
                                     { $gt: [{ $toDate: '$completeDate' }, new Date()] }, // convert string to date here
                                 ],
                             },
+                            isCompleted: false,
                             isDeleted: false,
                         },
                     },
@@ -126,7 +125,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
                 totalExpenses: {
                     $ifNull: [{ $arrayElemAt: ['$expenseData.totalExpenses', 0] }, 0],
                 },
-                budgetOnly: {
+                totalBudget: {
                     $ifNull: [{ $arrayElemAt: ['$budgetData.totalBudget', 0] }, 0],
                 },
                 savingGoalMonthly: {
@@ -136,9 +135,6 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
         },
         {
             $addFields: {
-                totalBudget: {
-                    $add: [{ $ifNull: ['$budgetOnly', 0] }, { $ifNull: ['$savingGoalMonthly', 0] }],
-                },
                 disposal: {
                     $subtract: [{ $ifNull: ['$totalIncome', 0] }, { $ifNull: ['$totalExpenses', 0] }],
                 },
@@ -151,6 +147,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
                 totalExpenses: 1,
                 totalBudget: 1,
                 disposal: 1,
+                savingGoalMonthly: 1,
             },
         },
     ]);
@@ -193,11 +190,18 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
             },
         },
     ]);
+    console.log();
+    console.log({
+        user,
+        analytics: result.length > 0 ? result[0] : {},
+        totalSavedMoney: ((_a = savingGoal[0]) === null || _a === void 0 ? void 0 : _a.totalSavedMoney) !== null ? (_b = savingGoal[0]) === null || _b === void 0 ? void 0 : _b.totalSavedMoney : 0,
+        savingGoalCompletionRate: ((_c = savingGoal[0]) === null || _c === void 0 ? void 0 : _c.savingGoalCompletionRate) !== null ? (_d = savingGoal[0]) === null || _d === void 0 ? void 0 : _d.savingGoalCompletionRate : 0,
+    });
     return {
         user,
         analytics: result.length > 0 ? result[0] : {},
-        savingGoalCompletionRate: ((_a = savingGoal[0]) === null || _a === void 0 ? void 0 : _a.savingGoalCompletionRate) ? (_b = savingGoal[0]) === null || _b === void 0 ? void 0 : _b.savingGoalCompletionRat : 0,
-        totalSavedMoney: ((_c = savingGoal[0]) === null || _c === void 0 ? void 0 : _c.totalSavedMoney) ? (_d = savingGoal[0]) === null || _d === void 0 ? void 0 : _d.totalSavedMoney : 0,
+        totalSavedMoney: ((_e = savingGoal[0]) === null || _e === void 0 ? void 0 : _e.totalSavedMoney) !== null ? (_f = savingGoal[0]) === null || _f === void 0 ? void 0 : _f.totalSavedMoney : 0,
+        savingGoalCompletionRate: ((_g = savingGoal[0]) === null || _g === void 0 ? void 0 : _g.savingGoalCompletionRate) !== null ? (_h = savingGoal[0]) === null || _h === void 0 ? void 0 : _h.savingGoalCompletionRate : 0,
     };
 });
 // ...existing code...

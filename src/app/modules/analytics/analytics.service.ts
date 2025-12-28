@@ -23,7 +23,7 @@ const getAnalyticsFromDB = async (userId: string) => {
           {
                $match: {
                     userId: new mongoose.Types.ObjectId(userId),
-                    createdAt: { $gte: start, $lte: end },
+                    receiveDate: { $gte: start, $lte: end },
                     isDeleted: false,
                },
           },
@@ -41,7 +41,7 @@ const getAnalyticsFromDB = async (userId: string) => {
                          {
                               $match: {
                                    $expr: {
-                                        $and: [{ $eq: ['$userId', '$$userId'] }, { $gte: ['$createdAt', start] }, { $lte: ['$createdAt', end] }],
+                                        $and: [{ $eq: ['$userId', '$$userId'] }, { $gte: ['$endDate', start] }, { $lte: ['$endDate', end] }],
                                    },
                                    isDeleted: false,
                               },
@@ -89,11 +89,10 @@ const getAnalyticsFromDB = async (userId: string) => {
                                    $expr: {
                                         $and: [
                                              { $eq: ['$userId', '$$userId'] },
-                                             { $gte: ['$createdAt', start] },
-                                             { $lte: ['$createdAt', end] },
                                              { $gt: [{ $toDate: '$completeDate' }, new Date()] }, // convert string to date here
                                         ],
                                    },
+                                   isCompleted: false,
                                    isDeleted: false,
                               },
                          },
@@ -113,7 +112,7 @@ const getAnalyticsFromDB = async (userId: string) => {
                     totalExpenses: {
                          $ifNull: [{ $arrayElemAt: ['$expenseData.totalExpenses', 0] }, 0],
                     },
-                    budgetOnly: {
+                    totalBudget: {
                          $ifNull: [{ $arrayElemAt: ['$budgetData.totalBudget', 0] }, 0],
                     },
                     savingGoalMonthly: {
@@ -123,9 +122,6 @@ const getAnalyticsFromDB = async (userId: string) => {
           },
           {
                $addFields: {
-                    totalBudget: {
-                         $add: [{ $ifNull: ['$budgetOnly', 0] }, { $ifNull: ['$savingGoalMonthly', 0] }],
-                    },
                     disposal: {
                          $subtract: [{ $ifNull: ['$totalIncome', 0] }, { $ifNull: ['$totalExpenses', 0] }],
                     },
@@ -138,6 +134,7 @@ const getAnalyticsFromDB = async (userId: string) => {
                     totalExpenses: 1,
                     totalBudget: 1,
                     disposal: 1,
+                    savingGoalMonthly: 1,
                },
           },
      ]);
@@ -184,12 +181,21 @@ const getAnalyticsFromDB = async (userId: string) => {
                },
           },
      ]);
+
+     console.log()
+         console.log({
+          user,
+          analytics: result.length > 0 ? result[0] : {},
+          totalSavedMoney: savingGoal[0]?.totalSavedMoney !== null ? savingGoal[0]?.totalSavedMoney : 0,
+          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate !== null ? savingGoal[0]?.savingGoalCompletionRate : 0,
+})
+
      return {
           user,
           analytics: result.length > 0 ? result[0] : {},
-          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate ? savingGoal[0]?.savingGoalCompletionRat : 0,
-          totalSavedMoney: savingGoal[0]?.totalSavedMoney ? savingGoal[0]?.totalSavedMoney : 0,
-     };
+          totalSavedMoney: savingGoal[0]?.totalSavedMoney !== null ? savingGoal[0]?.totalSavedMoney : 0,
+          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate !== null ? savingGoal[0]?.savingGoalCompletionRate : 0,
+}
 };
 
 // ...existing code...

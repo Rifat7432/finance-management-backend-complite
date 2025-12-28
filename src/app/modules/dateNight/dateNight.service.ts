@@ -8,7 +8,13 @@ import { firebaseHelper } from '../../../helpers/firebaseHelper';
 import { Notification } from '../notification/notification.model';
 // import { IUserWithId } from '../../../types/auth';
 
-export const createDateNightToDB = async (userId: string, payload: Partial<IDateNight>): Promise<IDateNight> => {
+import { emailTemplate } from '../../../shared/emailTemplate';
+import { emailHelper } from '../../../helpers/emailHelper';
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+
+
+export const createDateNightToDB = async (userId: string, payload: Partial<IDateNight>,sendEmilNotification: boolean): Promise<IDateNight> => {
      // 1️⃣ Create the new Date Night document
      const newDateNight = await DateNight.create({
           ...payload,
@@ -63,9 +69,13 @@ export const createDateNightToDB = async (userId: string, payload: Partial<IDate
      if (!partnerId) {
           return newDateNight;
      }
+   const partnerInfo = await User.findById(partnerId);
+     if (!partnerInfo) {
+          return newDateNight;
+     }
      const partnerSetting = await NotificationSettings.findOne({ userId: partnerId });
      // 4️⃣ Send push notification (if allowed and device tokens exist)
-     if (partnerSetting?.appointmentNotification) {
+     if (partnerSetting?.dateNightNotification) {
           const tokens = partnerSetting.deviceTokenList ?? [];
 
           if (tokens.length > 0) {
@@ -94,6 +104,19 @@ export const createDateNightToDB = async (userId: string, payload: Partial<IDate
                type: 'ALERT',
                read: false,
           });
+     }
+
+     if (sendEmilNotification) {
+          const values = {
+               email: partnerInfo.email,
+               name: capitalize(user.name),
+               partnerName: capitalize(partnerInfo.name),
+               title: 'New Date Night Created 💖',
+               message: `Your date night is scheduled for ${dateStr} at ${timeStr}.`,
+               location: newDateNight?.location as string,
+          };
+          const createAccountTemplate = emailTemplate.partnerDateNightAlert(values);
+          await emailHelper.sendEmail(createAccountTemplate);
      }
 
      return newDateNight;

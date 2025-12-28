@@ -64,6 +64,7 @@ notificationSchema.post('save', function (doc) {
                 return;
             }
             const notification = doc.toObject();
+            console.log(notification);
             const receiverId = notification.receiver.toString();
             logger_1.logger.info(colors_1.default.green(`Sending notification to user ${receiverId}`));
             socketHelper_1.socketIo.to(receiverId).emit('notification', notification);

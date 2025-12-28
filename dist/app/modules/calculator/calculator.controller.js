@@ -19,8 +19,10 @@ const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const calculator_service_1 = require("./calculator.service");
 // Get Calculator results
 const getSavingCalculator = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const payload = req.body; // Assumes Zod validation runs before this
-    const data = yield calculator_service_1.CalculatorService.getSavingCalculatorFromDB(payload);
+    const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
+    const data = yield calculator_service_1.CalculatorService.getSavingCalculatorFromDB(payload, userId);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
@@ -30,8 +32,10 @@ const getSavingCalculator = (0, catchAsync_1.default)((req, res) => __awaiter(vo
 }));
 // Get Calculator results
 const getLoanRepaymentCalculator = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const payload = req.body; // Assumes Zod validation runs before this
-    const data = yield calculator_service_1.CalculatorService.loanRepaymentCalculatorFromDB(payload);
+    const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
+    const data = yield calculator_service_1.CalculatorService.loanRepaymentCalculatorFromDB(payload, userId);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
@@ -41,8 +45,10 @@ const getLoanRepaymentCalculator = (0, catchAsync_1.default)((req, res) => __awa
 }));
 // Get Calculator results
 const getInflationCalculator = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const payload = req.body; // Assumes Zod validation runs before this
-    const data = yield calculator_service_1.CalculatorService.inflationCalculatorFromDB(payload);
+    const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
+    const data = yield calculator_service_1.CalculatorService.inflationCalculatorFromDB(payload, userId);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,
@@ -52,8 +58,10 @@ const getInflationCalculator = (0, catchAsync_1.default)((req, res) => __awaiter
 }));
 // Get Calculator results
 const getHistoricalInflationCalculator = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     const payload = req.body; // Assumes Zod validation runs before this
-    const data = yield calculator_service_1.CalculatorService.inflationCalculatorFromAPI(payload);
+    const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
+    const data = yield calculator_service_1.CalculatorService.inflationCalculatorFromAPI(payload, userId);
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_codes_1.StatusCodes.OK,

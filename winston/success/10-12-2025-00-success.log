@@ -1,0 +1,4 @@
+Wed Dec 10 2025 0:17:45 [SERVER-NAME] info: GET / 200 - 0.780 ms
+Wed Dec 10 2025 0:17:46 [SERVER-NAME] info: GET / 200 - 0.401 ms
+Wed Dec 10 2025 0:18:21 [SERVER-NAME] info: GET /?rest_route=/wp/v2/users/ 200 - 0.421 ms
+Wed Dec 10 2025 0:55:7 [SERVER-NAME] info: GET / 200 - 1.117 ms

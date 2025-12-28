@@ -1,0 +1,4 @@
+Sat Dec 27 2025 21:26:17 [SERVER-NAME] error: POST /api/v1/auth/forget-password 400 - 152.830 ms
+Sat Dec 27 2025 21:27:11 [SERVER-NAME] error: POST / 404 - 0.466 ms
+Sat Dec 27 2025 21:32:46 [SERVER-NAME] error: GET /favicon.ico 404 - 1.043 ms
+Sat Dec 27 2025 21:32:59 [SERVER-NAME] error: GET /robots.txt 404 - 0.374 ms

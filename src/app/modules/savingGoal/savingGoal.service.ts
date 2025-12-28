@@ -2,6 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { SavingGoal } from './savingGoal.model';
 import AppError from '../../../errors/AppError';
 import { ISavingGoal } from './savingGole.interface';
+import mongoose from 'mongoose';
 
 const createSavingGoalToDB = async (payload: Partial<ISavingGoal>, userId: string): Promise<ISavingGoal> => {
      const { name, totalAmount, monthlyTarget, date, savedMoney } = payload;
@@ -27,10 +28,51 @@ const createSavingGoalToDB = async (payload: Partial<ISavingGoal>, userId: strin
 const getUserSavingGoalsFromDB = async (userId: string) => {
      // Get all goals for this user
      const goals = await SavingGoal.find({ userId, isDeleted: false });
-     const totalCompletion = goals.reduce((sum, goal) => sum + goal.completionRation, 0);
-     const avgCompletion = totalCompletion / goals.length;
+          const savingGoal = await SavingGoal.aggregate([
+          // 1️⃣ Filter user and remove deleted goals
+          {
+               $match: {
+                    userId: new mongoose.Types.ObjectId(userId),
+                    isDeleted: false,
+               },
+          },
+
+          // 2️⃣ Group totals
+          {
+               $group: {
+                    _id: null,
+                    totalSavedMoney: { $sum: '$savedMoney' },
+                    totalGoalAmount: { $sum: '$totalAmount' },
+
+                    // Weighted sum of completion ratios
+                    weightedCompletionSum: {
+                         $sum: {
+                              $multiply: ['$completionRation', '$totalAmount'],
+                         },
+                    },
+               },
+          },
+
+          // 3️⃣ Calculate overall completion rate (weighted average)
+          {
+               $project: {
+                    _id: 0,
+                    totalSavedMoney: 1,
+                    savingGoalCompletionRate: {
+                         $cond: [
+                              { $eq: ['$totalGoalAmount', 0] },
+                              0,
+                              {
+                                   $divide: ['$weightedCompletionSum', '$totalGoalAmount'],
+                              },
+                         ],
+                    },
+               },
+          },
+     ]);
      return {
-          avgCompletion,
+          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate ? savingGoal[0]?.savingGoalCompletionRate : 0,
+          totalSavedMoney: savingGoal[0]?.totalSavedMoney ? savingGoal[0]?.totalSavedMoney : 0,
           goals,
      };
 };

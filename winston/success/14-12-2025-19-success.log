@@ -1,0 +1,73 @@
+Sun Dec 14 2025 19:2:15 [SERVER-NAME] info: GET / 200 - 1.153 ms
+Sun Dec 14 2025 19:13:54 [SERVER-NAME] info: GET / 200 - 0.522 ms
+Sun Dec 14 2025 19:32:0 [SERVER-NAME] info: OPTIONS /api/v1/users/profile 204 - 0.318 ms
+Sun Dec 14 2025 19:32:0 [SERVER-NAME] info: OPTIONS /api/v1/users?page=1&limit=10 204 - 0.121 ms
+Sun Dec 14 2025 19:32:0 [SERVER-NAME] info: OPTIONS /api/v1/admin/stats?year=2025 204 - 0.195 ms
+Sun Dec 14 2025 19:32:1 [SERVER-NAME] info: GET /api/v1/users/profile 200 - 306.471 ms
+Sun Dec 14 2025 19:32:1 [SERVER-NAME] info: GET /api/v1/users?page=1&limit=10 200 - 306.387 ms
+Sun Dec 14 2025 19:32:2 [SERVER-NAME] info: GET /api/v1/admin/stats?year=2025 200 - 914.880 ms
+Sun Dec 14 2025 19:32:12 [SERVER-NAME] info: OPTIONS /api/v1/auth/login 204 - 0.117 ms
+Sun Dec 14 2025 19:32:13 [SERVER-NAME] info: POST /api/v1/auth/login 200 - 658.837 ms
+Sun Dec 14 2025 19:32:20 [SERVER-NAME] info: OPTIONS /api/v1/ad/?page=1 204 - 0.111 ms
+Sun Dec 14 2025 19:32:21 [SERVER-NAME] info: GET /api/v1/ad/?page=1 200 - 463.363 ms
+Sun Dec 14 2025 19:32:24 [SERVER-NAME] info: OPTIONS /api/v1/appointments/all/appointment?searchTerm= 204 - 0.137 ms
+Sun Dec 14 2025 19:32:25 [SERVER-NAME] info: GET /api/v1/appointments/all/appointment?searchTerm= 304 - 466.277 ms
+Sun Dec 14 2025 19:32:28 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1 204 - 0.114 ms
+Sun Dec 14 2025 19:32:29 [SERVER-NAME] info: GET /api/v1/contents/?page=1 304 - 459.323 ms
+Sun Dec 14 2025 19:37:48 [SERVER-NAME] info: OPTIONS /api/v1/admin/stats?year=2025 204 - 0.124 ms
+Sun Dec 14 2025 19:37:48 [SERVER-NAME] info: OPTIONS /api/v1/users?page=1&limit=10 204 - 0.100 ms
+Sun Dec 14 2025 19:37:49 [SERVER-NAME] info: GET /api/v1/users?page=1&limit=10 304 - 303.346 ms
+Sun Dec 14 2025 19:37:50 [SERVER-NAME] info: GET /api/v1/admin/stats?year=2025 304 - 909.374 ms
+Sun Dec 14 2025 19:37:51 [SERVER-NAME] info: GET / 200 - 0.386 ms
+Sun Dec 14 2025 19:38:53 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1 204 - 0.332 ms
+Sun Dec 14 2025 19:38:54 [SERVER-NAME] info: GET /api/v1/contents/?page=1 304 - 457.483 ms
+Sun Dec 14 2025 19:39:0 [SERVER-NAME] info: OPTIONS /api/v1/ad/?page=1 204 - 0.132 ms
+Sun Dec 14 2025 19:39:0 [SERVER-NAME] info: GET /api/v1/ad/?page=1 304 - 457.228 ms
+Sun Dec 14 2025 19:39:53 [SERVER-NAME] info: OPTIONS /api/v1/auth/login 204 - 0.111 ms
+Sun Dec 14 2025 19:39:54 [SERVER-NAME] info: POST /api/v1/auth/login 200 - 647.791 ms
+Sun Dec 14 2025 19:39:55 [SERVER-NAME] info: OPTIONS /api/v1/users?page=1&limit=10 204 - 0.107 ms
+Sun Dec 14 2025 19:39:55 [SERVER-NAME] info: OPTIONS /api/v1/admin/stats?year=2025 204 - 0.086 ms
+Sun Dec 14 2025 19:39:55 [SERVER-NAME] info: GET /api/v1/users?page=1&limit=10 304 - 305.271 ms
+Sun Dec 14 2025 19:39:56 [SERVER-NAME] info: GET /api/v1/admin/stats?year=2025 304 - 915.434 ms
+Sun Dec 14 2025 19:40:0 [SERVER-NAME] info: OPTIONS /api/v1/users?searchTerm=&status=all&page=1&limit=10 204 - 0.113 ms
+Sun Dec 14 2025 19:40:0 [SERVER-NAME] info: GET /api/v1/users?searchTerm=&status=all&page=1&limit=10 200 - 305.460 ms
+Sun Dec 14 2025 19:40:11 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1 204 - 0.155 ms
+Sun Dec 14 2025 19:40:12 [SERVER-NAME] info: GET /api/v1/contents/?page=1 304 - 455.725 ms
+Sun Dec 14 2025 19:43:5 [SERVER-NAME] info: OPTIONS /api/v1/contents/ 204 - 0.126 ms
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: [32mSending notification to user 69260f5d9260c8cda975ea9c[39m
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: [32mSending notification to user 693db9774947be67edb20d94[39m
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: [32mSending notification to user 6931dbfbc277de3e636a1076[39m
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: [32mSending notification to user 6924a7589260c8cda975e825[39m
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: [32mSending notification to user 692f3f98c277de3e6369f4a5[39m
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: [32mSending notification to user 691f4e0ee4f770a771ad4a2e[39m
+Sun Dec 14 2025 19:43:15 [SERVER-NAME] info: POST /api/v1/contents/ 201 - 3937.915 ms
+Sun Dec 14 2025 19:43:16 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1 204 - 0.101 ms
+Sun Dec 14 2025 19:43:16 [SERVER-NAME] info: GET /api/v1/contents/?page=1 200 - 455.520 ms
+Sun Dec 14 2025 19:43:30 [SERVER-NAME] info: OPTIONS /api/v1/users/profile 204 - 0.113 ms
+Sun Dec 14 2025 19:43:30 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1 204 - 0.074 ms
+Sun Dec 14 2025 19:43:30 [SERVER-NAME] info: GET /api/v1/users/profile 200 - 304.014 ms
+Sun Dec 14 2025 19:43:31 [SERVER-NAME] info: GET /api/v1/contents/?page=1 304 - 456.314 ms
+Sun Dec 14 2025 19:43:57 [SERVER-NAME] info: OPTIONS /api/v1/ad/?page=1 204 - 0.105 ms
+Sun Dec 14 2025 19:43:58 [SERVER-NAME] info: GET /api/v1/ad/?page=1 304 - 462.541 ms
+Sun Dec 14 2025 19:44:33 [SERVER-NAME] info: OPTIONS /api/v1/ad/ 204 - 0.099 ms
+Sun Dec 14 2025 19:44:35 [SERVER-NAME] info: POST /api/v1/ad/ 201 - 1634.071 ms
+Sun Dec 14 2025 19:44:36 [SERVER-NAME] info: OPTIONS /api/v1/ad/?page=1 204 - 0.104 ms
+Sun Dec 14 2025 19:44:36 [SERVER-NAME] info: GET /api/v1/ad/?page=1 200 - 463.582 ms
+Sun Dec 14 2025 19:45:19 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1&category=Budget 204 - 0.099 ms
+Sun Dec 14 2025 19:45:20 [SERVER-NAME] info: GET /api/v1/contents/?page=1&category=Budget 200 - 458.250 ms
+Sun Dec 14 2025 19:45:22 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1&category=Debt 204 - 0.096 ms
+Sun Dec 14 2025 19:45:23 [SERVER-NAME] info: GET /api/v1/contents/?page=1&category=Debt 200 - 459.217 ms
+Sun Dec 14 2025 19:45:24 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1&category=Saving 204 - 0.091 ms
+Sun Dec 14 2025 19:45:25 [SERVER-NAME] info: GET /api/v1/contents/?page=1&category=Saving 200 - 455.702 ms
+Sun Dec 14 2025 19:45:25 [SERVER-NAME] info: OPTIONS /api/v1/contents/?page=1&category=Taxation 204 - 0.167 ms
+Sun Dec 14 2025 19:45:26 [SERVER-NAME] info: GET /api/v1/contents/?page=1&category=Taxation 200 - 456.684 ms
+Sun Dec 14 2025 19:45:44 [SERVER-NAME] info: OPTIONS /api/v1/appointments/all/appointment?searchTerm= 204 - 0.136 ms
+Sun Dec 14 2025 19:45:45 [SERVER-NAME] info: GET /api/v1/appointments/all/appointment?searchTerm= 304 - 458.413 ms
+Sun Dec 14 2025 19:45:46 [SERVER-NAME] info: OPTIONS /api/v1/admin/users/finance-track?searchTerm= 204 - 0.095 ms
+Sun Dec 14 2025 19:45:48 [SERVER-NAME] info: GET /api/v1/admin/users/finance-track?searchTerm= 200 - 1418.509 ms
+Sun Dec 14 2025 19:45:49 [SERVER-NAME] info: OPTIONS /api/v1/users?searchTerm=&status=all&page=1&limit=10 204 - 0.097 ms
+Sun Dec 14 2025 19:45:50 [SERVER-NAME] info: GET /api/v1/users?searchTerm=&status=all&page=1&limit=10 304 - 304.624 ms
+Sun Dec 14 2025 19:45:50 [SERVER-NAME] info: OPTIONS /api/v1/admin/stats?year=2025 204 - 0.082 ms
+Sun Dec 14 2025 19:45:50 [SERVER-NAME] info: OPTIONS /api/v1/users?page=1&limit=10 204 - 0.086 ms
+Sun Dec 14 2025 19:45:50 [SERVER-NAME] info: GET /api/v1/users?page=1&limit=10 304 - 302.915 ms
+Sun Dec 14 2025 19:45:51 [SERVER-NAME] info: GET /api/v1/admin/stats?year=2025 304 - 907.213 ms

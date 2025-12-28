@@ -1,2 +1,0 @@
-Sat Dec 06 2025 2:58:32 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/auth/logout 400 - 24.225 ms
-Sat Dec 06 2025 2:59:40 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/auth/logout 400 - 22.959 ms

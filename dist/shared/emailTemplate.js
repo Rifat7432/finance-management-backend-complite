@@ -188,6 +188,95 @@ const subscriptionEvent = (values) => {
     };
     return data;
 };
+const partnerDateNightAlert = (values) => {
+    const data = {
+        to: values.email,
+        subject: values.title,
+        html: `
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; color: #555;">
+  <div style="width: 100%; max-width: 600px; margin: 50px auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center;">
+    
+    <img 
+      src="https://rehoapp.lon1.digitaloceanspaces.com/image/a36a9f50-3237-4517-b7c9-5d6bbde894cb.png" 
+      alt="Logo" 
+      style="display: block; margin: 0 auto 20px; width:150px;" 
+    />
+
+    <h2 style="color: #636AE8; font-size: 24px; margin-bottom: 10px;">
+      Hey ${values.partnerName} 💕
+    </h2>
+
+    <h3 style="color: #333; font-size: 20px; margin-bottom: 10px;">
+      ${values.name} planned a Date Night!
+    </h3>
+
+    <p style="color: #555; font-size: 16px; line-height: 1.6; margin-bottom: 15px;">
+      ${values.message}
+    </p>
+
+    <!-- Details Card -->
+    <div style="background-color: #f4f5ff; padding: 15px; border-radius: 10px; margin: 20px 0; text-align: left;">
+      <p style="margin: 8px 0; font-size: 15px;">
+        📍 <strong>Location:</strong> ${values.location}
+      </p>
+      <p style="margin: 8px 0; font-size: 15px;">
+        ❤️ <strong>Couple:</strong> ${values.name} & ${values.partnerName}
+      </p>
+    </div>
+
+    <div style="background-color: #636AE8; color: #fff; padding: 15px; border-radius: 8px; font-size: 16px;">
+      Get ready for a special moment together ✨
+    </div>
+
+    <p style="margin-top: 30px; font-size: 14px; color: #999;">
+      Open the app to view more details.
+    </p>
+  </div>
+</body>
+`,
+    };
+    return data;
+};
+const adminAppointmentAlert = (values) => {
+    return {
+        to: values.adminEmail,
+        subject: `New Appointment Created by ${values.userName}`,
+        html: `
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 50px; padding: 20px; color: #555;">
+  <div style="width: 100%; max-width: 700px; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+
+    <img src="https://rehoapp.lon1.digitaloceanspaces.com/image/a36a9f50-3237-4517-b7c9-5d6bbde894cb.png" alt="Logo" style="display: block; margin: 0 auto 20px; width:150px" />
+
+    <h2 style="color: #636AE8; font-size: 24px; text-align: center; margin-bottom: 20px;">
+      New Appointment Created
+    </h2>
+
+    <p style="font-size: 16px; margin-bottom: 15px;">A new appointment has been created by <strong>${values.userName}</strong> (${values.userEmail}).</p>
+
+    <div style="background-color: #f4f5ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <p><strong>Title:</strong> ${values.title}</p>
+      <p><strong>Phone Number:</strong> ${values.number}</p>
+      <p><strong>Best Contact Method:</strong> ${values.bestContact}</p>
+      <p><strong>Attendant:</strong> ${values.attendant}</p>
+      <p><strong>Is Child:</strong> ${values.isChild ? 'Yes' : 'No'}</p>
+      <p><strong>Approx Income:</strong> $${values.approxIncome}</p>
+      <p><strong>Investment:</strong> $${values.investment}</p>
+      ${values.discuss ? `<p><strong>Discuss:</strong> ${values.discuss}</p>` : ''}
+      <p><strong>Reaching For:</strong> ${values.reachingFor}</p>
+      <p><strong>Ask:</strong> ${values.ask}</p>
+      <p><strong>Date:</strong> ${values.date}</p>
+      <p><strong>Time Slot:</strong> ${values.timeSlot}</p>
+    </div>
+
+    <p style="font-size: 14px; color: #999; text-align: center;">
+      Please review the appointment in the admin panel.
+    </p>
+
+  </div>
+</body>
+`,
+    };
+};
 exports.emailTemplate = {
     createAccount,
     resetPassword,
@@ -198,4 +287,6 @@ exports.emailTemplate = {
     expensesExceedIncome,
     budgetExceedsIncome,
     subscriptionEvent,
+    partnerDateNightAlert,
+    adminAppointmentAlert
 };

@@ -17,11 +17,11 @@ import { NotificationSettings } from '../notificationSettings/notificationSettin
 export const getLoginVideo = (loginCount: number): string | null => {
      switch (loginCount) {
           case 1:
-               return 'VIDEO_A_URL';
+               return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/How_to_create_a_budget_v3_1_1_.mp4';
           case 2:
-               return 'VIDEO_B_URL';
+               return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/How_to_create_a_new_expenses_list_01_1_1_.mp4';
           case 3:
-               return 'VIDEO_C_URL';
+               return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/Using_the_Debt_Management_tool_1_1_.mp4';
           default:
                return null;
      }
@@ -77,7 +77,7 @@ const loginUserFromDB = async (payload: ILoginData) => {
                await NotificationSettings.create({ userId: isExistUser._id, deviceTokens: [payload.deviceToken] });
           }
      }
-     const jwtData = { id: isExistUser._id, role: isExistUser.role, email: isExistUser.email };
+    const jwtData = { id: isExistUser._id, role: isExistUser.role, email: isExistUser.email, ...(isExistUser.partnerId ? { partnerId: isExistUser.partnerId } : {}) };
      //create token
      const accessToken = jwtHelper.createToken(jwtData, config.jwt.jwt_secret as Secret, config.jwt.jwt_expire_in as string);
      const refreshToken = jwtHelper.createToken(jwtData, config.jwt.jwt_refresh_secret as string, config.jwt.jwt_refresh_expire_in as string);

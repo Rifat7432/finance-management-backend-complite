@@ -38,6 +38,9 @@ const appointmentSchema = new Schema<IAppointment>(
      {
           name: { type: String, required: true },
           email: { type: String, required: true },
+          title: { type: String, required: true },
+          number: { type: String, required: true },
+          bestContact: { type: String, required: true },
           attendant: { type: String, required: true },
           isChild: { type: Boolean, required: true },
           approxIncome: { type: Number, required: true },

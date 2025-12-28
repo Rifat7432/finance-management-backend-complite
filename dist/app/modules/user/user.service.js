@@ -24,6 +24,7 @@ const config_1 = __importDefault(require("../../../config"));
 const jwtHelper_1 = require("../../../helpers/jwtHelper");
 const uploadFileToSpaces_1 = require("../../middleware/uploadFileToSpaces");
 const notificationSettings_model_1 = require("../notificationSettings/notificationSettings.model");
+const auth_service_1 = require("../auth/auth.service");
 // create user
 const createUserToDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     //set role
@@ -130,7 +131,10 @@ const handleAppleAuthentication = (payload) => __awaiter(void 0, void 0, void 0,
         // create token
         const accessToken = jwtHelper_1.jwtHelper.createToken(jwtData, config_1.default.jwt.jwt_secret, config_1.default.jwt.jwt_expire_in);
         const refreshToken = jwtHelper_1.jwtHelper.createToken(jwtData, config_1.default.jwt.jwt_refresh_secret, config_1.default.jwt.jwt_refresh_expire_in);
-        return { accessToken, refreshToken };
+        yield user_model_1.User.findByIdAndUpdate(existingUser._id, { $inc: { loginCount: 1 } }, { new: true });
+        // Determine which video to show
+        const videoToShow = (0, auth_service_1.getLoginVideo)(existingUser.loginCount);
+        return { accessToken, refreshToken, videoToShow };
     }
     throw new AppError_1.default(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, 'An unknown error occurred');
 });
@@ -212,6 +216,10 @@ const handleGoogleAuthentication = (payload) => __awaiter(void 0, void 0, void 0
         // create token
         const accessToken = jwtHelper_1.jwtHelper.createToken(jwtData, config_1.default.jwt.jwt_secret, config_1.default.jwt.jwt_expire_in);
         const refreshToken = jwtHelper_1.jwtHelper.createToken(jwtData, config_1.default.jwt.jwt_refresh_secret, config_1.default.jwt.jwt_refresh_expire_in);
+        yield user_model_1.User.findByIdAndUpdate(existingUser._id, { $inc: { loginCount: 1 } }, { new: true });
+        // Determine which video to show
+        const videoToShow = (0, auth_service_1.getLoginVideo)(existingUser.loginCount);
+        return { accessToken, refreshToken, videoToShow };
         return { accessToken, refreshToken };
     }
     throw new AppError_1.default(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, 'An unknown error occurred');

@@ -15,6 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_cron_1 = __importDefault(require("node-cron"));
 const income_model_1 = require("../modules/income/income.model");
 const date_fns_1 = require("date-fns");
+// 🌍 Get the current UK time
+const nowUK = () => {
+    return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+};
 // 🔁 Calculate next receive date
 const getNextIncomeDate = (date, frequency) => {
     const d = new Date(date);
@@ -24,21 +28,21 @@ const getNextIncomeDate = (date, frequency) => {
         return (0, date_fns_1.addYears)(d, 1);
     return d;
 };
-// WHY CHANGED: Simplified to just check if dates match (no complex logic)
+// ✔ Updated to check using UK time
 const isToday = (date) => {
-    const today = (0, date_fns_1.startOfDay)(new Date());
+    const today = (0, date_fns_1.startOfDay)(nowUK());
     const given = (0, date_fns_1.startOfDay)(new Date(date));
     return today.getTime() === given.getTime();
 };
-// WHY CHANGED: Run at 00:05 instead of 00:00 to avoid conflicts
+// Run every 10 seconds (for testing) – IN UK TIME
 node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('🔄 Running income automation...');
+    console.log('🔄 Running income automation (UK time)...');
     try {
-        const today = (0, date_fns_1.startOfDay)(new Date());
+        const today = (0, date_fns_1.startOfDay)(nowUK());
         const previousWeekStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subWeeks)(today, 1));
         const previousMonthStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subMonths)(today, 1));
         const previousYearStart = (0, date_fns_1.startOfDay)((0, date_fns_1.subYears)(today, 1));
-        // WHY CHANGED: Get ALL recurring incomes, filter by date (simpler query)
+        // Recurring incomes
         const recurringIncomes = yield income_model_1.Income.find({
             isDeleted: false,
             $or: [
@@ -49,14 +53,13 @@ node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0
         let created = 0, skipped = 0;
         for (const income of recurringIncomes) {
             try {
-                // Check if TODAY is the receiveDate
+                // Must be received today (UK date)
                 if (!isToday(income.receiveDate))
                     continue;
                 const nextDate = getNextIncomeDate(income.receiveDate, income.frequency);
-                // WHY CHANGED: Fixed date mutation bug with setHours
                 const nextDayStart = (0, date_fns_1.startOfDay)(nextDate);
                 const nextDayEnd = new Date(nextDayStart.getTime() + 24 * 60 * 60 * 1000);
-                // Check if next month/year income already exists
+                // Avoid duplicates
                 const exists = yield income_model_1.Income.exists({
                     name: income.name,
                     userId: income.userId,
@@ -68,7 +71,7 @@ node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0
                     skipped++;
                     continue;
                 }
-                // Create new income for next period
+                // Insert next recurring record
                 yield income_model_1.Income.create({
                     name: income.name,
                     amount: income.amount,
@@ -88,4 +91,6 @@ node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0
     catch (error) {
         console.error('❌ Income automation error:', error);
     }
-}));
+}), {
+    timezone: 'Europe/London', // 🇬🇧 UK local time
+});

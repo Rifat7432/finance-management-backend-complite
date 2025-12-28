@@ -1,0 +1,90 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 1
+    },
+    "auditLog": "/var/www/finance-management-backend-complite/winston/success/.beca658f1b1eaafab5a96bdb5324cc8d262cc5f2-audit.json",
+    "files": [
+        {
+            "date": 1766871085932,
+            "name": "/var/www/finance-management-backend-complite/winston/success/27-12-2025-21-success.log",
+            "hash": "cdd4e59cc599f98f8ea5afebf8584a9713c1bb2bdae82b9fc71cdc847bf87592"
+        },
+        {
+            "date": 1766873087242,
+            "name": "/var/www/finance-management-backend-complite/winston/success/27-12-2025-22-success.log",
+            "hash": "6a429b3ec415d9a6ea86a89eaa4339627a2e8b10f5f08516457a2c4d53d278c1"
+        },
+        {
+            "date": 1766877893220,
+            "name": "/var/www/finance-management-backend-complite/winston/success/27-12-2025-23-success.log",
+            "hash": "bfcf173e09796d8326481a698d642e3844b97fe596552e5be5198cdd44e4c760"
+        },
+        {
+            "date": 1766881269862,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-00-success.log",
+            "hash": "33d1cee1362626bacf0cf90a22a987c9eda2c8fcd609ced8ab8afc34447eecd5"
+        },
+        {
+            "date": 1766886802218,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-01-success.log",
+            "hash": "0f25b4d067f15afbc149140f13ec0133bcf65071d6ba6b266154c58527923c0c"
+        },
+        {
+            "date": 1766887777193,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-02-success.log",
+            "hash": "0bb974bd14ed8046f6a4f54449eef2fc6db6a4a928011fe6892be5376ecb2269"
+        },
+        {
+            "date": 1766893049720,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-03-success.log",
+            "hash": "038913646a5e5e9c5b9535cf43aefb54584c614b6a34756d38a0fd2f0a2e9bb3"
+        },
+        {
+            "date": 1766906877954,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-07-success.log",
+            "hash": "e3c50859dd88940cdf972e8dacc776cdc8508dac13ef03a8b260ac95e962280c"
+        },
+        {
+            "date": 1766910175835,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-08-success.log",
+            "hash": "cf176259162367bedd10287d8316fdbb906081750343fce46b0eee9d7f1d496a"
+        },
+        {
+            "date": 1766913134117,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-09-success.log",
+            "hash": "5fb226eb05b29c4cfa1d1354454fe90df74a96af3d8c2504475fb2e5dc187a18"
+        },
+        {
+            "date": 1766916756638,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-10-success.log",
+            "hash": "51d82e2c1050bf6527f621d2463153a08eec9caaa5e0c0c0cdd20daa1306cfef"
+        },
+        {
+            "date": 1766929927280,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-13-success.log",
+            "hash": "a2404db33077a4a1cc65042d8a0463e28c112c24fe15b7f36440feaa6c32014f"
+        },
+        {
+            "date": 1766930401462,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-14-success.log",
+            "hash": "3537fa54df830c6b1849c2e0579671747b0ed50aa0a3c4841f431d6eef271f8f"
+        },
+        {
+            "date": 1766934470200,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-15-success.log",
+            "hash": "e07b56572e9b730674f4b5a0b67d10ccec030659d2cd24b9b3c37a80ccd1c843"
+        },
+        {
+            "date": 1766937637485,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-16-success.log",
+            "hash": "00dcd6137b3f80dbe2585e32343fb80a895bc77f4f066ab48874d049acc74558"
+        },
+        {
+            "date": 1766941984735,
+            "name": "/var/www/finance-management-backend-complite/winston/success/28-12-2025-17-success.log",
+            "hash": "3d7fe1df6e40de7a689e72bb8286880a8d5fa5347dcea8d4860fe01ab5fdb4f5"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -31,6 +31,9 @@ const notificationSettings_model_1 = require("../notificationSettings/notificati
 const notification_model_1 = require("../notification/notification.model");
 const firebaseHelper_1 = require("../../../helpers/firebaseHelper");
 const QueryBuilder_1 = __importDefault(require("../../builder/QueryBuilder"));
+const emailTemplate_1 = require("../../../shared/emailTemplate");
+const emailHelper_1 = require("../../../helpers/emailHelper");
+const config_1 = __importDefault(require("../../../config"));
 const createAppointmentToDB = (data, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const { date, timeSlot } = data, rest = __rest(data, ["date", "timeSlot"]);
     if (!date || !timeSlot) {
@@ -92,6 +95,25 @@ const createAppointmentToDB = (data, userId) => __awaiter(void 0, void 0, void 0
             read: false,
         });
     }
+    const appointmentValues = {
+        adminEmail: config_1.default.email.user,
+        userName: appointment.name,
+        userEmail: appointment.email,
+        title: appointment.title,
+        number: appointment.number,
+        bestContact: appointment.bestContact,
+        attendant: appointment.attendant,
+        isChild: appointment.isChild,
+        approxIncome: appointment.approxIncome,
+        investment: appointment.investment,
+        discuss: appointment.discuss,
+        reachingFor: appointment.reachingFor,
+        ask: appointment.ask,
+        date: appointment.date,
+        timeSlot: appointment.timeSlot,
+    };
+    const template = emailTemplate_1.emailTemplate.adminAppointmentAlert(appointmentValues);
+    yield emailHelper_1.emailHelper.sendEmailForAdmin(template);
     return appointment;
 });
 const getUserAppointmentsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {

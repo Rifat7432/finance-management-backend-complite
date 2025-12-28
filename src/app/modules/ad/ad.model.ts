@@ -4,8 +4,8 @@ import { IAd } from './ad.interface';
 const adSchema = new Schema<IAd>(
      {
           name: { type: String, required: true },
-          startDate: { type: String, required: true },
-          endDate: { type: String, required: true },
+          startDate: { type: Date, required: true },
+          endDate: { type: Date, required: true },
              category: {
                type: String,
                required: true,

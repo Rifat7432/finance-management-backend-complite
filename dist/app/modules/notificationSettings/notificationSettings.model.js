@@ -10,5 +10,6 @@ const notificationSettingsSchema = new mongoose_1.Schema({
     debtNotification: { type: Boolean, default: true },
     dateNightNotification: { type: Boolean, default: true },
     deviceTokenList: { type: [String], default: [] },
+    timeZone: { type: String, default: 'Europe/London' },
 }, { timestamps: true });
 exports.NotificationSettings = (0, mongoose_1.model)('NotificationSettings', notificationSettingsSchema);

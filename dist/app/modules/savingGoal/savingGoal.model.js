@@ -13,10 +13,8 @@ exports.SavingGoal = void 0;
 const mongoose_1 = require("mongoose");
 // Helper function for completion calculation
 function calculateCompletion(savedMoney, totalAmount) {
-    const completionRation = totalAmount && totalAmount > 0
-        ? Math.min((savedMoney / totalAmount) * 100, 100)
-        : 0;
-    const isCompleted = savedMoney >= totalAmount;
+    const completionRation = totalAmount > 0 ? Math.min((savedMoney / totalAmount) * 100, 100) : 0;
+    const isCompleted = totalAmount > 0 && savedMoney >= totalAmount;
     return { completionRation, isCompleted };
 }
 const savingGoalSchema = new mongoose_1.Schema({

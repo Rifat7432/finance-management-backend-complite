@@ -20,7 +20,7 @@ const createIncome = catchAsync(async (req, res) => {
 // Get all incomes for logged-in user
 const getUserIncomes = catchAsync(async (req: Request, res) => {
   const user: any = req.user;
-  const result = await IncomeService.getUserIncomesFromDB(user.id);
+  const result = await IncomeService.getUserIncomesFromDB(user.id,req.query);
 
   sendResponse(res, {
     success: true,

@@ -1,0 +1,9 @@
+Sun Dec 28 2025 14:12:56 [SERVER-NAME] error: POST /api/v1/users 400 - 2.234 ms
+Sun Dec 28 2025 14:13:14 [SERVER-NAME] error: POST /api/v1/users 400 - 1.655 ms
+Sun Dec 28 2025 14:23:19 [SERVER-NAME] error: POST /api/v1/users 400 - 1.053 ms
+Sun Dec 28 2025 14:23:27 [SERVER-NAME] error: POST /api/v1/users 400 - 0.910 ms
+Sun Dec 28 2025 14:25:32 [SERVER-NAME] error: POST /api/v1/users 400 - 1.049 ms
+Sun Dec 28 2025 14:31:14 [SERVER-NAME] error: GET /.well-known/security.txt 404 - 0.275 ms
+Sun Dec 28 2025 14:38:26 [SERVER-NAME] error: GET /api/v1/date-nights/ 404 - 611.158 ms
+Sun Dec 28 2025 14:39:50 [SERVER-NAME] error: POST /api/v1/users 400 - 1.096 ms
+Sun Dec 28 2025 14:57:1 [SERVER-NAME] error: POST / 404 - 0.344 ms
