@@ -46,7 +46,10 @@ router
     }
 }), (0, validateRequest_1.default)(user_validation_1.UserValidation.updateUserZodSchema), user_controller_1.UserController.updateProfile);
 // user routes
-router.route('/').post((0, validateRequest_1.default)(user_validation_1.UserValidation.createUserZodSchema), user_controller_1.UserController.createUser);
+router.route('/').post((req, res, next) => {
+    console.log(req.body);
+    next();
+}, (0, validateRequest_1.default)(user_validation_1.UserValidation.createUserZodSchema), user_controller_1.UserController.createUser);
 router.post('/google', (0, validateRequest_1.default)(user_validation_1.UserValidation.googleAuthZodSchema), user_controller_1.UserController.createUserByGoogle);
 router.post('/apple', (0, validateRequest_1.default)(user_validation_1.UserValidation.appleAuthZodSchema), user_controller_1.UserController.createUserByApple);
 router.delete('/delete', (0, auth_1.default)(user_1.USER_ROLES.USER), user_controller_1.UserController.deleteProfile);
