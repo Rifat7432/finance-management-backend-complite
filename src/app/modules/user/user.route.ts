@@ -40,7 +40,14 @@ router
           UserController.updateProfile,
      );
 // user routes
-router.route('/').post(validateRequest(UserValidation.createUserZodSchema), UserController.createUser);
+router.route('/').post(
+     (req: Request, res: Response, next: NextFunction) => {
+          console.log(req.body);
+          next();
+     },
+     validateRequest(UserValidation.createUserZodSchema),
+     UserController.createUser,
+);
 router.post('/google', validateRequest(UserValidation.googleAuthZodSchema), UserController.createUserByGoogle);
 router.post('/apple', validateRequest(UserValidation.appleAuthZodSchema), UserController.createUserByApple);
 router.delete('/delete', auth(USER_ROLES.USER), UserController.deleteProfile);

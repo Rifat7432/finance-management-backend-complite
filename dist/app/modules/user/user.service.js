@@ -28,7 +28,6 @@ const auth_service_1 = require("../auth/auth.service");
 // create user
 const createUserToDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     //set role
-    console.log('payload', payload);
     const user = yield user_model_1.User.isExistUserByEmail(payload.email);
     if (user) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.CONFLICT, 'Email already exists');
