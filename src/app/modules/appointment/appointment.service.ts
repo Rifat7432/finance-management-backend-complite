@@ -89,7 +89,7 @@ const createAppointmentToDB = async (data: Partial<IAppointment>, userId: string
           });
      }
 const appointmentValues = {
-  adminEmail: config.email.user,
+  adminEmail: "clientsupport@rehowealth.co.uk",
   userName: appointment.name,
   userEmail: appointment.email,
   title: appointment.title,
@@ -107,7 +107,7 @@ const appointmentValues = {
 };
 
 const template = emailTemplate.adminAppointmentAlert(appointmentValues);
-await emailHelper.sendEmailForAdmin(template);
+await emailHelper.sendEmail(template);
 
      return appointment;
 };
