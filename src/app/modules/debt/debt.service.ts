@@ -56,11 +56,20 @@ const getDebtInsightsFromDB = async (userId: string) => {
 
      const monthlyPayment = debtsWithRate.reduce((sum, d) => sum + d.monthlyPayment, 0);
 
+     const totalCapitalRepayment = debtsWithRate.reduce((sum, d) => sum + d.capitalRepayment, 0);
+
+     const totalInterestRepayment = debtsWithRate.reduce((sum, d) => sum + d.interestRepayment, 0);
+
+     const interestPayment = totalDebt > 0 ? (totalInterestRepayment / totalDebt) * 100 : 0;
+
      return {
           suggestedOrder,
           summary: {
                totalDebt,
-               avgInterestRate: parseFloat(avgInterestRate.toFixed(2)),
+               totalCapitalRepayment,
+               totalInterestRepayment,
+               interestPayment: Number(interestPayment.toFixed(2)),
+               avgInterestRate: Number(avgInterestRate.toFixed(2)),
                monthlyPayment,
           },
           debts: debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3),
