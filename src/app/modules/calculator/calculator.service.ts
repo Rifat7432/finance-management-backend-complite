@@ -311,6 +311,7 @@ const inflationCalculatorFromAPI = async (payload: { fromYear: number; toYear: n
      const result = {
           valueInFromYear: Math.round(valueInFromYear * 100) / 100,
           totalInflation: Math.round(totalInflationPercent * 100) / 100,
+          moneyLost: Math.round((amount - valueInFromYear) * 100) / 100,
      };
 
      // Store calculation in MongoDB

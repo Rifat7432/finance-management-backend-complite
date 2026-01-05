@@ -1,12 +1,21 @@
 import cron from 'node-cron';
 import { Income } from '../modules/income/income.model';
 import { startOfDay, addMonths, addYears, subWeeks, subMonths, subYears } from 'date-fns';
-
+import { toZonedTime } from 'date-fns-tz';
 // 🌍 Get the current UK time
+const UK_TZ = 'Europe/London';
+
 const nowUK = (): Date => {
-     return new Date(
-          new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })
-     );
+  return toZonedTime(new Date(), UK_TZ);
+};
+
+const isToday = (date: Date): boolean => {
+     console.log(nowUK())
+  const today = startOfDay(nowUK());
+  const given = startOfDay(toZonedTime(date, UK_TZ));
+  console.log(today, date,given);
+  console.log(today.getTime(), given.getTime());
+  return today.getTime() === given.getTime();
 };
 
 // 🔁 Calculate next receive date
@@ -18,15 +27,12 @@ const getNextIncomeDate = (date: Date, frequency: string): Date => {
 };
 
 // ✔ Updated to check using UK time
-const isToday = (date: Date): boolean => {
-     const today = startOfDay(nowUK());
-     const given = startOfDay(new Date(date));
-     return today.getTime() === given.getTime();
-};
+
 
 // Run every 10 seconds (for testing) – IN UK TIME
 cron.schedule(
-     '5 0 * * *',
+     // '5 0 * * *',
+     '*/30 * * * * *',
      async () => {
           console.log('🔄 Running income automation (UK time)...');
 
@@ -40,23 +46,25 @@ cron.schedule(
                const recurringIncomes = await Income.find({
                     isDeleted: false,
                     $or: [
-                         { frequency: 'monthly', createdAt: { $gte: previousMonthStart, $lt: today } },
+                         {
+                              frequency: 'monthly',
+                              createdAt: { $gte: previousMonthStart, $lt: today }
+                         },
                          { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
                     ],
                }).lean();
-
+               console.log(recurringIncomes);
                let created = 0,
                     skipped = 0;
 
                for (const income of recurringIncomes) {
                     try {
                          // Must be received today (UK date)
+                         console.log(!isToday(income.receiveDate))
                          if (!isToday(income.receiveDate)) continue;
-
                          const nextDate = getNextIncomeDate(income.receiveDate, income.frequency);
                          const nextDayStart = startOfDay(nextDate);
                          const nextDayEnd = new Date(nextDayStart.getTime() + 24 * 60 * 60 * 1000);
-
                          // Avoid duplicates
                          const exists = await Income.exists({
                               name: income.name,
@@ -65,7 +73,6 @@ cron.schedule(
                               isDeleted: false,
                               receiveDate: { $gte: nextDayStart, $lt: nextDayEnd },
                          });
-
                          if (exists) {
                               skipped++;
                               continue;
@@ -94,5 +101,5 @@ cron.schedule(
      },
      {
           timezone: 'Europe/London', // 🇬🇧 UK local time
-     }
+     },
 );

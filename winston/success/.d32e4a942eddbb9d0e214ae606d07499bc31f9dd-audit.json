@@ -6,24 +6,19 @@
     "auditLog": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\.d32e4a942eddbb9d0e214ae606d07499bc31f9dd-audit.json",
     "files": [
         {
-            "date": 1764960397968,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-12-2025-00-success.log",
-            "hash": "f8f8cc78e23cee987d9bf542c805f67f10132835f2ef2e00db009517057c2c24"
+            "date": 1767642213190,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-01-2026-01-success.log",
+            "hash": "68f27fb0bc1d6659aa5a573408e097e8c68be79d860c6344da8d4c2aff52f551"
         },
         {
-            "date": 1764962854758,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-12-2025-01-success.log",
-            "hash": "1178d0223dfecad59b3c523acb1374eb810f14456fb6752c13a66b3334f21af1"
+            "date": 1767647973518,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-01-2026-03-success.log",
+            "hash": "e07e7fecf52b6608a3d801e98911679e1de5f51f4be4182def524a4527472efd"
         },
         {
-            "date": 1764965547577,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-12-2025-02-success.log",
-            "hash": "ae9820a13a576fd933d1cf9a05f89cb4a2dcc267c8a118b2717da3332ddab04d"
-        },
-        {
-            "date": 1764968408120,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-12-2025-03-success.log",
-            "hash": "c5c81fd143b487df78849ce7e6a670ae9ac5c3180aba10dffcbf1ba697dc1fa1"
+            "date": 1767650477262,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\success\\06-01-2026-04-success.log",
+            "hash": "78caba4ee0e30a72d4ad3c094ec0ff9d16b3988a12a211aed56270b6e178fcca"
         }
     ],
     "hashType": "sha256"
