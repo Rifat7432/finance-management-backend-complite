@@ -6,10 +6,13 @@ import { Income } from '../modules/income/income.model';
 import AppError from '../../errors/AppError';
 import { User } from '../modules/user/user.model';
 import { SavingGoal } from '../modules/savingGoal/savingGoal.model';
+import { toZonedTime } from 'date-fns-tz';
 
-// Helper to get current UK time
+// 🌍 Get the current UK time
+const UK_TZ = 'Europe/London';
+
 const nowUK = (): Date => {
-     return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+  return toZonedTime(new Date(), UK_TZ);
 };
 
 // ========================================================

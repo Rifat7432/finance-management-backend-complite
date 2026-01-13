@@ -14,9 +14,12 @@ import {
      subYears,
 } from 'date-fns';
 
-/** 🌍 Helper to get current UK time */
+import { toZonedTime } from 'date-fns-tz';
+// 🌍 Get the current UK time
+const UK_TZ = 'Europe/London';
+
 const nowUK = (): Date => {
-     return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+  return toZonedTime(new Date(), UK_TZ);
 };
 
 /** Determines whether today matches the creation day based on frequency */

@@ -1,0 +1,25 @@
+Wed Jan 14 2026 1:11:21 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Jan 14 2026 1:11:21 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Jan 14 2026 1:11:25 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Wed Jan 14 2026 1:11:59 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Jan 14 2026 1:11:59 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Jan 14 2026 1:11:59 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Wed Jan 14 2026 1:13:55 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 1906.825 ms
+Wed Jan 14 2026 1:14:16 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 418.265 ms
+Wed Jan 14 2026 1:17:24 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 1870.802 ms
+Wed Jan 14 2026 1:33:5 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Jan 14 2026 1:33:5 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Jan 14 2026 1:33:5 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Wed Jan 14 2026 1:33:34 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Jan 14 2026 1:33:34 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Jan 14 2026 1:33:34 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Wed Jan 14 2026 1:33:49 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 417.193 ms
+Wed Jan 14 2026 1:35:7 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Jan 14 2026 1:35:7 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Jan 14 2026 1:35:7 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Wed Jan 14 2026 1:35:24 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 458.730 ms
+Wed Jan 14 2026 1:49:54 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Wed Jan 14 2026 1:49:54 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Wed Jan 14 2026 1:49:54 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Wed Jan 14 2026 1:49:55 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 651.842 ms
+Wed Jan 14 2026 1:50:47 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/calculator/historical-inflation-calculator 200 - 463.282 ms

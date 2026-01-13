@@ -53,8 +53,8 @@ export interface IInflationApiCalculation {
      amount: number;
 
      // Calculated results
-     valueInFromYear: number;
-     totalInflation: number;
+     equivalentAmountInToYear: number;
+     purchasingPowerLost: number;
 
      // Context / metadata
      countryCode: string;
@@ -142,8 +142,8 @@ const inflationApiCalculationSchema = new Schema<IInflationApiCalculation>(
           amount: { type: Number, required: true },
 
           // Outputs
-          valueInFromYear: { type: Number, required: true },
-          totalInflation: { type: Number, required: true },
+          equivalentAmountInToYear: { type: Number, required: true },
+          purchasingPowerLost: { type: Number, required: true },
 
           // Context
           countryCode: {
@@ -274,21 +274,18 @@ const inflationCalculatorFromAPI = async (payload: { fromYear: number; toYear: n
 
      const url = `https://api.worldbank.org/v2/country/GB/indicator/FP.CPI.TOTL.ZG?format=json&per_page=1000`;
      const response = await fetch(url);
-
-     if (!response.ok) throw new Error('Failed to fetch inflation data from World Bank');
+     if (!response.ok) throw new Error('Failed to fetch inflation data');
 
      const data = await response.json();
-     if (!Array.isArray(data) || !data[1]) throw new Error('Invalid API response format');
+     if (!Array.isArray(data) || !data[1]) throw new Error('Invalid API response');
 
-     // Extract annual inflation rates (%)
      const inflationRates: Record<number, number> = {};
      for (const entry of data[1]) {
-          const year = parseInt(entry.date);
-          const value = parseFloat(entry.value);
+          const year = Number(entry.date);
+          const value = Number(entry.value);
           if (!isNaN(year) && !isNaN(value)) inflationRates[year] = value;
      }
 
-     // Ensure valid years
      if (fromYear >= toYear) throw new Error('From year must be less than To year');
 
      const relevantYears = Object.keys(inflationRates)
@@ -296,32 +293,34 @@ const inflationCalculatorFromAPI = async (payload: { fromYear: number; toYear: n
           .filter((y) => y > fromYear && y <= toYear)
           .sort((a, b) => a - b);
 
-     if (relevantYears.length === 0) throw new Error(`No inflation data found between ${fromYear} and ${toYear}`);
+     if (!relevantYears.length) throw new Error(`No inflation data between ${fromYear} and ${toYear}`);
 
-     // Compound inflation across all years
      let inflationFactor = 1;
      for (const year of relevantYears) {
-          const rate = inflationRates[year];
-          inflationFactor *= 1 + rate / 100;
+          inflationFactor *= 1 + inflationRates[year] / 100;
      }
-     // Calculate adjusted value
-     const valueInFromYear = amount / inflationFactor;
-     const totalInflationPercent = (inflationFactor - 1) * 100;
+
+     // Nominal equivalent in toYear
+     const equivalentAmountInToYear = amount * inflationFactor;
+
+     // Purchasing power loss
+     const purchasingPowerLost = equivalentAmountInToYear - amount;
+     const purchasingPowerLossPercent = (purchasingPowerLost / equivalentAmountInToYear) * 100;
 
      const result = {
-          valueInFromYear: Math.round(valueInFromYear * 100) / 100,
-          totalInflation: Math.round(totalInflationPercent * 100) / 100,
-          moneyLost: Math.round((amount - valueInFromYear) * 100) / 100,
+          amount,
+          equivalentAmountInToYear: Math.round(equivalentAmountInToYear * 100) / 100,
+          purchasingPowerLost: Math.round(purchasingPowerLost * 100) / 100,
+          purchasingPowerLossPercent: Math.round(purchasingPowerLossPercent * 100) / 100,
      };
 
-     // Store calculation in MongoDB
      await InflationApiCalculation.create({
-          userId: userId,
+          userId,
           fromYear,
           toYear,
           amount,
-          valueInFromYear: result.valueInFromYear,
-          totalInflation: result.totalInflation,
+          equivalentAmountInToYear: result.equivalentAmountInToYear,
+          purchasingPowerLost: result.purchasingPowerLost,
           countryCode: 'GB',
           dataSource: 'World Bank API',
           isDeleted: false,

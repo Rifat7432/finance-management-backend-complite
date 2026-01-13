@@ -1,10 +1,9 @@
 import cron from 'node-cron';
-import { Types } from 'mongoose';
 import { Debt } from '../modules/debt/debt.model';
 import { NotificationSettings } from '../modules/notificationSettings/notificationSettings.model';
 import { Notification } from '../modules/notification/notification.model';
 import { firebaseHelper } from '../../helpers/firebaseHelper';
-import dayjs from 'dayjs';
+
 
 function getDebtUTC(date: string | Date, time: string, timeZone?: string): Date {
      const tz = timeZone || 'Europe/London';

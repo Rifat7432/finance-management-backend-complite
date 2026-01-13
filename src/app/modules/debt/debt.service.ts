@@ -50,15 +50,31 @@ const getDebtInsightsFromDB = async (userId: string) => {
           .map((d) => ({ name: d.name, interestRate: d.interestRate }));
 
      // 2. Debt Summary
-     const totalDebt = debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3).reduce((sum, d) => sum + d.amount, 0);
+     const totalDebt = debtsWithRate
+          .sort((a, b) => b.interestRate - a.interestRate)
+          .slice(0, 3)
+          .reduce((sum, d) => sum + d.amount, 0);
 
-     const avgInterestRate = debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3).reduce((sum, d) => sum + d.interestRate, 0) / debtsWithRate.length;
+     const avgInterestRate =
+          debtsWithRate
+               .sort((a, b) => b.interestRate - a.interestRate)
+               .slice(0, 3)
+               .reduce((sum, d) => sum + d.interestRate, 0) / debtsWithRate.length;
 
-     const monthlyPayment = debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3).reduce((sum, d) => sum + d.monthlyPayment, 0);
+     const monthlyPayment = debtsWithRate
+          .sort((a, b) => b.interestRate - a.interestRate)
+          .slice(0, 3)
+          .reduce((sum, d) => sum + d.monthlyPayment, 0);
 
-     const totalCapitalRepayment = debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3).reduce((sum, d) => sum + d.capitalRepayment, 0);
+     const totalCapitalRepayment = debtsWithRate
+          .sort((a, b) => b.interestRate - a.interestRate)
+          .slice(0, 3)
+          .reduce((sum, d) => sum + d.capitalRepayment, 0);
 
-     const totalInterestRepayment = debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3).reduce((sum, d) => sum + d.interestRepayment, 0);
+     const totalInterestRepayment = debtsWithRate
+          .sort((a, b) => b.interestRate - a.interestRate)
+          .slice(0, 3)
+          .reduce((sum, d) => sum + d.interestRepayment, 0);
 
      const interestPayment = totalDebt > 0 ? (totalInterestRepayment / totalDebt) * 100 : 0;
 

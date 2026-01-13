@@ -1,10 +1,12 @@
 import cron from 'node-cron';
 import { DateNight } from '../modules/dateNight/dateNight.model';
 import { addDays, addWeeks, addMonths, addYears } from 'date-fns';
+import { toZonedTime } from 'date-fns-tz';
+// 🌍 Get the current UK time
+const UK_TZ = 'Europe/London';
 
-/** 🌍 Helper to get current UK time */
 const nowUK = (): Date => {
-     return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+  return toZonedTime(new Date(), UK_TZ);
 };
 
 // 🔁 Calculate next date night date

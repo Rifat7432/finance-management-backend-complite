@@ -1,21 +1,23 @@
 import cron from 'node-cron';
 import { Budget } from '../modules/budget/budget.model';
 import { startOfDay, addMonths,  subMonths } from 'date-fns';
-
+import { toZonedTime } from 'date-fns-tz';
 // 🌍 Get the current UK time
+const UK_TZ = 'Europe/London';
+
 const nowUK = (): Date => {
-     return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
+  return toZonedTime(new Date(), UK_TZ);
 };
 
 
 // ✔ Updated to check using UK time
 const isToday = (date: Date): boolean => {
      const today = startOfDay(nowUK());
-     const given = startOfDay(new Date(date));
+     const given = startOfDay(toZonedTime(date, UK_TZ));
      return today.getTime() === given.getTime();
 };
 
-// Run every 10 seconds (for testing) – IN UK TIME
+
 cron.schedule(
      '5 0 * * *',
      async () => {

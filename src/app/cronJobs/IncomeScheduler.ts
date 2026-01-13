@@ -10,11 +10,8 @@ const nowUK = (): Date => {
 };
 
 const isToday = (date: Date): boolean => {
-     console.log(nowUK())
   const today = startOfDay(nowUK());
   const given = startOfDay(toZonedTime(date, UK_TZ));
-  console.log(today, date,given);
-  console.log(today.getTime(), given.getTime());
   return today.getTime() === given.getTime();
 };
 
@@ -31,8 +28,8 @@ const getNextIncomeDate = (date: Date, frequency: string): Date => {
 
 // Run every 10 seconds (for testing) – IN UK TIME
 cron.schedule(
-     // '5 0 * * *',
-     '*/30 * * * * *',
+     '5 0 * * *',
+     // '*/30 * * * * *',
      async () => {
           console.log('🔄 Running income automation (UK time)...');
 
