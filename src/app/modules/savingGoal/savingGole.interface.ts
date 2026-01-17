@@ -7,8 +7,8 @@ export interface ISavingGoal {
      completionRation:number;
      savedMoney:number;
      isCompleted: boolean;
-     date: string;
-     completeDate: string;
+     date: Date;
+     completeDate: Date;
      userId: Types.ObjectId;
      isDeleted: boolean;
 }

@@ -7,15 +7,16 @@ import { Expense } from '../modules/expense/expense.model';
 import { Budget } from '../modules/budget/budget.model';
 import { emailTemplate } from '../../shared/emailTemplate';
 import { emailHelper } from '../../helpers/emailHelper';
+import { getCurrentUTC, getStartOfMonthUTC, getEndOfMonthUTC } from '../../utils/dateTimeHelper';
 
 // ========================================================
 // === Finance Reminder Logic =============================
 // ========================================================
 
 const scheduleMonthlyFinanceReminderJob = async () => {
-     const now = new Date();
-     const start = startOfMonth(now);
-     const end = endOfMonth(now);
+     const now = getCurrentUTC();
+     const start = getStartOfMonthUTC(now);
+     const end = getEndOfMonthUTC(now);
      const monthName = format(now, 'MMMM yyyy');
 
      console.log(`📆 Running monthly finance reminder for ${monthName}`);
@@ -118,8 +119,8 @@ const scheduleMonthlyFinanceReminderJob = async () => {
 cron.schedule('55 23 28-31 * *', async () => {
      console.log('🔄 Running Monthly Finance Reminder automation...');
      try {
-          const now = new Date();
-          const end = endOfMonth(now);
+          const now = getCurrentUTC();
+          const end = getEndOfMonthUTC(now);
           // Only run on the *actual* last day of month
           if (now.getDate() !== end.getDate()) return;
 
@@ -127,6 +128,6 @@ cron.schedule('55 23 28-31 * *', async () => {
      } catch (err) {
           console.error('❌ Monthly Finance Reminder Scheduler error:', err);
      }
-},  { timezone: 'Europe/London' });
+},  { timezone: 'UTC' });
 
 

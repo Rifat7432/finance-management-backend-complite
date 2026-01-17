@@ -3,15 +3,14 @@ import { Debt } from '../modules/debt/debt.model';
 import { NotificationSettings } from '../modules/notificationSettings/notificationSettings.model';
 import { Notification } from '../modules/notification/notification.model';
 import { firebaseHelper } from '../../helpers/firebaseHelper';
+import { getCurrentUTC, toUTC } from '../../utils/dateTimeHelper';
 
 
 function getDebtUTC(date: string | Date, time: string, timeZone?: string): Date {
-     const tz = timeZone || 'Europe/London';
      const [hour, minute] = time.split(':').map(Number);
-     const localDate = new Date(date);
-     localDate.setHours(hour, minute, 0, 0);
-     const localString = localDate.toLocaleString('en-GB', { timeZone: tz });
-     return new Date(localString);
+     const utcDate = toUTC(date);
+     utcDate.setHours(hour, minute, 0, 0);
+     return utcDate;
 }
 function addOneMonth(dateStr: string): string {
      const date = new Date(dateStr); // YYYY-MM-DD
@@ -50,33 +49,25 @@ async function sendDebtNotification({ userSetting, userId, debt }: any) {
 }
 
 cron.schedule('0 0 * * *', async () => {
-     const now = new Date();
-     // Get the UTC offset of Europe/London at this moment
-     const ukOffsetMinutes = now.getTimezoneOffset() - new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' })).getTimezoneOffset();
-     // Calculate current UK time as a Date object
-     const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
+     const nowUTC = getCurrentUTC();
 
      try {
-          const today = new Date()
-               .toLocaleDateString('en-GB', {
-                    timeZone: 'Europe/London',
-               })
-               .split('/')
-               .reverse()
-               .join('-');
+          const todayString = nowUTC
+               .toISOString()
+               .split('T')[0];
           const debts = await Debt.find({
                isDeleted: false,
                completionRatio: { $lt: 100 },
-               payDueDate: today,
+               payDueDate: todayString,
           });
 
           for (const debt of debts) {
                const userSetting: any = await NotificationSettings.findOne({ userId: debt.userId }).lean();
                if (!userSetting?.debtNotification) continue;
 
-               const timeZone = userSetting.timeZone || 'Europe/London';
-               const debtUTC = getDebtUTC(debt.payDueDate, '08:00', timeZone);
-               const diffHours = (debtUTC.getTime() - nowUK.getTime()) / (1000 * 60 * 60);
+               const debtUTC = getDebtUTC(debt.payDueDate, '08:00', userSetting.timeZone);
+               const diffMs = debtUTC.getTime() - nowUTC.getTime();
+               const diffHours = diffMs / (1000 * 60 * 60);
 
                if (diffHours >= 23.9 && diffHours <= 24.1) {
                     await sendDebtNotification({ userSetting, userId: debt.userId, debt });
@@ -94,7 +85,7 @@ cron.schedule('0 0 * * *', async () => {
                await Debt.updateOne(
                     { _id: debt._id },
                     {
-                         amount: newAmount,
+                         // amount: newAmount,
                          completionRatio,
                          payDueDate: nextPayDate,
                     },
@@ -105,4 +96,4 @@ cron.schedule('0 0 * * *', async () => {
      } catch (error) {
           console.error('❌ Debt completion update error:', error);
      }
-},  { timezone: 'Europe/London' });
+}, { timezone: 'UTC' });

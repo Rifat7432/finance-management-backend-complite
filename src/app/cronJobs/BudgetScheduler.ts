@@ -1,19 +1,12 @@
 import cron from 'node-cron';
 import { Budget } from '../modules/budget/budget.model';
 import { startOfDay, addMonths,  subMonths } from 'date-fns';
-import { toZonedTime } from 'date-fns-tz';
-// 🌍 Get the current UK time
-const UK_TZ = 'Europe/London';
+import { getCurrentUTC, getStartOfDayUTC } from '../../utils/dateTimeHelper';
 
-const nowUK = (): Date => {
-  return toZonedTime(new Date(), UK_TZ);
-};
-
-
-// ✔ Updated to check using UK time
+// ✔ Updated to check using UTC time
 const isToday = (date: Date): boolean => {
-     const today = startOfDay(nowUK());
-     const given = startOfDay(toZonedTime(date, UK_TZ));
+     const today = getStartOfDayUTC();
+     const given = getStartOfDayUTC(new Date(date));
      return today.getTime() === given.getTime();
 };
 
@@ -21,10 +14,10 @@ const isToday = (date: Date): boolean => {
 cron.schedule(
      '5 0 * * *',
      async () => {
-          console.log('🔄 Running income & budget automation (UK time)...');
+          console.log('🔄 Running income & budget automation (UTC time)...');
 
           try {
-               const today = startOfDay(nowUK());
+               const today = getStartOfDayUTC();
 
                const previousMonthStart = startOfDay(subMonths(today, 1));
 
@@ -86,6 +79,6 @@ cron.schedule(
           }
      },
      {
-          timezone: 'Europe/London',
+          timezone: 'UTC',
      },
 );

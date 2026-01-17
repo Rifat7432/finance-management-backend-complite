@@ -3,22 +3,23 @@ import { SavingGoal } from './savingGoal.model';
 import AppError from '../../../errors/AppError';
 import { ISavingGoal } from './savingGole.interface';
 import mongoose from 'mongoose';
+import { toUTC } from '../../../utils/dateTimeHelper';
 
 const createSavingGoalToDB = async (payload: Partial<ISavingGoal>, userId: string): Promise<ISavingGoal> => {
      const { name, totalAmount, monthlyTarget, date, savedMoney } = payload;
-     const startDate = new Date(date!);
+     const startDate = toUTC(date!);
      // Calculate months needed to complete the goal
      const monthsNeeded = Math.ceil((totalAmount! - savedMoney!) / monthlyTarget!);
      // Calculate complete date
-     const completeDate = new Date(startDate);
+     const completeDate = toUTC(startDate);
      completeDate.setMonth(completeDate.getMonth() + monthsNeeded);
      // Save goal to database
      const savingGoal = await SavingGoal.create({
           name,
           totalAmount,
           monthlyTarget,
-          date: startDate.toISOString(),
-          completeDate: completeDate.toISOString(),
+          date: startDate,
+          completeDate: completeDate,
           userId,
           savedMoney,
      });
@@ -96,17 +97,17 @@ const updateSavingGoalToDB = async (id: string, payload: Partial<ISavingGoal>): 
 
      const updatedTotalAmount = payload.totalAmount ?? currentGoal.totalAmount;
      const updatedMonthlyTarget = payload.monthlyTarget ?? currentGoal.monthlyTarget;
-     const updatedDate = payload.date ? new Date(payload.date) : new Date(currentGoal.date);
+     const updatedDate = payload.date ? toUTC(payload.date) : toUTC(currentGoal.date);
 
      if ('totalAmount' in payload || 'monthlyTarget' in payload || 'date' in payload) {
           const monthsNeeded = Math.ceil(updatedTotalAmount / updatedMonthlyTarget);
-          const newCompleteDate = new Date(updatedDate);
+          const newCompleteDate = toUTC(updatedDate);
           newCompleteDate.setMonth(newCompleteDate.getMonth() + monthsNeeded);
 
-          payload.completeDate = newCompleteDate.toISOString();
+          payload.completeDate = newCompleteDate;
 
           if (payload.date) {
-               payload.date = updatedDate.toISOString();
+               payload.date = updatedDate;
           }
      }
 

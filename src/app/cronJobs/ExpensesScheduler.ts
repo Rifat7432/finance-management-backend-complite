@@ -14,18 +14,12 @@ import {
      subYears,
 } from 'date-fns';
 
-import { toZonedTime } from 'date-fns-tz';
-// 🌍 Get the current UK time
-const UK_TZ = 'Europe/London';
-
-const nowUK = (): Date => {
-  return toZonedTime(new Date(), UK_TZ);
-};
+import { getCurrentUTC, getStartOfDayUTC } from '../../utils/dateTimeHelper';
 
 /** Determines whether today matches the creation day based on frequency */
 const shouldCreateToday = (createdAtDate: Date, frequency: string): boolean => {
-     const today = nowUK();
-     const createdAt = new Date(createdAtDate);
+     const today = getStartOfDayUTC();
+     const createdAt = startOfDay(new Date(createdAtDate));
 
      switch (frequency) {
           case 'weekly':
@@ -41,7 +35,7 @@ const shouldCreateToday = (createdAtDate: Date, frequency: string): boolean => {
 
 /** Returns the next expense date based on frequency */
 const getNextExpenseDate = (fromDate: Date, frequency: string): Date => {
-     const baseDate = new Date(fromDate);
+     const baseDate = startOfDay(new Date(fromDate));
 
      switch (frequency) {
           case 'weekly':
@@ -55,14 +49,14 @@ const getNextExpenseDate = (fromDate: Date, frequency: string): Date => {
      }
 };
 
-/** Cron job: runs every 10 seconds (for testing) in UK time */
+/** Cron job: runs at 00:10 UTC every day */
 cron.schedule(
      '10 0 * * *',
      async () => {
-          console.log('🔄 Running recurring expense automation (UK time)...');
+          console.log('🔄 Running recurring expense automation (UTC time)...');
 
           try {
-               const today = startOfDay(nowUK());
+               const today = getStartOfDayUTC();
                const startOfToday = today;
                const endOfToday = new Date(today);
                endOfToday.setHours(23, 59, 59, 999);
@@ -139,6 +133,6 @@ cron.schedule(
           }
      },
      {
-          timezone: 'Europe/London', // 🇬🇧 UK time
+          timezone: 'UTC',
      }
 );

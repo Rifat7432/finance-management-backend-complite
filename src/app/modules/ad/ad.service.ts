@@ -4,9 +4,13 @@ import AppError from '../../../errors/AppError';
 import { IAd } from './ad.interface';
 import { deleteFileFromSpaces } from '../../middleware/uploadFileToSpaces';
 import QueryBuilder from '../../builder/QueryBuilder';
+import { getCurrentUTC, toUTC } from '../../../utils/dateTimeHelper';
 
 const createAdToDB = async (payload: IAd): Promise<IAd> => {
-     const newAd = await Ad.create(payload);
+     const { endDate, startDate, ...rest } = payload;
+     const utcStartDate = toUTC(startDate as Date);
+     const utcEndDate = toUTC(endDate as Date);
+     const newAd = await Ad.create({ ...rest, endDate: utcEndDate, startDate: utcStartDate });
      if (!newAd) {
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create ad');
      }
@@ -22,7 +26,7 @@ const getAdsFromDB = async (query: any) => {
 };
 
 const getSingleAdFromDB = async (query: any = {}): Promise<IAd | null> => {
-     const now = new Date();
+     const now = getCurrentUTC();
 
      const pipeline = [
           {

@@ -1,0 +1,7 @@
+Sat Jan 17 2026 7:6:22 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sat Jan 17 2026 7:6:24 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sat Jan 17 2026 7:6:51 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Sat Jan 17 2026 7:6:57 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sat Jan 17 2026 7:6:58 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sat Jan 17 2026 7:6:58 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Sat Jan 17 2026 7:8:11 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m

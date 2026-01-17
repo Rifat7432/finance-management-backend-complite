@@ -1,0 +1,26 @@
+{
+  "name": "finance-management-backend-dev",
+  "image": "node:22.21.0",
+  "workspaceFolder": "/app",
+
+  "mounts": [
+    "source=C:/Users/mdrif/Desktop/projects/finance-management-backend,target=/app,type=bind",
+    "source=testing-volume-logs,target=/app/winston,type=volume",
+    "source=node_modules,target=/app/node_modules,type=volume"
+  ],
+
+  "runArgs": [
+    "-p", "5001:5000"
+  ],
+
+  "postCreateCommand": "npm install",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

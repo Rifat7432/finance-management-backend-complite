@@ -2,24 +2,36 @@ import { StatusCodes } from 'http-status-codes';
 import { Expense } from './expense.model';
 import AppError from '../../../errors/AppError';
 import { IExpense } from './expense.interface';
-import { startOfMonth, endOfMonth, startOfYear, endOfYear, startOfWeek, endOfWeek } from 'date-fns';
+import { startOfWeek, endOfWeek } from 'date-fns';
+import { getCurrentUTC, getEndOfMonthUTC, getEndOfYearUTC, getStartOfMonthUTC, getStartOfYearUTC, toUTC } from '../../../utils/dateTimeHelper';
+import { Budget } from '../budget/budget.model';
+
+interface BudgetExtraType {
+     category: string;
+     type: string;
+}
 // Create new expense
-const createExpenseToDB = async (payload: Partial<IExpense>, userId: string): Promise<IExpense> => {
-     const newExpense = await Expense.create({ ...payload, userId });
+const createExpenseToDB = async (payload: Partial<IExpense & BudgetExtraType>, userId: string) => {
+     const { endDate, category, type, ...rest } = payload;
+     const utcEndDate = toUTC(endDate as Date);
+     const newExpense = await Expense.create({ ...rest, endDate: utcEndDate, userId });
      if (!newExpense) {
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create expense');
+     }
+     if (category && type) {
+          await Budget.create({ userId, category, type, amount: payload.amount, name: payload.name, ...(payload.frequency === 'on-off' ? { frequency: payload.frequency } : {}) });
      }
      return newExpense;
 };
 
 // Get all expenses for a user
 const getUserExpensesFromDB = async (userId: string, query: Partial<IExpense>): Promise<IExpense[]> => {
-     const weekStart = startOfWeek(new Date());
-     const weekEnd = endOfWeek(new Date());
-     const monthStart = startOfMonth(new Date());
-     const monthEnd = endOfMonth(new Date());
-     const yearStart = startOfYear(new Date());
-     const yearEnd = endOfYear(new Date());
+     const weekStart = startOfWeek(getCurrentUTC());
+     const weekEnd = endOfWeek(getCurrentUTC());
+     const monthStart = getStartOfMonthUTC();
+     const monthEnd = getEndOfMonthUTC();
+     const yearStart = getStartOfYearUTC();
+     const yearEnd = getEndOfYearUTC();
      const expenses = await Expense.find({
           isDeleted: false,
           userId,
@@ -55,49 +67,49 @@ const getUserExpensesFromDB = async (userId: string, query: Partial<IExpense>): 
 };
 // Get all expenses for a user by frequency
 const getUserExpensesByFrequencyFromDB = async (userId: string, query: Partial<IExpense>) => {
-  const monthStart = startOfMonth(new Date());
-  const monthEnd = endOfMonth(new Date());
-  
-  const expenses = await Expense.find({
-    userId,
-    isDeleted: false,
-    ...(query.frequency ? { frequency: query.frequency } : {}),
-    endDate: { // CHANGED FROM createdAt
-      $gte: monthStart,
-      $lte: monthEnd,
-    },
-  });
-  
-  return expenses;
-};
+     const monthStart = getStartOfMonthUTC();
+     const monthEnd = getEndOfMonthUTC();
+     const expenses = await Expense.find({
+          userId,
+          isDeleted: false,
+          ...(query.frequency ? { frequency: query.frequency } : {}),
+          endDate: {
+               // CHANGED FROM createdAt
+               $gte: monthStart,
+               $lte: monthEnd,
+          },
+     });
 
+     return expenses;
+};
 // WHY CHANGED: Already uses endDate - NO CHANGE NEEDED ✅
 const getYearlyExpenseAnalyticsFromDB = async (userId: string, year?: number) => {
-  const targetYear = year || new Date().getFullYear();
-  const yearStart = startOfYear(new Date(targetYear, 0, 1));
-  const yearEnd = endOfYear(new Date(targetYear, 0, 1));
+     const targetYear = year || getCurrentUTC().getFullYear();
+     const yearStart = getStartOfYearUTC(new Date(targetYear, 0, 1));
+     const yearEnd = getEndOfYearUTC(new Date(targetYear, 0, 1));
 
-  const expenses = await Expense.find({
-    userId: userId,
-    isDeleted: false,
-    endDate: { // Already correct ✅
-      $gte: yearStart.toISOString(),
-      $lte: yearEnd.toISOString(),
-    },
-  }).lean();
+     const expenses = await Expense.find({
+          userId: userId,
+          isDeleted: false,
+          endDate: {
+               // Already correct ✅
+               $gte: yearStart.toISOString(),
+               $lte: yearEnd.toISOString(),
+          },
+     }).lean();
 
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const monthlyTotals = Array(12).fill(0);
+     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+     const monthlyTotals = Array(12).fill(0);
 
-  expenses.forEach((expense) => {
-    const monthIndex = new Date(expense.endDate).getMonth();
-    monthlyTotals[monthIndex] += expense.amount;
-  });
+     expenses.forEach((expense) => {
+          const monthIndex = new Date(expense.endDate).getMonth();
+          monthlyTotals[monthIndex] += expense.amount;
+     });
 
-  return monthNames.map((month, index) => ({
-    month,
-    totalExpenses: monthlyTotals[index],
-  }));
+     return monthNames.map((month, index) => ({
+          month,
+          totalExpenses: monthlyTotals[index],
+     }));
 };
 
 // Get a single expense

@@ -1,13 +1,7 @@
 import cron from 'node-cron';
 import { DateNight } from '../modules/dateNight/dateNight.model';
 import { addDays, addWeeks, addMonths, addYears } from 'date-fns';
-import { toZonedTime } from 'date-fns-tz';
-// 🌍 Get the current UK time
-const UK_TZ = 'Europe/London';
-
-const nowUK = (): Date => {
-  return toZonedTime(new Date(), UK_TZ);
-};
+import { getCurrentUTC, addHoursUTC } from '../../utils/dateTimeHelper';
 
 // 🔁 Calculate next date night date
 const getNextDateNightDate = (date: Date, repeatEvery: string): Date => {
@@ -20,9 +14,9 @@ const getNextDateNightDate = (date: Date, repeatEvery: string): Date => {
      return d;
 };
 
-// Check if it's been at least 1 hour after the date + time (UK time)
+// Check if it's been at least 1 hour after the date + time (UTC time)
 const isOneHourPast = (date: Date, time?: string): boolean => {
-     const now = nowUK();
+     const now = getCurrentUTC();
 
      // Combine date and time into a full datetime
      const dateTimeString = time
@@ -39,7 +33,7 @@ const isOneHourPast = (date: Date, time?: string): boolean => {
 cron.schedule(
       '0 * * * *',
      async () => {
-          console.log('🔄 Running date night automation (UK time)...');
+          console.log('🔄 Running date night automation (UTC time)...');
 
           try {
                // Get ALL recurring date nights (no date filtering)
@@ -80,6 +74,6 @@ cron.schedule(
           }
      },
      {
-          timezone: 'Europe/London', // 🇬🇧 UK time
+          timezone: 'UTC',
      }
 );

@@ -7,6 +7,7 @@ import { Notification } from '../modules/notification/notification.model';
 import { DateNight } from '../modules/dateNight/dateNight.model';
 import { Appointment } from '../modules/appointment/appointment.model';
 import { User } from '../modules/user/user.model';
+import { getCurrentUTC } from '../../utils/dateTimeHelper';
 
 // Prevent multiple simultaneous executions
 let isProcessing = false;
@@ -52,21 +53,17 @@ async function sendNotificationAndSave({
  * Generic function for sending reminders
  */
 async function processReminders(collectionName: 'Appointment' | 'DateNight', Model: any, identifierKey: string) {
-     // Get current time in milliseconds
-     const now = new Date();
-     // Get the UTC offset of Europe/London at this moment
-     const ukOffsetMinutes = now.getTimezoneOffset() - new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' })).getTimezoneOffset();
-     // Calculate current UK time as a Date object
-     const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
-     // Subtract 1 hour in milliseconds
-     const oneHourAfterUK = new Date(nowUK.getTime() + 59 * 60 * 1000);
-     const oneHourOneMinuteAfterUK = new Date(nowUK.getTime() + 60 * 60 * 1000);
+     // Get current UTC time
+     const nowUTC = getCurrentUTC();
+     // Calculate 59 and 61 minutes in the future
+     const oneHourAfterUTC = new Date(nowUTC.getTime() + 59 * 60 * 1000);
+     const oneHourOneMinuteAfterUTC = new Date(nowUTC.getTime() + 60 * 60 * 1000);
 
      // Query MongoDB using UTCDate
      const events = await Model.find({
           isDeleted: false,
           isRemainderSent: false,
-          UTCDate: { $gte: oneHourAfterUK, $lte: oneHourOneMinuteAfterUK }, // compare with UK-based time in UTC
+          UTCDate: { $gte: oneHourAfterUTC, $lte: oneHourOneMinuteAfterUTC },
      })
           .limit(100)
           .maxTimeMS(5000)
@@ -77,15 +74,13 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
                const userSetting: any = await NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
 
                if (!userSetting) continue;
-               console.log('pass 1');
                // Check if notifications are enabled
                if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification)) {
                     continue;
                }
-               // Use user's timezone or default to UK time
 
                const appointmentUTC = event.UTCDate;
-               const diffMs = appointmentUTC.getTime() - nowUK.getTime();
+               const diffMs = appointmentUTC.getTime() - nowUTC.getTime();
                const diffMin = diffMs / (60 * 1000);
                // Check if it's within 1 hour window (59-61 minutes)
                if (diffMin > 59 && diffMin < 61) {
@@ -175,5 +170,5 @@ cron.schedule(
      async () => {
           await runReminderScheduler();
      },
-     { timezone: 'Europe/London' },
+     { timezone: 'UTC' },
 );

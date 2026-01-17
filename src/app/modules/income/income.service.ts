@@ -2,10 +2,13 @@ import { StatusCodes } from 'http-status-codes';
 import { IIncome } from './income.interface';
 import { Income } from './income.model';
 import AppError from '../../../errors/AppError';
-import { startOfMonth, endOfMonth, endOfYear, startOfYear } from 'date-fns';
+import { getEndOfMonthUTC, getEndOfYearUTC, getStartOfMonthUTC, getStartOfYearUTC, toUTC } from '../../../utils/dateTimeHelper';
+
 // Create new income
 const createIncomeToDB = async (payload: Partial<IIncome>, userId: string): Promise<IIncome> => {
-     const newIncome = await Income.create({ ...payload, userId });
+     const { receiveDate, ...rest } = payload;
+     const utcReceiveDate = toUTC(receiveDate as Date);
+     const newIncome = await Income.create({ ...rest, receiveDate: utcReceiveDate, userId });
      if (!newIncome) {
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create income');
      }
@@ -14,10 +17,10 @@ const createIncomeToDB = async (payload: Partial<IIncome>, userId: string): Prom
 
 // Get incomes by user
 const getUserIncomesFromDB = async (userId: string, query: Partial<IIncome>): Promise<IIncome[]> => {
-     const monthStart = startOfMonth(new Date());
-     const yearStart = startOfYear(new Date());
-     const monthEnd = endOfMonth(new Date());
-     const yearEnd = endOfYear(new Date());
+     const monthStart = getStartOfMonthUTC();
+     const yearStart = getStartOfYearUTC();
+     const monthEnd = getEndOfMonthUTC();
+     const yearEnd = getEndOfYearUTC();
      const incomes = await Income.find({
           isDeleted: false,
           userId,
@@ -45,20 +48,20 @@ const getUserIncomesFromDB = async (userId: string, query: Partial<IIncome>): Pr
 };
 // Get incomes by user  by frequency
 const getUserIncomesByFrequencyFromDB = async (userId: string, query: Partial<IIncome>) => {
-  const monthStart = startOfMonth(new Date());
-  const monthEnd = endOfMonth(new Date());
-  
-  const incomes = await Income.find({
-    isDeleted: false,
-    userId,
-    ...(query.frequency ? { frequency: query.frequency } : {}),
-    receiveDate: { // CHANGED FROM createdAt
-      $gte: monthStart,
-      $lte: monthEnd,
-    },
-  });
-  
-  return incomes;
+     const monthStart = getStartOfMonthUTC();
+     const monthEnd = getEndOfMonthUTC();
+     const incomes = await Income.find({
+          isDeleted: false,
+          userId,
+          ...(query.frequency ? { frequency: query.frequency } : {}),
+          receiveDate: {
+               // CHANGED FROM createdAt
+               $gte: monthStart,
+               $lte: monthEnd,
+          },
+     });
+
+     return incomes;
 };
 
 // Get single income by ID

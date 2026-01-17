@@ -8,6 +8,7 @@ import { SavingGoal } from '../savingGoal/savingGoal.model';
 import { Expense } from '../expense/expense.model';
 import { Appointment } from '../appointment/appointment.model';
 import { DateNight } from '../dateNight/dateNight.model';
+import { getCurrentUTC, getStartOfMonthUTC, getEndOfMonthUTC, getStartOfDayUTC } from '../../../utils/dateTimeHelper';
 
 // create user
 const getAnalyticsFromDB = async (userId: string) => {
@@ -15,9 +16,9 @@ const getAnalyticsFromDB = async (userId: string) => {
      if (!user) {
           throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
      }
-     const now = new Date();
-     const start = startOfMonth(now);
-     const end = endOfMonth(now);
+     const now = getCurrentUTC();
+     const start = getStartOfMonthUTC(now);
+     const end = getEndOfMonthUTC(now);
 
      const result = await Income.aggregate([
           {
@@ -89,7 +90,7 @@ const getAnalyticsFromDB = async (userId: string) => {
                                    $expr: {
                                         $and: [
                                              { $eq: ['$userId', '$$userId'] },
-                                             { $gt: [{ $toDate: '$completeDate' }, new Date()] }, // convert string to date here
+                                             { $gt: [{ $toDate: '$completeDate' }, getCurrentUTC()] },
                                         ],
                                    },
                                    isCompleted: false,
@@ -182,14 +183,6 @@ const getAnalyticsFromDB = async (userId: string) => {
           },
      ]);
 
-     console.log()
-         console.log({
-          user,
-          analytics: result.length > 0 ? result[0] : {},
-          totalSavedMoney: savingGoal[0]?.totalSavedMoney !== null ? savingGoal[0]?.totalSavedMoney : 0,
-          savingGoalCompletionRate: savingGoal[0]?.savingGoalCompletionRate !== null ? savingGoal[0]?.savingGoalCompletionRate : 0,
-})
-
      return {
           user,
           analytics: result.length > 0 ? result[0] : {},
@@ -205,7 +198,7 @@ const getLatestUpdateFromDB = async (userId: string) => {
           throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
      }
 
-     const todayStart = startOfDay(new Date());
+     const todayStart = getStartOfDayUTC();
 
      // upcoming appointments (today or later), earliest first
      const appointments = await Appointment.find({

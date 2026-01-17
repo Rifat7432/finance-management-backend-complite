@@ -4,6 +4,7 @@ import AppError from '../../../errors/AppError';
 import { BudgetWithCreatedAt, IBudget } from './budget.interface';
 import { endOfMonth, endOfYear, startOfMonth, startOfYear } from 'date-fns';
 import { User } from '../user/user.model';
+import { getCurrentUTC, getStartOfMonthUTC, getEndOfMonthUTC, getStartOfYearUTC, getEndOfYearUTC } from '../../../utils/dateTimeHelper';
 
 const createBudgetToDB = async (payload: Partial<IBudget>, userId: string): Promise<IBudget> => {
      const newBudget = await Budget.create({ ...payload, userId });
@@ -27,9 +28,9 @@ export const getUserBudgetsByTypeFromDB = async (partnerId: string, userId: stri
      if (!userInfo) {
           throw new AppError(404, 'User not found');
      }
-     const today = new Date();
-     const monthStart = startOfMonth(today);
-     const monthEnd = endOfMonth(today);
+     const today = getCurrentUTC();
+     const monthStart = getStartOfMonthUTC(today);
+     const monthEnd = getEndOfMonthUTC(today);
      const allBudgets: any[] = [];
      const budgets = await Budget.find({
           userId,
@@ -67,9 +68,9 @@ export const getUserBudgetsByTypeFromDB = async (partnerId: string, userId: stri
 
 // Yearly budget analytics for a given user
 const getYearlyBudgetAnalyticsFromDB = async (userId: string, year?: number) => {
-     const targetYear = year || new Date().getFullYear();
-     const yearStart = startOfYear(new Date(targetYear, 0, 1));
-     const yearEnd = endOfYear(new Date(targetYear, 0, 1));
+     const targetYear = year || getCurrentUTC().getFullYear();
+     const yearStart = getStartOfYearUTC(new Date(targetYear, 0, 1));
+     const yearEnd = getEndOfYearUTC(new Date(targetYear, 0, 1));
 
      const budgets = await Budget.find({
           userId,

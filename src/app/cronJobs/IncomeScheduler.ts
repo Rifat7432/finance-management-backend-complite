@@ -1,17 +1,11 @@
 import cron from 'node-cron';
 import { Income } from '../modules/income/income.model';
 import { startOfDay, addMonths, addYears, subWeeks, subMonths, subYears } from 'date-fns';
-import { toZonedTime } from 'date-fns-tz';
-// 🌍 Get the current UK time
-const UK_TZ = 'Europe/London';
-
-const nowUK = (): Date => {
-  return toZonedTime(new Date(), UK_TZ);
-};
+import { getCurrentUTC, getStartOfDayUTC } from '../../utils/dateTimeHelper';
 
 const isToday = (date: Date): boolean => {
-  const today = startOfDay(nowUK());
-  const given = startOfDay(toZonedTime(date, UK_TZ));
+  const today = getStartOfDayUTC();
+  const given = startOfDay(new Date(date));
   return today.getTime() === given.getTime();
 };
 
@@ -23,18 +17,18 @@ const getNextIncomeDate = (date: Date, frequency: string): Date => {
      return d;
 };
 
-// ✔ Updated to check using UK time
+// ✔ Updated to check using UTC time
 
 
-// Run every 10 seconds (for testing) – IN UK TIME
+// Run at 5:00 UTC every day
 cron.schedule(
      '5 0 * * *',
      // '*/30 * * * * *',
      async () => {
-          console.log('🔄 Running income automation (UK time)...');
+          console.log('🔄 Running income automation (UTC time)...');
 
           try {
-               const today = startOfDay(nowUK());
+               const today = getStartOfDayUTC();
                const previousWeekStart = startOfDay(subWeeks(today, 1));
                const previousMonthStart = startOfDay(subMonths(today, 1));
                const previousYearStart = startOfDay(subYears(today, 1));
@@ -50,14 +44,12 @@ cron.schedule(
                          { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
                     ],
                }).lean();
-               console.log(recurringIncomes);
                let created = 0,
                     skipped = 0;
 
                for (const income of recurringIncomes) {
                     try {
-                         // Must be received today (UK date)
-                         console.log(!isToday(income.receiveDate))
+                         // Must be received today (UTC date)
                          if (!isToday(income.receiveDate)) continue;
                          const nextDate = getNextIncomeDate(income.receiveDate, income.frequency);
                          const nextDayStart = startOfDay(nextDate);
@@ -97,6 +89,6 @@ cron.schedule(
           }
      },
      {
-          timezone: 'Europe/London', // 🇬🇧 UK local time
+          timezone: 'UTC',
      },
 );

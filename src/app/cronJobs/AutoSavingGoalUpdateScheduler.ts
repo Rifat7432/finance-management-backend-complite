@@ -6,14 +6,7 @@ import { Income } from '../modules/income/income.model';
 import AppError from '../../errors/AppError';
 import { User } from '../modules/user/user.model';
 import { SavingGoal } from '../modules/savingGoal/savingGoal.model';
-import { toZonedTime } from 'date-fns-tz';
-
-// 🌍 Get the current UK time
-const UK_TZ = 'Europe/London';
-
-const nowUK = (): Date => {
-  return toZonedTime(new Date(), UK_TZ);
-};
+import { getCurrentUTC, getStartOfMonthUTC, getEndOfMonthUTC } from '../../utils/dateTimeHelper';
 
 // ========================================================
 // === Helper Function: getAnalyticsFromDB (per user) =====
@@ -23,9 +16,9 @@ const getAnalyticsFromDB = async (userId: string) => {
      const user = await User.isExistUserById(userId);
      if (!user) throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
 
-     const now = nowUK();
-     const start = startOfMonth(now);
-     const end = endOfMonth(now);
+     const now = getCurrentUTC();
+     const start = getStartOfMonthUTC(now);
+     const end = getEndOfMonthUTC(now);
 
      const result = await Income.aggregate([
           {
@@ -187,8 +180,6 @@ const getAnalyticsFromDB = async (userId: string) => {
 // ========================================================
 
 const scheduleMonthlyAnalyticsJob = async () => {
-     const now = nowUK();
-     const end = endOfMonth(now);
 
      // Run only if this is actually the last day of the month
      // if (now.getDate() !== end.getDate()) return;
