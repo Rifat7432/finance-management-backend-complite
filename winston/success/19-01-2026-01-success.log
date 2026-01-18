@@ -2,3 +2,136 @@ Mon Jan 19 2026 1:6:51 [SERVER-NAME] info: [32mConfig validation successful.[3
 Mon Jan 19 2026 1:6:51 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
 Mon Jan 19 2026 1:6:51 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
 Mon Jan 19 2026 1:11:21 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Mon Jan 19 2026 1:42:5 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:42:5 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:42:5 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:42:7 [SERVER-NAME] info: [34mUser 6931dbfbc277de3e636a1076 connected via socket[39m
+Mon Jan 19 2026 1:42:23 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 24.700 ms
+Mon Jan 19 2026 1:43:2 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 227.495 ms
+Mon Jan 19 2026 1:43:12 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 4.497 ms
+Mon Jan 19 2026 1:43:29 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:43:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:43:29 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:44:40 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 26.697 ms
+Mon Jan 19 2026 1:45:55 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:45:55 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:45:55 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:45:58 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:45:58 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:45:58 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:6 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:6 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:6 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:8 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:8 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:8 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:19 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:19 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:19 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:21 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:21 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:21 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:25 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:25 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:25 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:27 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:27 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:27 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:30 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:30 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:30 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:37 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:37 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:37 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:47 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:47 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:47 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:48 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:48 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:48 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:53 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:53 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:53 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:46:56 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:46:57 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:46:57 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:47:9 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:47:9 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:47:9 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:47:24 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:47:24 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:47:24 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:47:26 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:47:26 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:47:27 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:1 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:48:1 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:48:1 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:2 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:48:2 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:48:2 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:6 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:48:7 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:48:7 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:11 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:48:11 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:48:11 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:15 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:48:15 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:48:15 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:17 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:48:17 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:48:17 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:48:18 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 69.837 ms
+Mon Jan 19 2026 1:48:46 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 12.386 ms
+Mon Jan 19 2026 1:49:0 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 14.242 ms
+Mon Jan 19 2026 1:49:22 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 6.391 ms
+Mon Jan 19 2026 1:49:23 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 3.943 ms
+Mon Jan 19 2026 1:49:24 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 5.798 ms
+Mon Jan 19 2026 1:49:28 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 6.639 ms
+Mon Jan 19 2026 1:49:29 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 3.799 ms
+Mon Jan 19 2026 1:49:46 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:49:46 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:49:46 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:49:48 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 13.845 ms
+Mon Jan 19 2026 1:50:50 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:50:50 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:50:50 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:50:59 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:0 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:0 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:51:3 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:3 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:4 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:4 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:4 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:51:6 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:6 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:6 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:51:8 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:8 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:8 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:51:17 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:17 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:17 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:51:19 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:19 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:19 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:51:23 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 15.973 ms
+Mon Jan 19 2026 1:51:59 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:51:59 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:51:59 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:52:16 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 37.187 ms
+Mon Jan 19 2026 1:52:21 [SERVER-NAME] info: 127.0.0.1 - POST /api/v1/expenses/ 200 - 7.651 ms
+Mon Jan 19 2026 1:52:24 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 19.507 ms
+Mon Jan 19 2026 1:56:22 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:56:22 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:56:22 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:56:29 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:56:29 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:56:30 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:56:42 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Mon Jan 19 2026 1:56:42 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Mon Jan 19 2026 1:56:42 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m
+Mon Jan 19 2026 1:56:44 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/expenses 200 - 18.521 ms
+Mon Jan 19 2026 1:57:21 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m

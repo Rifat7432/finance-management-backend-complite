@@ -11,7 +11,7 @@ const expenseSchema = new Schema<IExpense>(
           endDate: { type: Date, required: true }, // consider Date type
           frequency: { type: String, enum: ['on-off', 'weekly', 'monthly', 'yearly'], default: 'on-off' }, // optional: enum like 'daily', 'monthly'
           userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-          budgetId: { type: Schema.Types.ObjectId, ref: 'Expense' },
+          budgetId: { type: Schema.Types.ObjectId, ref: 'Budget' },
           isDeleted: { type: Boolean, default: false },
      },
      { timestamps: true },

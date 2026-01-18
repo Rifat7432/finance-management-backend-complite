@@ -19,7 +19,7 @@ const createExpenseToDB = async (payload: Partial<IExpense & BudgetExtraType>, u
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create expense');
      }
      if (category && type) {
-          await Budget.create({
+          const budget = await Budget.create({
                userId,
                expensesId: newExpense._id,
                category,
@@ -28,6 +28,10 @@ const createExpenseToDB = async (payload: Partial<IExpense & BudgetExtraType>, u
                name: payload.name,
                ...(payload.frequency === 'on-off' ? { frequency: payload.frequency } : {}),
           });
+          if (budget) {
+               const updatedExpense = await Expense.findByIdAndUpdate(newExpense._id, { budgetId: budget._id }, { new: true });
+               return updatedExpense;
+          }
      }
      return newExpense;
 };
@@ -70,7 +74,7 @@ const getUserExpensesFromDB = async (userId: string, query: Partial<IExpense>): 
                           }
                         : { frequency: query.frequency }
                : {}),
-     });
+     }).populate('budgetId', 'type category');
      return expenses;
 };
 // Get all expenses for a user by frequency

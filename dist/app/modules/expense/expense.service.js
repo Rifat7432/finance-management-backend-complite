@@ -39,8 +39,12 @@ const createExpenseToDB = (payload, userId) => __awaiter(void 0, void 0, void 0,
         throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'Failed to create expense');
     }
     if (category && type) {
-        yield budget_model_1.Budget.create(Object.assign({ userId, expensesId: newExpense._id, category,
+        const budget = yield budget_model_1.Budget.create(Object.assign({ userId, expensesId: newExpense._id, category,
             type, amount: payload.amount, name: payload.name }, (payload.frequency === 'on-off' ? { frequency: payload.frequency } : {})));
+        if (budget) {
+            const updatedExpense = yield expense_model_1.Expense.findByIdAndUpdate(newExpense._id, { budgetId: budget._id }, { new: true });
+            return updatedExpense;
+        }
     }
     return newExpense;
 });
@@ -78,7 +82,7 @@ const getUserExpensesFromDB = (userId, query) => __awaiter(void 0, void 0, void 
                         },
                     }
                     : { frequency: query.frequency }
-        : {})));
+        : {}))).populate('budgetId', 'type category');
     return expenses;
 });
 // Get all expenses for a user by frequency
