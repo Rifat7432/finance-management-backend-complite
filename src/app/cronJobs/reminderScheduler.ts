@@ -166,8 +166,8 @@ async function runReminderScheduler() {
 }
 
 cron.schedule(
-     // '*/1 * * * *',
-     '*/10 * * * * *',
+     '*/1 * * * *',
+     // '*/10 * * * * *',
      async () => {
           await runReminderScheduler();
      },
