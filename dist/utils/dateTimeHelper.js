@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatUTCWithLabel = exports.getStartOfDayUTC = exports.combineDateAndTime = exports.hasOneHourPassed = exports.addHoursUTC = exports.addYearsUTC = exports.addMonthsUTC = exports.addWeeksUTC = exports.addDaysUTC = exports.isFuture = exports.isPast = exports.isToday = exports.formatForLog = exports.formatUTC = exports.formatToISO = exports.getEndOfYearUTC = exports.getStartOfYearUTC = exports.getEndOfMonthUTC = exports.getStartOfMonthUTC = exports.getEndOfTodayUTC = exports.getStartOfTodayUTC = exports.toUTC = exports.getCurrentUTC = void 0;
+const date_fns_tz_1 = require("date-fns-tz");
 const date_fns_1 = require("date-fns");
 // ============================================
 // ======= UTC DATETIME HELPER =================
@@ -10,84 +11,67 @@ const UTC_TZ = 'UTC';
  * Get current time in UTC
  */
 const getCurrentUTC = () => {
-    return new Date(); // new Date() is always in UTC internally
+    return (0, date_fns_tz_1.toZonedTime)(new Date(), UTC_TZ);
 };
 exports.getCurrentUTC = getCurrentUTC;
 /**
  * Convert any date to UTC
  */
 const toUTC = (date) => {
-    const d = new Date(date);
+    const dateStr = new Date(date);
+    const day = (0, date_fns_1.format)(dateStr, 'dd');
+    const monthName = (0, date_fns_1.format)(dateStr, 'MMM');
+    const year = (0, date_fns_1.format)(dateStr, 'yyyy');
+    const formateDate = `${monthName} ${day}, ${year}`;
+    const d = new Date(formateDate);
     if (!(0, date_fns_1.isValid)(d))
         throw new Error(`Invalid date: ${date}`);
-    return d; // Already a UTC Date object
+    return (0, date_fns_tz_1.toZonedTime)(d, UTC_TZ);
 };
 exports.toUTC = toUTC;
 /**
  * Get start of today (UTC)
  */
 const getStartOfTodayUTC = () => {
-    const now = (0, exports.getCurrentUTC)();
-    // Create a date with only year, month, day (at 00:00:00)
-    const year = now.getUTCFullYear();
-    const month = now.getUTCMonth();
-    const day = now.getUTCDate();
-    return new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
+    return (0, date_fns_1.startOfDay)((0, exports.getCurrentUTC)());
 };
 exports.getStartOfTodayUTC = getStartOfTodayUTC;
 /**
  * Get end of today (UTC)
  */
 const getEndOfTodayUTC = () => {
-    const now = (0, exports.getCurrentUTC)();
-    // Create a date with tomorrow at 00:00:00, then subtract 1ms
-    const year = now.getUTCFullYear();
-    const month = now.getUTCMonth();
-    const day = now.getUTCDate();
-    const tomorrow = new Date(Date.UTC(year, month, day + 1, 0, 0, 0, 0));
-    return new Date(tomorrow.getTime() - 1);
+    const today = (0, exports.getStartOfTodayUTC)();
+    const end = new Date(today);
+    end.setHours(23, 59, 59, 999);
+    return end;
 };
 exports.getEndOfTodayUTC = getEndOfTodayUTC;
 /**
  * Get start of month (UTC)
  */
 const getStartOfMonthUTC = (date = (0, exports.getCurrentUTC)()) => {
-    const d = (0, exports.toUTC)(date);
-    const year = d.getUTCFullYear();
-    const month = d.getUTCMonth();
-    return new Date(Date.UTC(year, month, 1, 0, 0, 0, 0));
+    return (0, date_fns_1.startOfMonth)((0, exports.toUTC)(date));
 };
 exports.getStartOfMonthUTC = getStartOfMonthUTC;
 /**
  * Get end of month (UTC)
  */
 const getEndOfMonthUTC = (date = (0, exports.getCurrentUTC)()) => {
-    const d = (0, exports.toUTC)(date);
-    const year = d.getUTCFullYear();
-    const month = d.getUTCMonth();
-    // First day of next month minus 1ms
-    const nextMonth = new Date(Date.UTC(year, month + 1, 1, 0, 0, 0, 0));
-    return new Date(nextMonth.getTime() - 1);
+    return (0, date_fns_1.endOfMonth)((0, exports.toUTC)(date));
 };
 exports.getEndOfMonthUTC = getEndOfMonthUTC;
 /**
  * Get start of year (UTC)
  */
 const getStartOfYearUTC = (date = (0, exports.getCurrentUTC)()) => {
-    const d = (0, exports.toUTC)(date);
-    const year = d.getUTCFullYear();
-    return new Date(Date.UTC(year, 0, 1, 0, 0, 0, 0));
+    return (0, date_fns_1.startOfYear)((0, exports.toUTC)(date));
 };
 exports.getStartOfYearUTC = getStartOfYearUTC;
 /**
  * Get end of year (UTC)
  */
 const getEndOfYearUTC = (date = (0, exports.getCurrentUTC)()) => {
-    const d = (0, exports.toUTC)(date);
-    const year = d.getUTCFullYear();
-    // First day of next year minus 1ms
-    const nextYear = new Date(Date.UTC(year + 1, 0, 1, 0, 0, 0, 0));
-    return new Date(nextYear.getTime() - 1);
+    return (0, date_fns_1.endOfYear)((0, exports.toUTC)(date));
 };
 exports.getEndOfYearUTC = getEndOfYearUTC;
 /**
@@ -101,22 +85,7 @@ exports.formatToISO = formatToISO;
  * Format date for display (UTC)
  */
 const formatUTC = (date, formatStr = 'yyyy-MM-dd HH:mm:ss') => {
-    const d = (0, exports.toUTC)(date);
-    const year = d.getUTCFullYear();
-    const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(d.getUTCDate()).padStart(2, '0');
-    const hours = String(d.getUTCHours()).padStart(2, '0');
-    const minutes = String(d.getUTCMinutes()).padStart(2, '0');
-    const seconds = String(d.getUTCSeconds()).padStart(2, '0');
-    const ms = String(d.getUTCMilliseconds()).padStart(3, '0');
-    return formatStr
-        .replace('yyyy', String(year))
-        .replace('MM', month)
-        .replace('dd', day)
-        .replace('HH', hours)
-        .replace('mm', minutes)
-        .replace('ss', seconds)
-        .replace('SSS', ms);
+    return (0, date_fns_1.format)((0, exports.toUTC)(date), formatStr);
 };
 exports.formatUTC = formatUTC;
 /**
@@ -130,13 +99,9 @@ exports.formatForLog = formatForLog;
  * Check if date is today (UTC)
  */
 const isToday = (date) => {
-    const d = (0, exports.toUTC)(date);
+    const d = (0, date_fns_1.startOfDay)((0, exports.toUTC)(date));
     const today = (0, exports.getStartOfTodayUTC)();
-    const year = d.getUTCFullYear();
-    const month = d.getUTCMonth();
-    const day = d.getUTCDate();
-    const dateStart = new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
-    return dateStart.getTime() === today.getTime();
+    return d.getTime() === today.getTime();
 };
 exports.isToday = isToday;
 /**
@@ -186,7 +151,8 @@ exports.addYearsUTC = addYearsUTC;
  */
 const addHoursUTC = (date, hours) => {
     const d = (0, exports.toUTC)(date);
-    return new Date(d.getTime() + hours * 60 * 60 * 1000);
+    d.setHours(d.getHours() + hours);
+    return d;
 };
 exports.addHoursUTC = addHoursUTC;
 /**
@@ -200,25 +166,19 @@ const hasOneHourPassed = (date) => {
 exports.hasOneHourPassed = hasOneHourPassed;
 /**
  * Convert date with time string to UTC date
- * Example: combineDateAndTime('2026-01-16', '14:30')
+ * Example: combineDateAndTime('2024-01-14', '14:30')
  */
 const combineDateAndTime = (dateStr, timeStr, timeZone = 'UTC') => {
-    const combined = `${dateStr}T${timeStr}:00`;
+    const combined = `${dateStr}T${timeStr}:00Z`;
     const d = new Date(combined);
-    if (!(0, date_fns_1.isValid)(d))
-        throw new Error(`Invalid date or time: ${dateStr} ${timeStr}`);
-    return d;
+    return (0, date_fns_tz_1.toZonedTime)(d, timeZone);
 };
 exports.combineDateAndTime = combineDateAndTime;
 /**
  * Get start of day for any date (UTC)
  */
 const getStartOfDayUTC = (date = (0, exports.getCurrentUTC)()) => {
-    const d = (0, exports.toUTC)(date);
-    const year = d.getUTCFullYear();
-    const month = d.getUTCMonth();
-    const day = d.getUTCDate();
-    return new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
+    return (0, exports.toUTC)((0, date_fns_1.startOfDay)(date));
 };
 exports.getStartOfDayUTC = getStartOfDayUTC;
 /**

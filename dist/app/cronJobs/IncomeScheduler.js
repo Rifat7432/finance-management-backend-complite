@@ -14,68 +14,59 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_cron_1 = __importDefault(require("node-cron"));
 const income_model_1 = require("../modules/income/income.model");
+const date_fns_1 = require("date-fns");
 const dateTimeHelper_1 = require("../../utils/dateTimeHelper");
-/**
- * ✅ FIXED: Checks if a date is today using UTC
- */
-const isTodayUTC = (date) => {
-    const today = (0, dateTimeHelper_1.getStartOfTodayUTC)();
-    const dateStart = (0, dateTimeHelper_1.getStartOfDayUTC)(date);
-    return today.getTime() === dateStart.getTime();
+const isToday = (date) => {
+    const today = (0, dateTimeHelper_1.getStartOfDayUTC)();
+    return today.getTime() === date.getTime();
 };
-/**
- * ✅ FIXED: Calculate next receive date using UTC functions
- */
+// 🔁 Calculate next receive date
 const getNextIncomeDate = (date, frequency) => {
-    const d = (0, dateTimeHelper_1.toUTC)(date);
+    const d = new Date(date);
     if (frequency === 'monthly')
-        return (0, dateTimeHelper_1.addMonthsUTC)(d, 1);
+        return (0, date_fns_1.addMonths)(d, 1);
     if (frequency === 'yearly')
-        return (0, dateTimeHelper_1.addYearsUTC)(d, 1);
+        return (0, date_fns_1.addYears)(d, 1);
     return d;
 };
-/**
- * ✅ Run at 5:00 UTC every day
- */
-node_cron_1.default.schedule('0 5 * * *', // 5:00 AM UTC daily
-() => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`\n🔄 [${(0, dateTimeHelper_1.formatForLog)((0, dateTimeHelper_1.getCurrentUTC)())}] Income Scheduler started...`);
+// ✔ Updated to check using UTC time
+// Run at 5:00 UTC every day
+node_cron_1.default.schedule('5 0 * * *', () => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('🔄 Running income automation (UTC time)...');
     try {
-        const today = (0, dateTimeHelper_1.getStartOfTodayUTC)();
-        console.log(`📅 Today (UTC): ${(0, dateTimeHelper_1.formatUTC)(today)}`);
-        // ✅ Get all recurring incomes created before today
+        const today = (0, dateTimeHelper_1.getStartOfDayUTC)();
+        // Recurring incomes
         const recurringIncomes = yield income_model_1.Income.find({
             isDeleted: false,
-            frequency: { $in: ['monthly', 'yearly'] },
-            createdAt: { $lt: today }, // Created before today
+            $or: [
+                {
+                    frequency: 'monthly',
+                },
+                { frequency: 'yearly' },
+            ],
         }).lean();
-        console.log(`📦 Found ${recurringIncomes.length} recurring incomes\n`);
         let created = 0, skipped = 0;
         for (const income of recurringIncomes) {
             try {
-                // ✅ Check if receive date is TODAY (UTC)
-                if (!isTodayUTC(income.receiveDate))
+                // Must be received today (UTC date)
+                if (!isToday(income.receiveDate))
                     continue;
-                console.log(`⏰ Processing: "${income.name}" (Received: ${(0, dateTimeHelper_1.formatUTC)(income.receiveDate)})`);
-                // ✅ Calculate next receive date using UTC
                 const nextDate = getNextIncomeDate(income.receiveDate, income.frequency);
-                const nextDayStart = (0, dateTimeHelper_1.getStartOfDayUTC)(nextDate);
-                const nextDayEnd = (0, dateTimeHelper_1.getEndOfTodayUTC)();
-                console.log(`   Next date will be: ${(0, dateTimeHelper_1.formatUTC)(nextDate)}`);
-                // ✅ Check for duplicates using UTC date range
+                const nextDayStart = (0, date_fns_1.startOfDay)(nextDate);
+                const nextDayEnd = new Date(nextDayStart.getTime() + 24 * 60 * 60 * 1000);
+                // Avoid duplicates
                 const exists = yield income_model_1.Income.exists({
                     name: income.name,
                     userId: income.userId,
                     frequency: income.frequency,
                     isDeleted: false,
-                    receiveDate: { $gte: nextDayStart, $lte: nextDayEnd },
+                    receiveDate: { $gte: nextDayStart, $lt: nextDayEnd },
                 });
                 if (exists) {
-                    console.log(`   ⏭️  Skipped: Already exists for next period`);
                     skipped++;
                     continue;
                 }
-                // ✅ Insert next recurring record
+                // Insert next recurring record
                 yield income_model_1.Income.create({
                     name: income.name,
                     amount: income.amount,
@@ -83,17 +74,17 @@ node_cron_1.default.schedule('0 5 * * *', // 5:00 AM UTC daily
                     frequency: income.frequency,
                     userId: income.userId,
                 });
-                console.log(`   ✅ Created: ${income.name} → ${(0, dateTimeHelper_1.formatUTC)(nextDate)}`);
+                console.log(`✅ Income: ${income.name} → ${nextDate.toDateString()}`);
                 created++;
             }
             catch (err) {
-                console.error(`   ❌ Error processing income ${income.name}:`, err);
+                console.error(`❌ Error processing income ${income.name}:`, err);
             }
         }
-        console.log(`\n📊 Summary: ✅ Created ${created} | ⏭️  Skipped ${skipped}\n`);
+        console.log(`📊 Income: Created ${created} | Skipped ${skipped}`);
     }
     catch (error) {
-        console.error(`❌ Income automation error [${(0, dateTimeHelper_1.formatForLog)((0, dateTimeHelper_1.getCurrentUTC)())}]:`, error);
+        console.error('❌ Income automation error:', error);
     }
 }), {
     timezone: 'UTC',

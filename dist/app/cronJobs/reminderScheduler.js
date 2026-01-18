@@ -58,6 +58,7 @@ function processReminders(collectionName, Model, identifierKey) {
         // Calculate 59 and 61 minutes in the future
         const oneHourAfterUTC = new Date(nowUTC.getTime() + 59 * 60 * 1000);
         const oneHourOneMinuteAfterUTC = new Date(nowUTC.getTime() + 60 * 60 * 1000);
+        console.log(nowUTC, oneHourAfterUTC, oneHourOneMinuteAfterUTC);
         // Query MongoDB using UTCDate
         const events = yield Model.find({
             isDeleted: false,
@@ -158,6 +159,8 @@ function runReminderScheduler() {
         }
     });
 }
-node_cron_1.default.schedule('*/1 * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
+node_cron_1.default.schedule('*/1 * * * *', 
+// '*/10 * * * * *',
+() => __awaiter(void 0, void 0, void 0, function* () {
     yield runReminderScheduler();
 }), { timezone: 'UTC' });
