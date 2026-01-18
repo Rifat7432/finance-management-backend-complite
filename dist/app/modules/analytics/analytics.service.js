@@ -17,22 +17,22 @@ const http_status_codes_1 = require("http-status-codes");
 const user_model_1 = require("../user/user.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
 const income_model_1 = require("../income/income.model");
-const date_fns_1 = require("date-fns");
 const mongoose_1 = __importDefault(require("mongoose"));
 const savingGoal_model_1 = require("../savingGoal/savingGoal.model");
 const expense_model_1 = require("../expense/expense.model");
 const appointment_model_1 = require("../appointment/appointment.model");
 const dateNight_model_1 = require("../dateNight/dateNight.model");
+const dateTimeHelper_1 = require("../../../utils/dateTimeHelper");
 // create user
 const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d;
     const user = yield user_model_1.User.findById(userId).populate('partnerId', 'name email image');
     if (!user) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
     }
-    const now = new Date();
-    const start = (0, date_fns_1.startOfMonth)(now);
-    const end = (0, date_fns_1.endOfMonth)(now);
+    const now = (0, dateTimeHelper_1.getCurrentUTC)();
+    const start = (0, dateTimeHelper_1.getStartOfMonthUTC)(now);
+    const end = (0, dateTimeHelper_1.getEndOfMonthUTC)(now);
     const result = yield income_model_1.Income.aggregate([
         {
             $match: {
@@ -103,7 +103,7 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
                             $expr: {
                                 $and: [
                                     { $eq: ['$userId', '$$userId'] },
-                                    { $gt: [{ $toDate: '$completeDate' }, new Date()] }, // convert string to date here
+                                    { $gt: [{ $toDate: '$completeDate' }, (0, dateTimeHelper_1.getCurrentUTC)()] },
                                 ],
                             },
                             isCompleted: false,
@@ -190,18 +190,11 @@ const getAnalyticsFromDB = (userId) => __awaiter(void 0, void 0, void 0, functio
             },
         },
     ]);
-    console.log();
-    console.log({
+    return {
         user,
         analytics: result.length > 0 ? result[0] : {},
         totalSavedMoney: ((_a = savingGoal[0]) === null || _a === void 0 ? void 0 : _a.totalSavedMoney) !== null ? (_b = savingGoal[0]) === null || _b === void 0 ? void 0 : _b.totalSavedMoney : 0,
         savingGoalCompletionRate: ((_c = savingGoal[0]) === null || _c === void 0 ? void 0 : _c.savingGoalCompletionRate) !== null ? (_d = savingGoal[0]) === null || _d === void 0 ? void 0 : _d.savingGoalCompletionRate : 0,
-    });
-    return {
-        user,
-        analytics: result.length > 0 ? result[0] : {},
-        totalSavedMoney: ((_e = savingGoal[0]) === null || _e === void 0 ? void 0 : _e.totalSavedMoney) !== null ? (_f = savingGoal[0]) === null || _f === void 0 ? void 0 : _f.totalSavedMoney : 0,
-        savingGoalCompletionRate: ((_g = savingGoal[0]) === null || _g === void 0 ? void 0 : _g.savingGoalCompletionRate) !== null ? (_h = savingGoal[0]) === null || _h === void 0 ? void 0 : _h.savingGoalCompletionRate : 0,
     };
 });
 // ...existing code...
@@ -210,7 +203,7 @@ const getLatestUpdateFromDB = (userId) => __awaiter(void 0, void 0, void 0, func
     if (!user) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
     }
-    const todayStart = (0, date_fns_1.startOfDay)(new Date());
+    const todayStart = (0, dateTimeHelper_1.getStartOfDayUTC)();
     // upcoming appointments (today or later), earliest first
     const appointments = yield appointment_model_1.Appointment.find({
         userId,

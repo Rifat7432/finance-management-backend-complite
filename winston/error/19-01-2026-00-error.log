@@ -1,0 +1,2 @@
+Mon Jan 19 2026 0:29:50 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/appointments/ 400 - 116.431 ms
+Mon Jan 19 2026 0:30:44 [SERVER-NAME] error: 127.0.0.1 - POST /api/v1/appointments/ 400 - 11.154 ms

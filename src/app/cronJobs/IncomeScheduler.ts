@@ -1,12 +1,11 @@
 import cron from 'node-cron';
 import { Income } from '../modules/income/income.model';
 import { startOfDay, addMonths, addYears, subWeeks, subMonths, subYears } from 'date-fns';
-import { getCurrentUTC, getStartOfDayUTC } from '../../utils/dateTimeHelper';
+import { getCurrentUTC, getEndOfTodayUTC, getStartOfDayUTC, getStartOfTodayUTC, toUTC } from '../../utils/dateTimeHelper';
 
 const isToday = (date: Date): boolean => {
-  const today = getStartOfDayUTC();
-  const given = startOfDay(new Date(date));
-  return today.getTime() === given.getTime();
+     const today = getStartOfDayUTC();
+     return today.getTime() === date.getTime();
 };
 
 // 🔁 Calculate next receive date
@@ -19,34 +18,26 @@ const getNextIncomeDate = (date: Date, frequency: string): Date => {
 
 // ✔ Updated to check using UTC time
 
-
 // Run at 5:00 UTC every day
 cron.schedule(
      '5 0 * * *',
-     // '*/30 * * * * *',
      async () => {
           console.log('🔄 Running income automation (UTC time)...');
 
           try {
                const today = getStartOfDayUTC();
-               const previousWeekStart = startOfDay(subWeeks(today, 1));
-               const previousMonthStart = startOfDay(subMonths(today, 1));
-               const previousYearStart = startOfDay(subYears(today, 1));
-
                // Recurring incomes
                const recurringIncomes = await Income.find({
                     isDeleted: false,
                     $or: [
                          {
                               frequency: 'monthly',
-                              createdAt: { $gte: previousMonthStart, $lt: today }
                          },
-                         { frequency: 'yearly', createdAt: { $gte: previousYearStart, $lt: today } },
+                         { frequency: 'yearly' },
                     ],
                }).lean();
                let created = 0,
                     skipped = 0;
-
                for (const income of recurringIncomes) {
                     try {
                          // Must be received today (UTC date)

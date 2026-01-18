@@ -20,6 +20,7 @@ const notification_model_1 = require("../modules/notification/notification.model
 const dateNight_model_1 = require("../modules/dateNight/dateNight.model");
 const appointment_model_1 = require("../modules/appointment/appointment.model");
 const user_model_1 = require("../modules/user/user.model");
+const dateTimeHelper_1 = require("../../utils/dateTimeHelper");
 // Prevent multiple simultaneous executions
 let isProcessing = false;
 /**
@@ -52,20 +53,16 @@ function sendNotificationAndSave(_a) {
  */
 function processReminders(collectionName, Model, identifierKey) {
     return __awaiter(this, void 0, void 0, function* () {
-        // Get current time in milliseconds
-        const now = new Date();
-        // Get the UTC offset of Europe/London at this moment
-        const ukOffsetMinutes = now.getTimezoneOffset() - new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' })).getTimezoneOffset();
-        // Calculate current UK time as a Date object
-        const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
-        // Subtract 1 hour in milliseconds
-        const oneHourAfterUK = new Date(nowUK.getTime() + 59 * 60 * 1000);
-        const oneHourOneMinuteAfterUK = new Date(nowUK.getTime() + 60 * 60 * 1000);
+        // Get current UTC time
+        const nowUTC = (0, dateTimeHelper_1.getCurrentUTC)();
+        // Calculate 59 and 61 minutes in the future
+        const oneHourAfterUTC = new Date(nowUTC.getTime() + 59 * 60 * 1000);
+        const oneHourOneMinuteAfterUTC = new Date(nowUTC.getTime() + 60 * 60 * 1000);
         // Query MongoDB using UTCDate
         const events = yield Model.find({
             isDeleted: false,
             isRemainderSent: false,
-            UTCDate: { $gte: oneHourAfterUK, $lte: oneHourOneMinuteAfterUK }, // compare with UK-based time in UTC
+            UTCDate: { $gte: oneHourAfterUTC, $lte: oneHourOneMinuteAfterUTC },
         })
             .limit(100)
             .maxTimeMS(5000)
@@ -76,14 +73,12 @@ function processReminders(collectionName, Model, identifierKey) {
                 const userSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: event.userId }).maxTimeMS(3000).lean();
                 if (!userSetting)
                     continue;
-                console.log('pass 1');
                 // Check if notifications are enabled
                 if ((collectionName === 'Appointment' && !userSetting.appointmentNotification) || (collectionName === 'DateNight' && !userSetting.dateNightNotification)) {
                     continue;
                 }
-                // Use user's timezone or default to UK time
                 const appointmentUTC = event.UTCDate;
-                const diffMs = appointmentUTC.getTime() - nowUK.getTime();
+                const diffMs = appointmentUTC.getTime() - nowUTC.getTime();
                 const diffMin = diffMs / (60 * 1000);
                 // Check if it's within 1 hour window (59-61 minutes)
                 if (diffMin > 59 && diffMin < 61) {
@@ -165,4 +160,4 @@ function runReminderScheduler() {
 }
 node_cron_1.default.schedule('*/1 * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
     yield runReminderScheduler();
-}), { timezone: 'Europe/London' });
+}), { timezone: 'UTC' });

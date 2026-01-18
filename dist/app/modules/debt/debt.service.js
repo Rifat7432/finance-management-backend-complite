@@ -57,14 +57,35 @@ const getDebtInsightsFromDB = (userId) => __awaiter(void 0, void 0, void 0, func
         .slice(0, 3)
         .map((d) => ({ name: d.name, interestRate: d.interestRate }));
     // 2. Debt Summary
-    const totalDebt = debtsWithRate.reduce((sum, d) => sum + d.amount, 0);
-    const avgInterestRate = debtsWithRate.reduce((sum, d) => sum + d.interestRate, 0) / debtsWithRate.length;
-    const monthlyPayment = debtsWithRate.reduce((sum, d) => sum + d.monthlyPayment, 0);
+    const totalDebt = debtsWithRate
+        .sort((a, b) => b.interestRate - a.interestRate)
+        .slice(0, 3)
+        .reduce((sum, d) => sum + d.amount, 0);
+    const avgInterestRate = debtsWithRate
+        .sort((a, b) => b.interestRate - a.interestRate)
+        .slice(0, 3)
+        .reduce((sum, d) => sum + d.interestRate, 0) / debtsWithRate.length;
+    const monthlyPayment = debtsWithRate
+        .sort((a, b) => b.interestRate - a.interestRate)
+        .slice(0, 3)
+        .reduce((sum, d) => sum + d.monthlyPayment, 0);
+    const totalCapitalRepayment = debtsWithRate
+        .sort((a, b) => b.interestRate - a.interestRate)
+        .slice(0, 3)
+        .reduce((sum, d) => sum + d.capitalRepayment, 0);
+    const totalInterestRepayment = debtsWithRate
+        .sort((a, b) => b.interestRate - a.interestRate)
+        .slice(0, 3)
+        .reduce((sum, d) => sum + d.interestRepayment, 0);
+    const interestPayment = totalDebt > 0 ? (totalInterestRepayment / totalDebt) * 100 : 0;
     return {
         suggestedOrder,
         summary: {
             totalDebt,
-            avgInterestRate: parseFloat(avgInterestRate.toFixed(2)),
+            totalCapitalRepayment,
+            totalInterestRepayment,
+            interestPayment: Number(interestPayment.toFixed(2)),
+            avgInterestRate: Number(avgInterestRate.toFixed(2)),
             monthlyPayment,
         },
         debts: debtsWithRate.sort((a, b) => b.interestRate - a.interestRate).slice(0, 3),

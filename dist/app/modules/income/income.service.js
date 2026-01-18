@@ -8,6 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -16,10 +27,12 @@ exports.IncomeService = void 0;
 const http_status_codes_1 = require("http-status-codes");
 const income_model_1 = require("./income.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
-const date_fns_1 = require("date-fns");
+const dateTimeHelper_1 = require("../../../utils/dateTimeHelper");
 // Create new income
 const createIncomeToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const newIncome = yield income_model_1.Income.create(Object.assign(Object.assign({}, payload), { userId }));
+    const { receiveDate } = payload, rest = __rest(payload, ["receiveDate"]);
+    const utcReceiveDate = (0, dateTimeHelper_1.toUTC)(receiveDate);
+    const newIncome = yield income_model_1.Income.create(Object.assign(Object.assign({}, rest), { receiveDate: utcReceiveDate, userId }));
     if (!newIncome) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'Failed to create income');
     }
@@ -27,10 +40,10 @@ const createIncomeToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, 
 });
 // Get incomes by user
 const getUserIncomesFromDB = (userId, query) => __awaiter(void 0, void 0, void 0, function* () {
-    const monthStart = (0, date_fns_1.startOfMonth)(new Date());
-    const yearStart = (0, date_fns_1.startOfYear)(new Date());
-    const monthEnd = (0, date_fns_1.endOfMonth)(new Date());
-    const yearEnd = (0, date_fns_1.endOfYear)(new Date());
+    const monthStart = (0, dateTimeHelper_1.getStartOfMonthUTC)();
+    const yearStart = (0, dateTimeHelper_1.getStartOfYearUTC)();
+    const monthEnd = (0, dateTimeHelper_1.getEndOfMonthUTC)();
+    const yearEnd = (0, dateTimeHelper_1.getEndOfYearUTC)();
     const incomes = yield income_model_1.Income.find(Object.assign({ isDeleted: false, userId }, (query.frequency
         ? query.frequency === 'monthly'
             ? {
@@ -54,9 +67,10 @@ const getUserIncomesFromDB = (userId, query) => __awaiter(void 0, void 0, void 0
 });
 // Get incomes by user  by frequency
 const getUserIncomesByFrequencyFromDB = (userId, query) => __awaiter(void 0, void 0, void 0, function* () {
-    const monthStart = (0, date_fns_1.startOfMonth)(new Date());
-    const monthEnd = (0, date_fns_1.endOfMonth)(new Date());
+    const monthStart = (0, dateTimeHelper_1.getStartOfMonthUTC)();
+    const monthEnd = (0, dateTimeHelper_1.getEndOfMonthUTC)();
     const incomes = yield income_model_1.Income.find(Object.assign(Object.assign({ isDeleted: false, userId }, (query.frequency ? { frequency: query.frequency } : {})), { receiveDate: {
+            // CHANGED FROM createdAt
             $gte: monthStart,
             $lte: monthEnd,
         } }));

@@ -7,6 +7,7 @@ export interface IBudget extends Document {
      frequency: 'on-off' | 'monthly';
      category: string;
      userId: Types.ObjectId;
+     expensesId?: Types.ObjectId;
      isDeleted: boolean;
      createdAt: Date;
 }

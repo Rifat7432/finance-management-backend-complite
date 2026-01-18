@@ -9,6 +9,7 @@ const budgetSchema = new Schema<IBudget>(
           frequency: { type: String, enum: ['on-off','monthly',], default: 'monthly' }, 
           category: { type: String, required: true },
           userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+          expensesId: { type: Schema.Types.ObjectId, ref: 'Expense'},
           isDeleted: { type: Boolean, default: false },
      },
      { timestamps: true },

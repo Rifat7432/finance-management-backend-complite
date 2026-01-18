@@ -6,6 +6,7 @@ export interface IExpense extends Document {
      endDate: Date; // Or Date, if you want real date type
      frequency: 'on-off' | 'weekly' | 'monthly' | 'yearly'; // Adjust as needed
      userId: Types.ObjectId;
+     budgetId?: Types.ObjectId;
      isDeleted: boolean;
      createdAt: Date;
 }

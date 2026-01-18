@@ -17,21 +17,22 @@ const http_status_codes_1 = require("http-status-codes");
 const savingGoal_model_1 = require("./savingGoal.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const dateTimeHelper_1 = require("../../../utils/dateTimeHelper");
 const createSavingGoalToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, totalAmount, monthlyTarget, date, savedMoney } = payload;
-    const startDate = new Date(date);
+    const startDate = (0, dateTimeHelper_1.toUTC)(date);
     // Calculate months needed to complete the goal
     const monthsNeeded = Math.ceil((totalAmount - savedMoney) / monthlyTarget);
     // Calculate complete date
-    const completeDate = new Date(startDate);
+    const completeDate = (0, dateTimeHelper_1.toUTC)(startDate);
     completeDate.setMonth(completeDate.getMonth() + monthsNeeded);
     // Save goal to database
     const savingGoal = yield savingGoal_model_1.SavingGoal.create({
         name,
         totalAmount,
         monthlyTarget,
-        date: startDate.toISOString(),
-        completeDate: completeDate.toISOString(),
+        date: startDate,
+        completeDate: completeDate,
         userId,
         savedMoney,
     });
@@ -104,14 +105,14 @@ const updateSavingGoalToDB = (id, payload) => __awaiter(void 0, void 0, void 0, 
     }
     const updatedTotalAmount = (_a = payload.totalAmount) !== null && _a !== void 0 ? _a : currentGoal.totalAmount;
     const updatedMonthlyTarget = (_b = payload.monthlyTarget) !== null && _b !== void 0 ? _b : currentGoal.monthlyTarget;
-    const updatedDate = payload.date ? new Date(payload.date) : new Date(currentGoal.date);
+    const updatedDate = payload.date ? (0, dateTimeHelper_1.toUTC)(payload.date) : (0, dateTimeHelper_1.toUTC)(currentGoal.date);
     if ('totalAmount' in payload || 'monthlyTarget' in payload || 'date' in payload) {
         const monthsNeeded = Math.ceil(updatedTotalAmount / updatedMonthlyTarget);
-        const newCompleteDate = new Date(updatedDate);
+        const newCompleteDate = (0, dateTimeHelper_1.toUTC)(updatedDate);
         newCompleteDate.setMonth(newCompleteDate.getMonth() + monthsNeeded);
-        payload.completeDate = newCompleteDate.toISOString();
+        payload.completeDate = newCompleteDate;
         if (payload.date) {
-            payload.date = updatedDate.toISOString();
+            payload.date = updatedDate;
         }
     }
     const updated = yield savingGoal_model_1.SavingGoal.findByIdAndUpdate(id, payload, { new: true });

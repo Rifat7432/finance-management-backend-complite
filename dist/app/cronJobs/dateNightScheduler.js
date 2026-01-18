@@ -15,10 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_cron_1 = __importDefault(require("node-cron"));
 const dateNight_model_1 = require("../modules/dateNight/dateNight.model");
 const date_fns_1 = require("date-fns");
-/** 🌍 Helper to get current UK time */
-const nowUK = () => {
-    return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
-};
+const dateTimeHelper_1 = require("../../utils/dateTimeHelper");
 // 🔁 Calculate next date night date
 const getNextDateNightDate = (date, repeatEvery) => {
     const d = new Date(date);
@@ -34,9 +31,9 @@ const getNextDateNightDate = (date, repeatEvery) => {
         return (0, date_fns_1.addYears)(d, 1);
     return d;
 };
-// Check if it's been at least 1 hour after the date + time (UK time)
+// Check if it's been at least 1 hour after the date + time (UTC time)
 const isOneHourPast = (date, time) => {
-    const now = nowUK();
+    const now = (0, dateTimeHelper_1.getCurrentUTC)();
     // Combine date and time into a full datetime
     const dateTimeString = time
         ? `${date.toISOString().split('T')[0]}T${time}:00.000Z`
@@ -46,7 +43,7 @@ const isOneHourPast = (date, time) => {
     return now >= oneHourAfter;
 };
 node_cron_1.default.schedule('0 * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('🔄 Running date night automation (UK time)...');
+    console.log('🔄 Running date night automation (UTC time)...');
     try {
         // Get ALL recurring date nights (no date filtering)
         const recurringDateNights = yield dateNight_model_1.DateNight.find({
@@ -76,5 +73,5 @@ node_cron_1.default.schedule('0 * * * *', () => __awaiter(void 0, void 0, void 0
         console.error('❌ Date night automation error:', error);
     }
 }), {
-    timezone: 'Europe/London', // 🇬🇧 UK time
+    timezone: 'UTC',
 });

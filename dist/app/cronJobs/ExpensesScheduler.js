@@ -15,14 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_cron_1 = __importDefault(require("node-cron"));
 const expense_model_1 = require("../modules/expense/expense.model");
 const date_fns_1 = require("date-fns");
-/** 🌍 Helper to get current UK time */
-const nowUK = () => {
-    return new Date(new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' }));
-};
+const dateTimeHelper_1 = require("../../utils/dateTimeHelper");
 /** Determines whether today matches the creation day based on frequency */
 const shouldCreateToday = (createdAtDate, frequency) => {
-    const today = nowUK();
-    const createdAt = new Date(createdAtDate);
+    const today = (0, dateTimeHelper_1.getStartOfDayUTC)();
+    const createdAt = (0, date_fns_1.startOfDay)(new Date(createdAtDate));
     switch (frequency) {
         case 'weekly':
             return (0, date_fns_1.getDay)(today) === (0, date_fns_1.getDay)(createdAt);
@@ -36,7 +33,7 @@ const shouldCreateToday = (createdAtDate, frequency) => {
 };
 /** Returns the next expense date based on frequency */
 const getNextExpenseDate = (fromDate, frequency) => {
-    const baseDate = new Date(fromDate);
+    const baseDate = (0, date_fns_1.startOfDay)(new Date(fromDate));
     switch (frequency) {
         case 'weekly':
             return (0, date_fns_1.addWeeks)(baseDate, 1);
@@ -48,11 +45,11 @@ const getNextExpenseDate = (fromDate, frequency) => {
             return baseDate;
     }
 };
-/** Cron job: runs every 10 seconds (for testing) in UK time */
+/** Cron job: runs at 00:10 UTC every day */
 node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('🔄 Running recurring expense automation (UK time)...');
+    console.log('🔄 Running recurring expense automation (UTC time)...');
     try {
-        const today = (0, date_fns_1.startOfDay)(nowUK());
+        const today = (0, dateTimeHelper_1.getStartOfDayUTC)();
         const startOfToday = today;
         const endOfToday = new Date(today);
         endOfToday.setHours(23, 59, 59, 999);
@@ -116,5 +113,5 @@ node_cron_1.default.schedule('10 0 * * *', () => __awaiter(void 0, void 0, void 
         console.error('❌ Error during expense automation:', error);
     }
 }), {
-    timezone: 'Europe/London', // 🇬🇧 UK time
+    timezone: 'UTC',
 });

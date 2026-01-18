@@ -1,0 +1,6 @@
+Sun Jan 18 2026 3:3:23 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/incomes/ 200 - 16.327 ms
+Sun Jan 18 2026 3:3:30 [SERVER-NAME] info: 127.0.0.1 - GET /api/v1/incomes/?frequency=monthly 200 - 3.960 ms
+Sun Jan 18 2026 3:33:44 [SERVER-NAME] info: [34mSIGINT received. Shutting down gracefully...[39m
+Sun Jan 18 2026 3:34:27 [SERVER-NAME] info: [32mConfig validation successful.[39m
+Sun Jan 18 2026 3:34:27 [SERVER-NAME] info: [46m🚀 Database connected successfully[49m
+Sun Jan 18 2026 3:34:27 [SERVER-NAME] info: [33m♻️  Application & Socket listening on http://0.0.0.0:5000 or http://localhost:5000 in development mode[39m

@@ -8,6 +8,8 @@ const createExpenseZodSchema = zod_1.z.object({
         amount: zod_1.z.number({ required_error: 'Amount is required' }).min(0),
         endDate: zod_1.z.string({ required_error: 'End date is required' }), // Consider Date
         frequency: zod_1.z.string().optional(),
+        type: zod_1.z.string().optional(),
+        category: zod_1.z.string().optional(),
     }),
 });
 const updateExpenseZodSchema = zod_1.z.object({

@@ -9,6 +9,7 @@ const expenseSchema = new mongoose_1.Schema({
     endDate: { type: Date, required: true }, // consider Date type
     frequency: { type: String, enum: ['on-off', 'weekly', 'monthly', 'yearly'], default: 'on-off' }, // optional: enum like 'daily', 'monthly'
     userId: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User', required: true },
+    budgetId: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Expense' },
     isDeleted: { type: Boolean, default: false },
 }, { timestamps: true });
 // Model

@@ -8,6 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -18,8 +29,12 @@ const ad_model_1 = require("./ad.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
 const uploadFileToSpaces_1 = require("../../middleware/uploadFileToSpaces");
 const QueryBuilder_1 = __importDefault(require("../../builder/QueryBuilder"));
+const dateTimeHelper_1 = require("../../../utils/dateTimeHelper");
 const createAdToDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const newAd = yield ad_model_1.Ad.create(payload);
+    const { endDate, startDate } = payload, rest = __rest(payload, ["endDate", "startDate"]);
+    const utcStartDate = (0, dateTimeHelper_1.toUTC)(startDate);
+    const utcEndDate = (0, dateTimeHelper_1.toUTC)(endDate);
+    const newAd = yield ad_model_1.Ad.create(Object.assign(Object.assign({}, rest), { endDate: utcEndDate, startDate: utcStartDate }));
     if (!newAd) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, 'Failed to create ad');
     }
@@ -32,7 +47,7 @@ const getAdsFromDB = (query) => __awaiter(void 0, void 0, void 0, function* () {
     return { meta, result };
 });
 const getSingleAdFromDB = (...args_1) => __awaiter(void 0, [...args_1], void 0, function* (query = {}) {
-    const now = new Date();
+    const now = (0, dateTimeHelper_1.getCurrentUTC)();
     const pipeline = [
         {
             $addFields: {

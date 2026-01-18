@@ -21,14 +21,15 @@ const expense_model_1 = require("../modules/expense/expense.model");
 const budget_model_1 = require("../modules/budget/budget.model");
 const emailTemplate_1 = require("../../shared/emailTemplate");
 const emailHelper_1 = require("../../helpers/emailHelper");
+const dateTimeHelper_1 = require("../../utils/dateTimeHelper");
 // ========================================================
 // === Finance Reminder Logic =============================
 // ========================================================
 const scheduleMonthlyFinanceReminderJob = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
-    const now = new Date();
-    const start = (0, date_fns_1.startOfMonth)(now);
-    const end = (0, date_fns_1.endOfMonth)(now);
+    const now = (0, dateTimeHelper_1.getCurrentUTC)();
+    const start = (0, dateTimeHelper_1.getStartOfMonthUTC)(now);
+    const end = (0, dateTimeHelper_1.getEndOfMonthUTC)(now);
     const monthName = (0, date_fns_1.format)(now, 'MMMM yyyy');
     console.log(`📆 Running monthly finance reminder for ${monthName}`);
     // 1️⃣ Fetch all active users
@@ -114,8 +115,8 @@ const scheduleMonthlyFinanceReminderJob = () => __awaiter(void 0, void 0, void 0
 node_cron_1.default.schedule('55 23 28-31 * *', () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('🔄 Running Monthly Finance Reminder automation...');
     try {
-        const now = new Date();
-        const end = (0, date_fns_1.endOfMonth)(now);
+        const now = (0, dateTimeHelper_1.getCurrentUTC)();
+        const end = (0, dateTimeHelper_1.getEndOfMonthUTC)(now);
         // Only run on the *actual* last day of month
         if (now.getDate() !== end.getDate())
             return;
@@ -124,4 +125,4 @@ node_cron_1.default.schedule('55 23 28-31 * *', () => __awaiter(void 0, void 0, 
     catch (err) {
         console.error('❌ Monthly Finance Reminder Scheduler error:', err);
     }
-}), { timezone: 'Europe/London' });
+}), { timezone: 'UTC' });

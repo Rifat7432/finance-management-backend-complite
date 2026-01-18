@@ -19,7 +19,15 @@ const createExpenseToDB = async (payload: Partial<IExpense & BudgetExtraType>, u
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create expense');
      }
      if (category && type) {
-          await Budget.create({ userId, category, type, amount: payload.amount, name: payload.name, ...(payload.frequency === 'on-off' ? { frequency: payload.frequency } : {}) });
+          await Budget.create({
+               userId,
+               expensesId: newExpense._id,
+               category,
+               type,
+               amount: payload.amount,
+               name: payload.name,
+               ...(payload.frequency === 'on-off' ? { frequency: payload.frequency } : {}),
+          });
      }
      return newExpense;
 };
@@ -125,15 +133,33 @@ const getSingleExpenseFromDB = async (id: string): Promise<IExpense | null> => {
 };
 
 // Update expense
-const updateExpenseToDB = async (id: string, payload: Partial<IExpense>): Promise<IExpense | null> => {
+const updateExpenseToDB = async (id: string, payload: Partial<IExpense & BudgetExtraType>): Promise<IExpense | null> => {
      const isExpenseExist = await Expense.findOne({ _id: id, isDeleted: false });
      if (!isExpenseExist) {
           throw new AppError(StatusCodes.NOT_FOUND, 'Expense not found');
+     }
+     // const { endDate, category, type, ...rest } = payload;
+     if (payload?.endDate) {
+          payload.endDate = toUTC(payload.endDate as Date);
      }
      const updated = await Expense.findByIdAndUpdate(id, payload, { new: true });
      if (!updated) {
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to update expense');
      }
+     if (payload.category && payload.type && payload.amount && payload.category && payload.frequency) {
+          await Budget.findOneAndUpdate(
+               { expensesId: isExpenseExist._id },
+               {
+                    ...(payload.category ? { category: payload.category } : {}),
+                    ...(payload.type ? { type: payload.type } : {}),
+                    ...(payload.amount ? { amount: payload.amount } : {}),
+                    ...(payload.name ? { name: payload.name } : {}),
+                    ...(payload.frequency === 'on-off' ? { frequency: payload.frequency } : {}),
+               },
+               { new: true },
+          );
+     }
+
      return updated;
 };
 
@@ -146,6 +172,9 @@ const deleteExpenseFromDB = async (id: string): Promise<boolean> => {
      const deleted = await Expense.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
      if (!deleted) {
           throw new AppError(StatusCodes.NOT_FOUND, 'Expense not found');
+     }
+     if (isExpenseExist.budgetId && deleted.isDeleted) {
+          await Budget.findOneAndUpdate({ expensesId: isExpenseExist._id }, { isDeleted: true }, { new: true });
      }
      return true;
 };

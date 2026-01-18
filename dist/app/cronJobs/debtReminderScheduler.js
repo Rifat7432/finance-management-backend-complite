@@ -17,13 +17,12 @@ const debt_model_1 = require("../modules/debt/debt.model");
 const notificationSettings_model_1 = require("../modules/notificationSettings/notificationSettings.model");
 const notification_model_1 = require("../modules/notification/notification.model");
 const firebaseHelper_1 = require("../../helpers/firebaseHelper");
+const dateTimeHelper_1 = require("../../utils/dateTimeHelper");
 function getDebtUTC(date, time, timeZone) {
-    const tz = timeZone || 'Europe/London';
     const [hour, minute] = time.split(':').map(Number);
-    const localDate = new Date(date);
-    localDate.setHours(hour, minute, 0, 0);
-    const localString = localDate.toLocaleString('en-GB', { timeZone: tz });
-    return new Date(localString);
+    const utcDate = (0, dateTimeHelper_1.toUTC)(date);
+    utcDate.setHours(hour, minute, 0, 0);
+    return utcDate;
 }
 function addOneMonth(dateStr) {
     const date = new Date(dateStr); // YYYY-MM-DD
@@ -58,31 +57,23 @@ function sendDebtNotification(_a) {
     });
 }
 node_cron_1.default.schedule('0 0 * * *', () => __awaiter(void 0, void 0, void 0, function* () {
-    const now = new Date();
-    // Get the UTC offset of Europe/London at this moment
-    const ukOffsetMinutes = now.getTimezoneOffset() - new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' })).getTimezoneOffset();
-    // Calculate current UK time as a Date object
-    const nowUK = new Date(now.getTime() - ukOffsetMinutes * 60 * 1000);
+    const nowUTC = (0, dateTimeHelper_1.getCurrentUTC)();
     try {
-        const today = new Date()
-            .toLocaleDateString('en-GB', {
-            timeZone: 'Europe/London',
-        })
-            .split('/')
-            .reverse()
-            .join('-');
+        const todayString = nowUTC
+            .toISOString()
+            .split('T')[0];
         const debts = yield debt_model_1.Debt.find({
             isDeleted: false,
             completionRatio: { $lt: 100 },
-            payDueDate: today,
+            payDueDate: todayString,
         });
         for (const debt of debts) {
             const userSetting = yield notificationSettings_model_1.NotificationSettings.findOne({ userId: debt.userId }).lean();
             if (!(userSetting === null || userSetting === void 0 ? void 0 : userSetting.debtNotification))
                 continue;
-            const timeZone = userSetting.timeZone || 'Europe/London';
-            const debtUTC = getDebtUTC(debt.payDueDate, '08:00', timeZone);
-            const diffHours = (debtUTC.getTime() - nowUK.getTime()) / (1000 * 60 * 60);
+            const debtUTC = getDebtUTC(debt.payDueDate, '08:00', userSetting.timeZone);
+            const diffMs = debtUTC.getTime() - nowUTC.getTime();
+            const diffHours = diffMs / (1000 * 60 * 60);
             if (diffHours >= 23.9 && diffHours <= 24.1) {
                 yield sendDebtNotification({ userSetting, userId: debt.userId, debt });
                 console.log(`✅ Debt reminder sent: ${debt.name}`);
@@ -92,7 +83,7 @@ node_cron_1.default.schedule('0 0 * * *', () => __awaiter(void 0, void 0, void 0
             const completionRatio = debt.amount > 0 ? Number((((debt.amount - newAmount) / debt.amount) * 100).toFixed(2)) : 0;
             const nextPayDate = addOneMonth(debt.payDueDate);
             yield debt_model_1.Debt.updateOne({ _id: debt._id }, {
-                amount: newAmount,
+                // amount: newAmount,
                 completionRatio,
                 payDueDate: nextPayDate,
             });
@@ -102,4 +93,4 @@ node_cron_1.default.schedule('0 0 * * *', () => __awaiter(void 0, void 0, void 0
     catch (error) {
         console.error('❌ Debt completion update error:', error);
     }
-}), { timezone: 'Europe/London' });
+}), { timezone: 'UTC' });

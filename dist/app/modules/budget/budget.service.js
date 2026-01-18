@@ -16,8 +16,8 @@ exports.BudgetService = exports.getUserBudgetsByTypeFromDB = void 0;
 const http_status_codes_1 = require("http-status-codes");
 const budget_model_1 = require("./budget.model");
 const AppError_1 = __importDefault(require("../../../errors/AppError"));
-const date_fns_1 = require("date-fns");
 const user_model_1 = require("../user/user.model");
+const dateTimeHelper_1 = require("../../../utils/dateTimeHelper");
 const createBudgetToDB = (payload, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const newBudget = yield budget_model_1.Budget.create(Object.assign(Object.assign({}, payload), { userId }));
     if (!newBudget) {
@@ -38,9 +38,9 @@ const getUserBudgetsByTypeFromDB = (partnerId, userId, query) => __awaiter(void 
     if (!userInfo) {
         throw new AppError_1.default(404, 'User not found');
     }
-    const today = new Date();
-    const monthStart = (0, date_fns_1.startOfMonth)(today);
-    const monthEnd = (0, date_fns_1.endOfMonth)(today);
+    const today = (0, dateTimeHelper_1.getCurrentUTC)();
+    const monthStart = (0, dateTimeHelper_1.getStartOfMonthUTC)(today);
+    const monthEnd = (0, dateTimeHelper_1.getEndOfMonthUTC)(today);
     const allBudgets = [];
     const budgets = yield budget_model_1.Budget.find(Object.assign(Object.assign({ userId, isDeleted: false }, (query.type ? { type: query.type } : {})), { createdAt: {
             $gte: monthStart,
@@ -67,9 +67,9 @@ const getUserBudgetsByTypeFromDB = (partnerId, userId, query) => __awaiter(void 
 exports.getUserBudgetsByTypeFromDB = getUserBudgetsByTypeFromDB;
 // Yearly budget analytics for a given user
 const getYearlyBudgetAnalyticsFromDB = (userId, year) => __awaiter(void 0, void 0, void 0, function* () {
-    const targetYear = year || new Date().getFullYear();
-    const yearStart = (0, date_fns_1.startOfYear)(new Date(targetYear, 0, 1));
-    const yearEnd = (0, date_fns_1.endOfYear)(new Date(targetYear, 0, 1));
+    const targetYear = year || (0, dateTimeHelper_1.getCurrentUTC)().getFullYear();
+    const yearStart = (0, dateTimeHelper_1.getStartOfYearUTC)(new Date(targetYear, 0, 1));
+    const yearEnd = (0, dateTimeHelper_1.getEndOfYearUTC)(new Date(targetYear, 0, 1));
     const budgets = yield budget_model_1.Budget.find({
         userId,
         isDeleted: false,
