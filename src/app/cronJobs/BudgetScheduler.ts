@@ -6,24 +6,16 @@ import { getCurrentUTC, getStartOfDayUTC, toUTC } from '../../utils/dateTimeHelp
 // ✔ Updated to check using UTC time
 const isToday = (date: Date): boolean => {
      const today = getStartOfDayUTC();
-     const utcDate = toUTC(date)
-     console.log(today,date,utcDate,today.getTime() , utcDate.getTime(),today.getTime() === utcDate.getTime())
-     return today.getTime() === date.getTime();
+     const utcDate = toUTC(new Date(date.getTime() - 24 * 60 * 60 * 1000));
+     return today.getTime() === utcDate.getTime();
 };
 
 cron.schedule(
      '5 0 * * *',
-     // '*/10 * * * * *',
      async () => {
-          console.log('🔄 Running income & budget automation (UTC time)...');
+          console.log('🔄 Running budget automation (UTC time)...');
 
           try {
-               const today = getStartOfDayUTC();
-
-               const previousMonthStart = startOfDay(subMonths(today, 1));
-
-               // Recurring incomes
-
                // Recurring budgets
                const recurringBudgets = await Budget.find({
                     isDeleted: false,
@@ -38,7 +30,7 @@ cron.schedule(
 
                // Process budgets
                for (const budget of recurringBudgets) {
-                    console.log(budget)
+                    console.log(budget);
                     try {
                          if (!isToday(addMonths(budget.createdAt, 1))) continue;
 
@@ -66,7 +58,6 @@ cron.schedule(
                               type: budget.type,
                               category: budget.category,
                               frequency: 'monthly',
-                              startDate: nextDate,
                               userId: budget.userId,
                          });
 

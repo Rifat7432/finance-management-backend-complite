@@ -31,7 +31,6 @@ cron.schedule(
           console.log('🔄 Running recurring expense automation (UTC time)...');
 
           try {
-               const today = getStartOfDayUTC();
                const recurringExpenses = await Expense.find({
                     isDeleted: false,
                     $or: [{ frequency: 'weekly' }, { frequency: 'monthly' }, { frequency: 'yearly' }],

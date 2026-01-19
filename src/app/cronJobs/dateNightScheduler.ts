@@ -18,7 +18,6 @@ const getNextDateNightDate = (date: Date, repeatEvery: string): Date => {
 const isOneHourPast = (date: Date | string): boolean => {
   const now = getCurrentUTC();
   const target = new Date(date);
-
   const diffMs = now.getTime() - target.getTime();
   const oneHour = 60 * 60 * 1000;
   const twoHours = 2 * oneHour;

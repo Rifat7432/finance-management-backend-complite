@@ -10,7 +10,7 @@ const debtSchema = new Schema<IDebt>(
           AdHocPayment: { type: Number, required: true },
           capitalRepayment: { type: Number, required: true },
           interestRepayment: { type: Number, required: true },
-          payDueDate: { type: String, required: true },
+          payDueDate: { type: Date, required: true },
           userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
           isDeleted: { type: Boolean, default: false },
           completionRatio: { type: Number, default: 0 }

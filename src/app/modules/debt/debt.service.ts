@@ -2,9 +2,13 @@ import { StatusCodes } from 'http-status-codes';
 import { Debt } from './debt.model';
 import AppError from '../../../errors/AppError';
 import { IDebt } from './debt.interface';
+import { toUTC } from '../../../utils/dateTimeHelper';
 
 // Create new debt
 const createDebtToDB = async (payload: Partial<IDebt>, userId: string): Promise<IDebt> => {
+     if (payload?.payDueDate) {
+          payload.payDueDate = toUTC(payload.payDueDate as Date);
+     }
      const newDebt = await Debt.create({ ...payload, userId });
      if (!newDebt) {
           throw new AppError(StatusCodes.BAD_REQUEST, 'Failed to create debt');
@@ -115,6 +119,9 @@ const updateDebtToDB = async (id: string, payload: Partial<IDebt>): Promise<IDeb
      const debt = await Debt.findById(id);
      if (!debt || debt.isDeleted) {
           throw new AppError(StatusCodes.NOT_FOUND, 'Debt not found or deleted');
+     }
+     if (payload?.payDueDate) {
+          payload.payDueDate = toUTC(payload.payDueDate as Date);
      }
      const updated = await Debt.findByIdAndUpdate(id, payload, { new: true });
      if (!updated) {

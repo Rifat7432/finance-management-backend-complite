@@ -6,21 +6,6 @@
     "auditLog": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\.a152471e2cf6fbf7a1a376b7f76bc4f899d0f8bc-audit.json",
     "files": [
         {
-            "date": 1768763209482,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-01-error.log",
-            "hash": "90e933183193fc0dbacb7dd164d6dfa45b138c9c94dfd366cb6a9d0b40f72547"
-        },
-        {
-            "date": 1768769181198,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-02-error.log",
-            "hash": "f3762b7209425805350b7807a0b35061b04863e9fab8c67f6278bdd349e796b0"
-        },
-        {
-            "date": 1768771829386,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-03-error.log",
-            "hash": "ddf528f62d69ea3e5f3dd9821c11ff5bc87a01a48359881f35f4a4e0d4946cbc"
-        },
-        {
             "date": 1768777734800,
             "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-05-error.log",
             "hash": "33d93f0a28437c4c796eeeaed3aba729d9399af5ccb7ae9d6d63f5200389c4ca"
@@ -49,6 +34,16 @@
             "date": 1768849205046,
             "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-01-error.log",
             "hash": "2a472cc41310a9d10798662afc43da91de4ac72a4ce19943707676d168808163"
+        },
+        {
+            "date": 1768859282190,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-03-error.log",
+            "hash": "fb737622d1c8604b01911692cff7167e0a5dbd2e4a59b0d43403c668a0e54fa7"
+        },
+        {
+            "date": 1768860012908,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-04-error.log",
+            "hash": "f23319f3eb0260e8a5d80bed63994b8915225c985d01fa6c4c74618122e72a6d"
         }
     ],
     "hashType": "sha256"

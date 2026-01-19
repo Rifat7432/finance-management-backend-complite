@@ -7,7 +7,7 @@ export interface IDebt {
      AdHocPayment: number;
      capitalRepayment: number;
      interestRepayment: number;
-     payDueDate: string;
+     payDueDate: Date;
      userId: Types.ObjectId;
      isDeleted: boolean;
      completionRatio: number;

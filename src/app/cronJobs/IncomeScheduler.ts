@@ -25,7 +25,6 @@ cron.schedule(
           console.log('🔄 Running income automation (UTC time)...');
 
           try {
-               const today = getStartOfDayUTC();
                // Recurring incomes
                const recurringIncomes = await Income.find({
                     isDeleted: false,

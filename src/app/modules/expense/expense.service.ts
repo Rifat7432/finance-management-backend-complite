@@ -27,6 +27,8 @@ const createExpenseToDB = async (payload: Partial<IExpense & BudgetExtraType>, u
                amount: payload.amount,
                name: payload.name,
                ...(payload.frequency === 'on-off' ? { frequency: payload.frequency } : {}),
+               createdAt: utcEndDate,
+               updatedAt:utcEndDate,
           });
           if (budget) {
                const updatedExpense = await Expense.findByIdAndUpdate(newExpense._id, { budgetId: budget._id }, { new: true });

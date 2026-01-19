@@ -19,7 +19,6 @@ const getAnalyticsFromDB = async (userId: string) => {
      const now = getCurrentUTC();
      const start = getStartOfMonthUTC(now);
      const end = getEndOfMonthUTC(now);
-
      const result = await Income.aggregate([
           {
                $match: {
@@ -182,11 +181,9 @@ const getAnalyticsFromDB = async (userId: string) => {
 const scheduleMonthlyAnalyticsJob = async () => {
 
      // Run only if this is actually the last day of the month
-     // if (now.getDate() !== end.getDate()) return;
-
      console.log('🕒 Running monthly analytics job...');
 
-     const users = await User.find({ isDeleted: false, status: 'active' });
+     const users = await User.find({ email: "md.rifat.taluckdar@gmail.com",isDeleted: false, status: 'active' });
      const allResults: any[] = [];
 
      for (const user of users) {
@@ -256,8 +253,6 @@ const scheduleMonthlyAnalyticsJob = async () => {
                console.log(`✅ Distributed $${disposal.toFixed(2)} for user ${user._id}. Remaining: $${Math.max(0, remainingDisposal).toFixed(2)}`);
           }
      }
-
-     console.log('✅ Monthly Analytics Results:\n', JSON.stringify(allResults, null, 2));
 };
 
 // Run at 23:55 on 28–31 (the last day check prevents multiple runs)
@@ -271,5 +266,5 @@ cron.schedule(
                console.error('❌ Monthly Analytics Scheduler error:', err);
           }
      },
-     { timezone: 'Europe/London' },
+     { timezone: "UTC"},
 );
