@@ -159,8 +159,8 @@ function runReminderScheduler() {
         }
     });
 }
-node_cron_1.default.schedule('*/1 * * * *', 
-// '*/10 * * * * *',
-() => __awaiter(void 0, void 0, void 0, function* () {
+node_cron_1.default.schedule(
+// '*/1 * * * *',
+'*/10 * * * * *', () => __awaiter(void 0, void 0, void 0, function* () {
     yield runReminderScheduler();
 }), { timezone: 'UTC' });

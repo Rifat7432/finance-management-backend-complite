@@ -58,7 +58,6 @@ async function processReminders(collectionName: 'Appointment' | 'DateNight', Mod
      // Calculate 59 and 61 minutes in the future
      const oneHourAfterUTC = new Date(nowUTC.getTime() + 59 * 60 * 1000);
      const oneHourOneMinuteAfterUTC = new Date(nowUTC.getTime() + 60 * 60 * 1000);
-console.log(nowUTC,oneHourAfterUTC,oneHourOneMinuteAfterUTC)
      // Query MongoDB using UTCDate
      const events = await Model.find({
           isDeleted: false,
@@ -167,7 +166,6 @@ async function runReminderScheduler() {
 
 cron.schedule(
      '*/1 * * * *',
-     // '*/10 * * * * *',
      async () => {
           await runReminderScheduler();
      },

@@ -15,18 +15,15 @@ const getNextDateNightDate = (date: Date, repeatEvery: string): Date => {
 };
 
 // Check if it's been at least 1 hour after the date + time (UTC time)
-const isOneHourPast = (date: Date, time?: string): boolean => {
-     const now = getCurrentUTC();
+const isOneHourPast = (date: Date | string): boolean => {
+  const now = getCurrentUTC();
+  const target = new Date(date);
 
-     // Combine date and time into a full datetime
-     const dateTimeString = time
-          ? `${date.toISOString().split('T')[0]}T${time}:00.000Z`
-          : date.toISOString();
+  const diffMs = now.getTime() - target.getTime();
+  const oneHour = 60 * 60 * 1000;
+  const twoHours = 2 * oneHour;
 
-     const dateNightDateTime = new Date(dateTimeString);
-     const oneHourAfter = new Date(dateNightDateTime.getTime() + 60 * 60 * 1000);
-
-     return now >= oneHourAfter;
+  return diffMs >= oneHour && diffMs < twoHours;
 };
 
 
@@ -39,8 +36,8 @@ cron.schedule(
                // Get ALL recurring date nights (no date filtering)
                const recurringDateNights = await DateNight.find({
                     isDeleted: false,
-                    date: { $exists: true },
-                     repeatEvery: { $in: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'] },
+                    UTCDate: { $exists: true },
+                    repeatEvery: { $in: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'] },
                }).lean();
 
                let updated = 0,
@@ -48,20 +45,15 @@ cron.schedule(
 
                for (const dateNight of recurringDateNights) {
                     try {
-                         if (!isOneHourPast(dateNight.date!, dateNight.time)) {
+                         if (!isOneHourPast(dateNight.UTCDate!)) {
                               skipped++;
                               continue;
                          }
-
-                         const nextDate = getNextDateNightDate(dateNight.date!, dateNight.repeatEvery);
-
-                        await DateNight.updateOne({ _id: dateNight._id }, { $set: { date: nextDate, isRemainderSent: false } });
-
-                         console.log(
-                              `✅ Date Night Updated: ${dateNight.plan} → ${nextDate.toDateString()} at ${
-                                   dateNight.time || 'N/A'
-                              }`
-                         );
+                         console.log(dateNight.UTCDate);
+                         const nextDate = getNextDateNightDate(dateNight.UTCDate!, dateNight.repeatEvery);
+                         console.log(nextDate);
+                         await DateNight.updateOne({ _id: dateNight._id }, { $set: { date: nextDate, isRemainderSent: false } });
+                         console.log(`✅ Date Night Updated: ${dateNight.plan} → ${nextDate.toDateString()} at ${dateNight.time || 'N/A'}`);
                          updated++;
                     } catch (err) {
                          console.error(`❌ Error processing date night ${dateNight.plan}:`, err);
@@ -75,5 +67,5 @@ cron.schedule(
      },
      {
           timezone: 'UTC',
-     }
+     },
 );

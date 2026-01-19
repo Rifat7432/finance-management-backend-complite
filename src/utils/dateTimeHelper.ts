@@ -29,6 +29,18 @@ export const toUTC = (date: Date | string | number): Date => {
      return toZonedTime(d, UTC_TZ);
 };
 
+export const toUTCWithTime = (date: Date | string | number): Date => {
+  const d = new Date(date);
+
+  if (!isValid(d)) throw new Error(`Invalid date: ${date}`);
+
+  // Format with date + time preserved
+  const formatted = format(d, "yyyy-MM-dd HH:mm:ss");
+
+  // Convert to UTC (preserves time correctly)
+  return toZonedTime(formatted, UTC_TZ);
+};
+
 /**
  * Get start of today (UTC)
  */

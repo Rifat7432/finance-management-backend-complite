@@ -14,13 +14,13 @@ const welcome_1 = require("./utils/welcome");
 const app = (0, express_1.default)();
 // 👉 Import the cron job here
 require("./app/cronJobs/reminderScheduler"); // ✅ This runs the job on app start
-require("./app/cronJobs/BudgetScheduler"); // ✅ This runs the job on app start
-require("./app/cronJobs/dateNightScheduler"); // ✅ This runs the job on app start
-require("./app/cronJobs/debtReminderScheduler"); // ✅ This runs the job on app start
-require("./app/cronJobs/IncomeScheduler"); // ✅ This runs the job on app start 11
-require("./app/cronJobs/ExpensesScheduler"); // ✅ starts Expense scheduler on app start 11
-require("./app/cronJobs/AutoSavingGoalUpdateScheduler"); // ✅ starts Auto Saving Goal Update scheduler on app start
-require("./app/cronJobs/MonthlyFinanceRemainder"); // ✅ starts Auto Saving Goal Update scheduler on app start
+// import './app/cronJobs/BudgetScheduler'; // ✅ This runs the job on app start
+// import './app/cronJobs/dateNightScheduler'; // ✅ This runs the job on app start
+// import './app/cronJobs/debtReminderScheduler'; // ✅ This runs the job on app start
+// import './app/cronJobs/IncomeScheduler'; // ✅ This runs the job on app start 11
+// import './app/cronJobs/ExpensesScheduler'; // ✅ starts Expense scheduler on app start 11
+// import './app/cronJobs/AutoSavingGoalUpdateScheduler'; // ✅ starts Auto Saving Goal Update scheduler on app start
+// import './app/cronJobs/MonthlyFinanceRemainder'; // ✅ starts Auto Saving Goal Update scheduler on app start
 // ----------------------------
 // 🖼️ View Engine Setup (EJS)
 // ----------------------------

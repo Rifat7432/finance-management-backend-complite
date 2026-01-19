@@ -7,7 +7,6 @@ import { NotificationSettings } from '../notificationSettings/notificationSettin
 import { firebaseHelper } from '../../../helpers/firebaseHelper';
 import { Notification } from '../notification/notification.model';
 // import { IUserWithId } from '../../../types/auth';
-
 import { emailTemplate } from '../../../shared/emailTemplate';
 import { emailHelper } from '../../../helpers/emailHelper';
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

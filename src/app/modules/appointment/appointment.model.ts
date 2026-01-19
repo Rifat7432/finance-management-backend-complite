@@ -1,39 +1,18 @@
 import { Schema, model } from 'mongoose';
 import { IAppointment } from './appointment.interface';
-function getAppointmentUTC(dateStr: string, timeStr: string, timeZone: string): Date {
-     // Parse the base date (already UTC in your case)
-     const date = new Date(dateStr);
-
-     // Parse time string like "02:56 AM"
+import { toUTCWithTime } from '../../../utils/dateTimeHelper';
+function getAppointmentUTC(dateStr: string, timeStr: string): Date {
      const [time, modifier] = timeStr.split(' ');
      let [hours, minutes] = time.split(':').map(Number);
 
-     // Convert 12-hour → 24-hour
      if (modifier === 'PM' && hours !== 12) hours += 12;
      if (modifier === 'AM' && hours === 12) hours = 0;
 
-     // Format the date into the target timezone (YYYY-MM-DD)
-     const formatter = new Intl.DateTimeFormat('en-CA', {
-          timeZone,
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-     });
+     const localDateTime = `${dateStr} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`;
 
-     const parts = formatter.formatToParts(date);
-
-     const y = parts.find((p) => p.type === 'year')?.value!;
-     const m = parts.find((p) => p.type === 'month')?.value!;
-     const d = parts.find((p) => p.type === 'day')?.value!;
-
-     // Build ISO-like datetime in that timezone
-     const localISO = `${y}-${m}-${d}T${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`;
-
-     // Convert that timezone datetime into UTC
-     const utcDate = new Date(localISO + 'Z');
-
-     return utcDate;
+     return toUTCWithTime(localDateTime);
 }
+
 const appointmentSchema = new Schema<IAppointment>(
      {
           name: { type: String, required: true },
@@ -67,7 +46,7 @@ appointmentSchema.pre('save', function (next) {
      }
      const timeSlot = this.timeSlot;
      const startTime = timeSlot.split(' - ')[0];
-     this.UTCDate = getAppointmentUTC(this.date, startTime, 'Europe/London');
+     this.UTCDate = getAppointmentUTC(this.date, startTime);
      next();
 });
 
