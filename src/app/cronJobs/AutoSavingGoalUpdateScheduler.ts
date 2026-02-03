@@ -183,7 +183,7 @@ const scheduleMonthlyAnalyticsJob = async () => {
      // Run only if this is actually the last day of the month
      console.log('🕒 Running monthly analytics job...');
 
-     const users = await User.find({ email: "md.rifat.taluckdar@gmail.com",isDeleted: false, status: 'active' });
+     const users = await User.find({isDeleted: false, status: 'active' });
      const allResults: any[] = [];
 
      for (const user of users) {

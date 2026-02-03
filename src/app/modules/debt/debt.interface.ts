@@ -4,6 +4,7 @@ export interface IDebt {
      name: string;
      amount: number;
      monthlyPayment: number;
+     userInterestRate?: number;
      AdHocPayment: number;
      capitalRepayment: number;
      interestRepayment: number;

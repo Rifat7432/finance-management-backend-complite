@@ -20,7 +20,7 @@ cron.schedule(
                const recurringBudgets = await Budget.find({
                     isDeleted: false,
                     frequency: 'monthly',
-                    expensesId: null,
+                    // expensesId: null,
                }).lean();
 
                let created = 0,
@@ -30,7 +30,6 @@ cron.schedule(
 
                // Process budgets
                for (const budget of recurringBudgets) {
-                    console.log(budget);
                     try {
                          if (!isToday(addMonths(budget.createdAt, 1))) continue;
 

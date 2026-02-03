@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose';
 import { IDebt } from './debt.interface';
 
-
 const debtSchema = new Schema<IDebt>(
      {
           name: { type: String, required: true },
           amount: { type: Number, required: true },
+          userInterestRate: { type: Number },
           monthlyPayment: { type: Number, required: true },
           AdHocPayment: { type: Number, required: true },
           capitalRepayment: { type: Number, required: true },
@@ -13,7 +13,7 @@ const debtSchema = new Schema<IDebt>(
           payDueDate: { type: Date, required: true },
           userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
           isDeleted: { type: Boolean, default: false },
-          completionRatio: { type: Number, default: 0 }
+          completionRatio: { type: Number, default: 0 },
      },
      { timestamps: true },
 );
@@ -30,10 +30,7 @@ debtSchema.pre('findOneAndUpdate', async function (next) {
      const AdHocPayment = update.AdHocPayment ?? doc.AdHocPayment;
      const amount = update.amount ?? doc.amount;
 
-     const totalPaid =
-          capitalRepayment +
-          interestRepayment +
-          AdHocPayment;
+     const totalPaid = capitalRepayment + interestRepayment + AdHocPayment;
 
      update.completionRatio = Math.min((totalPaid / amount) * 100, 100);
 
