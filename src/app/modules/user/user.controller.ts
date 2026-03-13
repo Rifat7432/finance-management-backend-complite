@@ -100,6 +100,15 @@ const deleteProfile = catchAsync(async (req, res) => {
           data: result,
      });
 });
+//delete user
+const deleteUser = catchAsync(async (req, res) => {
+     sendResponse(res, {
+          success: true,
+          statusCode: StatusCodes.OK,
+          message: 'User deleted',
+          data: null,
+     });
+});
 //delete profile
 const blockUser = catchAsync(async (req, res) => {
      const id: string = req.params.id;
@@ -122,4 +131,5 @@ export const UserController = {
      getAllUsers,
      getUser,
      blockUser,
+     deleteUser
 };

@@ -16,11 +16,11 @@ import { createToken } from '../../../utils/createToken';
 import { NotificationSettings } from '../notificationSettings/notificationSettings.model';
 export const getLoginVideo = (loginCount: number): string | null => {
      switch (loginCount) {
-          case 1:
+          case 0:
                return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/How_to_create_a_budget_v3_1_1_.mp4';
-          case 2:
+          case 1:
                return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/How_to_create_a_new_expenses_list_01_1_1_.mp4';
-          case 3:
+          case 2:
                return 'https://rehoapp.lon1.cdn.digitaloceanspaces.com/others/Using_the_Debt_Management_tool_1_1_.mp4';
           default:
                return null;

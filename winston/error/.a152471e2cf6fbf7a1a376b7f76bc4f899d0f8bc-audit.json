@@ -6,44 +6,14 @@
     "auditLog": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\.a152471e2cf6fbf7a1a376b7f76bc4f899d0f8bc-audit.json",
     "files": [
         {
-            "date": 1768777734800,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-05-error.log",
-            "hash": "33d93f0a28437c4c796eeeaed3aba729d9399af5ccb7ae9d6d63f5200389c4ca"
+            "date": 1773083829568,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\10-03-2026-01-error.log",
+            "hash": "35815ce63736571953868c516297c2b0f1980b8f41fe042e40ce31ab55a111c6"
         },
         {
-            "date": 1768780849214,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-06-error.log",
-            "hash": "f34af9239b9cdd212071d709ac7c69f2bb9181fd09259ee5030e6665d6332d1c"
-        },
-        {
-            "date": 1768841449196,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-22-error.log",
-            "hash": "7773cc957a4f334b5aaa1a462f65288e5471ea113ed4428291477ae2946ce0b5"
-        },
-        {
-            "date": 1768842206362,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\19-01-2026-23-error.log",
-            "hash": "84ee8136b46d57ced2e146dbe3d8d6ed00a01648203c0e711f8b72d376aab046"
-        },
-        {
-            "date": 1768849074495,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-00-error.log",
-            "hash": "5bfb2a73eeb3b0d73285afdc8bd50a3c1263eefea449927245601b72e6472d22"
-        },
-        {
-            "date": 1768849205046,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-01-error.log",
-            "hash": "2a472cc41310a9d10798662afc43da91de4ac72a4ce19943707676d168808163"
-        },
-        {
-            "date": 1768859282190,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-03-error.log",
-            "hash": "fb737622d1c8604b01911692cff7167e0a5dbd2e4a59b0d43403c668a0e54fa7"
-        },
-        {
-            "date": 1768860012908,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\20-01-2026-04-error.log",
-            "hash": "f23319f3eb0260e8a5d80bed63994b8915225c985d01fa6c4c74618122e72a6d"
+            "date": 1773093099160,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\10-03-2026-03-error.log",
+            "hash": "d2bbcbc3b8c0917d880c57a4b507915714e3603c6660465febcdf0d00fd46ed2"
         }
     ],
     "hashType": "sha256"

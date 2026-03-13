@@ -20,7 +20,6 @@ cron.schedule(
                const recurringBudgets = await Budget.find({
                     isDeleted: false,
                     frequency: 'monthly',
-                    // expensesId: null,
                }).lean();
 
                let created = 0,
@@ -41,6 +40,7 @@ cron.schedule(
                               name: budget.name,
                               userId: budget.userId,
                               frequency: 'monthly',
+                              type: budget.type,
                               category: budget.category,
                               isDeleted: false,
                               createdAt: { $gte: nextDayStart, $lt: nextDayEnd },
