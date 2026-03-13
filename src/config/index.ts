@@ -45,6 +45,8 @@ export default {
           phoneNumber: process.env.TWILIO_PHONE_NUMBER || '',
      },
      revenuecat_secret_key: process.env.REVENUECAT_SECRET_KYE,
+     revenuecat_secret_key_ios: process.env.REVENUECAT_SECRET_KYE_IOS,
+     revenuecat_secret_key_android: process.env.REVENUECAT_SECRET_KYE_ANDROID,
      admin: {
           email: process.env.ADMIN_EMAIL,
           password: process.env.ADMIN_PASSWORD,

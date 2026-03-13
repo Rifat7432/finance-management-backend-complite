@@ -6,14 +6,14 @@
     "auditLog": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\.a152471e2cf6fbf7a1a376b7f76bc4f899d0f8bc-audit.json",
     "files": [
         {
-            "date": 1773083829568,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\10-03-2026-01-error.log",
-            "hash": "35815ce63736571953868c516297c2b0f1980b8f41fe042e40ce31ab55a111c6"
+            "date": 1773428792966,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\14-03-2026-01-error.log",
+            "hash": "800a95902333ba1813b24f26b9dbda6ac99bde5ea9495f4401478970c89cfd96"
         },
         {
-            "date": 1773093099160,
-            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\10-03-2026-03-error.log",
-            "hash": "d2bbcbc3b8c0917d880c57a4b507915714e3603c6660465febcdf0d00fd46ed2"
+            "date": 1773432000400,
+            "name": "C:\\Users\\mdrif\\Desktop\\projects\\finance-management-backend\\winston\\error\\14-03-2026-02-error.log",
+            "hash": "79fe420554f4bfe8420886a0cd0f23392ac88898fd295c127a02ddd6ddc0b51e"
         }
     ],
     "hashType": "sha256"

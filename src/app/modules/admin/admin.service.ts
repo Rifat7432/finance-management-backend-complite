@@ -318,16 +318,14 @@ const getAdminDashboardStats = async (year?: number): Promise<DashboardStats> =>
   const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
   const lastMonthYear = currentMonth === 0 ? targetYear - 1 : targetYear;
 
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-  // ========== DATE RANGES ==========
   const currentMonthStart = new Date(targetYear, currentMonth, 1);
   const currentMonthEnd = new Date(targetYear, currentMonth + 1, 0);
   const lastMonthStart = new Date(lastMonthYear, lastMonth, 1);
   const lastMonthEnd = new Date(lastMonthYear, lastMonth + 1, 0);
 
-  // ========== ACTIVE USERS ==========
-  // Users who have logged in or been active this month
+  // ================= USERS =================
   const [currentMonthUsers, lastMonthUsers, totalUsers] = await Promise.all([
     User.countDocuments({
       updatedAt: { $gte: currentMonthStart, $lte: currentMonthEnd },
@@ -340,64 +338,50 @@ const getAdminDashboardStats = async (year?: number): Promise<DashboardStats> =>
     User.countDocuments({ status: 'active' })
   ]);
 
-  const userPercentageChange = lastMonthUsers > 0 
-    ? ((currentMonthUsers - lastMonthUsers) / lastMonthUsers) * 100 
-    : 0;
+  const userPercentageChange =
+    lastMonthUsers > 0
+      ? ((currentMonthUsers - lastMonthUsers) / lastMonthUsers) * 100
+      : 0;
 
-  // ========== ENGAGEMENT RATE ==========
-  // Calculate engagement as (active users / total users) * 100
-  const currentEngagementRate = totalUsers > 0 ? (currentMonthUsers / totalUsers) * 100 : 0;
-  
+  // ================= ENGAGEMENT =================
+  const currentEngagementRate =
+    totalUsers > 0 ? (currentMonthUsers / totalUsers) * 100 : 0;
+
   const totalUsersLastMonth = await User.countDocuments({
     createdAt: { $lte: lastMonthEnd },
     status: 'active'
   });
-  const lastEngagementRate = totalUsersLastMonth > 0 
-    ? (lastMonthUsers / totalUsersLastMonth) * 100 
-    : 0;
-  
-  const engagementPercentageChange = lastEngagementRate > 0
-    ? ((currentEngagementRate - lastEngagementRate) / lastEngagementRate) * 100
-    : 0;
 
-  // ========== TOTAL CONTENT VIEWS ==========
-  // Get total views from all content
+  const lastEngagementRate =
+    totalUsersLastMonth > 0
+      ? (lastMonthUsers / totalUsersLastMonth) * 100
+      : 0;
+
+  const engagementPercentageChange =
+    lastEngagementRate > 0
+      ? ((currentEngagementRate - lastEngagementRate) / lastEngagementRate) * 100
+      : 0;
+
+  // ================= CONTENT VIEWS =================
   const currentMonthContent = await Content.aggregate([
-    {
-      $match: {
-        createdAt: { $gte: currentMonthStart, $lte: currentMonthEnd }
-      }
-    },
-    {
-      $group: {
-        _id: null,
-        totalViews: { $sum: '$views' }
-      }
-    }
+    { $match: { createdAt: { $gte: currentMonthStart, $lte: currentMonthEnd } } },
+    { $group: { _id: null, totalViews: { $sum: '$views' } } }
   ]);
 
   const lastMonthContent = await Content.aggregate([
-    {
-      $match: {
-        createdAt: { $gte: lastMonthStart, $lte: lastMonthEnd }
-      }
-    },
-    {
-      $group: {
-        _id: null,
-        totalViews: { $sum: '$views' }
-      }
-    }
+    { $match: { createdAt: { $gte: lastMonthStart, $lte: lastMonthEnd } } },
+    { $group: { _id: null, totalViews: { $sum: '$views' } } }
   ]);
 
   const currentMonthViews = currentMonthContent[0]?.totalViews || 0;
   const lastMonthViews = lastMonthContent[0]?.totalViews || 0;
 
-  const viewsPercentageChange = lastMonthViews > 0
-    ? ((currentMonthViews - lastMonthViews) / lastMonthViews) * 100
-    : 0;
+  const viewsPercentageChange =
+    lastMonthViews > 0
+      ? ((currentMonthViews - lastMonthViews) / lastMonthViews) * 100
+      : 0;
 
-  // ========== REVENUE DATA ==========
+  // ================= REVENUECAT DATA =================
   const uniqueUserIds = await Subscription.distinct('subscriptionId', {
     createdAt: {
       $gte: new Date(`${targetYear}-01-01`),
@@ -409,104 +393,127 @@ const getAdminDashboardStats = async (year?: number): Promise<DashboardStats> =>
   let monthlyRevenue = Array(12).fill(0);
   let currentMonthRevenue = 0;
   let lastMonthRevenue = 0;
+
   const batchSize = 10;
 
-  // Fetch revenue from RevenueCat
   for (let i = 0; i < uniqueUserIds.length; i += batchSize) {
     const batch = uniqueUserIds.slice(i, i + batchSize);
-    
+
     const batchPromises = batch.map(async (appUserId) => {
       try {
-        const res = await fetch(`https://api.revenuecat.com/v1/subscribers/${appUserId}`, {
-          headers: {
-            'Authorization': `Bearer ${config.revenuecat_secret_key}`,
-            'Content-Type': 'application/json',
-          },
-        });
+        const res = await fetch(
+          `https://api.revenuecat.com/v1/subscribers/${appUserId}`,
+          {
+            headers: {
+              Authorization:  config.revenuecat_secret_key as string,
+              'Content-Type': 'application/json'
+            }
+          }
+        );
 
-        if (!res.ok) return null;
+        if (!res.ok) {
+          const text = await res.text();
+          console.error("RevenueCat error:", text);
+          return null;
+        }
+
         const data = await res.json();
-        return { appUserId, subscriber: data.subscriber };
+        return data.subscriber;
       } catch (error) {
-        console.error(`Failed to fetch revenue for user ${appUserId}:`, error);
+        console.error("RevenueCat fetch failed:", error);
         return null;
       }
     });
 
     const results = await Promise.all(batchPromises);
 
-    results.forEach(result => {
-      if (!result || !result.subscriber) return;
+    results.forEach((subscriber) => {
+      if (!subscriber) return;
 
-      const { subscriber } = result;
-      totalSubscribers++;
+      // ================= ACTIVE SUBSCRIBER CHECK =================
+      if (
+        subscriber.entitlements?.active &&
+        Object.keys(subscriber.entitlements.active).length > 0
+      ) {
+        totalSubscribers++;
+      }
 
-      // Process subscriptions
+      // ================= SUBSCRIPTIONS =================
       if (subscriber.subscriptions) {
         Object.values(subscriber.subscriptions).forEach((subscription: any) => {
-          const purchaseDate = subscription.purchase_date ? new Date(subscription.purchase_date) : null;
-          
+          const purchaseDate = subscription.purchase_date
+            ? new Date(subscription.purchase_date)
+            : null;
+
           if (purchaseDate && purchaseDate.getFullYear() === targetYear) {
             const monthIndex = purchaseDate.getMonth();
-            const price = parseFloat(subscription.price_in_purchased_currency) || 0;
+
+            const price =
+              parseFloat(subscription.price_in_purchased_currency) || 0;
+
             monthlyRevenue[monthIndex] += price;
 
-            if (monthIndex === currentMonth) {
-              currentMonthRevenue += price;
-            }
-            if (monthIndex === lastMonth && purchaseDate.getFullYear() === lastMonthYear) {
+            if (monthIndex === currentMonth) currentMonthRevenue += price;
+
+            if (
+              monthIndex === lastMonth &&
+              purchaseDate.getFullYear() === lastMonthYear
+            ) {
               lastMonthRevenue += price;
             }
           }
         });
       }
 
-      // Process non-subscription purchases
+      // ================= NON SUBSCRIPTIONS =================
       if (subscriber.non_subscriptions) {
         Object.values(subscriber.non_subscriptions).forEach((purchases: any) => {
-          if (Array.isArray(purchases)) {
-            purchases.forEach((purchase: any) => {
-              const purchaseDate = purchase.purchase_date ? new Date(purchase.purchase_date) : null;
-              
-              if (purchaseDate && purchaseDate.getFullYear() === targetYear) {
-                const monthIndex = purchaseDate.getMonth();
-                const price = parseFloat(purchase.price_in_purchased_currency) || 0;
-                monthlyRevenue[monthIndex] += price;
+          if (!Array.isArray(purchases)) return;
 
-                if (monthIndex === currentMonth) {
-                  currentMonthRevenue += price;
-                }
-                if (monthIndex === lastMonth && purchaseDate.getFullYear() === lastMonthYear) {
-                  lastMonthRevenue += price;
-                }
+          purchases.forEach((purchase: any) => {
+            const purchaseDate = purchase.purchase_date
+              ? new Date(purchase.purchase_date)
+              : null;
+
+            if (purchaseDate && purchaseDate.getFullYear() === targetYear) {
+              const monthIndex = purchaseDate.getMonth();
+
+              const price =
+                parseFloat(purchase.price_in_purchased_currency) || 0;
+
+              monthlyRevenue[monthIndex] += price;
+
+              if (monthIndex === currentMonth) currentMonthRevenue += price;
+
+              if (
+                monthIndex === lastMonth &&
+                purchaseDate.getFullYear() === lastMonthYear
+              ) {
+                lastMonthRevenue += price;
               }
-            });
-          }
+            }
+          });
         });
       }
     });
   }
 
-  const revenuePercentageChange = lastMonthRevenue > 0
-    ? ((currentMonthRevenue - lastMonthRevenue) / lastMonthRevenue) * 100
-    : 0;
+  const revenuePercentageChange =
+    lastMonthRevenue > 0
+      ? ((currentMonthRevenue - lastMonthRevenue) / lastMonthRevenue) * 100
+      : 0;
 
-  // ========== USAGE ENGAGEMENT TRENDS ==========
-  // Shows monthly revenue as bar chart
+  // ================= TRENDS =================
   const usageEngagementTrends = months.map((month, index) => ({
     month,
     value: Math.round(monthlyRevenue[index] * 100) / 100
   }));
 
-  // ========== FINANCE OVERVIEW ==========
   const totalYearlyRevenue = monthlyRevenue.reduce((sum, val) => sum + val, 0);
-  
-  // Calculate subscription revenue (assume 90% of total is subscription, 10% is ads)
-  // Adjust this based on your actual ad revenue tracking
+
   const subscriptionRevenue = totalYearlyRevenue * 0.9;
   const adRevenue = totalYearlyRevenue * 0.1;
 
-  // Revenue chart data
   const revenueChart = months.map((month, index) => ({
     month,
     value: Math.round(monthlyRevenue[index] * 100) / 100
